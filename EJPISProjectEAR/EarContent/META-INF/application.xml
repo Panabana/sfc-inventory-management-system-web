@@ -4,4 +4,10 @@
   <module>
     <ejb>EJPISProject.jar</ejb>
   </module>
+  <module>
+    <web>
+      <web-uri>EJBISWebProject.war</web-uri>
+      <context-root>EJBISWebProject</context-root>
+    </web>
+  </module>
 </application>
