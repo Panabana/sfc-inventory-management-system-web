@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+    pageEncoding="ISO-8859-1" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,8 +8,7 @@
 
 <link rel="stylesheet" type="text/css" href="css/style.css">
 <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-<title>Insert title here</title>
-
+<title>IMS - Home</title>
 
 </head>
 <body>
@@ -59,24 +59,31 @@
     </li>
   </ul>
 </div>
-
-<div class="main-content">
 	<main>
 		<h1>Bumbibjornarna's Inventoryinator</h1>
-		<table>
-		  <tr>
-		  	<th>ProductID</th>
-		  	<th>ProductName</th>
-		  	<th>Price</th>
-		  </tr>
-		  <tr>
-		    <td>1</td>
-		    <td>Duff Beer</td>
-		    <td>80</td>
-		  </tr>
-		</table>
+		
+		<div class="center">
+			<table>
+				<thead>
+					<tr>
+						<th>Product ID</th>
+						<th>Product Name</th>
+						<th>Price</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>1</td>
+						<td>1</td>
+						<td>1</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		 
 	</main>
-	<footer>
+	
+	<footer class="center">
 		<p>&copy; 2023 Group 20 Bumbibjornarna. All rights reserved.</p>
 	</footer>
 </body>
