@@ -36,6 +36,7 @@ public class DemoServlet extends HttpServlet {
 		out.println("<meta charset=\"ISO-8859-1\">");
 		out.println("</head><body>");
 		out.println("<h2>Working OK</h2>");
+		out.println("<h3>Alex is checking</h3>");
 	}
 
 	/**
