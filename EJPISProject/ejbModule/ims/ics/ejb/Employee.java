@@ -50,7 +50,7 @@ public class Employee implements Serializable {
 	public void setPhoneNumber(int phoneNumber) {
 		this.phoneNumber = phoneNumber;
 	}
-	@OneToMany(mappedBy = "")
+	@OneToMany(mappedBy = "employee")
 	public Set<Purchase> getPurchases() {
 		return purchases;
 	}
