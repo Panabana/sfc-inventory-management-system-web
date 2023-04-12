@@ -1,5 +1,63 @@
 package ims.ics.ejb;
 
-public class Customer {
+import java.io.Serializable;
+import java.util.List;
+import java.util.Set;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="Customer")
+public class Customer implements Serializable {
+	
+	private int customerId;
+	private String name;
+	private String address;
+	private int phoneNbr;
+	private Set<Purchase> purchases;
+	
+	@Id
+	@Column(name="CustomerID")
+	public int getCustomerId() {
+		return customerId;
+	}
+	public void setCustomerId(int customerId) {
+		this.customerId = customerId;
+	}
+	@Column(name="Name")
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	@Column(name="Address")
+	public String getAddress() {
+		return address;
+	}
+	public void setAddress(String address) {
+		this.address = address;
+	}
+	@Column(name="PhoneNumber")
+	public int getPhoneNbr() {
+		return phoneNbr;
+	}
+	public void setPhoneNbr(int phoneNbr) {
+		this.phoneNbr = phoneNbr;
+	}
+	@OneToMany(mappedBy = "customer")
+	public Set<Purchase> getPurchases() {
+		return purchases;
+	}
+	public void setPurchases(Set<Purchase> purchases) {
+		this.purchases = purchases;
+	}
+	
+	
+	
 
 }
