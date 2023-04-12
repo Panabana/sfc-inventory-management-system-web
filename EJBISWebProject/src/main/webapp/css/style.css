@@ -1,53 +1,105 @@
 @charset "ISO-8859-1";
-/* Custom styles for the header */
-.navbar {
-  background-color: #fff;
-  border-bottom: 1px solid #eaeaea;
-  padding: 20px;
+/* Header styles */
+.header {
+  background-color: #ffffff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
 }
 
-.navbar-brand {
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.logo {
   font-size: 24px;
-  font-weight: bold;
-  color: #333;
+  font-weight: 700;
+  color: #333333;
 }
 
-.navbar-toggler {
-  border-color: #333;
+/* Navigation styles */
+.nav {
+  margin-left: auto;
 }
 
-.navbar-toggler-icon {
-  background-color: #333;
-}
-
-.nav-link {
-  color: #333;
-}
-
-.nav-link:hover {
-  color: #555;
-}
-
-.navbar-nav > li:not(:last-child) {
-  margin-right: 20px;
-}
-
-.navbar-nav > li > a {
+.nav-menu {
+  display: flex;
+  align-items: center;
+  list-style: none;
+  margin: 0;
   padding: 0;
 }
 
-.navbar-nav > li > a:hover {
-  color: #555;
+.nav-menu li {
+  margin-left: 30px;
 }
 
-.navbar-nav > li > a:before {
-  content: "";
-  display: inline-block;
-  height: 16px;
-  width: 16px;
-  margin-right: 8px;
-  background-image: url("path/to/your/icon.png");
-  background-repeat: no-repeat;
-  background-position: center center;
-  vertical-align: middle;
+.nav-link {
+  font-size: 14px;
+  font-weight: 500;
+  color: #333333;
+  text-decoration: none;
+  padding: 10px 15px;
+  border-radius: 4px;
 }
+
+.nav-link:hover {
+  background-color: #e6e6e6;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .container {
+    flex-wrap: wrap;
+  }
+  
+  .nav {
+    position: absolute;
+    top: 60px;
+    left: 0;
+    width: 100%;
+    background-color: #ffffff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    display: none;
+  }
+  
+  .nav-menu {
+    flex-direction: column;
+    margin-top: 20px;
+  }
+  
+  .nav-menu li {
+    margin-left: 0;
+  }
+  
+  .nav-link {
+    display: block;
+    padding: 10px 0;
+  }
+  
+  .nav-toggle {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    display: block;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    background-image: url('menu-icon.png');
+    background-size: cover;
+  }
+  
+  .nav-open {
+    display: block;
+  }
+}
+
