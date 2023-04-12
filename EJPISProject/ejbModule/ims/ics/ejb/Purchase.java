@@ -2,11 +2,53 @@ package ims.ics.ejb;
 
 import java.io.Serializable;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
 @Table(name="Purchase")
 public class Purchase implements Serializable {
+	
+	private int purchaseId;
+	private Employee employee;
+	private Customer customer;
+
+	@Id
+	@Column(name="PurchaseID")
+	public int getPurchaseId() {
+		return purchaseId;
+	}
+
+	public void setPurchaseId(int purchaseId) {
+		this.purchaseId = purchaseId;
+	}
+
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name="EmployeeID", referencedColumnName = "EmployeeID")
+	public Employee getEmployee() {
+		return employee;
+	}
+
+	public void setEmployee(Employee employee) {
+		this.employee = employee;
+	}
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name="CustomerID", referencedColumnName = "CustomerID")
+	public Customer getCustomer() {
+		return customer;
+	}
+
+	public void setCustomerId(Customer customer) {
+		this.customer = customer;
+	}
+	
+	
+	
+	
 
 }
