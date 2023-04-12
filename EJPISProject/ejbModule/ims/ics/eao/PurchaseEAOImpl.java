@@ -1,5 +1,7 @@
 package ims.ics.eao;
 
+import java.util.List;
+
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -18,6 +20,10 @@ public class PurchaseEAOImpl implements PurchaseEAOLocal {
     
     public PurchaseEAOImpl() {}
     
+    public List<Purchase> findAllPurchases() {
+        return em.createQuery("SELECT p FROM Purchase p", Purchase.class).getResultList();
+    }
+
     public Purchase findPurchaseById(int purchaseId) {
     	return em.find(Purchase.class, purchaseId);
     }
