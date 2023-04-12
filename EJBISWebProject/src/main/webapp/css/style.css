@@ -1,4 +1,8 @@
 @charset "ISO-8859-1";
+
+@import
+	url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap')
+	;
 /* Header styles */
 .header {
 	background-color: #ffffff;
@@ -64,7 +68,7 @@
 }
 
 /* Responsive styles */
-@media ( max-width : 768px) {
+@media ( max-width : 100%) {
 	.container {
 		flex-wrap: wrap;
 	}
@@ -104,37 +108,15 @@
 		display: block;
 	}
 }
-
+/* Sidebar styles */
 .sidebar {
 	position: fixed;
-	/*top: 50;*/
 	left: 0;
-	width: 250px;
+	width: 260px;
 	height: 100%;
 	background-color: #FFFFFF;
 	box-shadow: 2px 0 10px rgba(0, 0, 0, 0.3);
-}
-
-.sidebar-header {
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	padding: 20px;
-}
-
-.sidebar-logo {
-	font-size: 24px;
-	font-weight: bold;
-	text-decoration: none;
-	color: #ffffff;
-}
-
-.sidebar-toggle {
-	width: 30px;
-	height: 30px;
-	background-image: url('menu-icon.png');
-	background-size: cover;
-	cursor: pointer;
+	padding: 20px 10px;
 }
 
 .sidebar-menu {
@@ -147,23 +129,47 @@
 	margin-top: 10px;
 	margin-bottom: 10px;
 }
+
 .sidebar-menu-link i {
-  margin-right: 10px;
+	margin-right: 10px;
 }
 
 .sidebar-menu-link {
 	display: block;
 	padding: 10px 20px;
-	color: #01508E;
+	color: #023B6D;
 	text-decoration: none;
+	font-size: 20px;
+	font-weight: bold;
+	font-family: 'Roboto', sans-serif;
 }
 
 .sidebar-menu-link.active {
 	color: #4154f1;
-	background-color: #f6f9ff;
+	background-color: #e5e8ef;
+	border-radius: 10px;
+	margin: 4px;
 }
 
 .sidebar-menu-link:hover {
 	color: #4154f1;
-	background-color: #f6f9ff;
+	background-color: #e5e8ef;
+	border-radius: 10px;
+	margin: 4px;
+}
+
+.footer {
+  background-color: #f8f9fc;
+  padding: 1.5rem;
+  margin-top: 600px;
+  margin-bottom: 0px;
+  margin-left: 270px;
+  margin-right: auto;
+  width: auto;
+}
+
+.footer p {
+  color: #6c757d;
+  margin-bottom: 0;
+  text-align: center;
 }

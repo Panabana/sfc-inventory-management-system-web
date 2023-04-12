@@ -26,20 +26,20 @@
 <div class="sidebar" style="margin-top:65px;">
   <ul class="sidebar-menu">
     <li class="sidebar-menu-item">
-      <a href="ControllerServlet?action=about" class="sidebar-menu-link active">
-        <i class="fas fa-home"></i> Home </a>
+      <a href="#" class="sidebar-menu-link active">
+        <i class="fas fa-home"></i>Home</a>
     </li>
     <li class="sidebar-menu-item">
       <a href="ControllerServlet?action=test" class="sidebar-menu-link">
-        <i class="fas fa-box"></i> Products </a>
+        <i class="fas fa-box"></i>Products</a>
     </li>
     <li class="sidebar-menu-item">
       <a href="ControllerServlet?action=employee" class="sidebar-menu-link">
-        <i class="fas fa-truck"></i> Suppliers </a>
+        <i class="fas fa-truck"></i>Suppliers</a>
     </li>
     <li class="sidebar-menu-item">
       <a href="ControllerServlet?action=product" class="sidebar-menu-link">
-        <i class="fas fa-shopping-cart"></i> Purchases </a>
+        <i class="fas fa-shopping-cart"></i>Purchases</a>
     </li>
     <li class="sidebar-menu-item">
       <a href="ControllerServlet?action=product" class="sidebar-menu-link">
@@ -83,8 +83,11 @@
 		 
 	</main>
 	
-	<footer class="center">
-		<p>&copy; 2023 Group 20 Bumbibjornarna. All rights reserved.</p>
-	</footer>
+<footer class="footer">
+    <div class="row">
+        <p>&copy; 2023 Group 20 Bumbibjornarna. All rights reserved.</p>
+    </div>
+</footer>
+	
 </body>
 </html>
