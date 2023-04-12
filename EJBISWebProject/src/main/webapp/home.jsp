@@ -1,59 +1,65 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+    pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="ISO-8859-1">
-  <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-  <script
-  src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js">
-  </script>
-  <script>
-  $(document).ready(function(){
-  	
-  })
-  </script>
-  <title>Home</title>
+<meta charset="ISO-8859-1">
+
+<link rel="stylesheet" type="text/css" href="css/style.css">
+<title>Insert title here</title>
+
 </head>
 <body>
-	<nav class="navbar navbar-expand-lg navbar-light bg-light">
-		<a class="navbar-brand" href="#">My Website</a>
-		<button class="navbar-toggler" type="button" data-toggle="collapse"
-			data-target="#navbarNav" aria-controls="navbarNav"
-			aria-expanded="false" aria-label="Toggle navigation">
-			<span class="navbar-toggler-icon"></span>
-		</button>
-		<div class="collapse navbar-collapse" id="navbarNav">
-			<ul class="navbar-nav mr-auto">
-				<li class="nav-item"><a class="nav-link" href="#">Home</a></li>
-				<li class="nav-item"><a class="nav-link" href="#">About</a></li>
-				<li class="nav-item"><a class="nav-link" href="#">Services</a>
-				</li>
-				<li class="nav-item"><a class="nav-link" href="#">Contact</a></li>
-			</ul>
-			<ul class="navbar-nav">
-				<li class="nav-item"><a class="nav-link" href="#">Login</a></li>
-				<li class="nav-item"><a class="nav-link" href="#">Signup</a></li>
-			</ul>
-		</div>
-	</nav>
+<header class="header">
+    <div class="container">
+      <a href="#" class="logo"><img src="images/logo.png"  height="80"></a>
+      <nav class="nav">
+        <div class="nav-toggle"></div>
+        <ul class="nav-menu">
+          <li><a href="#" class="nav-link">Weather REST is here</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+<div class="sidebar">
+  <div class="sidebar-header">
+    <a href="#" class="sidebar-logo">My Website</a>
+    <div class="sidebar-toggle"></div>
+  </div>
+  <ul class="sidebar-menu">
+    <li class="sidebar-menu-item">
+      <a href="#" class="sidebar-menu-link active">
+        <i class="fa fa-dashboard"></i> Dashboard </a>
+    </li>
+    <li class="sidebar-menu-item">
+      <a href="#" class="sidebar-menu-link">
+        <i class="fa fa-users"></i> Users </a>
+    </li>
+    <li class="sidebar-menu-item">
+      <a href="#" class="sidebar-menu-link">
+        <i class="fa fa-cog"></i> Settings </a>
+    </li>
+    <li class="sidebar-menu-item">
+      <a href="#" class="sidebar-menu-link">
+        <i class="fa fa-sign-out"></i> Logout </a>
+    </li>
+  </ul>
+</div>
+<div class="main-content">
 	<main>
 		<h1>Bumbibjornarna's Inventoryinator</h1>
-		<div>
-			<table>
-				<tr>
-					<th>ProductID</th>
-					<th>ProductName</th>
-					<th>Price</th>
-				</tr>
-				<tr>
-					<td>1</td>
-					<td>Duff Beer</td>
-					<td>80</td>
-				</tr>
-			</table>
-		</div>
-
+		<table>
+		  <tr>
+		  	<th>ProductID</th>
+		  	<th>ProductName</th>
+		  	<th>Price</th>
+		  </tr>
+		  <tr>
+		    <td>1</td>
+		    <td>Duff Beer</td>
+		    <td>80</td>
+		  </tr>
+		</table>
 	</main>
 	<footer>
 		<p>&copy; 2023 Group 20 Bumbibjornarna. All rights reserved.</p>

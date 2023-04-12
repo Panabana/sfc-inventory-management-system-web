@@ -1,10 +1,12 @@
 package ims.ics.ejb;
 
 import java.io.Serializable;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -15,6 +17,9 @@ public class Supplier implements Serializable{
 	private String SupplierName;
 	private String SupplierAddress;
 	private int PhoneNumber;
+	
+	@ManyToMany(mappedBy ="ProductSupplier")
+	Set<Product> SupplierProduct;
 	
 	@Id
 	@Column(name="SupplierID")
