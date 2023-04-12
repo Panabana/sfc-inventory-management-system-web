@@ -10,6 +10,14 @@
 	z-index: 1000;
 }
 
+.center {
+	margin: auto;
+	text-align: center;
+	width: 50%;
+	border: 3px solid #ffffff;
+	padding: 8px;
+}
+
 .container {
 	display: flex;
 	align-items: center;
