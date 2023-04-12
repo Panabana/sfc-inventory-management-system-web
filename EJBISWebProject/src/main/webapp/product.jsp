@@ -44,10 +44,27 @@
 		</ul>
 	</div>
 	<main>
-	<h1>Product</h1>
+	  <h1>Product</h1>
+	  <div class="center">
+	  <table>
+		  <tr>
+		  	<th>ProductID</th>
+		  	<th>ProductName</th>
+		  	<th>Price</th>
+		  </tr>
+		  <tr>
+		    <td>1</td>
+		    <td>Duff Beer</td>
+		    <td>80</td>
+		  </tr>
+		</table>
+	  </div>
 	</main>
 	<footer>
-		<p>&copy; 2023 Group 20 Bumbibjornarna. All rights reserved.</p>
+	  <div class="center">
+		  <p>&copy; 2023 Group 20 Bumbibjornarna. All rights reserved.</p>
+	  </div>
+		
 	</footer>
 </body>
 </html>
