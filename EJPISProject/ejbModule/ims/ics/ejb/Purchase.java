@@ -43,7 +43,7 @@ public class Purchase implements Serializable {
 		return customer;
 	}
 
-	public void setCustomerId(Customer customer) {
+	public void setCustomer(Customer customer) {
 		this.customer = customer;
 	}
 	
