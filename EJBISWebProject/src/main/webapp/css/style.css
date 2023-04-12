@@ -1,0 +1,53 @@
+@charset "ISO-8859-1";
+/* Custom styles for the header */
+.navbar {
+  background-color: #fff;
+  border-bottom: 1px solid #eaeaea;
+  padding: 20px;
+}
+
+.navbar-brand {
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
+}
+
+.navbar-toggler {
+  border-color: #333;
+}
+
+.navbar-toggler-icon {
+  background-color: #333;
+}
+
+.nav-link {
+  color: #333;
+}
+
+.nav-link:hover {
+  color: #555;
+}
+
+.navbar-nav > li:not(:last-child) {
+  margin-right: 20px;
+}
+
+.navbar-nav > li > a {
+  padding: 0;
+}
+
+.navbar-nav > li > a:hover {
+  color: #555;
+}
+
+.navbar-nav > li > a:before {
+  content: "";
+  display: inline-block;
+  height: 16px;
+  width: 16px;
+  margin-right: 8px;
+  background-image: url("path/to/your/icon.png");
+  background-repeat: no-repeat;
+  background-position: center center;
+  vertical-align: middle;
+}
