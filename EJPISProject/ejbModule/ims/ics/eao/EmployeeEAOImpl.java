@@ -1,5 +1,7 @@
 package ims.ics.eao;
 
+import java.util.List;
+
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -18,6 +20,9 @@ public class EmployeeEAOImpl implements EmployeeEAOLocal {
 	
     public EmployeeEAOImpl() {}
     
+    public List<Employee> findAllEmployees() {
+        return em.createQuery("SELECT e FROM Customer e", Employee.class).getResultList();
+    }
     public Employee findEmployeeById(int employeeId) {
     	return em.find(Employee.class, employeeId);
     }
