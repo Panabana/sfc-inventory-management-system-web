@@ -6,7 +6,7 @@
 <meta charset="ISO-8859-1">
 
 <link rel="stylesheet" type="text/css" href="css/style.css">
-<title>Insert title here</title>
+<title>IMS - Home</title>
 
 </head>
 <body>
