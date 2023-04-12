@@ -21,26 +21,26 @@
       </nav>
     </div>
   </header>
-<div class="sidebar">
+<div class="sidebar" style="margin-top:100px;">
   <div class="sidebar-header">
-    <a href="#" class="sidebar-logo">My Website</a>
+    <a href="ControllerServlet?action=home" class="sidebar-logo">My Website</a>
     <div class="sidebar-toggle"></div>
   </div>
   <ul class="sidebar-menu">
     <li class="sidebar-menu-item">
-      <a href="#" class="sidebar-menu-link active">
+      <a href="ControllerServlet?action=about" class="sidebar-menu-link active">
         <i class="fa fa-dashboard"></i> Dashboard </a>
     </li>
     <li class="sidebar-menu-item">
-      <a href="#" class="sidebar-menu-link">
+      <a href="ControllerServlet?action=test" class="sidebar-menu-link">
         <i class="fa fa-users"></i> Users </a>
     </li>
     <li class="sidebar-menu-item">
-      <a href="#" class="sidebar-menu-link">
+      <a href="ControllerServlet?action=employee" class="sidebar-menu-link">
         <i class="fa fa-cog"></i> Settings </a>
     </li>
     <li class="sidebar-menu-item">
-      <a href="#" class="sidebar-menu-link">
+      <a href="ControllerServlet?action=product" class="sidebar-menu-link">
         <i class="fa fa-sign-out"></i> Logout </a>
     </li>
   </ul>
