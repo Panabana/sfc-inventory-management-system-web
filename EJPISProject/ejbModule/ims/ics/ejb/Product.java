@@ -1,17 +1,30 @@
 package ims.ics.ejb;
 
+import java.io.Serializable;
+import java.util.Set;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 @Entity
 @Table(name="Product")
-public class Product {
+public class Product implements Serializable {
 	
 	private int ProductId;
 	private String ProductName;
 	private float Price;
+	
+	@ManyToMany
+	@JoinTable(
+		name = "ProductSupplier",
+		joinColumns = @JoinColumn(name="ProductId"),
+		inverseJoinColumns = @JoinColumn(name="SupplierID"))
+	Set<Supplier> ProductSupplier;
 	
 	@Id
 	@Column(name="ProductId")
