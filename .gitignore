@@ -93,3 +93,4 @@ local.properties
 
 # Testing environment specific
 derby.log
+EJPISProject/ejbModule/META-INF/persistence.xml
