@@ -6,7 +6,9 @@
 <meta charset="ISO-8859-1">
 
 <link rel="stylesheet" type="text/css" href="css/style.css">
-<title>IMS - Home</title>
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+<title>Insert title here</title>
+
 
 </head>
 <body>
@@ -21,30 +23,43 @@
       </nav>
     </div>
   </header>
-<div class="sidebar" style="margin-top:100px;">
-  <div class="sidebar-header">
-    <a href="ControllerServlet?action=home" class="sidebar-logo">My Website</a>
-    <div class="sidebar-toggle"></div>
-  </div>
+<div class="sidebar" style="margin-top:65px;">
   <ul class="sidebar-menu">
     <li class="sidebar-menu-item">
       <a href="ControllerServlet?action=about" class="sidebar-menu-link active">
-        <i class="fa fa-dashboard"></i> Dashboard </a>
+        <i class="fas fa-home"></i> Home </a>
     </li>
     <li class="sidebar-menu-item">
       <a href="ControllerServlet?action=test" class="sidebar-menu-link">
-        <i class="fa fa-users"></i> Users </a>
+        <i class="fas fa-box"></i> Products </a>
     </li>
     <li class="sidebar-menu-item">
       <a href="ControllerServlet?action=employee" class="sidebar-menu-link">
-        <i class="fa fa-cog"></i> Settings </a>
+        <i class="fas fa-truck"></i> Suppliers </a>
     </li>
     <li class="sidebar-menu-item">
       <a href="ControllerServlet?action=product" class="sidebar-menu-link">
-        <i class="fa fa-sign-out"></i> Logout </a>
+        <i class="fas fa-shopping-cart"></i> Purchases </a>
+    </li>
+    <li class="sidebar-menu-item">
+      <a href="ControllerServlet?action=product" class="sidebar-menu-link">
+        <i class="fas fa-user"></i>Customers</a>
+    </li>
+    <li class="sidebar-menu-item">
+      <a href="ControllerServlet?action=product" class="sidebar-menu-link">
+        <i class="fas fa-address-card"></i>Employees</a>
+    </li>
+    <li class="sidebar-menu-item">
+      <a href="ControllerServlet?action=product" class="sidebar-menu-link">
+        <i class="fas fa-users"></i>About us</a>
+    </li>
+    <li class="sidebar-menu-item">
+      <a href="ControllerServlet?action=product" class="sidebar-menu-link">
+        <i class="fas fa-microscope"></i>Test</a>
     </li>
   </ul>
 </div>
+
 <div class="main-content">
 	<main>
 		<h1>Bumbibjornarna's Inventoryinator</h1>
