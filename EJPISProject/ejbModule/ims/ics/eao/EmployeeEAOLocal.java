@@ -1,5 +1,7 @@
 package ims.ics.eao;
 
+import java.util.List;
+
 import javax.ejb.Local;
 
 import ims.ics.ejb.Customer;
@@ -12,4 +14,6 @@ public interface EmployeeEAOLocal {
 	public Employee createEmployee(Employee employee);
 	public void updateEmployee(Employee employee);
 	public void deleteEmployee(int employeeId);
+	public List<Employee> findAllEmployees();
+        
 }

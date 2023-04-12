@@ -1,5 +1,7 @@
 package ims.ics.eao;
 
+import java.util.List;
+
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -8,6 +10,7 @@ import javax.persistence.PersistenceContext;
 
 import ims.ics.ejb.Customer;
 import ims.ics.ejb.Employee;
+import ims.ics.ejb.Purchase;
 
 /**
  * Session Bean implementation class CustomerEAOImpl
@@ -19,7 +22,10 @@ public class CustomerEAOImpl implements CustomerEAOLocal {
 	private EntityManager em;
    
     public CustomerEAOImpl() {}
-
+    
+    public List<Customer> findAllCustomers() {
+        return em.createQuery("SELECT c FROM Customer c", Customer.class).getResultList();
+    }
     public Customer findCustomerById(int customerId) {
     	return em.find(Customer.class, customerId);
     }
