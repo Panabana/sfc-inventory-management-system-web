@@ -16,14 +16,6 @@
 	padding-bottom: 10px;
 }
 
-.center {
-	margin: auto;
-	text-align: center;
-	width: 50%;
-	border: 3px solid #ffffff;
-	padding: 8px;
-}
-
 .container {
 	display: flex;
 	align-items: center;
@@ -33,83 +25,17 @@
 	padding: 0 20px;
 }
 
-.logo {
-	font-size: 24px;
-	font-weight: 700;
-	color: #333333;
-}
-
-/* Navigation styles */
-.nav {
-	margin-left: auto;
-}
-
-.nav-menu {
+.weather-box {
 	display: flex;
 	align-items: center;
 	list-style: none;
-	margin: 0;
-	padding: 0;
+	margin-right: 30px;
+	border: 1px solid black;
+	padding: 10px;
+	background-color: #e5e8ef;
+	border-radius: 10px;
 }
 
-.nav-menu li {
-	margin-left: 30px;
-}
-
-.nav-link {
-	font-size: 14px;
-	font-weight: 500;
-	color: #333333;
-	text-decoration: none;
-	padding: 10px 15px;
-	border-radius: 4px;
-}
-
-.nav-link:hover {
-	background-color: #e6e6e6;
-}
-
-/* Responsive styles */
-@media ( max-width : 100%) {
-	.container {
-		flex-wrap: wrap;
-	}
-	.nav {
-		position: absolute;
-		top: 60px;
-		left: 0;
-		width: 100%;
-		background-color: #ffffff;
-		box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-		padding: 20px;
-		display: none;
-	}
-	.nav-menu {
-		flex-direction: column;
-		margin-top: 20px;
-	}
-	.nav-menu li {
-		margin-left: 0;
-	}
-	.nav-link {
-		display: block;
-		padding: 10px 0;
-	}
-	.nav-toggle {
-		position: absolute;
-		top: 20px;
-		right: 20px;
-		display: block;
-		width: 30px;
-		height: 30px;
-		cursor: pointer;
-		background-image: url('menu-icon.png');
-		background-size: cover;
-	}
-	.nav-open {
-		display: block;
-	}
-}
 /* Sidebar styles */
 .sidebar {
 	position: fixed;
@@ -119,6 +45,7 @@
 	background-color: #FFFFFF;
 	box-shadow: 2px 0 10px rgba(0, 0, 0, 0.3);
 	padding: 40px 10px;
+	margin-top: -60px;
 }
 
 .sidebar-menu {
@@ -161,17 +88,25 @@
 }
 
 .footer {
-  background-color: #f8f9fc;
-  padding: 1.5rem;
-  margin-top: 600px;
-  margin-bottom: 0px;
-  margin-left: 270px;
-  margin-right: auto;
-  width: auto;
+	background-color: #f8f9fc;
+	padding: 1.5rem;
+	margin-top: 600px;
+	margin-bottom: 0px;
+	margin-left: 270px;
+	margin-right: auto;
+	width: auto;
 }
 
 .footer p {
-  color: #6c757d;
-  margin-bottom: 0;
-  text-align: center;
+	color: #6c757d;
+	margin-bottom: 0;
+	text-align: center;
+}
+
+.main-content {
+	flex: 1;
+	margin-top: 150px;
+	margin-bottom: auto;
+	margin-left: 320px;
+	margin-right: auto;
 }

@@ -1,4 +1,4 @@
-<div class="sidebar" style="margin-top:65px;">
+<div class="sidebar">
   <ul class="sidebar-menu">
     <li class="sidebar-menu-item">
       <a href="#" class="sidebar-menu-link active">
