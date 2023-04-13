@@ -15,15 +15,14 @@
 <%@ include file="header.jsp" %>
 <%@ include file="sidebar.jsp" %>
 	<main>
-
+		<div class="main-content">
 	<h1>Employee</h1>
-<div class="center">
   <table>
     <thead>
       <tr>
-        <th>EmployeeID</th>
-        <th>EmployeeName</th>
-        <th>EmployeeAddress</th>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Address</th>
         <th>PhoneNumber</th>
       </tr>
     </thead>
