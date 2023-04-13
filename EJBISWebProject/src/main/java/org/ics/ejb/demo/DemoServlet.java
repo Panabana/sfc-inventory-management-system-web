@@ -47,8 +47,8 @@ public class DemoServlet extends HttpServlet {
 		out.println("<h2>Working OK</h2>");
 		out.println("<h3>Alex is checking</h3>");
 		
-		List<Employee> customers = facade.findAllEmployees();
-		for(Employee c : customers) {
+		List<Customer> customers = facade.findAllCustomers();
+		for(Customer c : customers) {
 			if(c != null) {
 				out.print("<p>" + c.getName() +"<p>");
 				
