@@ -21,7 +21,7 @@ public class EmployeeEAOImpl implements EmployeeEAOLocal {
     public EmployeeEAOImpl() {}
     
     public List<Employee> findAllEmployees() {
-        return em.createQuery("SELECT e FROM Customer e", Employee.class).getResultList();
+        return em.createQuery("SELECT e FROM Employee e", Employee.class).getResultList();
     }
     public Employee findEmployeeById(int employeeId) {
     	return em.find(Employee.class, employeeId);
