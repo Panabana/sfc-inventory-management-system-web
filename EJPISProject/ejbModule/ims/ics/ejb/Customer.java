@@ -6,6 +6,7 @@ import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -13,6 +14,10 @@ import javax.persistence.Table;
 @Entity
 @Table(name="Customer")
 public class Customer implements Serializable {
+	
+	/**
+	 * 
+	 */
 	
 	private int customerId;
 	private String name;
@@ -49,7 +54,7 @@ public class Customer implements Serializable {
 	public void setPhoneNbr(int phoneNbr) {
 		this.phoneNbr = phoneNbr;
 	}
-	@OneToMany(mappedBy = "customer")
+	@OneToMany(mappedBy = "customer", fetch=FetchType.EAGER)
 	public Set<Purchase> getPurchases() {
 		return purchases;
 	}
