@@ -28,13 +28,13 @@ public class ControllerServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		//Get action parameter from the URL
-		String action = request.getParameter("action");
-		if (action == null) {
-			action = "home";
+		String sidebarAction = request.getParameter("action");
+		if (sidebarAction == null) {
+			sidebarAction = "home";
 		}
 
 		String page = "home.jsp";
-		switch (action) {
+		switch (sidebarAction) {
 			case "about":
 				page = "about.jsp";
 				break;
@@ -46,6 +46,15 @@ public class ControllerServlet extends HttpServlet {
 				break;
 			case "product":
 				page = "product.jsp";
+				break;
+			case "customer":
+				page = "customer.jsp";
+				break;
+			case "purchase":
+				page = "purchase.jsp";
+				break;
+			case "supplier":
+				page = "supplier.jsp";
 				break;
 			default:
 				page = "home.jsp";
