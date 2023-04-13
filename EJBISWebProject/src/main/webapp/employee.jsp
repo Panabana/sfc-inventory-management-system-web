@@ -2,6 +2,8 @@
 	pageEncoding="ISO-8859-1"%>
 	<%@ page import = "java.util.List, ims.ics.ejb.Employee" %>
 	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+	<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+	
 	
 <!DOCTYPE html>
 <html>
@@ -17,26 +19,28 @@
 	<main>
 		<div class="main-content">
 	<h1>Employee</h1>
-  <table>
-    <thead>
-      <tr>
-        <th>ID</th>
-        <th>Name</th>
-        <th>Address</th>
-        <th>PhoneNumber</th>
-      </tr>
-    </thead>
-    <tbody> 
-      <c:forEach var="employee" items="${employees}">
-        <tr>
-          <td>${employee.employeeId}</td>
-          <td>${employee.name}</td>
-          <td>${employee.address}</td>
-          <td>${employee.phoneNumber}</td>
-        </tr>
-      </c:forEach>
-    </tbody>
-  </table>
+  	<div class="table-container">
+		<table>
+			<thead>
+				<tr>
+					<th>Employee ID</th>
+					<th>Name</th>
+					<th>Address</th>
+					<th>Phone Number</th>
+				</tr>
+			</thead>
+			<tbody>
+              <c:forEach var="employee" items="${employees}">
+				<tr>
+					<td>${employee.employeeId}</td>
+					<td>${employee.name}</td>
+					<td>${employee.address}</td>
+					<td>${employee.phoneNumber}</td>
+				</tr>
+                </c:forEach>
+			</tbody>
+		</table>
+	</div>
 </div>
 
 	</main>
