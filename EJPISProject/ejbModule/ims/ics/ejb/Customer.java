@@ -33,14 +33,14 @@ public class Customer implements Serializable {
 	public void setCustomerId(int customerId) {
 		this.customerId = customerId;
 	}
-	@Column(name="Name")
+	@Column(name="CustomerName")
 	public String getName() {
 		return name;
 	}
 	public void setName(String name) {
 		this.name = name;
 	}
-	@Column(name="Address")
+	@Column(name="CustomerAddress")
 	public String getAddress() {
 		return address;
 	}

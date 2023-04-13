@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+	<%@ page import = "java.util.List, ims.ics.ejb.Employee" %>
+	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+	
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,9 +15,33 @@
 <%@ include file="header.jsp" %>
 <%@ include file="sidebar.jsp" %>
 	<main>
-		<div class="main-content">
-		<h1>Employees TEXT</h1>
-		</div>
+
+	<h1>Employee</h1>
+<div class="center">
+  <table>
+    <thead>
+      <tr>
+        <th>EmployeeID</th>
+        <th>EmployeeName</th>
+        <th>EmployeeAddress</th>
+        <th>PhoneNumber</th>
+      </tr>
+    </thead>
+    <tbody> 
+      <c:forEach var="employee" items="${employees}">
+        <tr>
+          <td>${employee.employeeId}</td>
+          <td>${employee.name}</td>
+          <td>${employee.address}</td>
+          <td>${employee.phoneNumber}</td>
+        </tr>
+      </c:forEach>
+    </tbody>
+  </table>
+</div>
+
+	
+
 	</main>
 <%@ include file="footer.jsp" %>
 </body>
