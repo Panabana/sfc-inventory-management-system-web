@@ -2,12 +2,19 @@ package org.ics.ejb.demo;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 
+import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import ims.ics.ejb.Customer;
+import ims.ics.ejb.Employee;
+import ims.ics.facade.Facade;
+import ims.ics.facade.FacadeLocal;
 
 /**
  * Servlet implementation class DemoServlet
@@ -19,6 +26,8 @@ public class DemoServlet extends HttpServlet {
     /**
      * @see HttpServlet#HttpServlet()
      */
+	@EJB
+	FacadeLocal facade;
     public DemoServlet() {
         super();
         // TODO Auto-generated constructor stub
@@ -37,6 +46,15 @@ public class DemoServlet extends HttpServlet {
 		out.println("</head><body>");
 		out.println("<h2>Working OK</h2>");
 		out.println("<h3>Alex is checking</h3>");
+		
+		List<Customer> customers = facade.findAllCustomers();
+		for(Customer c : customers) {
+			if(c != null) {
+				out.print("<p>" + c.getName() +"<p>");
+				
+			}
+		}
+		
 	}
 
 	/**
