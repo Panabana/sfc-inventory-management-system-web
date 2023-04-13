@@ -110,3 +110,53 @@
 	margin-left: 320px;
 	margin-right: auto;
 }
+
+/*About us*/
+h1 {
+	text-align: center;
+	margin-top: 50px;
+}
+
+.team-members {
+	display: flex;
+	justify-content: center;
+	flex-wrap: wrap;
+	margin: 50px;
+}
+
+.team-member {
+	width: 300px;
+	background-color: #fff;
+	box-shadow: 0px 0px 10px #ccc;
+	margin: 20px;
+	text-align: center;
+	padding: 20px;
+}
+
+.team-member img {
+	border-radius: 50%;
+	width: 150px;
+	height: 150px;
+	margin-bottom: 20px;
+}
+
+.team-member h2 {
+	font-size: 24px;
+	margin-bottom: 10px;
+}
+
+.team-member p {
+	font-size: 16px;
+	margin-bottom: 20px;
+	line-height: 1.5;
+}
+
+.team-member a {
+	background-color: #0077b5;
+	color: #fff;
+	display: inline-block;
+	padding: 10px 20px;
+	border-radius: 20px;
+	text-decoration: none;
+	transition: background-color 0.2s ease;
+}
