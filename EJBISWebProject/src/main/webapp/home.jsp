@@ -14,11 +14,7 @@
 <body>
 <%@ include file="header.jsp" %>
 <%@ include file="sidebar.jsp" %>
-
-
 	<main>
-		
-		
 		<div class="main-content">
 		<h1>Bumbibjornarna's Inventoryinator</h1>
 			<table>
@@ -40,8 +36,6 @@
 		</div>
 		 
 	</main>
-	
-<%@ include file="footer.jsp" %>
-	
+<%@ include file="footer.jsp" %>	
 </body>
 </html>
