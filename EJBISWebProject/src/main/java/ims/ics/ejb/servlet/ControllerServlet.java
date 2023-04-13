@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import ims.ics.ejb.Customer;
 import ims.ics.ejb.Employee;
 import ims.ics.facade.FacadeLocal;
 
@@ -36,16 +37,6 @@ public class ControllerServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		
-
-		    // Retrieve all employees from the Facade class
-		    List<Employee> employees = facade.findAllEmployees();
-		    // Set the employees list as a request attribute
-		    request.setAttribute("employees", employees);
-		    // Forward the request to the employee.jsp page
-		    request.getRequestDispatcher("employee.jsp").forward(request, response);
-		
-
 		//Get action parameter from the URL
 		String sidebarAction = request.getParameter("action");
 		if (sidebarAction == null) {
@@ -62,13 +53,17 @@ public class ControllerServlet extends HttpServlet {
 				break;
 			case "employee":
 				page = "employee.jsp";
+				List<Employee> employees = facade.findAllEmployees();
+				request.setAttribute("employees", employees);
 				break;
 			case "product":
 				page = "product.jsp";
 				break;
 			case "customer":
 				page = "customer.jsp";
-				break;
+				List<Customer> customers = facade.findAllCustomers();
+				request.setAttribute("customers", customers);
+ 				break;
 			case "purchase":
 				page = "purchase.jsp";
 				break;
