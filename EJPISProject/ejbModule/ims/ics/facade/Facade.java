@@ -9,10 +9,12 @@ import ims.ics.eao.CustomerEAOLocal;
 import ims.ics.eao.EmployeeEAOLocal;
 import ims.ics.eao.ProductEAOLocal;
 import ims.ics.eao.PurchaseEAOLocal;
+import ims.ics.eao.SupplierEAOLocal;
 import ims.ics.ejb.Customer;
 import ims.ics.ejb.Employee;
 import ims.ics.ejb.Product;
 import ims.ics.ejb.Purchase;
+import ims.ics.ejb.Supplier;
 
 /**
  * Session Bean implementation class Facade
@@ -28,6 +30,8 @@ public class Facade implements FacadeLocal {
 	PurchaseEAOLocal purchase;
 	@EJB
 	ProductEAOLocal product;
+	@EJB
+	SupplierEAOLocal supplier;
     
     public Facade() {}
     
@@ -100,6 +104,23 @@ public class Facade implements FacadeLocal {
     }
     public void deleteProduct(int productId) {
     	product.deleteProduct(productId);
+    }
+    //SUPPLIER METHODS
+    public List<Supplier>findAllSuppliers(){
+    	return supplier.findAllSuppliers();
+    }
+    public Supplier findSupplierById(int supplierId) {
+    	return supplier.findSupplierById(supplierId);
+    }
+    public Supplier createSupplier(Supplier supplier) {
+    	supplier = this.supplier.createSupplier(supplier);
+    	return supplier;
+    }
+    public void updateSupplier(Supplier supplier) {
+    	this.supplier.updateSupplier(supplier);
+    }
+    public void deleteSupplier(int supplierId) {
+    	this.supplier.deleteSupplier(supplierId);
     }
     
 
