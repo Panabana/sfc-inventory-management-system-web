@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import ims.ics.ejb.Customer;
 import ims.ics.ejb.Employee;
 import ims.ics.ejb.Product;
+import ims.ics.ejb.Purchase;
 import ims.ics.ejb.Supplier;
 import ims.ics.facade.FacadeLocal;
 
@@ -70,6 +71,8 @@ public class ControllerServlet extends HttpServlet {
  				break;
 			case "purchase":
 				page = "purchase.jsp";
+				List<Purchase> purchases = facade.findAllPurchases();
+				request.setAttribute("purchases", purchases);
 				break;
 			case "supplier":
 				page = "supplier.jsp";
