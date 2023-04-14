@@ -14,6 +14,30 @@
 	<main>
 		<div class="main-content">
 		<h1>Suppliers TEXT</h1>
+		<div class="table-container">
+				<table>
+					<thead>
+						<tr>
+							<th>Supplier ID</th>
+							<th>Name</th>
+							<th>Address</th>
+							<th>Phone Number</th>
+						</tr>
+					</thead>
+					<tbody>
+					<!-- 
+						<c:forEach var="customer" items="${customers}">
+							<tr>
+								<td>${customer.customerId}</td>
+								<td>${customer.name}</td>
+								<td>${customer.address}</td>
+								<td>${customer.phoneNbr}</td>
+							</tr>
+						</c:forEach>
+						-->
+					</tbody>
+				</table>
+			</div>
 		</div>
 	</main>
 <%@ include file="footer.jsp" %>
