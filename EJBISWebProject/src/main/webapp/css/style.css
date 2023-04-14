@@ -4,6 +4,11 @@
 	url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap')
 	;
 /*Style Header */
+
+body {
+	font-family: Arial, sans-serif;
+}
+
 .header {
 	background-color: #ffffff;
 	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -70,7 +75,7 @@
 	text-decoration: none;
 	font-size: 20px;
 	font-weight: bold;
-	font-family: 'Roboto', sans-serif;
+	font-family: 'Roboto', sans-serif !important;
 }
 
 .sidebar-menu-link.active {
