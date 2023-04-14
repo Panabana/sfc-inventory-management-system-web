@@ -5,6 +5,17 @@
 	;
 /*Style Header */
 
+/*
+ORGANIZATION METHOD FOR style.css
+
+This comment area is to list the rules we agree on to keep the style.css document
+organized to our preferences. Please feel free to add points to the list.
+
+- CSS with similar names should be placed together
+- Use comment for every new section of CSS with similar names e.g. /* SIDEBAR-MENU */
+
+*/
+
 body {
 	font-family: Arial, sans-serif;
 }
