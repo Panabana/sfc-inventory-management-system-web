@@ -17,7 +17,7 @@
 	<%@ include file="sidebar.jsp"%>
 	<main>
 		<div class="main-content">
-			<h1>Bumbibjornarna's Inventoryinator</h1>
+			<h1>Spongebob Fan Clubinator</h1>
 			
 			<div class="table-container">
 				<table>
