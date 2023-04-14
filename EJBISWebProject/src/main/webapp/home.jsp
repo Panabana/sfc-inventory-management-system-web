@@ -11,6 +11,13 @@
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js">
 </script>
+<script>
+$(document).ready(function(){
+	$("#welcome").click(function(){
+		$(this).hide();
+	});
+});
+</script>
 </head>
 <body>
 	<%@ include file="header.jsp"%>
@@ -18,9 +25,34 @@
 	<main>
 		<div class="main-content">
 			<h1>Spongebob Fan Clubinator</h1>
-			<div>
-				<h2>Welcome to the Spongebob </h2>
+			<div class="container" id="welcome"
+				style="font-family: Arial">
+				<h2 class="container">
+					Welcome to<br>the Spongebob Inventory Management System
+				</h2>
+				<br><br>
+				<p>
+					Esteemed customer, simplify your work!<br><br>
+					If you are new here and want a quick tutorial for this
+					website, please read this short message.<br>
+					You can dismiss it anytime if you like.<br><br>
+					This website will help you organize your company's inventory and database system.<br> We
+					call this website the <b>Inventory Management System</b>. <b>IMS</b> for short.<br>
+					<br> On the left-hand side, you will find the main menu to
+					navigate the website.<br> We have five tables each with their
+					own corresponding page. There you'll find the specific data for each
+					table.<br> 
+					To change or update the data rows in a table, please utilize the corresponding text boxes and buttons (e.g. "Add" to add, "Delete" to delete).<br>
+					At the top of the page, you will find the current weather.<br>
+					<br> Thank you for choosing Spongebob Fan Club.<br>
+				</p>
+				<div class="container" id="welcome">
+					<br>
+					<button id="welcome">Dismiss</button>
+				</div>
 			</div>
+			
+			<br>
 			<div class="table-container">
 				<table>
 					<thead>
