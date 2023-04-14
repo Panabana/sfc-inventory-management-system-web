@@ -47,6 +47,7 @@
 					</tbody>
 				</table>
 			</div>
+			<form action="ControllerServlet?action=add" method="post">
 			<div class="form-container">
 				<div class="form-field">
 					<label for="employee-id">Employee ID</label> <input type="text"
@@ -70,6 +71,7 @@
 					<button type="submit" class="remove-button">Remove</button>
 				</div>
 			</div>
+			</form>
 		</div>
 	</main>
 	<%@ include file="footer.jsp"%>
