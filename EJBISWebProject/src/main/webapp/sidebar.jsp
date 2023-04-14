@@ -1,4 +1,4 @@
-<div class="sidebar">
+<nav class="sidebar">
   <ul class="sidebar-menu">
     <li class="sidebar-menu-item">
       <a href="ControllerServlet?action=home" class="sidebar-menu-link active">
@@ -33,4 +33,4 @@
         <i class="fas fa-microscope"></i>Test</a>
     </li>
   </ul>
-</div>
+</nav>
