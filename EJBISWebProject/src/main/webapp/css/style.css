@@ -85,7 +85,7 @@ main {
 	text-decoration: none;
 	font-size: 20px;
 	font-weight: bold;
-	font-family: 'Roboto', sans-serif !important;
+	font-family: 'Roboto', sans-serif;
 }
 
 .sidebar-menu-link.active {
@@ -130,6 +130,8 @@ main {
 
 /*Style About us*/
 h1 {
+	font-family: Roboto, sans-serif;
+	font-size: 2em;
 	text-align: center;
 	margin-top: 50px;
 }
