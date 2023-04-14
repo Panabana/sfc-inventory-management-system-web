@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@ page import="java.util.List, ims.ics.ejb.Employee"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,8 +15,15 @@
 <%@ include file="sidebar.jsp" %>
 	<main>
 		<div class="main-content">
-		<h1>Suppliers TEXT</h1>
-		<div class="table-container">
+			<div class="search-form">
+				<form action="#">
+					<div class="form-group">
+						<input type="text" class="form-control" placeholder="Search...">
+						<button type="submit" class="btn">Search</button>
+					</div>
+				</form>
+			</div>
+			<div class="table-container">
 				<table>
 					<thead>
 						<tr>
@@ -25,21 +34,42 @@
 						</tr>
 					</thead>
 					<tbody>
-					<!-- 
-						<c:forEach var="customer" items="${customers}">
+						<c:forEach var="supplier" items="${suppliers}">
 							<tr>
-								<td>${customer.customerId}</td>
-								<td>${customer.name}</td>
-								<td>${customer.address}</td>
-								<td>${customer.phoneNbr}</td>
+								<td>${supplier.supplierId}</td>
+								<td>${supplier.supplierName}</td>
+								<td>${supplier.supplierAddress}</td>
+								<td>${supplier.phoneNumber}</td>
 							</tr>
 						</c:forEach>
-						-->
 					</tbody>
 				</table>
 			</div>
+			<div class="form-container">
+				<div class="form-field">
+					<label for="supplier-id">Supplier ID</label> <input type="text"
+						id="supplier-id" name="supplier-id" />
+				</div>
+				<div class="form-field">
+					<label for="supplier-name">Name</label> <input type="text"
+						id="supplier-name" name="supplier-name" />
+				</div>
+				<div class="form-field">
+					<label for="supplier-address">Address</label> <input type="text"
+						id="supplier-address" name="supplier-address" />
+				</div>
+				<div class="form-field">
+					<label for="supplier-phone">Phone Number</label> <input type="text"
+						id="supplier-phone" name="supplier-phone" />
+				</div>
+				<div class="button-group">
+					<button type="submit" class="add-button">Add</button>
+					<button type="submit" class="update-button">Update</button>
+					<button type="submit" class="remove-button">Remove</button>
+				</div>
+			</div>
 		</div>
 	</main>
-<%@ include file="footer.jsp" %>
+	<%@ include file="footer.jsp"%>
 </body>
 </html>

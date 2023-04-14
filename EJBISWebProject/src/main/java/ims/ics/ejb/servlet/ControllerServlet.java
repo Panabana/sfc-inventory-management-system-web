@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import ims.ics.ejb.Customer;
 import ims.ics.ejb.Employee;
 import ims.ics.ejb.Product;
+import ims.ics.ejb.Supplier;
 import ims.ics.facade.FacadeLocal;
 
 /**
@@ -72,6 +73,8 @@ public class ControllerServlet extends HttpServlet {
 				break;
 			case "supplier":
 				page = "supplier.jsp";
+				List<Supplier> suppliers = facade.findAllSuppliers();
+				request.setAttribute("suppliers", suppliers);
 				break;
 			default:
 				page = "home.jsp";
