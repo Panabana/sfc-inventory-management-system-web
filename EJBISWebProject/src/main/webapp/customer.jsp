@@ -40,6 +40,29 @@
 					</tbody>
 				</table>
 			</div>
+			<div class="form-container">
+				<div class="form-field">
+					<label for="customer-id">Customer ID</label> <input type="text"
+						id="customer-id" name="customer-id" />
+				</div>
+				<div class="form-field">
+					<label for="customer-name">Name</label> <input type="text"
+						id="customer-name" name="customer-name" />
+				</div>
+				<div class="form-field">
+					<label for="customer-address">Address</label> <input type="text"
+						id="customer-address" name="customer-address" />
+				</div>
+				<div class="form-field">
+					<label for="customer-phone">Phone Number</label> <input type="text"
+						id="customer-phone" name="customer-phone" />
+				</div>
+				<div class="button-group">
+					<button type="submit" class="add-button">Add</button>
+					<button type="submit" class="update-button">Update</button>
+					<button type="submit" class="remove-button">Remove</button>
+				</div>
+			</div>
 		</div>
 	</main>
 	<%@ include file="footer.jsp"%>
