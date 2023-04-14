@@ -10,13 +10,14 @@
 <title>IMS - Home</title>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js">
+	
 </script>
 <script>
-$(document).ready(function(){
-	$("#welcome").click(function(){
-		$(this).hide();
+	$(document).ready(function() {
+		$("#welcome").click(function() {
+			$(this).hide();
+		});
 	});
-});
 </script>
 </head>
 <body>
@@ -25,34 +26,65 @@ $(document).ready(function(){
 	<main>
 		<div class="main-content">
 			<h1>Spongebob Fan Clubinator</h1>
-			<div class="container" id="welcome"
-				style="font-family: Arial">
+			<div class="container" id="welcome" style="font-family: Arial">
 				<h2 class="container">
 					Welcome to<br>the Spongebob Inventory Management System
 				</h2>
-				<br><br>
+				<br> <br>
 				<p>
-					Esteemed customer, simplify your work!<br><br>
-					If you are new here and want a quick tutorial for this
-					website, please read this short message.<br>
-					You can dismiss it anytime if you like.<br><br>
-					This website will help you organize your company's inventory and database system.<br> We
-					call this website the <b>Inventory Management System</b>. <b>IMS</b> for short.<br>
-					<br> On the left-hand side, you will find the main menu to
-					navigate the website.<br> We have five tables each with their
-					own corresponding page. There you'll find the specific data for each
-					table.<br> 
-					To change or update the data rows in a table, please utilize the corresponding text boxes and buttons (e.g. "Add" to add, "Delete" to delete).<br>
-					At the top of the page, you will find the current weather.<br>
-					<br> Thank you for choosing Spongebob Fan Club.<br>
+					Esteemed customer, simplify your work!<br> <br> If you
+					are new here and want a quick tutorial for this website, please
+					read this short message.<br> You can dismiss it anytime if you
+					like.<br> <br> This website will help you organize your
+					company's inventory and database system.<br> We call this
+					website the <b>Inventory Management System</b>. <b>IMS</b> for
+					short.<br> <br> On the left-hand side, you will find the
+					main menu to navigate the website.<br> We have five tables
+					each with their own corresponding page. There you'll find the
+					specific data for each table.<br> To change or update the data
+					rows in a table, please utilize the corresponding text boxes and
+					buttons (e.g. "Add" to add, "Delete" to delete).<br> At the
+					top of the page, you will find the current weather.<br> <br>
+					Thank you for choosing Spongebob Fan Club.<br>
 				</p>
 				<div class="container" id="welcome">
 					<br>
 					<button id="welcome">Dismiss</button>
 				</div>
 			</div>
-			
+
 			<br>
+			<div class="stats-card-all">
+				<div class="stats-card">
+					<i class="fas fa-shopping-cart"></i>
+					<h3>200</h3>
+					<p>Total Purchases</p>
+				</div>
+
+				<div class="stats-card">
+					<i class="fas fa-box"></i>
+					<h3>15</h3>
+					<p>Total Products</p>
+				</div>
+
+				<div class="stats-card">
+					<i class="fas fa-truck"></i>
+					<h3>12</h3>
+					<p>Total Suppliers</p>
+				</div>
+
+				<div class="stats-card">
+					<i class="fas fa-user"></i>
+					<h3>150</h3>
+					<p>Total Customers</p>
+				</div>
+
+				<div class="stats-card">
+					<i class="fas fa-address-card"></i>
+					<h3>5</h3>
+					<p>Total Employees</p>
+				</div>
+			</div>
 			<div class="table-container">
 				<table>
 					<thead>
