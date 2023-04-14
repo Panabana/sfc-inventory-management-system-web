@@ -15,14 +15,25 @@ import javax.persistence.Table;
 @Table(name="Employee")
 public class Employee implements Serializable {
 	
-
 	private int employeeId;
 	private String name;
 	private String address;
 	private int phoneNumber;
 	private Set<Purchase>purchases;
 	
+	// Added constructor with params (NOTE NO Set<Purchase>), using in EmployeeTest
+	public Employee(int employeeId, String name, String address, int phoneNumber) {
+		super();
+		this.employeeId = employeeId;
+		this.name = name;
+		this.address = address;
+		this.phoneNumber = phoneNumber;
+	}
 	
+	public Employee() {
+		// TODO Auto-generated constructor stub
+	}
+
 	@Id
 	@Column(name="EmployeeID")
 	public int getEmployeeId() {
