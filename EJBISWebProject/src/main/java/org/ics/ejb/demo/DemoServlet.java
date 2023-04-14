@@ -43,14 +43,20 @@ public class DemoServlet extends HttpServlet {
 		out.println("<!DOCTYPE html><html><head>");
 		out.println("<title>ManyToManyWithattribute</title>");
 		out.println("<meta charset=\"ISO-8859-1\">");
-		out.println("</head><body>");
+		
+		out.println("<form action=\"...\" method=\"...\">\r\n"
+				+ "<input type=\"submit\" name=\"sb\" value=\"one\">\r\n"
+				+ "<input type=\"submit\" name=\"sb\" value=\"two\">\r\n"
+				+ "<input type=\"submit\" name=\"sb\" value=\"three\">\r\n"
+				+ "</form>");
+		
 		out.println("<h2>Working OK</h2>");
 		out.println("<h3>Alex is checking</h3>");
 		
 		List<Customer> customers = facade.findAllCustomers();
 		for(Customer c : customers) {
 			if(c != null) {
-				out.print("<p>" + c.getName() +"<p>");
+				out.print("<p>" + c.getName() +"</p>");
 				
 			}
 		}
