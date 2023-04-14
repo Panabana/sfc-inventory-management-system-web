@@ -15,9 +15,9 @@ import javax.persistence.Table;
 @Table(name="Product")
 public class Product implements Serializable {
 	
-	private int ProductId;
-	private String ProductName;
-	private float Price;
+	private int productId;
+	private String productName;
+	private float price;
 	
 	@ManyToMany
 	@JoinTable(
@@ -29,26 +29,26 @@ public class Product implements Serializable {
 	@Id
 	@Column(name="ProductId")
 	public int getProductId() {
-		return ProductId;
+		return productId;
 	}
 	public void setProductId(int productId) {
-		ProductId = productId;
+		this.productId = productId;
 	}
 	
 	@Column(name="ProductName")
 	public String getProductName() {
-		return ProductName;
+		return productName;
 	}
 	public void setProductName(String productName) {
-		ProductName = productName;
+		this.productName = productName;
 	}
 	
 	@Column(name="Price")
 	public float getPrice() {
-		return Price;
+		return price;
 	}
 	public void setPrice(float price) {
-		Price = price;
+		this.price = price;
 	}
 	
 	

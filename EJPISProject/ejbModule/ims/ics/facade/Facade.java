@@ -7,9 +7,11 @@ import javax.ejb.Stateless;
 
 import ims.ics.eao.CustomerEAOLocal;
 import ims.ics.eao.EmployeeEAOLocal;
+import ims.ics.eao.ProductEAOLocal;
 import ims.ics.eao.PurchaseEAOLocal;
 import ims.ics.ejb.Customer;
 import ims.ics.ejb.Employee;
+import ims.ics.ejb.Product;
 import ims.ics.ejb.Purchase;
 
 /**
@@ -24,6 +26,8 @@ public class Facade implements FacadeLocal {
 	CustomerEAOLocal customer;
 	@EJB
 	PurchaseEAOLocal purchase;
+	@EJB
+	ProductEAOLocal product;
     
     public Facade() {}
     
@@ -79,6 +83,23 @@ public class Facade implements FacadeLocal {
     }
     public void deletePurchase(int purchaseId) {
     	purchase.deletePurchase(purchaseId);
+    }
+    //PRODUCT METHODS
+    public List<Product> findAllProducts() {
+    	return product.findAllProducts();
+    }
+    public Product findProductByID(int productId) {
+    	return product.findProductById(productId);
+    }
+    public Product createProduct(Product product) {
+    	product = this.product.createProduct(product);
+    	return product;
+    }
+    public void updateProduct(Product product) {
+    	this.product.updateProduct(product);
+    }
+    public void deleteProduct(int productId) {
+    	product.deleteProduct(productId);
     }
     
 
