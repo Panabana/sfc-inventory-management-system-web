@@ -39,7 +39,7 @@ public class SupplierEAOImpl implements SupplierEAOLocal {
     	if(existingSup != null) {
     		existingSup.setSupplierName(supplier.getSupplierName());
     		existingSup.setSupplierAddress(supplier.getSupplierAddress());
-    		existingSup.setSupplierID(supplier.getSupplierID());
+    		existingSup.setSupplierId(supplier.getSupplierId());
     		existingSup.setPhoneNumber(supplier.getPhoneNumber());
     		em.merge(existingSup);
     	}

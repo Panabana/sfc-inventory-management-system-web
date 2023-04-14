@@ -13,45 +13,45 @@ import javax.persistence.Table;
 @Table(name="Supplier")
 public class Supplier implements Serializable{
 	
-	private int SupplierID;
-	private String SupplierName;
-	private String SupplierAddress;
-	private int PhoneNumber;
+	private int supplierId;
+	private String supplierName;
+	private String supplierAddress;
+	private int phoneNumber;
 	
 	@ManyToMany(mappedBy ="ProductSupplier")
 	Set<Product> SupplierProduct;
 	
 	@Id
 	@Column(name="SupplierID")
-	public int getSupplierID() {
-		return SupplierID;
+	public int getSupplierId() {
+		return supplierId;
 	}
-	public void setSupplierID(int supplierID) {
-		SupplierID = supplierID;
+	public void setSupplierId(int supplierID) {
+		this.supplierId = supplierID;
 	}
 	
 	@Column(name="SupplierName")
 	public String getSupplierName() {
-		return SupplierName;
+		return supplierName;
 	}
 	public void setSupplierName(String supplierName) {
-		SupplierName = supplierName;
+		this.supplierName = supplierName;
 	}
 	
 	@Column(name="SupplierAddress")
 	public String getSupplierAddress() {
-		return SupplierAddress;
+		return supplierAddress;
 	}
 	public void setSupplierAddress(String supplierAddress) {
-		SupplierAddress = supplierAddress;
+	 this.supplierAddress = supplierAddress;
 	}
 	
 	@Column(name="PhoneNumber")
 	public int getPhoneNumber() {
-		return PhoneNumber;
+		return phoneNumber;
 	}
 	public void setPhoneNumber(int phoneNumber) {
-		PhoneNumber = phoneNumber;
+		this.phoneNumber = phoneNumber;
 	}
 	
 	
