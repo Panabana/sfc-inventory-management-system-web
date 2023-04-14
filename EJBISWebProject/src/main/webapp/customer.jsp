@@ -17,7 +17,14 @@
 	<%@ include file="sidebar.jsp"%>
 	<main>
 		<div class="main-content">
-			<h1>Customer</h1>
+			<div class="search-form">
+				<form action="#">
+					<div class="form-group">
+						<input type="text" class="form-control" placeholder="Search...">
+						<button type="submit" class="btn">Search</button>
+					</div>
+				</form>
+			</div>
 			<div class="table-container">
 				<table>
 					<thead>
