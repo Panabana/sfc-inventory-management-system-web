@@ -59,7 +59,7 @@
 						<div class="form-row">
 							<label for="customer-address">Address:</label> <input type="text"
 								id="customer-address" name="customer-address"> <label for="customer-phone">Phone Number:</label>
-							<input type="tel" id="customer-phone" name="customer-phone">
+							<input type="text" id="customer-phone" name="customer-phone">
 						</div>
 						<div class="button-container">
 							<button type="submit" class="add-btn">Add</button>

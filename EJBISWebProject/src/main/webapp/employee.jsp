@@ -48,28 +48,31 @@
 				</table>
 			</div>
 			<form action="ControllerServlet?action=add" method="post">
-			<div class="form-container">
-				<div class="form-field">
-					<label for="employee-id">Employee ID</label> <input type="text"
-						id="employee-id" name="employee-id" />
-				</div>
-				<div class="form-field">
-					<label for="employee-name">Name</label> <input type="text"
-						id="employee-name" name="employee-name" />
-				</div>
-				<div class="form-field">
-					<label for="employee-address">Address</label> <input type="text"
-						id="employee-address" name="employee-address" />
-				</div>
-				<div class="form-field">
-					<label for="employee-phone">Phone Number</label> <input type="text"
-						id="employee-phone" name="employee-phone" />
-				</div>
-				<div class="button-group">
-					<button type="submit" class="add-button">Add</button>
-					<button type="submit" class="update-button">Update</button>
-					<button type="submit" class="remove-button">Remove</button>
-				</div>
+					<div class="form-container">
+				<fieldset>
+					<legend>Employee Information:</legend>
+					<form>
+						<div class="form-row">
+							<label for="employee-id">Employee ID:</label> <input type="text"
+								id="employee-id" name="employee-id"> <label for="employee-name">
+								Name:</label> <input type="text" id="employee-name" name="employee-name">
+						</div>
+						<div class="form-row">
+							<label for="employee-address">Address:</label> <input type="text"
+								id="employee-address" name="employee-address"> <label for="employee-phone">Phone Number:</label>
+							<input type="text" id="employee-phone" name="employee-phone">
+						</div>
+						<div class="button-container">
+							<button type="submit" class="add-btn">Add</button>
+							<button type="submit" class="update-btn">Update</button>
+							<button type="submit" class="remove-btn">Remove</button>
+						</div>
+						<div class="error-label">
+							<!-- Error messages will be displayed here -->
+							<p>User messages will be displayed here</p>
+						</div>
+					</form>
+				</fieldset>
 			</div>
 			</form>
 		</div>

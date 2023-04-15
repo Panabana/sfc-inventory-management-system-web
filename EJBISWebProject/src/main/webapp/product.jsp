@@ -45,23 +45,30 @@
 				</table>
 			</div>
 			<div class="form-container">
-				<div class="form-field">
-					<label for="product-id">Product ID</label> <input type="text"
-						id="product-id" name="product-id" />
-				</div>
-				<div class="form-field">
-					<label for="product-name">Name</label> <input type="text"
-						id="product-name" name="product-name" />
-				</div>
-				<div class="form-field">
-					<label for="product-price">Price</label> <input type="text"
-						id="product-price" name="product-price" />
-				</div>
-				<div class="button-group">
-					<button type="submit" class="add-button">Add</button>
-					<button type="submit" class="update-button">Update</button>
-					<button type="submit" class="remove-button">Remove</button>
-				</div>
+				<fieldset>
+					<legend>Product Information:</legend>
+					<form>
+						<div class="form-row">
+							<label for="product-id">Product ID:</label> <input type="text"
+								id="product-id" name="product-id"> <label
+								for="product-name"> Name:</label> <input type="text"
+								id="product-name" name="product-name">
+						</div>
+						<div class="form-row">
+							<label for="product-price">Price:</label> <input type="text"
+								id="product-price" name="product-price">
+						</div>
+						<div class="button-container">
+							<button type="submit" class="add-btn">Add</button>
+							<button type="submit" class="update-btn">Update</button>
+							<button type="submit" class="remove-btn">Remove</button>
+						</div>
+						<div class="error-label">
+							<!-- Error messages will be displayed here -->
+							<p>User messages will be displayed here</p>
+						</div>
+					</form>
+				</fieldset>
 			</div>
 		</div>
 	</main>
