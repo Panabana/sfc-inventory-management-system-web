@@ -234,6 +234,7 @@ th:last-child, td:last-child {
 	display: none;
 }
 
+/*Style Search-Form*/
 .search-form {
 	width: 100%;
 	margin-top: 20px;
@@ -250,6 +251,9 @@ th:last-child, td:last-child {
 	width: 100%;
 	margin: 0px 0px;
 	border-radius: 10px 0px 0px 10px;
+	border: 1px solid #c3c3c3;
+	font-size: 16px;
+	padding: 10px 15px;
 }
 
 .btn {
@@ -260,68 +264,19 @@ th:last-child, td:last-child {
 	color: #fff;
 	background-color: #007bff;
 	border-radius: 0px 10px 10px 0px;
+	border: none;
+	color: white;
+	font-family: 'Roboto', sans-serif;
+	line-height: 16px;
+	cursor: pointer;
 }
 
 .btn:hover, .btn:focus {
 	color: #fff;
-	background-color: #0062cc;
-}
-
-.form-container {
-	display: flex;
-	flex-wrap: wrap;
-	justify-content: space-between;
-	max-width: 100%;
-	margin-top: 20px;
-	padding: 20px;
-	background-color: white;
-	border-radius: 4px;
-}
-
-.form-field {
-	width: 48%;
-	display: flex;
-	flex-direction: column;
-	margin-bottom: 15px;
-	gap: 5px;
-}
-
-label {
-	font-weight: bold;
-	font-size: 14px;
-	line-height: 16px;
-	margin-bottom: 5px;
-	display: block;
-}
-
-input[type="text"] {
-	border: 1px solid #c3c3c3;
-	font-size: 16px;
-	padding: 10px 15px;
-}
-
-.button-group {
-	display: flex;
-	justify-content: flex-end;
-	gap: 10px;
-	margin-top: 20px;
-}
-
-button {
-	background-color: #007bff;
-	border: none;
-	color: white;
-	padding: 10px 16px;
-	font-size: 14px;
-	line-height: 16px;
-	border-radius: 10px;
-	cursor: pointer;
-	font-family: 'Roboto', sans-serif;
-}
-
-button:hover {
 	background-color: #106ebe;
 }
+
+/*Style Insert data-Form*/
 
 /*Style Statistics*/
 .stats-card-all {
