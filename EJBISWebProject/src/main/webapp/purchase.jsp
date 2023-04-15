@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@ page import="java.util.List, ims.ics.ejb.Purchase"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -30,13 +30,13 @@
 					<thead>
 						<tr>
 							<th>Purchase ID</th>
-							
+
 							<th>Customer Name</th>
 							<th>Employee Name</th>
 							<th>Product Name</th>
 							<th>Quantity</th>
 							<th>Total Price</th>
-							
+
 						</tr>
 					</thead>
 					<tbody>
@@ -54,29 +54,34 @@
 				</table>
 			</div>
 			<div class="form-container">
-				<div class="form-field">
-					<label for="purchase-id">Purchase ID</label> <input type="text"
-						id="purchase-id" name="purchase-id" />
-				</div>
-				<div class="form-field">
-					<label for="employee-id">Employee ID</label> <input type="text"
-						id="employee-id" name="employee-id" />
-				</div>
-				<div class="form-field">
-					<label for="customer-id">Customer ID</label> <input type="text"
-						id="customer-id" name="customer-id" />
-				</div>
-				<!-- 
-				<div class="form-field">
-					<label for="employee-phone">Phone Number</label> <input type="text"
-						id="employee-phone" name="employee-phone" />
-				</div>
-				-->
-				<div class="button-group">
-					<button type="submit" class="add-button">Add</button>
-					<button type="submit" class="update-button">Update</button>
-					<button type="submit" class="remove-button">Remove</button>
-				</div>
+				<fieldset>
+					<legend>Purchase Information:</legend>
+					<form>
+						<div class="form-row">
+							<label for="purchase-id">Purchase ID:</label> <input type="text"
+								id="purchase-id" name="purchase-id"> <label
+								for="supplier-name"> Employee ID:</label> <select
+								name="employee-id" id="employee-id">
+								<option value="test">Test</option>
+							</select>
+						</div>
+						<div class="form-row">
+							<label for="supplier-address">Customer ID:</label> <select
+								name="customer-id" id="customer-id">
+								<option value="test">Test</option>
+							</select>
+						</div>
+						<div class="button-container">
+							<button type="submit" class="add-btn">Add</button>
+							<button type="submit" class="update-btn">Update</button>
+							<button type="submit" class="remove-btn">Remove</button>
+						</div>
+						<div class="error-label">
+							<!-- Error messages will be displayed here -->
+							<p>User messages will be displayed here</p>
+						</div>
+					</form>
+				</fieldset>
 			</div>
 		</div>
 	</main>

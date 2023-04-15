@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+	pageEncoding="ISO-8859-1"%>
 <%@ page import="java.util.List, ims.ics.ejb.Employee"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
@@ -7,12 +7,13 @@
 <head>
 <meta charset="ISO-8859-1">
 <link rel="stylesheet" type="text/css" href="css/style.css">
-<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+<link rel="stylesheet" type="text/css"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 <title>IMS - Suppliers</title>
 </head>
 <body>
-<%@ include file="header.jsp" %>
-<%@ include file="sidebar.jsp" %>
+	<%@ include file="header.jsp"%>
+	<%@ include file="sidebar.jsp"%>
 	<main>
 		<div class="main-content">
 			<div class="search-form">
@@ -46,27 +47,32 @@
 				</table>
 			</div>
 			<div class="form-container">
-				<div class="form-field">
-					<label for="supplier-id">Supplier ID</label> <input type="text"
-						id="supplier-id" name="supplier-id" />
-				</div>
-				<div class="form-field">
-					<label for="supplier-name">Name</label> <input type="text"
-						id="supplier-name" name="supplier-name" />
-				</div>
-				<div class="form-field">
-					<label for="supplier-address">Address</label> <input type="text"
-						id="supplier-address" name="supplier-address" />
-				</div>
-				<div class="form-field">
-					<label for="supplier-phone">Phone Number</label> <input type="text"
-						id="supplier-phone" name="supplier-phone" />
-				</div>
-				<div class="button-group">
-					<button type="submit" class="add-button">Add</button>
-					<button type="submit" class="update-button">Update</button>
-					<button type="submit" class="remove-button">Remove</button>
-				</div>
+				<fieldset>
+					<legend>Supplier Information:</legend>
+					<form>
+						<div class="form-row">
+							<label for="supplier-id">Supplier ID:</label> <input type="text"
+								id="supplier-id" name="supplier-id"> <label
+								for="supplier-name"> Name:</label> <input type="text"
+								id="supplier-name" name="supplier-name">
+						</div>
+						<div class="form-row">
+							<label for="supplier-address">Address:</label> <input type="text"
+								id="supplier-address" name="supplier-address"> <label
+								for="supplier-phone">Phone Number:</label> <input type="text"
+								id="supplier-phone" name="supplier-phone">
+						</div>
+						<div class="button-container">
+							<button type="submit" class="add-btn">Add</button>
+							<button type="submit" class="update-btn">Update</button>
+							<button type="submit" class="remove-btn">Remove</button>
+						</div>
+						<div class="error-label">
+							<!-- Error messages will be displayed here -->
+							<p>User messages will be displayed here</p>
+						</div>
+					</form>
+				</fieldset>
 			</div>
 		</div>
 	</main>
