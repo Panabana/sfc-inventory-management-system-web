@@ -48,27 +48,30 @@
 				</table>
 			</div>
 			<div class="form-container">
-				<div class="form-field">
-					<label for="customer-id">Customer ID</label> <input type="text"
-						id="customer-id" name="customer-id" />
-				</div>
-				<div class="form-field">
-					<label for="customer-name">Name</label> <input type="text"
-						id="customer-name" name="customer-name" />
-				</div>
-				<div class="form-field">
-					<label for="customer-address">Address</label> <input type="text"
-						id="customer-address" name="customer-address" />
-				</div>
-				<div class="form-field">
-					<label for="customer-phone">Phone Number</label> <input type="text"
-						id="customer-phone" name="customer-phone" />
-				</div>
-				<div class="button-group">
-					<button type="submit" class="add-button">Add</button>
-					<button type="submit" class="update-button">Update</button>
-					<button type="submit" class="remove-button">Remove</button>
-				</div>
+				<fieldset>
+					<legend>Customer Information:</legend>
+					<form>
+						<div class="form-row">
+							<label for="customer-id">Customer ID:</label> <input type="text"
+								id="customer-id" name="customer-id"> <label for="customer-name">
+								Name:</label> <input type="text" id="customer-name" name="customer-name">
+						</div>
+						<div class="form-row">
+							<label for="customer-address">Address:</label> <input type="text"
+								id="customer-address" name="customer-address"> <label for="customer-phone">Phone Number:</label>
+							<input type="tel" id="customer-phone" name="customer-phone">
+						</div>
+						<div class="button-container">
+							<button type="submit" class="add-btn">Add</button>
+							<button type="submit" class="update-btn">Update</button>
+							<button type="submit" class="remove-btn">Remove</button>
+						</div>
+						<div class="error-label">
+							<!-- Error messages will be displayed here -->
+							<p>User messages will be displayed here</p>
+						</div>
+					</form>
+				</fieldset>
 			</div>
 		</div>
 	</main>

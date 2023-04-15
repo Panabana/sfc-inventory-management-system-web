@@ -45,7 +45,7 @@
 				</div>
 				<div class="team-member">
 					<img src="images/mahmood.jpg" alt="Joseph Nordin">
-					<h2>Joseph Nordinn</h2>
+					<h2>Joseph Nordin</h2>
 					<p>Hobbies: Eating</p>
 					<p>JHe is a hardworking individual who always puts in his best
 						effort. He is also a great team player, working collaboratively
