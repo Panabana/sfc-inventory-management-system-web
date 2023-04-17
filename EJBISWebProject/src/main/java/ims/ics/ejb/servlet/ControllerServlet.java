@@ -45,6 +45,8 @@ public class ControllerServlet extends HttpServlet {
 		if (sidebarAction == null) {
 			sidebarAction = "home";
 		}
+		
+		request.setAttribute("activePage", sidebarAction);
 
 		String page = "home.jsp";
 		switch (sidebarAction) {
