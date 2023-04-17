@@ -123,9 +123,15 @@ public class ControllerServlet extends HttpServlet {
 	    	
 	    	Employee employee = facade.findEmployeeById(empId);
 	    	if(employee != null) {
-	    		employee.setName(request.getParameter("employee-name"));
-	    		employee.setAddress(request.getParameter("employee-address"));
-	    		employee.setPhoneNumber(Integer.parseInt(request.getParameter("employee-phone")));
+	    		if(request.getParameter("employee-name")!= null) {
+	    			employee.setName(request.getParameter("employee-name"));
+	    		}
+	    		if(request.getParameter("employee-address")!=null) {
+	    			employee.setAddress(request.getParameter("employee-address"));
+	    		}
+	    		if(request.getParameter("employee-phone")!= null) {
+	    			employee.setPhoneNumber(Integer.parseInt(request.getParameter("employee-phone")));
+	    		}
 	    		
 	    		facade.updateEmployee(employee);
 	    		response.sendRedirect("ControllerServlet?action=employee");
