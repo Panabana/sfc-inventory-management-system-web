@@ -57,31 +57,31 @@
 			<div class="stats-card-all">
 				<div class="stats-card">
 					<i class="fas fa-shopping-cart"></i>
-					<h3>200</h3>
+					<h3>${countPurchases}</h3>
 					<p>Total Purchases</p>
 				</div>
 
 				<div class="stats-card">
 					<i class="fas fa-box"></i>
-					<h3>15</h3>
+					<h3>${countProducts}</h3>
 					<p>Total Products</p>
 				</div>
 
 				<div class="stats-card">
 					<i class="fas fa-truck"></i>
-					<h3>12</h3>
+					<h3>${countSuppliers}</h3>
 					<p>Total Suppliers</p>
 				</div>
 
 				<div class="stats-card">
 					<i class="fas fa-user"></i>
-					<h3>150</h3>
+					<h3>${countCustomers}</h3>
 					<p>Total Customers</p>
 				</div>
 
 				<div class="stats-card">
 					<i class="fas fa-address-card"></i>
-					<h3>5</h3>
+					<h3>${countEmployees}</h3>
 					<p>Total Employees</p>
 				</div>
 			</div>

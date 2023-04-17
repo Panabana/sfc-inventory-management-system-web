@@ -5,6 +5,7 @@ import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 import ims.ics.ejb.Employee;
 import ims.ics.ejb.Purchase;
@@ -17,36 +18,42 @@ public class PurchaseEAOImpl implements PurchaseEAOLocal {
 
 	@PersistenceContext(unitName = "LabEJBSql")
 	private EntityManager em;
-    
-    public PurchaseEAOImpl() {}
-    
-    public List<Purchase> findAllPurchases() {
-        return em.createQuery("SELECT p FROM Purchase p", Purchase.class).getResultList();
-    }
 
-    public Purchase findPurchaseById(int purchaseId) {
-    	return em.find(Purchase.class, purchaseId);
-    }
-    
-    public Purchase createPurchase(Purchase purchase) {
-    	em.persist(purchase);
-    	return purchase;
-    }
-    
-    public void updatePurchase(Purchase purchase) {
-    	Purchase existingPurchase = em.find(Purchase.class, purchase.getPurchaseId());
-    	if(existingPurchase != null) {
-    		existingPurchase.setEmployee(purchase.getEmployee());
-    		existingPurchase.setCustomer(purchase.getCustomer());
-    		em.merge(existingPurchase);
-    	}
-    }
-    
-    public void deletePurchase(int purchaseId) {
-    	Purchase purchase =em.find(Purchase.class, purchaseId);
-    	if(purchase != null) {
-    		em.remove(purchase);
-    	}
-    }
+	public PurchaseEAOImpl() {
+	}
+
+	public List<Purchase> findAllPurchases() {
+		return em.createQuery("SELECT p FROM Purchase p", Purchase.class).getResultList();
+	}
+
+	public Purchase findPurchaseById(int purchaseId) {
+		return em.find(Purchase.class, purchaseId);
+	}
+
+	public Purchase createPurchase(Purchase purchase) {
+		em.persist(purchase);
+		return purchase;
+	}
+
+	public void updatePurchase(Purchase purchase) {
+		Purchase existingPurchase = em.find(Purchase.class, purchase.getPurchaseId());
+		if (existingPurchase != null) {
+			existingPurchase.setEmployee(purchase.getEmployee());
+			existingPurchase.setCustomer(purchase.getCustomer());
+			em.merge(existingPurchase);
+		}
+	}
+
+	public void deletePurchase(int purchaseId) {
+		Purchase purchase = em.find(Purchase.class, purchaseId);
+		if (purchase != null) {
+			em.remove(purchase);
+		}
+	}
+
+	public int countAllPurchases() {
+		Query query = em.createQuery("SELECT COUNT(p) FROM Purchase p");
+		return ((Long) query.getSingleResult()).intValue();
+	}
 
 }

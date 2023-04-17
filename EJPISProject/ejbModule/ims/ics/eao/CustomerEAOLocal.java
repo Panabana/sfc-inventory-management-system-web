@@ -14,5 +14,6 @@ public interface CustomerEAOLocal {
 	public void updateCustomer(Customer customer);
 	public void deleteCustomer(int customerId);
 	public List<Customer> findAllCustomers();
+	public int countAllCustomers();
 
 }
