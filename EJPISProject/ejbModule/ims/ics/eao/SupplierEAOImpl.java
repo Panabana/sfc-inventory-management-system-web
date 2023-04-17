@@ -35,7 +35,7 @@ public class SupplierEAOImpl implements SupplierEAOLocal {
     }
     
     public void updateSupplier(Supplier supplier) {
-    	Supplier existingSup = em.find(Supplier.class, supplier.getSupplierName());
+    	Supplier existingSup = em.find(Supplier.class, supplier.getSupplierId());
     	if(existingSup != null) {
     		existingSup.setSupplierName(supplier.getSupplierName());
     		existingSup.setSupplierAddress(supplier.getSupplierAddress());

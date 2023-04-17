@@ -224,6 +224,47 @@ public class ControllerServlet extends HttpServlet {
 	    	facade.updateProduct(product);
 	    	response.sendRedirect("ControllerServlet?action=product");
 	    }
+	    else if("add-supplier".equals(action)) {
+	    	String id = request.getParameter("supplier-id");
+	    	String name = request.getParameter("supplier-name");
+	    	String address = request.getParameter("supplier-address");
+	    	String phoneNbr = request.getParameter("supplier-phone");
+	    	int supplierId = 0;
+	    	int supplierPhone = 0;
+	    	
+	    	if(id !=null) {
+	    		supplierId = Integer.parseInt(id);
+	    	}
+	    	if(phoneNbr != null) {
+	    		supplierPhone = Integer.parseInt(phoneNbr);
+	    	}
+	    	Supplier supplier = new Supplier();
+	    	supplier.setSupplierId(supplierId);
+	    	supplier.setSupplierName(name);
+	    	supplier.setSupplierAddress(address);
+	    	supplier.setPhoneNumber(supplierPhone);
+	    	facade.createSupplier(supplier);
+	    	response.sendRedirect("ControllerServlet?action=supplier");
+	    }
+	    else if ("update-supplier".equals(action)) {
+	    	String id = request.getParameter("supplier-id");
+	    	int supplierId = Integer.parseInt(id);
+	    	
+	    	Supplier supplier = facade.findSupplierById(supplierId);
+	    	if(supplier !=null) {
+	    		if(request.getParameter("supplier-name")!=null) {
+	    			supplier.setSupplierName(request.getParameter("supplier-name"));
+	    		}
+	    		if(request.getParameter("supplier-address")!=null) {
+	    			supplier.setSupplierAddress(request.getParameter("supplier-address"));
+	    		}
+	    		if(request.getParameter("supplier-phone")!=null) {
+	    			supplier.setPhoneNumber(Integer.parseInt(request.getParameter("supplier-phone")));
+	    		}
+	    	}
+	    	facade.updateSupplier(supplier);
+	    	response.sendRedirect("ControllerServlet?action=supplier");
+	    }
 	    else {
 	    	doGet(request, response);
 	    }
