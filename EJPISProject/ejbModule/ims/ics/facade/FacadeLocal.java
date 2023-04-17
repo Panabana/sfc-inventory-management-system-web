@@ -19,6 +19,7 @@ public interface FacadeLocal {
 	public Employee createEmployee(Employee employee);
 	public void updateEmployee(Employee employee);
 	public void deleteEmployee(int employeeId);
+	public int countAllEmployees();
 	
 	//Customer
 	public List<Customer> findAllCustomers();
@@ -26,6 +27,7 @@ public interface FacadeLocal {
 	public Customer createCustomer(Customer customer);
 	public void updateCustomer(Customer customer);
 	public void deleteCustomer(int customerId);
+	public int countAllCustomers();
 	
 	//Purchase
 	public List<Purchase> findAllPurchases();
@@ -33,6 +35,7 @@ public interface FacadeLocal {
 	public Purchase createPurchase(Purchase purchase);
 	public void updatePurchase(Purchase purchase);
 	public void deletePurchase(int purchaseId);
+	public int countAllPPurchases();
 
 	//Product
 	public List<Product> findAllProducts();
@@ -40,6 +43,7 @@ public interface FacadeLocal {
     public Product createProduct(Product product);
     public void updateProduct(Product product);
     public void deleteProduct(int productId);
+    public int countAllProducts();
     
     //Supplier
     public List<Supplier>findAllSuppliers();
@@ -47,5 +51,5 @@ public interface FacadeLocal {
     public Supplier createSupplier(Supplier supplier);
     public void updateSupplier(Supplier supplier);
     public void deleteSupplier(int supplierId);
-    
+    public int countAllSuppliers();
 }
