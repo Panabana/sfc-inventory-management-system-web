@@ -47,6 +47,7 @@
 					</tbody>
 				</table>
 			</div>
+			<form action="ControllerServlet" method="post">
 			<div class="form-container">
 				<fieldset>
 					<legend>Customer Information:</legend>
@@ -62,8 +63,8 @@
 							<input type="text" id="customer-phone" name="customer-phone">
 						</div>
 						<div class="button-container">
-							<button type="submit" class="add-btn">Add</button>
-							<button type="submit" class="update-btn">Update</button>
+							<button type="submit" class="add-btn" name="action" value="add-customer">Add</button>
+							<button type="submit" class="update-btn" name="action" value="update-customer">Update</button>
 							<button type="submit" class="remove-btn">Remove</button>
 						</div>
 						<div class="error-label">
@@ -73,6 +74,7 @@
 					</form>
 				</fieldset>
 			</div>
+			</form>
 		</div>
 	</main>
 	<%@ include file="footer.jsp"%>
