@@ -35,7 +35,7 @@ public class ProductEAOImpl implements ProductEAOLocal {
     }
     
     public void updateProduct(Product product) {
-    	Product existingProd = em.find(Product.class, product.getProductName());
+    	Product existingProd = em.find(Product.class, product.getProductId());
     	if(existingProd != null) {
     		existingProd.setProductName(product.getProductName());
     		existingProd.setPrice(product.getPrice());
