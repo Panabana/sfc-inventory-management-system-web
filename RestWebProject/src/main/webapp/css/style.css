@@ -1,0 +1,32 @@
+@charset "ISO-8859-1";
+
+.main{
+  font-family: "Courier new","Courier", monospace;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+caption {
+  text-align: left;
+  font-size: 1.5em;
+  font-weight: bold;
+  margin-bottom: 1em;
+}
+
+thead {
+  background-color: #ddd;
+}
+
+th{
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+td{
+  border: 1px solid #ddd;
+  padding: 8px;
+}
