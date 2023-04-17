@@ -67,7 +67,7 @@ class EmployeeTest {
 	@Test
 	final void testGetName() {
 		assertNotNull(e1);
-		assertEquals(expectedAddress, e1.getAddress());
+		assertEquals(expectedName, e1.getName());
 	}
 
 	@Test
