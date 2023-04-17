@@ -63,8 +63,8 @@
 							<input type="text" id="employee-phone" name="employee-phone">
 						</div>
 						<div class="button-container">
-							<button type="submit" class="add-btn" name="action" value="add">Add</button>
-							<button type="submit" class="update-btn" name="action" value="update">Update</button>
+							<button type="submit" class="add-btn" name="action" value="add-employee">Add</button>
+							<button type="submit" class="update-btn" name="action" value="update-employee">Update</button>
 							<button type="submit" class="remove-btn">Remove</button>
 						</div>
 						<div class="error-label">

@@ -91,7 +91,9 @@ public class ControllerServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	    String action = request.getParameter("action");
-	    if ("add".equals(action)) {
+	    
+	    //ADD EMPLOYEE
+	    if ("add-employee".equals(action)) {
 
 	        String id = request.getParameter("employee-id");
 	        String name = request.getParameter("employee-name");
@@ -116,7 +118,8 @@ public class ControllerServlet extends HttpServlet {
 	        facade.createEmployee(employee);
 	        response.sendRedirect("ControllerServlet?action=employee");
 	        
-	    } else if ("update".equals(action)){
+	        //UPDATE EMPLOYEE
+	    } else if ("update-employee".equals(action)){
 	    	
 	    	String id = request.getParameter("employee-id");
 	    	int empId = Integer.parseInt(id);
@@ -136,9 +139,53 @@ public class ControllerServlet extends HttpServlet {
 	    		facade.updateEmployee(employee);
 	    		response.sendRedirect("ControllerServlet?action=employee");
 	    	}
+	    	//ADD CUSTOMER
+	    } else if ("add-customer".equals(action)) {
+	    	String id = request.getParameter("customer-id");
+	    	String name = request.getParameter("customer-name");
+	    	String address = request.getParameter("customer-address");
+	    	String phoneNumber = request.getParameter("customer-phone");
+	    	int customerId = 0;
+	    	int customerPhoneNbr = 0;
 	    	
-	        
+	    	if(id != null) {
+	    		customerId = Integer.parseInt(id);
+	    	}
+	    	if(phoneNumber != null) {
+	    		customerPhoneNbr = Integer.parseInt(phoneNumber);
+	    	}
+	    	
+	    	Customer customer = new Customer();
+	    	customer.setCustomerId(customerId);
+	    	customer.setName(name);
+	    	customer.setAddress(address);
+	    	customer.setPhoneNbr(customerPhoneNbr);
+	    	facade.createCustomer(customer);
+	    	response.sendRedirect("ControllerServlet?action=customer");
 	    }
+	    
+	    //UPDATE CUSTOMER
+	    else if("update-customer".equals(action)) {
+	    	String id = request.getParameter("customer-id");
+	    	int customerId = Integer.parseInt(id);
+	    	
+	    	Customer customer = facade.findCustomerById(customerId);
+	    	if(customer != null) {
+	    		if(request.getParameter("customer-name")!= null) {
+	    			customer.setName(request.getParameter("customer-name"));
+	    		}
+	    		if(request.getParameter("customer-address")!=null) {
+	    			customer.setAddress(request.getParameter("customer-address"));
+	    		}
+	    		if(request.getParameter("customer-phone")!=null) {
+	    			customer.setPhoneNbr(Integer.parseInt(request.getParameter("customer-phone")));
+	    		}
+	    	}
+	    	facade.updateCustomer(customer);
+    		response.sendRedirect("ControllerServlet?action=customer");
+	    	
+	    }
+	    
 	    else {
 	    	doGet(request, response);
 	    }
