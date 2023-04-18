@@ -18,13 +18,32 @@
 	<main>
 		<div class="main-content">
 			<div class="search-form">
-				<form action="#">
+				<form action="EmployeeServlet" method="get" id="search-form">
 					<div class="form-group">
-						<input type="text" class="form-control" placeholder="Search...">
-						<button type="submit" class="btn">Search</button>
+						<input type="text" id="find-employee-id" name="find-employee-id"
+							class="form-control" placeholder="Search...">
+						<button type="submit" class="btn" name="action" id="search-btn"
+							value="find-employee">Search</button>
 					</div>
 				</form>
 			</div>
+			<script>
+				$(document).ready(function() {
+					$('#search-btn').click(function() {
+						$('#search-form').submit();
+					});
+					var employeeId = '${employeeId}';
+					var employeeName = '${employeeName}';
+					var employeeAddress = '${employeeAddress}';
+					var employeePhoneNumber = '${employeePhoneNumber}'
+
+					$('#employee-id').val(employeeId);
+					$('#employee-name').val(employeeName);
+					$('#employee-address').val(employeeAddress);
+					$('#employee-phone').val(employeePhoneNumber);
+				});
+			</script>
+
 			<div class="table-container">
 				<table>
 					<thead>
@@ -48,32 +67,36 @@
 				</table>
 			</div>
 			<form action="EmployeeServlet" method="post">
-					<div class="form-container">
-				<fieldset>
-					<legend>Employee Information:</legend>
-					<form>
-						<div class="form-row">
-							<label for="employee-id">Employee ID:</label> <input type="text"
-								id="employee-id" name="employee-id"> <label for="employee-name">
-								Name:</label> <input type="text" id="employee-name" name="employee-name">
-						</div>
-						<div class="form-row">
-							<label for="employee-address">Address:</label> <input type="text"
-								id="employee-address" name="employee-address"> <label for="employee-phone">Phone Number:</label>
-							<input type="text" id="employee-phone" name="employee-phone">
-						</div>
-						<div class="button-container">
-							<button type="submit" class="add-btn" name="action" value="add-employee">Add</button>
-							<button type="submit" class="update-btn" name="action" value="update-employee">Update</button>
-							<button type="submit" class="remove-btn">Remove</button>
-						</div>
-						<div class="error-label">
-							<!-- Error messages will be displayed here -->
-							<p>User messages will be displayed here</p>
-						</div>
-					</form>
-				</fieldset>
-			</div>
+				<div class="form-container">
+					<fieldset>
+						<legend>Employee Information:</legend>
+						<form>
+							<div class="form-row">
+								<label for="employee-id">Employee ID:</label> <input type="text"
+									id="employee-id" name="employee-id"> <label
+									for="employee-name"> Name:</label> <input type="text"
+									id="employee-name" name="employee-name">
+							</div>
+							<div class="form-row">
+								<label for="employee-address">Address:</label> <input
+									type="text" id="employee-address" name="employee-address">
+								<label for="employee-phone">Phone Number:</label> <input
+									type="text" id="employee-phone" name="employee-phone">
+							</div>
+							<div class="button-container">
+								<button type="submit" class="add-btn" name="action"
+									value="add-employee">Add</button>
+								<button type="submit" class="update-btn" name="action"
+									value="update-employee">Update</button>
+								<button type="submit" class="remove-btn">Remove</button>
+							</div>
+							<div class="error-label">
+								<!-- Error messages will be displayed here -->
+								<p>User messages will be displayed here</p>
+							</div>
+						</form>
+					</fieldset>
+				</div>
 			</form>
 		</div>
 	</main>

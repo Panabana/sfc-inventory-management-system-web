@@ -23,6 +23,8 @@ public class EmployeeServlet extends HttpServlet {
 
 	@EJB
 	FacadeLocal facade;
+	
+
 
 	/**
 	 * @see HttpServlet#HttpServlet()
@@ -38,12 +40,40 @@ public class EmployeeServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		List<Employee> employees = facade.findAllEmployees();
-		request.setAttribute("employees", employees);
+		
+		    String action = request.getParameter("action");
+		    if ("find-employee".equals(action)) {
+		        String id = request.getParameter("find-employee-id");
+		        int employeeId = 0;
+		        if (id != null) {
+		            employeeId = Integer.parseInt(id);
+		            Employee emp = facade.findEmployeeById(employeeId);
+		            if (emp != null) {
+		            	employeeId = emp.getEmployeeId();
+		                String employeeName = emp.getName();
+		                String employeeAddress = emp.getAddress();
+		                int employeePhoneNbr = emp.getPhoneNumber();
+		                request.setAttribute("employeeId", employeeId);
+		                request.setAttribute("employeeName", employeeName);
+		                request.setAttribute("employeeAddress", employeeAddress);
+		                request.setAttribute("employeePhoneNumber", employeePhoneNbr);
+		                
+		            }
+		        }
+		    }
 
-		RequestDispatcher dispatcher = request.getRequestDispatcher("employee.jsp");
-		dispatcher.forward(request, response);
-	}
+		    List<Employee> employees = facade.findAllEmployees();
+		    request.setAttribute("employees", employees);
+		    
+		    RequestDispatcher dispatcher = request.getRequestDispatcher("employee.jsp");
+		    dispatcher.forward(request, response);
+		}
+
+
+		
+		
+	
+	
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
