@@ -13,7 +13,6 @@
 </script>
 <body>
 <div class="main">
-
  <form action="#">
   <label for="empId">Employee Id:</label>
   <input type="number" id="empId" name="empId"><br><br>
@@ -40,6 +39,21 @@
   </tr>
   </tbody>
 </table>
+<form action="#">
+    <label for="empIdAdd">Employee Id:</label>
+    <input type="number" id="empIdAdd" name="empIdAdd"><br><br>
+    
+  	<label for="empAddress">Employee Name:</label>
+  	<input type="text" id="empName" name="empNameAdd"><br><br>
+  	
+    <label for="empAddress">Employee Address:</label>
+    <input type="text" id="empAddress" name="empAddressAdd"><br><br>
+    
+    <label for="empPhone">Employee Phone:</label>
+    <input type="number" id="empPhone" name="empPhoneAdd"><br><br>
+    
+    <input type="submit" value="Add Employee" id="addEmpBtn">
+</form> 
 </div>
 </body>
 </html>
