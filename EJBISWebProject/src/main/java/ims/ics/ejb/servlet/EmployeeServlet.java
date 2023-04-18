@@ -102,7 +102,7 @@ public class EmployeeServlet extends HttpServlet {
 				}
 
 				facade.updateEmployee(employee);
-				response.sendRedirect("EmployeeServlet?action=employee");
+				response.sendRedirect("EmployeeServlet");
 			}else {
 				
 				doGet(request, response);
