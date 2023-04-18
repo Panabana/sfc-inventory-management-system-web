@@ -38,10 +38,9 @@ public class EmployeeServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		List<Employee> employees = facade.findAllEmployees();
 		request.setAttribute("employees", employees);
-		
+
 		RequestDispatcher dispatcher = request.getRequestDispatcher("employee.jsp");
 		dispatcher.forward(request, response);
 	}
@@ -53,7 +52,6 @@ public class EmployeeServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		
 
 		String action = request.getParameter("action");
 
@@ -103,8 +101,8 @@ public class EmployeeServlet extends HttpServlet {
 
 				facade.updateEmployee(employee);
 				response.sendRedirect("EmployeeServlet");
-			}else {
-				
+			} else {
+
 				doGet(request, response);
 			}
 		}

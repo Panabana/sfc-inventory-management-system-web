@@ -11,7 +11,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import ims.ics.ejb.Employee;
 import ims.ics.ejb.Product;
 import ims.ics.facade.FacadeLocal;
 
@@ -76,7 +75,7 @@ public class ProductServlet extends HttpServlet {
 			facade.createProduct(product);
 			response.sendRedirect("ProductServlet");
 
-			// UPDATE EMPLOYEE
+			// UPDATE PRODUCT
 		} else if ("update-product".equals(action)) {
 			String id = request.getParameter("product-id");
 			int productId = Integer.parseInt(id);
