@@ -13,6 +13,13 @@ import org.junit.jupiter.api.Test;
 import ims.ics.ejb.Employee;
 import ims.ics.ejb.Purchase;
 
+/* 
+ * LAB EXAMPLE SHOWED JUNIT TEST CASES FOR GETTER AND SETTERS. HOWEVER!
+ * The model classes in ims.ics.ejb do not have any special getters/setters with logic code.
+ * Therefore we've made the choice of miss a 100% test coverage and leave the simple getters/setters be for now.
+*/ 
+
+
 class EmployeeTest {
 	private int expectedId;
 	private String expectedName;
