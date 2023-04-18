@@ -18,10 +18,9 @@ class EmployeeTest {
 	private String expectedName;
 	private String expectedAddress;
 	private int expectedPhoneNumber;
+	private Set<Purchase> expectedPurchases;
 	
 	private Employee e1;
-	private Employee e2;
-	private Employee e3;
 
 	@BeforeAll
 	static void setUpBeforeClass() throws Exception {
@@ -37,65 +36,66 @@ class EmployeeTest {
 		expectedName = "Mats";
 		expectedAddress = "Lund";
 		expectedPhoneNumber = 12345;
-		// DON'T forget
-		// expectedPurchases = ???
+		// expectedPurchases = expectedPurchases.add(Purchase p);
 		
-		e1 = new Employee(expectedId, expectedName, expectedAddress, expectedPhoneNumber);
-		e2 = new Employee(2, "Eva", "Malmö", 54321);
-		e3 = new Employee(3, "Pak", "Pakistan", 010101);
+		e1 = new Employee(expectedId, expectedName, expectedAddress, expectedPhoneNumber, expectedPurchases);
 	}
 
 	@AfterEach
 	void tearDown() throws Exception {
 		e1 = null;
-		e2 = null;
-		e3 = null;
 	}
 
 	@Test
 	final void testGetEmployeeId() {
+		assertNotNull(e1.getEmployeeId());
 		assertEquals(expectedId, e1.getEmployeeId());
 	}
 
 	@Test
 	final void testSetEmployeeId() {
-		int expectedId2 = 1;
-		e1.setEmployeeId(expectedId2);
-		assertEquals(expectedId2, e1.getEmployeeId());
+		int newExpectedId = 10;
+		e1.setEmployeeId(newExpectedId);
+		assertEquals(newExpectedId, e1.getEmployeeId());
 	}
 
 	@Test
 	final void testGetName() {
-		assertNotNull(e1);
+		assertNotNull(e1.getName());
 		assertEquals(expectedName, e1.getName());
 	}
 
 	@Test
 	final void testSetName() {
-		String expectedName2 = "TestName";
-		e1.setName(expectedName2);
-		assertEquals(expectedName2, e1.getName());
+		String newExpectedName = "Lorem Ipsum";
+		e1.setName(newExpectedName);
+		assertEquals(newExpectedName, e1.getName());
 	}
-
-	/*
+	
 	@Test
 	final void testGetAddress() {
-		fail("Not yet implemented"); // TODO
+		assertNotNull(e1.getAddress());
+		assertEquals(expectedAddress, e1.getAddress());
 	}
 
 	@Test
 	final void testSetAddress() {
-		fail("Not yet implemented"); // TODO
+		String newExpectedAddress = "Bikini bottom";
+		e1.setAddress(newExpectedAddress);
+		assertEquals(newExpectedAddress, e1.getAddress());
 	}
 
 	@Test
 	final void testGetPhoneNumber() {
-		fail("Not yet implemented"); // TODO
+		assertNotNull(e1.getPhoneNumber());
+		assertEquals(expectedPhoneNumber, e1.getPhoneNumber());
 	}
 
 	@Test
 	final void testSetPhoneNumber() {
-		fail("Not yet implemented"); // TODO
+		int newExpectedPhoneNumber = 47474747;
+		e1.setPhoneNumber(newExpectedPhoneNumber);
+		assertEquals(newExpectedPhoneNumber, e1.getPhoneNumber());
 	}
 
 	@Test
@@ -107,5 +107,5 @@ class EmployeeTest {
 	final void testSetPurchases() {
 		fail("Not yet implemented"); // TODO
 	}
-	*/
+	
 }

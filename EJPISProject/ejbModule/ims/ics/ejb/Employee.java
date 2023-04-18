@@ -19,15 +19,16 @@ public class Employee implements Serializable {
 	private String name;
 	private String address;
 	private int phoneNumber;
-	private Set<Purchase>purchases;
+	private Set<Purchase> purchases;
 	
-	// Added constructor with params (NOTE NO Set<Purchase>), using in EmployeeTest
-	public Employee(int employeeId, String name, String address, int phoneNumber) {
+	// Added constructor with params, using in EmployeeTest
+	public Employee(int employeeId, String name, String address, int phoneNumber, Set<Purchase> purchases) {
 		super();
 		this.employeeId = employeeId;
 		this.name = name;
 		this.address = address;
 		this.phoneNumber = phoneNumber;
+		this.purchases = purchases;
 	}
 	
 	public Employee() {
