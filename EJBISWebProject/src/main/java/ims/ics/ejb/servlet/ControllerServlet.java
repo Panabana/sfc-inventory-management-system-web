@@ -62,14 +62,10 @@ public class ControllerServlet extends HttpServlet {
 			response.sendRedirect("EmployeeServlet");
 			break;
 		case "product":
-			page = "product.jsp";
-			List<Product> products = facade.findAllProducts();
-			request.setAttribute("products", products);
+			response.sendRedirect("ProductServlet");
 			break;
 		case "customer":
-			page = "customer.jsp";
-			List<Customer> customers = facade.findAllCustomers();
-			request.setAttribute("customers", customers);
+			response.sendRedirect("CustomerServlet");
 			break;
 		case "purchase":
 			page = "purchase.jsp";
@@ -102,141 +98,9 @@ public class ControllerServlet extends HttpServlet {
 		request.getRequestDispatcher(page).forward(request, response);
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		String action = request.getParameter("action");
-
-			// ADD CUSTOMER
-		 if ("add-customer".equals(action)) {
-			String id = request.getParameter("customer-id");
-			String name = request.getParameter("customer-name");
-			String address = request.getParameter("customer-address");
-			String phoneNumber = request.getParameter("customer-phone");
-			int customerId = 0;
-			int customerPhoneNbr = 0;
-
-			if (id != null) {
-				customerId = Integer.parseInt(id);
-			}
-			if (phoneNumber != null) {
-				customerPhoneNbr = Integer.parseInt(phoneNumber);
-			}
-
-			Customer customer = new Customer();
-			customer.setCustomerId(customerId);
-			customer.setName(name);
-			customer.setAddress(address);
-			customer.setPhoneNbr(customerPhoneNbr);
-			facade.createCustomer(customer);
-			response.sendRedirect("ControllerServlet?action=customer");
-		}
-
-		// UPDATE CUSTOMER
-		else if ("update-customer".equals(action)) {
-			String id = request.getParameter("customer-id");
-			int customerId = Integer.parseInt(id);
-
-			Customer customer = facade.findCustomerById(customerId);
-			if (customer != null) {
-				if (request.getParameter("customer-name") != null) {
-					customer.setName(request.getParameter("customer-name"));
-				}
-				if (request.getParameter("customer-address") != null) {
-					customer.setAddress(request.getParameter("customer-address"));
-				}
-				if (request.getParameter("customer-phone") != null) {
-					customer.setPhoneNbr(Integer.parseInt(request.getParameter("customer-phone")));
-				}
-			}
-			facade.updateCustomer(customer);
-			response.sendRedirect("ControllerServlet?action=customer");
-
-		}
-		// ADD PRODUCT
-		else if ("add-product".equals(action)) {
-			String id = request.getParameter("product-id");
-			String name = request.getParameter("product-name");
-			String price = request.getParameter("product-price");
-			int productId = 0;
-			float productPrice = 0;
-
-			if (id != null) {
-				productId = Integer.parseInt(id);
-			}
-			if (price != null) {
-				productPrice = Float.parseFloat(price);
-			}
-			Product product = new Product();
-			product.setProductId(productId);
-			product.setProductName(name);
-			product.setPrice(productPrice);
-			facade.createProduct(product);
-			response.sendRedirect("ControllerServlet?action=product");
-
-		}
-		// UPDATE PRODUCT
-		else if ("update-product".equals(action)) {
-			String id = request.getParameter("product-id");
-			int productId = Integer.parseInt(id);
-
-			Product product = facade.findProductByID(productId);
-			if (product != null) {
-				if (request.getParameter("product-name") != null) {
-					product.setProductName(request.getParameter("product-name"));
-				}
-				if (request.getParameter("product-price") != null) {
-					product.setPrice(Float.parseFloat(request.getParameter("product-price")));
-				}
-			}
-			facade.updateProduct(product);
-			response.sendRedirect("ControllerServlet?action=product");
-		} else if ("add-supplier".equals(action)) {
-			String id = request.getParameter("supplier-id");
-			String name = request.getParameter("supplier-name");
-			String address = request.getParameter("supplier-address");
-			String phoneNbr = request.getParameter("supplier-phone");
-			int supplierId = 0;
-			int supplierPhone = 0;
-
-			if (id != null) {
-				supplierId = Integer.parseInt(id);
-			}
-			if (phoneNbr != null) {
-				supplierPhone = Integer.parseInt(phoneNbr);
-			}
-			Supplier supplier = new Supplier();
-			supplier.setSupplierId(supplierId);
-			supplier.setSupplierName(name);
-			supplier.setSupplierAddress(address);
-			supplier.setPhoneNumber(supplierPhone);
-			facade.createSupplier(supplier);
-			response.sendRedirect("ControllerServlet?action=supplier");
-		} else if ("update-supplier".equals(action)) {
-			String id = request.getParameter("supplier-id");
-			int supplierId = Integer.parseInt(id);
-
-			Supplier supplier = facade.findSupplierById(supplierId);
-			if (supplier != null) {
-				if (request.getParameter("supplier-name") != null) {
-					supplier.setSupplierName(request.getParameter("supplier-name"));
-				}
-				if (request.getParameter("supplier-address") != null) {
-					supplier.setSupplierAddress(request.getParameter("supplier-address"));
-				}
-				if (request.getParameter("supplier-phone") != null) {
-					supplier.setPhoneNumber(Integer.parseInt(request.getParameter("supplier-phone")));
-				}
-			}
-			facade.updateSupplier(supplier);
-			response.sendRedirect("ControllerServlet?action=supplier");
-		} else {
-			doGet(request, response);
-		}
-
+		doGet(request, response);
 	}
 
 }
