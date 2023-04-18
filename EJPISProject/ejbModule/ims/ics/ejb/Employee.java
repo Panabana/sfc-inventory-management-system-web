@@ -19,15 +19,16 @@ public class Employee implements Serializable {
 	private String name;
 	private String address;
 	private int phoneNumber;
-	private Set<Purchase>purchases;
+	private Set<Purchase> purchases;
 	
-	// Added constructor with params (NOTE NO Set<Purchase>), using in EmployeeTest
-	public Employee(int employeeId, String name, String address, int phoneNumber) {
+	// Added constructor with params, using in EmployeeTest
+	public Employee(int employeeId, String name, String address, int phoneNumber, Set<Purchase> purchases) {
 		super();
 		this.employeeId = employeeId;
 		this.name = name;
 		this.address = address;
 		this.phoneNumber = phoneNumber;
+		this.purchases = purchases;
 	}
 	
 	public Employee() {
@@ -35,42 +36,49 @@ public class Employee implements Serializable {
 	}
 
 	@Id
-	@Column(name="EmployeeID")
+	@Column(name = "EmployeeID")
 	public int getEmployeeId() {
 		return employeeId;
 	}
+
 	public void setEmployeeId(int employeeId) {
 		this.employeeId = employeeId;
 	}
-	@Column(name="EmployeeName")
+
+	@Column(name = "EmployeeName")
 	public String getName() {
 		return name;
 	}
+
 	public void setName(String name) {
 		this.name = name;
 	}
-	@Column(name="EmployeeAddress")
+
+	@Column(name = "EmployeeAddress")
 	public String getAddress() {
 		return address;
 	}
+
 	public void setAddress(String address) {
 		this.address = address;
 	}
-	
-	@Column(name="PhoneNumber")
+
+	@Column(name = "PhoneNumber")
 	public int getPhoneNumber() {
 		return phoneNumber;
 	}
+
 	public void setPhoneNumber(int phoneNumber) {
 		this.phoneNumber = phoneNumber;
 	}
-		@OneToMany(mappedBy = "employee", fetch=FetchType.EAGER)
-		public Set<Purchase> getPurchases() {
-			return purchases;
-		}
-		public void setPurchases(Set<Purchase> purchases) {
-			this.purchases = purchases;
-		}
 
-	
+	@OneToMany(mappedBy = "employee", fetch = FetchType.EAGER)
+	public Set<Purchase> getPurchases() {
+		return purchases;
+	}
+
+	public void setPurchases(Set<Purchase> purchases) {
+		this.purchases = purchases;
+	}
+
 }
