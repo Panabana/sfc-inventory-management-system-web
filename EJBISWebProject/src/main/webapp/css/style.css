@@ -45,11 +45,14 @@ main {
 	align-items: center;
 	list-style: none;
 	margin-right: 30px;
-	border: px solid black;
+	border: none;
 	padding: 8px;
-	background-color: #007BFF78;
-	box-shadow: 2px 0 10px rgba(0, 0, 0, 0.6);
+	color: #fff;
+	background-color: #007bff;
+	box-shadow: 2px 0 5px rgba(0, 0, 0, 0.6);
 	border-radius: 10px;
+	font-weight: bold;
+	font-family: 'Roboto', sans-serif;
 }
 
 /*Style Sidebar*/
