@@ -14,5 +14,6 @@ public interface SupplierEAOLocal {
 	public void updateSupplier(Supplier supplier);
 	public void deleteSupplier(int supplierId);
 	public List<Supplier> findAllSuppliers();
+	public int countAllSuppliers();
 
 }

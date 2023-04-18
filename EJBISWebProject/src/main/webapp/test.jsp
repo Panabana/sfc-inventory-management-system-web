@@ -13,9 +13,14 @@
 <%@ include file="sidebar.jsp" %>
 	<main>
 		<div class="main-content">
-		<h1>Test TEXT</h1>
+			<h1>IMS Unit Test</h1>
+			<div>
+				<form>
+					<p>Hm</p>
+				</form>
+			</div>
 		</div>
 	</main>
-<%@ include file="footer.jsp" %>
+	<%@ include file="footer.jsp" %>
 </body>
 </html>

@@ -15,4 +15,5 @@ public interface PurchaseEAOLocal {
 	public void updatePurchase(Purchase purchase);
 	public void deletePurchase(int purchaseId);
 	public List<Purchase> findAllPurchases();
+	public int countAllPurchases();
 }

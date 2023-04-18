@@ -46,6 +46,7 @@
 					</tbody>
 				</table>
 			</div>
+			<form action="SupplierServlet" method="post">
 			<div class="form-container">
 				<fieldset>
 					<legend>Supplier Information:</legend>
@@ -63,8 +64,8 @@
 								id="supplier-phone" name="supplier-phone">
 						</div>
 						<div class="button-container">
-							<button type="submit" class="add-btn">Add</button>
-							<button type="submit" class="update-btn">Update</button>
+							<button type="submit" class="add-btn" name="action" value="add-supplier">Add</button>
+							<button type="submit" class="update-btn" name="action" value="update-supplier">Update</button>
 							<button type="submit" class="remove-btn">Remove</button>
 						</div>
 						<div class="error-label">
@@ -74,6 +75,7 @@
 					</form>
 				</fieldset>
 			</div>
+			</form>
 		</div>
 	</main>
 	<%@ include file="footer.jsp"%>
