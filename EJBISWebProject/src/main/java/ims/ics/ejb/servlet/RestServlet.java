@@ -1,5 +1,6 @@
 package ims.ics.ejb.servlet;
 
+import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
@@ -8,7 +9,13 @@ import javax.ejb.EJB;
 import javax.json.Json;
 import javax.json.JsonArray;
 import javax.json.JsonArrayBuilder;
+import javax.json.JsonBuilderFactory;
+import javax.json.JsonObject;
 import javax.json.JsonObjectBuilder;
+import javax.json.JsonReader;
+import javax.json.JsonString;
+import javax.json.JsonValue;
+import javax.json.JsonValue.ValueType;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -21,7 +28,7 @@ import ims.ics.facade.FacadeLocal;
 /**
  * Servlet implementation class RestServlet
  */
-@WebServlet("/RestServlet")
+@WebServlet("/RestServlet/*")
 public class RestServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
@@ -71,7 +78,20 @@ public class RestServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		doGet(request, response);
+		//doGet(request, response);
+		
+		String pathInfo = request.getPathInfo();
+		if(pathInfo == null || pathInfo.equals("/")){
+		BufferedReader reader = request.getReader();//Läs data Json
+		Employee emp = parseJsonEmployee(reader);
+		try {
+		emp = facade.createEmployee(emp);
+		}catch(Exception e) {
+		System.out.println("duplicate key");
+		}
+		sendAsJson(response, emp);
+		}
+		
 	}
 
 	/**
@@ -79,33 +99,75 @@ public class RestServlet extends HttpServlet {
 	 */
 	protected void doPut(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		
+		String pathInfo = request.getPathInfo();
+		if(pathInfo == null || pathInfo.equals("/")){
+		response.sendError(HttpServletResponse.SC_BAD_REQUEST);
+		return;
+		}
+		String[] splits = pathInfo.split("/");
+		if(splits.length != 2) {
+		response.sendError(HttpServletResponse.SC_BAD_REQUEST);
+		return;
+		}
+		String id = splits[1];
+		BufferedReader reader = request.getReader();
+		Employee emp = parseJsonEmployee(reader);
+		//Uppdatera i db
+		try {
+		//emp = facade.updateEmployee(emp);
+		}catch(Exception e) {
+		System.out.println("facade Update Error");
+		}
+		sendAsJson(response, emp);
 	}
-
 	/**
 	 * @see HttpServlet#doDelete(HttpServletRequest, HttpServletResponse)
 	 */
 	protected void doDelete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		String pathInfo = request.getPathInfo();
+		if(pathInfo == null || pathInfo.equals("/")){
+		response.sendError(HttpServletResponse.SC_BAD_REQUEST);
+		return;
+		}
+		String[] splits = pathInfo.split("/");
+		if(splits.length != 2) {
+		response.sendError(HttpServletResponse.SC_BAD_REQUEST);
+		return;
+		}
+		String id = splits[1];
+		Employee emp = facade.findEmployeeById(Integer.parseInt(id));
+		if (emp != null) {
+		facade.deleteEmployee(Integer.parseInt(id));
+		}
+		sendAsJson(response, emp);
+		
 	}
-	private void sendAsJson(HttpServletResponse response, Employee emp)
-			throws IOException {
-			PrintWriter out = response.getWriter();
-			response.setContentType("application/json");
-			if (emp != null) {
-			out.print("{\"Employee Name\":");
-			out.print("\"" + emp.getName() + "\"");
-			out.print(",\"Employee id\":");
-			out.print("\"" +emp.getEmployeeId()+"\"");
-			out.print(",\"address\":");
-			out.print("\"" +emp.getAddress()+"\"}");
-			out.print(",\"Phone\":");
-			out.print("\"" +emp.getPhoneNumber()+"\"}");
-			} else {
-			out.print("{ }");
-			}
-			out.flush();
-			}
-	
+	private void sendAsJson(HttpServletResponse response, Employee emp) throws IOException {
+	    response.setContentType("application/json");
+	    PrintWriter out = response.getWriter();
+	    JsonBuilderFactory factory = Json.createBuilderFactory(null);
+	    JsonObjectBuilder jsonBuilder = factory.createObjectBuilder();
+
+	    if (emp != null) {
+	        jsonBuilder.add("EmployeeName", emp.getName());
+	        jsonBuilder.add("EmployeeId", emp.getEmployeeId());
+	        jsonBuilder.add("EmployeeAddress", emp.getAddress());
+	        jsonBuilder.add("Phone", emp.getPhoneNumber());
+	    } else {
+	        // If emp is null, add empty values to the JSON object
+	        jsonBuilder.add("EmployeeName", "");
+	        jsonBuilder.add("EmployeeId", "");
+	        jsonBuilder.add("EmployeeAddress", "");
+	        jsonBuilder.add("Phone", "");
+	    }
+
+	    JsonObject jsonObject = jsonBuilder.build();
+	    out.print(jsonObject.toString());
+	    out.flush();
+	}
+
 	
 	private void sendAsJson(HttpServletResponse response, List<Employee> employees)
 			throws IOException {
@@ -122,11 +184,45 @@ public class RestServlet extends HttpServlet {
 			array.add(o);
 			}
 			JsonArray jsonArray = array.build();
-			System.out.println("Employee Rest: "+jsonArray);
+			//System.out.println("Employee Rest: "+jsonArray);
 			out.print(jsonArray);
 			} else {
 			out.print("[]");
 			}
 			out.flush();
 			} 
+	
+	private Employee parseJsonEmployee(BufferedReader br) {
+		//javax.json-1.0.4.jar
+		JsonReader jsonReader = null;
+		JsonObject jsonRoot = null;
+		jsonReader = Json.createReader(br);
+		jsonRoot = jsonReader.readObject();
+		
+		//System.out.println("JsonRoot: "+jsonRoot);
+		Employee emp = new Employee();
+		
+		JsonValue empIdJson = jsonRoot.get("EmployeeId");
+	    if (empIdJson != null && empIdJson.getValueType() == ValueType.STRING) {
+	        emp.setEmployeeId(Integer.parseInt(((JsonString) empIdJson).getString()));
+	    }
+
+	    JsonValue empNameJson = jsonRoot.get("EmployeeName");
+	    if (empNameJson != null && empNameJson.getValueType() == ValueType.STRING) {
+	        emp.setName(((JsonString) empNameJson).getString());
+	    }
+
+	    JsonValue empAddressJson = jsonRoot.get("EmployeeAddress");
+	    if (empAddressJson != null && empAddressJson.getValueType() == ValueType.STRING) {
+	        emp.setAddress(((JsonString) empAddressJson).getString());
+	    }
+
+	    JsonValue empPhoneJson = jsonRoot.get("Phone");
+	    if (empPhoneJson != null && empPhoneJson.getValueType() == ValueType.STRING) {
+	        emp.setPhoneNumber(Integer.parseInt(((JsonString) empPhoneJson).getString()));
+	    }
+	    
+		return emp;
+		}
+	
 }
