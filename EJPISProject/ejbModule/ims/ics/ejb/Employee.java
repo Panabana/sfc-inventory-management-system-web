@@ -35,42 +35,49 @@ public class Employee implements Serializable {
 	}
 
 	@Id
-	@Column(name="EmployeeID")
+	@Column(name = "EmployeeID")
 	public int getEmployeeId() {
 		return employeeId;
 	}
+
 	public void setEmployeeId(int employeeId) {
 		this.employeeId = employeeId;
 	}
-	@Column(name="EmployeeName")
+
+	@Column(name = "EmployeeName")
 	public String getName() {
 		return name;
 	}
+
 	public void setName(String name) {
 		this.name = name;
 	}
-	@Column(name="EmployeeAddress")
+
+	@Column(name = "EmployeeAddress")
 	public String getAddress() {
 		return address;
 	}
+
 	public void setAddress(String address) {
 		this.address = address;
 	}
-	
-	@Column(name="PhoneNumber")
+
+	@Column(name = "PhoneNumber")
 	public int getPhoneNumber() {
 		return phoneNumber;
 	}
+
 	public void setPhoneNumber(int phoneNumber) {
 		this.phoneNumber = phoneNumber;
 	}
-		@OneToMany(mappedBy = "employee", fetch=FetchType.EAGER)
-		public Set<Purchase> getPurchases() {
-			return purchases;
-		}
-		public void setPurchases(Set<Purchase> purchases) {
-			this.purchases = purchases;
-		}
 
-	
+	@OneToMany(mappedBy = "employee", fetch = FetchType.EAGER)
+	public Set<Purchase> getPurchases() {
+		return purchases;
+	}
+
+	public void setPurchases(Set<Purchase> purchases) {
+		this.purchases = purchases;
+	}
+
 }

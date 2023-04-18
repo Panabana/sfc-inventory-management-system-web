@@ -15,8 +15,19 @@
 		<div class="main-content">
 			<h1>IMS Unit Test</h1>
 			<div>
-				<form>
-					<p>Hm</p>
+			<p>Please choose the unit tests you would like to run.</p>
+				<form action=//NEEDS DEFINED ACTION>
+					<input type="checkbox" id="productEntityTest" name="productEntityTest">
+					<label for="productEntityTest">Product entity test</label><br>
+					<input type="checkbox" id="supplierEntityTest" name="supplierEntityTest">
+					<label for="supplierEntityTest">Supplier entity test</label><br>
+					<input type="checkbox" id="purchaseEntityTest" name="purchaseEntityTest">
+					<label for="purchaseEntityTest">Purchase entity test</label><br>
+					<input type="checkbox" id="customerEntityTest" name="customerEntityTest">
+					<label for="customerEntityTest">Customer entity test</label><br>
+					<input type="checkbox" id="employeeEntityTest" name="employeeEntityTest">
+					<label for="employeeEntityTest">Employee entity test</label><br>
+					<input type="submit" value="Run">
 				</form>
 			</div>
 		</div>
