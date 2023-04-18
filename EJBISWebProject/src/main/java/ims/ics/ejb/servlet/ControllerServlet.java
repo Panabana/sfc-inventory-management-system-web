@@ -59,9 +59,7 @@ public class ControllerServlet extends HttpServlet {
 			page = "test.jsp";
 			break;
 		case "employee":
-			page = "employee.jsp";
-			List<Employee> employees = facade.findAllEmployees();
-			request.setAttribute("employees", employees);
+			response.sendRedirect("EmployeeServlet");
 			break;
 		case "product":
 			page = "product.jsp";
@@ -112,55 +110,8 @@ public class ControllerServlet extends HttpServlet {
 			throws ServletException, IOException {
 		String action = request.getParameter("action");
 
-		// ADD EMPLOYEE
-		if ("add-employee".equals(action)) {
-
-			String id = request.getParameter("employee-id");
-			String name = request.getParameter("employee-name");
-			String address = request.getParameter("employee-address");
-			String phoneNumber = request.getParameter("employee-phone");
-			int employeeId = 0;
-			int employeePhoneNbr = 0;
-
-			if (id != null) {
-				employeeId = Integer.parseInt(id);
-			}
-
-			if (phoneNumber != null) {
-				employeePhoneNbr = Integer.parseInt(phoneNumber);
-			}
-
-			Employee employee = new Employee();
-			employee.setEmployeeId(employeeId);
-			employee.setName(name);
-			employee.setAddress(address);
-			employee.setPhoneNumber(employeePhoneNbr);
-			facade.createEmployee(employee);
-			response.sendRedirect("ControllerServlet?action=employee");
-
-			// UPDATE EMPLOYEE
-		} else if ("update-employee".equals(action)) {
-
-			String id = request.getParameter("employee-id");
-			int empId = Integer.parseInt(id);
-
-			Employee employee = facade.findEmployeeById(empId);
-			if (employee != null) {
-				if (request.getParameter("employee-name") != null) {
-					employee.setName(request.getParameter("employee-name"));
-				}
-				if (request.getParameter("employee-address") != null) {
-					employee.setAddress(request.getParameter("employee-address"));
-				}
-				if (request.getParameter("employee-phone") != null) {
-					employee.setPhoneNumber(Integer.parseInt(request.getParameter("employee-phone")));
-				}
-
-				facade.updateEmployee(employee);
-				response.sendRedirect("ControllerServlet?action=employee");
-			}
 			// ADD CUSTOMER
-		} else if ("add-customer".equals(action)) {
+		 if ("add-customer".equals(action)) {
 			String id = request.getParameter("customer-id");
 			String name = request.getParameter("customer-name");
 			String address = request.getParameter("customer-address");

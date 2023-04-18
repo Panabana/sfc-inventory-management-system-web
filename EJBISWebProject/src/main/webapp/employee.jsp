@@ -47,7 +47,7 @@
 					</tbody>
 				</table>
 			</div>
-			<form action="ControllerServlet" method="post">
+			<form action="EmployeeServlet" method="post">
 					<div class="form-container">
 				<fieldset>
 					<legend>Employee Information:</legend>
