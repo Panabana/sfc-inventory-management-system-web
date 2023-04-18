@@ -20,7 +20,8 @@
   <input type="submit" value="Find Employee" id="FindBtn">
 </form> 
 <button type="submit" class="findAllBtn" id="findAllBtn">Find All</button>
-<table>
+<button type="submit" class="deleteEmployee" id="delEmpBtn">Delete Employee</button>
+<table id="employeeTable">
 <caption>Employees</caption>
   <thead>
   <tr>

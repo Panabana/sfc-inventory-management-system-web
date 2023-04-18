@@ -88,6 +88,23 @@ public class RestServlet extends HttpServlet {
 	 */
 	protected void doDelete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		String pathInfo = request.getPathInfo();
+		if(pathInfo == null || pathInfo.equals("/")){
+		response.sendError(HttpServletResponse.SC_BAD_REQUEST);
+		return;
+		}
+		String[] splits = pathInfo.split("/");
+		if(splits.length != 2) {
+		response.sendError(HttpServletResponse.SC_BAD_REQUEST);
+		return;
+		}
+		String id = splits[1];
+		Employee emp = facade.findEmployeeById(Integer.parseInt(id));
+		if (emp != null) {
+		facade.deleteEmployee(Integer.parseInt(id));
+		}
+		sendAsJson(response, emp);
+		
 	}
 	private void sendAsJson(HttpServletResponse response, Employee emp) throws IOException {
 	    response.setContentType("application/json");
@@ -129,7 +146,7 @@ public class RestServlet extends HttpServlet {
 			array.add(o);
 			}
 			JsonArray jsonArray = array.build();
-			System.out.println("Employee Rest: "+jsonArray);
+			//System.out.println("Employee Rest: "+jsonArray);
 			out.print(jsonArray);
 			} else {
 			out.print("[]");
