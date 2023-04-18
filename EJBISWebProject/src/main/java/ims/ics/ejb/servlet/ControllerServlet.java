@@ -73,9 +73,7 @@ public class ControllerServlet extends HttpServlet {
 			request.setAttribute("purchases", purchases);
 			break;
 		case "supplier":
-			page = "supplier.jsp";
-			List<Supplier> suppliers = facade.findAllSuppliers();
-			request.setAttribute("suppliers", suppliers);
+			response.sendRedirect("SupplierServlet");
 			break;
 		case "home":
 			page = "home.jsp";
