@@ -9,45 +9,7 @@
 </head>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js">
 </script>
-<script>
-$(document).ready(function() {
-    $("#FindBtn").click(function() {
-    	event.preventDefault();
-        var strValue = $("#empId").val();
-        if (strValue != "") {
-            $.ajax({
-                method: "GET",
-                url: "http://localhost:8080/EJBISWebProject/RestServlet/" + strValue,
-                error: ajaxRestReturn_Error,
-                success: ajaxRestReturn_Success
-            })
-
-            function ajaxRestReturn_Success(result, status, xhr) {
-                parseJsonFileEmployee(result);
-            }
-
-            function ajaxRestReturn_Error(result, status, xhr) {
-                alert("Error in rest Service");
-                console.log("Ajax-find Employee: " + status);
-            }
-
-            function parseJsonFileEmployee(result) {
-                $("#EmployeeName").text(result.EmployeeName);
-                $("#EmployeeId").text(result.EmployeeId);
-                $("#EmployeeAddress").text(result.EmployeeAddress);
-                $("#EmployeePhone").text(result.Phone);
-
-            }
-            function clearFields() {
-                $("#EmployeeName").text("");
-                $("#EmployeeId").text("");
-                $("#EmployeeAddress").text("");
-                $("#EmployeePhone").text("");
-            }
-        }
-        //alert("strValue not set");
-    });
-});
+<script src=js/scripts.js> 
 </script>
 <body>
 <div class="main">
@@ -57,7 +19,7 @@ $(document).ready(function() {
   <input type="number" id="empId" name="empId"><br><br>
   <input type="submit" value="Find Employee" id="FindBtn">
 </form> 
-
+<button type="submit" class="findAllBtn" id="findAllBtn">Find All</button>
 <table>
 <caption>Employees</caption>
   <thead>
