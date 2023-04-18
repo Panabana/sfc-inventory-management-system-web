@@ -1,32 +1,116 @@
 @charset "ISO-8859-1";
 
-.main{
-  font-family: "Courier new","Courier", monospace;
+@import
+	url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap')
+	;
+
+/*
+ORGANIZATION METHOD FOR style.css
+
+This comment area is to list the rules we agree on to keep the style.css document
+organized to our preferences. Please feel free to add points to the list.
+
+- CSS with similar names should be placed together
+- Use comment for every new section of CSS with similar names e.g. /*Style Sidebar*/
+
+
+
+.main {
+	font-family: "Courier new", "Courier", monospace;
+}
+/*Style header & Navbar*/
+#header {
+	text-align: center;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-bottom: 20px;
+}
+
+#navbar {
+	background-color: black;
+	height: 60px;
+	margin-bottom: 30px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	box-shadow: 2px 0 10px rgba(0, 0, 0, 0.3);
+}
+
+#navbar ul {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	display: flex;
+}
+
+#navbar li {
+	margin: 0 10px;
+}
+
+#navbar a {
+	display: block;
+	padding: 25px 20px;
+	color: #fff;
+	text-decoration: none;
+	font-size: 20px;
+	font-weight: bold;
+	font-family: 'Roboto', sans-serif;
+}
+
+#navbar a.active {
+	color: #fff;
+	background-color: #F1BC31;
+	border-radius: 10px;
+}
+
+#navbar a:hover {
+	color: #fff;
+	background-color: #F1BC31;
+	border-radius: 10px;
+}
+/*Style Main*/
+.main-content {
+	flex: 1;
+	margin-top: auto;
+	margin-bottom: 40px;
+	margin-left: 40px;
+	margin-right: 40px;
+}
+
+
+/*Style Section*/
+.section {
+	flex: 1;
+	margin-top: auto;
+	margin-bottom: 40px;
+	margin-left: 40px;
+	margin-right: 40px;
 }
 
 table {
-  border-collapse: collapse;
-  width: 100%;
+	border-collapse: collapse;
+	width: 100%;
 }
 
 caption {
-  text-align: left;
-  font-size: 1.5em;
-  font-weight: bold;
-  margin-bottom: 1em;
+	text-align: left;
+	font-size: 1.5em;
+	font-weight: bold;
+	margin-bottom: 1em;
 }
 
 thead {
-  background-color: #ddd;
+	background-color: #ddd;
 }
 
-th{
-  border: 1px solid #ddd;
-  padding: 8px;
-  text-align: left;
+th {
+	border: 1px solid #ddd;
+	padding: 8px;
+	text-align: left;
 }
 
-td{
-  border: 1px solid #ddd;
-  padding: 8px;
+td {
+	border: 1px solid #ddd;
+	padding: 8px;
 }

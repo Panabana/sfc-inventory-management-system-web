@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,97 +7,108 @@
 <link rel="stylesheet" type="text/css" href="css/style.css">
 <title>IMS - REST</title>
 </head>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js">
+	
 </script>
-<script src=js/scripts.js> 
+<script src=js/scripts.js>
+	
 </script>
-<script src=js/customerScripts.js> 
+<script src=js/customerScripts.js>
+	
 </script>
 <body>
-<div class="main">
- <form action="#">
-  <label for="empId">Employee Id:</label>
-  <input type="number" id="empId" name="empId"><br><br>
-  <input type="submit" value="Find Employee" id="FindBtn">
-</form> 
-<button type="submit" class="findAllBtn" id="findAllBtn">Find All</button>
-<button type="submit" class="deleteEmployee" id="delEmpBtn">Delete Employee</button>
-<table id="employeeTable">
-<caption>Employees</caption>
-  <thead>
-  <tr>
-    <th>Employee name</th>
-    <th>Employee Id</th>
-    <th>Address</th>
-    <th>Phone</th>
-  </tr>
-  </thead>
-  <tbody>
-  <tr>
-     <td><span id="EmployeeName"></span></td>
-     <td><span id="EmployeeId"></span></td>
-     <td><span id="EmployeeAddress"></span></td>
-     <td><span id="EmployeePhone"></span></td>
-  </tr>
-  </tbody>
-</table>
-<form action="#">
-    <label for="empIdAdd">Employee Id:</label>
-    <input type="number" id="empIdAdd" name="empIdAdd"><br><br>
-    
-  	<label for="empAddress">Employee Name:</label>
-  	<input type="text" id="empName" name="empNameAdd"><br><br>
-  	
-    <label for="empAddress">Employee Address:</label>
-    <input type="text" id="empAddress" name="empAddressAdd"><br><br>
-    
-    <label for="empPhone">Employee Phone:</label>
-    <input type="number" id="empPhone" name="empPhoneAdd"><br><br>
-    
-    <input type="submit" value="Add Employee" id="addEmpBtn">
-</form> 
-<table id="customerTable">
-<caption>Customers</caption>
-  <thead>
-  <tr>
-    <th>Customer name</th>
-    <th>Customer Id</th>
-    <th>Address</th>
-    <th>Phone</th>
-  </tr>
-  </thead>
-  <tbody>
-  <tr>
-     <td><span id="CustomerName"></span></td>
-     <td><span id="CustomerId"></span></td>
-     <td><span id="CustomerAddress"></span></td>
-     <td><span id="CustomerPhone"></span></td>
-  </tr>
-  </tbody>
-</table>
- <form action="#">
-  <label for="customerId">Customer Id:</label>
-  <input type="number" id="customerId" name="customerId"><br><br>
-  <input type="submit" value="Find Customer" id="FindCustomerBtn">
-</form> 
-<button type="submit" class="findAllCustomersBtn" id="findAllCustomersBtn">Find All</button>
-<button type="submit" class="deleteCustomer" id="delCustBtn">Delete Customer</button>
-<form action="#" method="POST">
-    <label for="customerIdAdd">Customer ID:</label>
-    <input type="number" id="customerIdAdd" name="customerId"><br><br>
-    
-    <label for="customerName">Customer Name:</label>
-    <input type="text" id="customerName" name="customerName"><br><br>
-    
-    <label for="customerAddress">Customer Address:</label>
-    <input type="text" id="customerAddress" name="customerAddress"><br><br>
-    
-    <label for="customerPhone">Customer Phone:</label>
-    <input type="number" id="customerPhone" name="customerPhone"><br><br>
-    
-    <input type="submit" value="Add Customer" id="addCustomerBtn">
-</form>
+	<%@ include file="header.jsp"%>
 
-</div>
+	<div class="main-content">
+		<div class="section">
+		
+		
+		</div>
+	</div>
+
+	<div class="main">
+		<form action="#">
+			<label for="empId">Employee Id:</label> <input type="number"
+				id="empId" name="empId"><br>
+			<br> <input type="submit" value="Find Employee" id="FindBtn">
+		</form>
+		<button type="submit" class="findAllBtn" id="findAllBtn">Find
+			All</button>
+		<button type="submit" class="deleteEmployee" id="delEmpBtn">Delete
+			Employee</button>
+		<table id="employeeTable">
+			<caption>Employees</caption>
+			<thead>
+				<tr>
+					<th>Employee name</th>
+					<th>Employee Id</th>
+					<th>Address</th>
+					<th>Phone</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td><span id="EmployeeName"></span></td>
+					<td><span id="EmployeeId"></span></td>
+					<td><span id="EmployeeAddress"></span></td>
+					<td><span id="EmployeePhone"></span></td>
+				</tr>
+			</tbody>
+		</table>
+		<form action="#">
+			<label for="empIdAdd">Employee Id:</label> <input type="number"
+				id="empIdAdd" name="empIdAdd"><br>
+			<br> <label for="empAddress">Employee Name:</label> <input
+				type="text" id="empName" name="empNameAdd"><br>
+			<br> <label for="empAddress">Employee Address:</label> <input
+				type="text" id="empAddress" name="empAddressAdd"><br>
+			<br> <label for="empPhone">Employee Phone:</label> <input
+				type="number" id="empPhone" name="empPhoneAdd"><br>
+			<br> <input type="submit" value="Add Employee" id="addEmpBtn">
+		</form>
+		<table id="customerTable">
+			<caption>Customers</caption>
+			<thead>
+				<tr>
+					<th>Customer name</th>
+					<th>Customer Id</th>
+					<th>Address</th>
+					<th>Phone</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td><span id="CustomerName"></span></td>
+					<td><span id="CustomerId"></span></td>
+					<td><span id="CustomerAddress"></span></td>
+					<td><span id="CustomerPhone"></span></td>
+				</tr>
+			</tbody>
+		</table>
+		<form action="#">
+			<label for="customerId">Customer Id:</label> <input type="number"
+				id="customerId" name="customerId"><br>
+			<br> <input type="submit" value="Find Customer"
+				id="FindCustomerBtn">
+		</form>
+		<button type="submit" class="findAllCustomersBtn"
+			id="findAllCustomersBtn">Find All</button>
+		<button type="submit" class="deleteCustomer" id="delCustBtn">Delete
+			Customer</button>
+		<form action="#" method="POST">
+			<label for="customerIdAdd">Customer ID:</label> <input type="number"
+				id="customerIdAdd" name="customerId"><br>
+			<br> <label for="customerName">Customer Name:</label> <input
+				type="text" id="customerName" name="customerName"><br>
+			<br> <label for="customerAddress">Customer Address:</label> <input
+				type="text" id="customerAddress" name="customerAddress"><br>
+			<br> <label for="customerPhone">Customer Phone:</label> <input
+				type="number" id="customerPhone" name="customerPhone"><br>
+			<br> <input type="submit" value="Add Customer"
+				id="addCustomerBtn">
+		</form>
+
+	</div>
 </body>
 </html>
