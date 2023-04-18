@@ -62,9 +62,7 @@ public class ControllerServlet extends HttpServlet {
 			response.sendRedirect("EmployeeServlet");
 			break;
 		case "product":
-			page = "product.jsp";
-			List<Product> products = facade.findAllProducts();
-			request.setAttribute("products", products);
+			response.sendRedirect("ProductServlet");
 			break;
 		case "customer":
 			response.sendRedirect("CustomerServlet");
@@ -104,46 +102,11 @@ public class ControllerServlet extends HttpServlet {
 			throws ServletException, IOException {
 		String action = request.getParameter("action");
 
+
 		
-		// ADD PRODUCT
-		if ("add-product".equals(action)) {
-			String id = request.getParameter("product-id");
-			String name = request.getParameter("product-name");
-			String price = request.getParameter("product-price");
-			int productId = 0;
-			float productPrice = 0;
+	
 
-			if (id != null) {
-				productId = Integer.parseInt(id);
-			}
-			if (price != null) {
-				productPrice = Float.parseFloat(price);
-			}
-			Product product = new Product();
-			product.setProductId(productId);
-			product.setProductName(name);
-			product.setPrice(productPrice);
-			facade.createProduct(product);
-			response.sendRedirect("ControllerServlet?action=product");
-
-		}
-		// UPDATE PRODUCT
-		else if ("update-product".equals(action)) {
-			String id = request.getParameter("product-id");
-			int productId = Integer.parseInt(id);
-
-			Product product = facade.findProductByID(productId);
-			if (product != null) {
-				if (request.getParameter("product-name") != null) {
-					product.setProductName(request.getParameter("product-name"));
-				}
-				if (request.getParameter("product-price") != null) {
-					product.setPrice(Float.parseFloat(request.getParameter("product-price")));
-				}
-			}
-			facade.updateProduct(product);
-			response.sendRedirect("ControllerServlet?action=product");
-		} else if ("add-supplier".equals(action)) {
+ if ("add-supplier".equals(action)) {
 			String id = request.getParameter("supplier-id");
 			String name = request.getParameter("supplier-name");
 			String address = request.getParameter("supplier-address");
@@ -164,6 +127,7 @@ public class ControllerServlet extends HttpServlet {
 			supplier.setPhoneNumber(supplierPhone);
 			facade.createSupplier(supplier);
 			response.sendRedirect("ControllerServlet?action=supplier");
+      
 		} else if ("update-supplier".equals(action)) {
 			String id = request.getParameter("supplier-id");
 			int supplierId = Integer.parseInt(id);
