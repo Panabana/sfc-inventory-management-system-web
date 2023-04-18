@@ -21,7 +21,7 @@ import ims.ics.facade.FacadeLocal;
 /**
  * Servlet implementation class RestServlet
  */
-@WebServlet("/RestServlet")
+@WebServlet("/RestServlet/*")
 public class RestServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
@@ -105,7 +105,6 @@ public class RestServlet extends HttpServlet {
 			}
 			out.flush();
 			}
-	
 	
 	private void sendAsJson(HttpServletResponse response, List<Employee> employees)
 			throws IOException {

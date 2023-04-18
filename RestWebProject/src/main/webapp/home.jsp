@@ -7,10 +7,13 @@
 <link rel="stylesheet" type="text/css" href="css/style.css">
 <title>IMS - REST</title>
 </head>
-
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js">
 </script>
 <script>
+$(document).ready(function() {
+$("#FindBtn").click( function() {
+	var strValue = $("#empId").val();
+	if (strValue != "") {
  $.ajax({
 	method: "GET",
 	url: "http://localhost:8080/EJBISWebProject/RestServlet",
@@ -19,9 +22,7 @@
 	})
 	
 	function ajaxRestReturn_Success(result, status, xhr) {
-	
 	parseJsonFileEmployee(result);
-	 
 	}
 	
 	function ajaxRestReturn_Error(result, status, xhr) {
@@ -29,24 +30,32 @@
 	console.log("Ajax-find Employee: "+status);
 	}	
 	
-	function ParseJsonFileEmployee(result) {
-		$("#EmployeeName").val(result.EmployeeName);
-		$("#EmployeeId").val(result.EmployeeId);
-		$("#EmployeeAddress").val(result.EmployeeAddress);
-		$("#EmployeePhone").val(result.Phone);
+	function parseJsonFileEmployee(result) {
+		$("#EmployeeName").text(result.EmployeeName);
+		$("#EmployeeId").text(result.EmployeeId);
+		$("#EmployeeAddress").text(result.EmployeeAddress);
+		$("#EmployeePhone").text(result.Phone);
 
 		}
 		function clearFields() {
-			$("#EmployeeName").val("");
-			$("#EmployeeId").val("");
-			$("#EmployeeAddress").val("");
-			$("#EmployeePhone").val("");
+			$("#EmployeeName").text("");
+			$("#EmployeeId").text("");
+			$("#EmployeeAddress").text("");
+			$("#EmployeePhone").text("");
 		}
-	
+	}
+	});
+	};
 </script>
-
 <body>
 <div class="main">
+
+ <form action="#">
+  <label for="empId">Employee Id:</label>
+  <input type="number" id="empId" name="empId"><br><br>
+  <input type="submit" value="findEmployee" class="FindBtn" id="FindBtn">
+</form> 
+
 <table>
 <caption>Employees</caption>
   <thead>
@@ -57,12 +66,14 @@
     <th>Phone</th>
   </tr>
   </thead>
+  <tbody>
   <tr>
-    <td><span id="EmployeeName"></span></td>
-    <td><span id="EmployeeId"></span></td>
-    <td><span id="EmployeeAddress"></span></td>
-    <td><span id="EmployeePhone"></span></td>
+     <td><span id="EmployeeName"></span></td>
+     <td><span id="EmployeeId"></span></td>
+     <td><span id="EmployeeAddress"></span></td>
+     <td><span id="EmployeePhone"></span></td>
   </tr>
+  </tbody>
 </table>
 </div>
 </body>
