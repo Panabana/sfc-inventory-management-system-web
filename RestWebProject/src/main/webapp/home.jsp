@@ -11,41 +11,43 @@
 </script>
 <script>
 $(document).ready(function() {
-$("#FindBtn").click( function() {
-	var strValue = $("#empId").val();
-	if (strValue != "") {
- $.ajax({
-	method: "GET",
-	url: "http://localhost:8080/EJBISWebProject/RestServlet",
-	error: ajaxRestReturn_Error,
-	success: ajaxRestReturn_Success
-	})
-	
-	function ajaxRestReturn_Success(result, status, xhr) {
-	parseJsonFileEmployee(result);
-	}
-	
-	function ajaxRestReturn_Error(result, status, xhr) {
-	alert("Error in rest Service");
-	console.log("Ajax-find Employee: "+status);
-	}	
-	
-	function parseJsonFileEmployee(result) {
-		$("#EmployeeName").text(result.EmployeeName);
-		$("#EmployeeId").text(result.EmployeeId);
-		$("#EmployeeAddress").text(result.EmployeeAddress);
-		$("#EmployeePhone").text(result.Phone);
+    $("#FindBtn").click(function() {
+    	event.preventDefault();
+        var strValue = $("#empId").val();
+        if (strValue != "") {
+            $.ajax({
+                method: "GET",
+                url: "http://localhost:8080/EJBISWebProject/RestServlet/" + strValue,
+                error: ajaxRestReturn_Error,
+                success: ajaxRestReturn_Success
+            })
 
-		}
-		function clearFields() {
-			$("#EmployeeName").text("");
-			$("#EmployeeId").text("");
-			$("#EmployeeAddress").text("");
-			$("#EmployeePhone").text("");
-		}
-	}
-	});
-	};
+            function ajaxRestReturn_Success(result, status, xhr) {
+                parseJsonFileEmployee(result);
+            }
+
+            function ajaxRestReturn_Error(result, status, xhr) {
+                alert("Error in rest Service");
+                console.log("Ajax-find Employee: " + status);
+            }
+
+            function parseJsonFileEmployee(result) {
+                $("#EmployeeName").text(result.EmployeeName);
+                $("#EmployeeId").text(result.EmployeeId);
+                $("#EmployeeAddress").text(result.EmployeeAddress);
+                $("#EmployeePhone").text(result.Phone);
+
+            }
+            function clearFields() {
+                $("#EmployeeName").text("");
+                $("#EmployeeId").text("");
+                $("#EmployeeAddress").text("");
+                $("#EmployeePhone").text("");
+            }
+        }
+        //alert("strValue not set");
+    });
+});
 </script>
 <body>
 <div class="main">
@@ -53,7 +55,7 @@ $("#FindBtn").click( function() {
  <form action="#">
   <label for="empId">Employee Id:</label>
   <input type="number" id="empId" name="empId"><br><br>
-  <input type="submit" value="findEmployee" class="FindBtn" id="FindBtn">
+  <input type="submit" value="Find Employee" id="FindBtn">
 </form> 
 
 <table>

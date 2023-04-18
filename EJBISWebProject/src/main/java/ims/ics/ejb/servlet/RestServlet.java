@@ -8,6 +8,8 @@ import javax.ejb.EJB;
 import javax.json.Json;
 import javax.json.JsonArray;
 import javax.json.JsonArrayBuilder;
+import javax.json.JsonBuilderFactory;
+import javax.json.JsonObject;
 import javax.json.JsonObjectBuilder;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -87,24 +89,30 @@ public class RestServlet extends HttpServlet {
 	protected void doDelete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 	}
-	private void sendAsJson(HttpServletResponse response, Employee emp)
-			throws IOException {
-			PrintWriter out = response.getWriter();
-			response.setContentType("application/json");
-			if (emp != null) {
-			out.print("{\"Employee Name\":");
-			out.print("\"" + emp.getName() + "\"");
-			out.print(",\"Employee id\":");
-			out.print("\"" +emp.getEmployeeId()+"\"");
-			out.print(",\"address\":");
-			out.print("\"" +emp.getAddress()+"\"}");
-			out.print(",\"Phone\":");
-			out.print("\"" +emp.getPhoneNumber()+"\"}");
-			} else {
-			out.print("{ }");
-			}
-			out.flush();
-			}
+	private void sendAsJson(HttpServletResponse response, Employee emp) throws IOException {
+	    response.setContentType("application/json");
+	    PrintWriter out = response.getWriter();
+	    JsonBuilderFactory factory = Json.createBuilderFactory(null);
+	    JsonObjectBuilder jsonBuilder = factory.createObjectBuilder();
+
+	    if (emp != null) {
+	        jsonBuilder.add("EmployeeName", emp.getName());
+	        jsonBuilder.add("EmployeeId", emp.getEmployeeId());
+	        jsonBuilder.add("EmployeeAddress", emp.getAddress());
+	        jsonBuilder.add("Phone", emp.getPhoneNumber());
+	    } else {
+	        // If emp is null, add empty values to the JSON object
+	        jsonBuilder.add("EmployeeName", "");
+	        jsonBuilder.add("EmployeeId", "");
+	        jsonBuilder.add("EmployeeAddress", "");
+	        jsonBuilder.add("Phone", "");
+	    }
+
+	    JsonObject jsonObject = jsonBuilder.build();
+	    out.print(jsonObject.toString());
+	    out.flush();
+	}
+
 	
 	private void sendAsJson(HttpServletResponse response, List<Employee> employees)
 			throws IOException {
