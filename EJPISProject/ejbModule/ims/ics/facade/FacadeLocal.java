@@ -36,6 +36,7 @@ public interface FacadeLocal {
 	public void updatePurchase(Purchase purchase);
 	public void deletePurchase(int purchaseId);
 	public int countAllPPurchases();
+	public List<Purchase> findPurchasesWithProductInfo();
 
 	//Product
 	public List<Product> findAllProducts();

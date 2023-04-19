@@ -122,6 +122,10 @@ public class Facade implements FacadeLocal {
 	public void deletePurchase(int purchaseId) {
 		purchase.deletePurchase(purchaseId);
 	}
+	public List<Purchase> findPurchasesWithProductInfo() {
+		  return purchase.findPurchasesWithProductInfo();
+	}
+	
 
 	// PRODUCT METHODS
 	public List<Product> findAllProducts() {
