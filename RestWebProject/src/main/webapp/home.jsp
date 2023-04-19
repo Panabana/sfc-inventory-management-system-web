@@ -22,16 +22,53 @@
 
 	<div class="main-content">
 		<div class="section">
-		
-		
+			<fieldset>
+				<legend>Employees Data</legend>
+				<div class="left-side">
+					<div class="table-container">
+						<table id="employeeTable">
+							<thead>
+								<tr>
+									<th>Employee ID</th>
+									<th>Name</th>
+									<th>Address</th>
+									<th>Phone Number</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td><span id="EmployeeName"></span></td>
+									<td><span id="EmployeeId"></span></td>
+									<td><span id="EmployeeAddress"></span></td>
+									<td><span id="EmployeePhone"></span></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+				<div class="right-side">
+					<div class="search-form">
+						<form action="EmployeeServlet" method="get" id="search-form">
+							<div class="form-group">
+								<input type="text" id="find-employee-id" name="find-employee-id"
+									class="form-control" placeholder="Search...">
+								<button type="submit" class="btn" name="action" id="search-btn"
+									value="find-employee">Search</button>
+								<button type="submit" class="btn" name="action" id="search-btn"
+									value="find-employee">Find all</button>
+							</div>
+						</form>
+					</div>
+				</div>
+			</fieldset>
 		</div>
 	</div>
 
 	<div class="main">
 		<form action="#">
 			<label for="empId">Employee Id:</label> <input type="number"
-				id="empId" name="empId"><br>
-			<br> <input type="submit" value="Find Employee" id="FindBtn">
+				id="empId" name="empId"><br> <br> <input
+				type="submit" value="Find Employee" id="FindBtn">
 		</form>
 		<button type="submit" class="findAllBtn" id="findAllBtn">Find
 			All</button>
@@ -58,14 +95,14 @@
 		</table>
 		<form action="#">
 			<label for="empIdAdd">Employee Id:</label> <input type="number"
-				id="empIdAdd" name="empIdAdd"><br>
-			<br> <label for="empAddress">Employee Name:</label> <input
-				type="text" id="empName" name="empNameAdd"><br>
-			<br> <label for="empAddress">Employee Address:</label> <input
-				type="text" id="empAddress" name="empAddressAdd"><br>
-			<br> <label for="empPhone">Employee Phone:</label> <input
-				type="number" id="empPhone" name="empPhoneAdd"><br>
-			<br> <input type="submit" value="Add Employee" id="addEmpBtn">
+				id="empIdAdd" name="empIdAdd"><br> <br> <label
+				for="empAddress">Employee Name:</label> <input type="text"
+				id="empName" name="empNameAdd"><br> <br> <label
+				for="empAddress">Employee Address:</label> <input type="text"
+				id="empAddress" name="empAddressAdd"><br> <br> <label
+				for="empPhone">Employee Phone:</label> <input type="number"
+				id="empPhone" name="empPhoneAdd"><br> <br> <input
+				type="submit" value="Add Employee" id="addEmpBtn">
 		</form>
 		<table id="customerTable">
 			<caption>Customers</caption>
@@ -88,9 +125,8 @@
 		</table>
 		<form action="#">
 			<label for="customerId">Customer Id:</label> <input type="number"
-				id="customerId" name="customerId"><br>
-			<br> <input type="submit" value="Find Customer"
-				id="FindCustomerBtn">
+				id="customerId" name="customerId"><br> <br> <input
+				type="submit" value="Find Customer" id="FindCustomerBtn">
 		</form>
 		<button type="submit" class="findAllCustomersBtn"
 			id="findAllCustomersBtn">Find All</button>
@@ -98,12 +134,12 @@
 			Customer</button>
 		<form action="#" method="POST">
 			<label for="customerIdAdd">Customer ID:</label> <input type="number"
-				id="customerIdAdd" name="customerId"><br>
-			<br> <label for="customerName">Customer Name:</label> <input
-				type="text" id="customerName" name="customerName"><br>
-			<br> <label for="customerAddress">Customer Address:</label> <input
-				type="text" id="customerAddress" name="customerAddress"><br>
-			<br> <label for="customerPhone">Customer Phone:</label> <input
+				id="customerIdAdd" name="customerId"><br> <br> <label
+				for="customerName">Customer Name:</label> <input type="text"
+				id="customerName" name="customerName"><br> <br> <label
+				for="customerAddress">Customer Address:</label> <input type="text"
+				id="customerAddress" name="customerAddress"><br> <br>
+			<label for="customerPhone">Customer Phone:</label> <input
 				type="number" id="customerPhone" name="customerPhone"><br>
 			<br> <input type="submit" value="Add Customer"
 				id="addCustomerBtn">
