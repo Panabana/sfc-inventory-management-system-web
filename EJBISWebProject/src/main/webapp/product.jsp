@@ -17,10 +17,10 @@
 	<main>
 		<div class="main-content">
 			<div class="search-form">
-				<form action="#">
+				<form action="ProductServlet" method="get" id="search-form">
 					<div class="form-group">
-						<input type="text" class="form-control" placeholder="Search...">
-						<button type="submit" class="btn">Search</button>
+						<input type="text" id="find-product-id" name="find-product-id" class="form-control" placeholder="Search...">
+						<button type="submit" class="btn" name="action" id="search-button" value="find-product">Search</button>
 					</div>
 				</form>
 			</div>
@@ -74,6 +74,20 @@
 			</form>
 		</div>
 	</main>
+	<script>
+	$(document).ready(function(){
+		$('#search-btn').click(function(){
+			$('search-form').submit()
+			});
+		var productId = '${productId}';
+		var productName = '${productName}';
+		var productPrice = '${productPrice}';
+		
+		$('#product-id').val(productId);
+		$('#product-name').val(productName);
+		$('#product-price').val(productPrice);
+	});
+	</script>
 	<%@ include file="footer.jsp"%>
 </body>
 </html>

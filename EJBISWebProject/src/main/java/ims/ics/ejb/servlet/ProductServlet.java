@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import ims.ics.ejb.Employee;
 import ims.ics.ejb.Product;
 import ims.ics.facade.FacadeLocal;
 
@@ -32,13 +33,27 @@ public class ProductServlet extends HttpServlet {
 		// TODO Auto-generated constructor stub
 	}
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
+
+		String action = request.getParameter("action");
+	    if ("find-product".equals(action)) {
+	        String id = request.getParameter("find-product-id");
+	        int productId = 0;
+	        if (id != null) {
+	            productId = Integer.parseInt(id);
+	            Product product = facade.findProductByID(productId);
+	            if (product != null) {
+	            	productId = product.getProductId();
+	                String productName = product.getProductName();
+	                float productPrice = product.getPrice();
+	                request.setAttribute("productId", productId);
+	                request.setAttribute("productName",productName);
+	                request.setAttribute("productPrice",productPrice);
+	                
+	            }
+	        }
+	    }
 		List<Product> products = facade.findAllProducts();
 		request.setAttribute("products", products);
 
@@ -46,10 +61,6 @@ public class ProductServlet extends HttpServlet {
 		dispatcher.forward(request, response);
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String action = request.getParameter("action");
