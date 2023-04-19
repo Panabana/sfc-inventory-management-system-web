@@ -19,6 +19,16 @@ public class Product implements Serializable {
 	private String productName;
 	private float price;
 	
+	public Product(int productId, String productName, float price) {
+		super();
+		this.productId = productId;
+		this.productName = productName;
+		this.price = price;
+	}
+	
+	public Product() {
+	}
+	
 	@ManyToMany
 	@JoinTable(
 		name = "ProductSupplier",

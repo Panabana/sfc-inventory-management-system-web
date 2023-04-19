@@ -8,8 +8,15 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-class ProductTest {
+import ims.ics.ejb.Product;
 
+class ProductTest {
+	private int expectedId;
+	private String expectedName;
+	private float expectedPrice;
+
+	private Product product;
+	
 	@BeforeAll
 	static void setUpBeforeClass() throws Exception {
 	}
@@ -20,40 +27,55 @@ class ProductTest {
 
 	@BeforeEach
 	void setUp() throws Exception {
+		expectedId = 5;
+		expectedName = "Patrick";
+		expectedPrice = 53.75f;
+		
+		product = new Product(expectedId, expectedName, expectedPrice);
 	}
 
 	@AfterEach
 	void tearDown() throws Exception {
+		product = null;
 	}
 
 	@Test
 	final void testGetProductId() {
-		fail("Not yet implemented"); // TODO
+		assertNotNull(product.getProductId());
+		assertEquals(expectedId, product.getProductId());
 	}
 
 	@Test
 	final void testSetProductId() {
-		fail("Not yet implemented"); // TODO
+		int newExpectedId = 10;
+		product.setProductId(newExpectedId);
+		assertEquals(newExpectedId, product.getProductId());
 	}
 
 	@Test
 	final void testGetProductName() {
-		fail("Not yet implemented"); // TODO
+		assertNotNull(product.getProductName());
+		assertEquals(expectedName, product.getProductName());
 	}
 
 	@Test
 	final void testSetProductName() {
-		fail("Not yet implemented"); // TODO
+		String newExpectedName = "Lorem Ipsum";
+		product.setProductName(newExpectedName);
+		assertEquals(newExpectedName, product.getProductName());
 	}
 
 	@Test
 	final void testGetPrice() {
-		fail("Not yet implemented"); // TODO
+		assertNotNull(product.getPrice());
+		assertEquals(expectedPrice, product.getPrice());
 	}
 
 	@Test
 	final void testSetPrice() {
-		fail("Not yet implemented"); // TODO
+		float newExpectedPrice = 40.506f;
+		product.setPrice(newExpectedPrice);
+		assertEquals(newExpectedPrice, product.getPrice());
 	}
 
 }
