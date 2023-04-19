@@ -51,11 +51,31 @@
 						<form action="EmployeeServlet" method="get" id="search-form">
 							<div class="form-group">
 								<input type="text" id="find-employee-id" name="find-employee-id"
-									class="form-control" placeholder="Search...">
+									class="form-control" placeholder="Enter employee ID...">
 								<button type="submit" class="btn" name="action" id="search-btn"
 									value="find-employee">Search</button>
 								<button type="submit" class="btn" name="action" id="search-btn"
 									value="find-employee">Find all</button>
+							</div>
+						</form>
+					</div>
+					<div class="insert-form">
+						<form>
+							<div class="form-group">
+								<input type="text" class="form-control item" id="***"
+									placeholder="Employee ID">
+							</div>
+							<div class="form-group">
+								<input type="text" class="form-control item" id="***"
+									placeholder="Name">
+							</div>
+							<div class="form-group">
+								<input type="text" class="form-control item" id="***"
+									placeholder="Address">
+							</div>
+							<div class="form-group">
+								<input type="text" class="form-control item" id="***"
+									placeholder="Phone Number">
 							</div>
 						</form>
 					</div>

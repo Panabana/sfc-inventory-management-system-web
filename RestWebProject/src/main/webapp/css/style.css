@@ -87,7 +87,7 @@ organized to our preferences. Please feel free to add points to the list.
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: space-between;
-	border-color: #c3c3c3;
+	border-color: #000;
 	border-style: solid;
 	border-radius: 10px;
 }
@@ -100,8 +100,6 @@ organized to our preferences. Please feel free to add points to the list.
 }
 
 .left-side {
-	border-color: red;
-	border-style: solid;
 	width: 65%;
 	margin: 20px 20px 20px 5px;
 }
@@ -112,6 +110,9 @@ organized to our preferences. Please feel free to add points to the list.
 	width: 30%;
 	margin: 20px 5px 20px 0px;
 	flex: 1;
+	border-top-left-radius: 20px;
+	border-top-right-radius: 20px;
+	box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.075);
 }
 /*Style Table*/
 .table-container {
@@ -119,6 +120,7 @@ organized to our preferences. Please feel free to add points to the list.
 	overflow: auto;
 	white-space: nowrap;
 	border-radius: 10px;
+	box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.2);
 }
 
 table {
@@ -186,17 +188,35 @@ tr:nth-child(even) {
 	padding: 12px 12px 12px 12px;
 	margin: 5px;
 	font-size: 16px;
-	color: #fff;
-	background-color: #002b7a;
+	color: #fff; background-color : #002b7a;
 	border-radius: 10px;
 	border: none;
 	color: white;
 	font-family: 'Roboto', sans-serif;
 	line-height: 16px;
 	cursor: pointer;
+	background-color: #002b7a;
 }
 
 .btn:hover, .btn:focus {
 	color: #fff;
 	background-color: #106ebe;
+}
+
+/*Style Insert-data*/
+.insert-form {
+	padding: 20px 20px;
+}
+
+.insert-form form {
+	background-color: #fff;
+	margin: 0px;
+	padding: 10px 15px;
+	box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.075);
+}
+
+.insert-form .item {
+	border-radius: 20px;
+	margin-bottom: 25px;
+	padding: 10px 20px;
 }
