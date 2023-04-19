@@ -17,6 +17,16 @@ public class Purchase implements Serializable {
 	private int purchaseId;
 	private Employee employee;
 	private Customer customer;
+	
+	public Purchase(int purchaseId, Employee employee, Customer customer) {
+		super();
+		this.purchaseId = purchaseId;
+		this.employee = employee;
+		this.customer = customer;
+	}
+	
+	public Purchase() {
+	}
 
 	@Id
 	@Column(name="PurchaseID")
