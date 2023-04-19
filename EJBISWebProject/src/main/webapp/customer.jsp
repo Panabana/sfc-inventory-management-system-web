@@ -18,10 +18,10 @@
 	<main>
 		<div class="main-content">
 			<div class="search-form">
-				<form action="#">
+				<form action="CustomerServlet" method="get" id="search-form">
 					<div class="form-group">
-						<input type="text" class="form-control" placeholder="Search...">
-						<button type="submit" class="btn">Search</button>
+						<input type="text" id="find-customer-id" name="find-customer-id" class="form-control" placeholder="Search...">
+						<button type="submit" class="btn" name="action" id="search-btn" value="find-customer">Search</button>
 					</div>
 				</form>
 			</div>
@@ -77,6 +77,22 @@
 			</form>
 		</div>
 	</main>
+	<script>
+	$(document).ready(function(){
+		$('#search-btn').click(function(){
+			$('search-form').submit()
+			});
+		var customerId = '${customerId}';
+		var customerName = '${customerName}';
+		var customerAddress = '${customerAddress}';
+		var customerPhoneNbr = '${customerPhoneNumber}';
+		
+		$('#customer-id').val(customerId);
+			$('#customer-name').val(customerName);
+			$('#customer-address').val(customerAddress);
+			$('#customer-phone').val(customerPhoneNbr);
+	});
+	</script>
 	<%@ include file="footer.jsp"%>
 </body>
 </html>

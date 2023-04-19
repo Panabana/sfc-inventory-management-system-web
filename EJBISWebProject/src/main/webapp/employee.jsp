@@ -27,23 +27,6 @@
 					</div>
 				</form>
 			</div>
-			<script>
-				$(document).ready(function() {
-					$('#search-btn').click(function() {
-						$('#search-form').submit();
-					});
-					var employeeId = '${employeeId}';
-					var employeeName = '${employeeName}';
-					var employeeAddress = '${employeeAddress}';
-					var employeePhoneNumber = '${employeePhoneNumber}'
-
-					$('#employee-id').val(employeeId);
-					$('#employee-name').val(employeeName);
-					$('#employee-address').val(employeeAddress);
-					$('#employee-phone').val(employeePhoneNumber);
-				});
-			</script>
-
 			<div class="table-container">
 				<table>
 					<thead>
@@ -100,6 +83,22 @@
 			</form>
 		</div>
 	</main>
+	<script>
+		$(document).ready(function() {
+			$('#search-btn').click(function() {
+				$('#search-form').submit();
+			});
+			var employeeId = '${employeeId}';
+			var employeeName = '${employeeName}';
+			var employeeAddress = '${employeeAddress}';
+			var employeePhoneNumber = '${employeePhoneNumber}'
+
+			$('#employee-id').val(employeeId);
+			$('#employee-name').val(employeeName);
+			$('#employee-address').val(employeeAddress);
+			$('#employee-phone').val(employeePhoneNumber);
+		});
+	</script>
 	<%@ include file="footer.jsp"%>
 </body>
 </html>

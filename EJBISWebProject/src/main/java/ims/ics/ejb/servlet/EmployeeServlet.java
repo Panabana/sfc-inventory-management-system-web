@@ -23,21 +23,12 @@ public class EmployeeServlet extends HttpServlet {
 
 	@EJB
 	FacadeLocal facade;
-	
 
-
-	/**
-	 * @see HttpServlet#HttpServlet()
-	 */
 	public EmployeeServlet() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
