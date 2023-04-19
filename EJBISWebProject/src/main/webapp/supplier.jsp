@@ -17,10 +17,10 @@
 	<main>
 		<div class="main-content">
 			<div class="search-form">
-				<form action="#">
+				<form action="SupplierServlet", method="get" id="search-form">
 					<div class="form-group">
-						<input type="text" class="form-control" placeholder="Search...">
-						<button type="submit" class="btn">Search</button>
+						<input type="text" id="find-supplier-id" name="find-supplier-id" class="form-control" placeholder="Search...">
+						<button type="submit" class="btn" name="action" id="search-btn" value="find-supplier">Search</button>
 					</div>
 				</form>
 			</div>
@@ -78,6 +78,22 @@
 			</form>
 		</div>
 	</main>
+	<script>
+	$(document).ready(function(){
+		$('#search-btn').click(function(){
+			$('search-form').submit()
+			});
+		var supplierId = '${supplierId}';
+		var supplierName = '${supplierName}';
+		var supplierAddress = '${supplierAddress}';
+		var supplierPhoneNbr = '${supplierPhoneNumber}';
+		
+		$('#supplier-id').val(supplierId);
+			$('#supplier-name').val(supplierName);
+			$('#supplier-address').val(supplierAddress);
+			$('#supplier-phone').val(supplierPhoneNbr);
+	});
+	</script>
 	<%@ include file="footer.jsp"%>
 </body>
 </html>
