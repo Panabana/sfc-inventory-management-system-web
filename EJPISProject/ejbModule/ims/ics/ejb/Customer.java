@@ -15,15 +15,24 @@ import javax.persistence.Table;
 @Table(name="Customer")
 public class Customer implements Serializable {
 	
-	/**
-	 * 
-	 */
-	
 	private int customerId;
 	private String name;
 	private String address;
 	private int phoneNbr;
 	private Set<Purchase> purchases;
+	
+	public Customer(int customerId, String name, String address, int phoneNbr, Set<Purchase> purchases) {
+		super();
+		this.customerId = customerId;
+		this.name = name;
+		this.address = address;
+		this.phoneNbr = phoneNbr;
+		this.purchases = purchases;
+	}
+	
+	public Customer() {
+		// TODO Auto-generated constructor stub
+	}
 	
 	@Id
 	@Column(name="CustomerID")

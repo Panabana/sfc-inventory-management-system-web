@@ -2,14 +2,26 @@ package ims.ics.ejb.test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.Set;
+
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-class CustomerTest {
+import ims.ics.ejb.Customer;
+import ims.ics.ejb.Purchase;
 
+class CustomerTest {
+	private int expectedId;
+	private String expectedName;
+	private String expectedAddress;
+	private int expectedPhoneNumber;
+	private Set<Purchase> expectedPurchases;
+	
+	private Customer customer;
+	
 	@BeforeAll
 	static void setUpBeforeClass() throws Exception {
 	}
@@ -20,50 +32,70 @@ class CustomerTest {
 
 	@BeforeEach
 	void setUp() throws Exception {
+		expectedId = 1;
+		expectedName = "Rikard";
+		expectedAddress = "Lejonhjärtastaden";
+		expectedPhoneNumber = 12345;
+		// expectedPurchases = expectedPurchases.add(Purchase p);
+		
+		customer = new Customer(expectedId, expectedName, expectedAddress, expectedPhoneNumber, expectedPurchases);
 	}
 
 	@AfterEach
 	void tearDown() throws Exception {
+		customer = null;
 	}
 
 	@Test
 	final void testGetCustomerId() {
-		fail("Not yet implemented"); // TODO
+		assertNotNull(customer.getCustomerId());
+		assertEquals(expectedId, customer.getCustomerId());
 	}
 
 	@Test
 	final void testSetCustomerId() {
-		fail("Not yet implemented"); // TODO
+		int newExpectedId = 20;
+		customer.setCustomerId(newExpectedId);
+		assertEquals(newExpectedId, customer.getCustomerId());
 	}
 
 	@Test
 	final void testGetName() {
-		fail("Not yet implemented"); // TODO
+		assertNotNull(customer.getName());
+		assertEquals(expectedName, customer.getName());
 	}
 
 	@Test
 	final void testSetName() {
-		fail("Not yet implemented"); // TODO
+		String newExpectedName = "Lorem Ipsum";
+		customer.setName(newExpectedName);
+		assertEquals(newExpectedName, customer.getName());
 	}
 
 	@Test
 	final void testGetAddress() {
-		fail("Not yet implemented"); // TODO
+		assertNotNull(customer.getAddress());
+		assertEquals(expectedAddress, customer.getAddress());
 	}
 
 	@Test
 	final void testSetAddress() {
-		fail("Not yet implemented"); // TODO
+		String newExpectedAddress = "Bikini bottom";
+		customer.setAddress(newExpectedAddress);
+		assertEquals(newExpectedAddress, customer.getAddress());
 	}
 
 	@Test
 	final void testGetPhoneNbr() {
-		fail("Not yet implemented"); // TODO
+		assertNotNull(customer.getPhoneNbr());
+		assertEquals(expectedPhoneNumber, customer.getPhoneNbr());
 	}
 
 	@Test
 	final void testSetPhoneNbr() {
-		fail("Not yet implemented"); // TODO
+		int newExpectedPhoneNumber = 47474747;
+		customer.setPhoneNbr(newExpectedPhoneNumber);
+		assertEquals(newExpectedPhoneNumber, customer.getPhoneNbr());
 	}
 
 	@Test
