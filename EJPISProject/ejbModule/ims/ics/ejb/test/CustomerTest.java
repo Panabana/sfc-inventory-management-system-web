@@ -2,14 +2,26 @@ package ims.ics.ejb.test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.Set;
+
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-class CustomerTest {
+import ims.ics.ejb.Customer;
+import ims.ics.ejb.Purchase;
 
+class CustomerTest {
+	private int expectedId;
+	private String expectedName;
+	private String expectedAddress;
+	private int expectedPhoneNumber;
+	private Set<Purchase> expectedPurchases;
+	
+	private Customer customer;
+	
 	@BeforeAll
 	static void setUpBeforeClass() throws Exception {
 	}
@@ -20,6 +32,13 @@ class CustomerTest {
 
 	@BeforeEach
 	void setUp() throws Exception {
+		expectedId = 1;
+		expectedName = "Rikard";
+		expectedAddress = "Lejonhjärtastaden";
+		expectedPhoneNumber = 12345;
+		// expectedPurchases = expectedPurchases.add(Purchase p);
+		
+		customer = new Customer(expectedId, expectedName, expectedAddress, expectedPhoneNumber);
 	}
 
 	@AfterEach
