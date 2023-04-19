@@ -112,15 +112,15 @@
             document.getElementById("error-label").innerHTML = errorMessage;
             return false;
         } else if(employeeName === ""){
-        	errorMessage = "Name is required to be filled in."
+        	errorMessage = "Please enter a Name."
         	document.getElementById("error-label").innerHTML = errorMessage;
         	return false;
         }else if(employeeAddress === ""){
-        	errorMessage = "Address is required to be filled in."
+        	errorMessage = "Please enter an Address."
         	document.getElementById("error-label").innerHTML = errorMessage;
         	return false;
         }else if(employeePhoneNumber === ""){	
-        errorMessage = "Phone Number is required to be filled in"
+        errorMessage = "Please enter a valid Phone Number"
         document.getElementById("error-label").innerHTML = errorMessage;
         return false;
         }

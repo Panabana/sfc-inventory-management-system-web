@@ -47,7 +47,7 @@
 					</tbody>
 				</table>
 			</div>
-			<form action="CustomerServlet" method="post">
+			<form action="CustomerServlet" method="post" onSubmit="return validateForm()">
 			<div class="form-container">
 				<fieldset>
 					<legend>Customer Information:</legend>
@@ -67,7 +67,7 @@
 							<button type="submit" class="update-btn" name="action" value="update-customer">Update</button>
 							<button type="submit" class="remove-btn">Remove</button>
 						</div>
-						<div class="error-label">
+						<div class="error-label" id="error-label">
 							<!-- Error messages will be displayed here -->
 							<p>User messages will be displayed here</p>
 						</div>
@@ -92,6 +92,33 @@
 			$('#customer-address').val(customerAddress);
 			$('#customer-phone').val(customerPhoneNbr);
 	});
+	
+	function validateForm() {
+        var customerId = document.getElementById("customer-id").value;
+        var customerName = document.getElementById("customer-name").value;
+        var customerAddress = document.getElementById("customer-address").value;
+        var customerPhoneNumber = document.getElementById("customer-phone").value;
+        var errorMessage = "";
+
+        if (customerId === "") { 
+            errorMessage = "Customer ID is required.";
+            document.getElementById("error-label").innerHTML = errorMessage;
+            return false;
+        } else if(customerName === ""){
+        	errorMessage = "Please enter a Name."
+        	document.getElementById("error-label").innerHTML = errorMessage;
+        	return false;
+        }else if(customerAddress === ""){
+        	errorMessage = "Please enter an Address."
+        	document.getElementById("error-label").innerHTML = errorMessage;
+        	return false;
+        }else if(customerPhoneNumber === ""){	
+        errorMessage = "Please enter a valid Phone Number."
+        document.getElementById("error-label").innerHTML = errorMessage;
+        return false;
+        }
+        return true;
+    }	
 	</script>
 	<%@ include file="footer.jsp"%>
 </body>
