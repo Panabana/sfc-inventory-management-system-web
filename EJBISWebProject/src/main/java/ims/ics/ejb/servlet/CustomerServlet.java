@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import ims.ics.ejb.Customer;
+import ims.ics.ejb.Employee;
 import ims.ics.facade.FacadeLocal;
 
 /**
@@ -31,7 +32,26 @@ public class CustomerServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
+		String action = request.getParameter("action");
+	    if ("find-customer".equals(action)) {
+	        String id = request.getParameter("find-customer-id");
+	        int customerId = 0;
+	        if (id != null) {
+	            customerId = Integer.parseInt(id);
+	            Customer customer = facade.findCustomerById(customerId);
+	            if (customer != null) {
+	            	customerId = customer.getCustomerId();
+	                String customerName = customer.getName();
+	                String customerAddress = customer.getAddress();
+	                int customerPhoneNbr = customer.getPhoneNbr();
+	                request.setAttribute("customerId", customerId);
+	                request.setAttribute("customerName", customerName);
+	                request.setAttribute("customerAddress", customerAddress);
+	                request.setAttribute("customerPhoneNumber", customerPhoneNbr);
+	                
+	            }
+	        }
+	    }
 		List<Customer> customers = facade.findAllCustomers();
 		request.setAttribute("customers", customers);
 
