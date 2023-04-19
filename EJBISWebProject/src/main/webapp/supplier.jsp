@@ -46,7 +46,7 @@
 					</tbody>
 				</table>
 			</div>
-			<form action="SupplierServlet" method="post">
+			<form action="SupplierServlet" method="post" id="search-form">
 			<div class="form-container">
 				<fieldset>
 					<legend>Supplier Information:</legend>
