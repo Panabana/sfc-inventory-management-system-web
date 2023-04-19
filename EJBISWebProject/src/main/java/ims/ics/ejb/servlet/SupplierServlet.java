@@ -51,7 +51,7 @@ public class SupplierServlet extends HttpServlet {
 	                request.setAttribute("supplierId", supplierId);
 	                request.setAttribute("supplierName", supplierName);
 	                request.setAttribute("supplierAddress", supplierAddress);
-	                request.setAttribute("employeePhoneNumber", supplierPhoneNbr);
+	                request.setAttribute("supplierPhoneNumber", supplierPhoneNbr);
 	                
 	            }
 	        }
