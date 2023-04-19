@@ -49,7 +49,7 @@
 					</tbody>
 				</table>
 			</div>
-			<form action="EmployeeServlet" method="post">
+			<form action="EmployeeServlet" method="post" onsubmit="return validateForm()">
 				<div class="form-container">
 					<fieldset>
 						<legend>Employee Information:</legend>
@@ -73,7 +73,7 @@
 									value="update-employee">Update</button>
 								<button type="submit" class="remove-btn">Remove</button>
 							</div>
-							<div class="error-label">
+							<div class="error-label" id="error-label">
 								<!-- Error messages will be displayed here -->
 								<p>User messages will be displayed here</p>
 							</div>
@@ -98,6 +98,33 @@
 			$('#employee-address').val(employeeAddress);
 			$('#employee-phone').val(employeePhoneNumber);
 		});
+		
+
+    function validateForm() {
+        var employeeId = document.getElementById("employee-id").value;
+        var employeeName = document.getElementById("employee-name").value;
+        var employeeAddress = document.getElementById("employee-address").value;
+        var employeePhoneNumber = document.getElementById("employee-phone").value;
+        var errorMessage = "";
+
+        if (employeeId === "") { 
+            errorMessage = "Employee ID is required.";
+            document.getElementById("error-label").innerHTML = errorMessage;
+            return false;
+        } else if(employeeName === ""){
+        	errorMessage = "Name is required to be filled in."
+        	document.getElementById("error-label").innerHTML = errorMessage;
+        	return false;
+        }else if(employeeAddress === ""){
+        	errorMessage = "Address is required to be filled in."
+        	document.getElementById("error-label").innerHTML = errorMessage;
+        	return false;
+        }else if(employeePhoneNumber === ""){	
+        document.getElementById("error-label").innerHTML = errorMessage;
+        return false;
+        }
+        return true;
+    }	
 	</script>
 	<%@ include file="footer.jsp"%>
 </body>
