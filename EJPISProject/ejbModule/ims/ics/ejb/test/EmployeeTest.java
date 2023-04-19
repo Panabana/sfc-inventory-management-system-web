@@ -20,7 +20,7 @@ class EmployeeTest {
 	private int expectedPhoneNumber;
 	private Set<Purchase> expectedPurchases;
 	
-	private Employee e1;
+	private Employee employee;
 
 	@BeforeAll
 	static void setUpBeforeClass() throws Exception {
@@ -38,64 +38,64 @@ class EmployeeTest {
 		expectedPhoneNumber = 12345;
 		// expectedPurchases = expectedPurchases.add(Purchase p);
 		
-		e1 = new Employee(expectedId, expectedName, expectedAddress, expectedPhoneNumber, expectedPurchases);
+		employee = new Employee(expectedId, expectedName, expectedAddress, expectedPhoneNumber, expectedPurchases);
 	}
 
 	@AfterEach
 	void tearDown() throws Exception {
-		e1 = null;
+		employee = null;
 	}
 
 	@Test
 	final void testGetEmployeeId() {
-		assertNotNull(e1.getEmployeeId());
-		assertEquals(expectedId, e1.getEmployeeId());
+		assertNotNull(employee.getEmployeeId());
+		assertEquals(expectedId, employee.getEmployeeId());
 	}
 
 	@Test
 	final void testSetEmployeeId() {
 		int newExpectedId = 10;
-		e1.setEmployeeId(newExpectedId);
-		assertEquals(newExpectedId, e1.getEmployeeId());
+		employee.setEmployeeId(newExpectedId);
+		assertEquals(newExpectedId, employee.getEmployeeId());
 	}
 
 	@Test
 	final void testGetName() {
-		assertNotNull(e1.getName());
-		assertEquals(expectedName, e1.getName());
+		assertNotNull(employee.getName());
+		assertEquals(expectedName, employee.getName());
 	}
 
 	@Test
 	final void testSetName() {
 		String newExpectedName = "Lorem Ipsum";
-		e1.setName(newExpectedName);
-		assertEquals(newExpectedName, e1.getName());
+		employee.setName(newExpectedName);
+		assertEquals(newExpectedName, employee.getName());
 	}
 	
 	@Test
 	final void testGetAddress() {
-		assertNotNull(e1.getAddress());
-		assertEquals(expectedAddress, e1.getAddress());
+		assertNotNull(employee.getAddress());
+		assertEquals(expectedAddress, employee.getAddress());
 	}
 
 	@Test
 	final void testSetAddress() {
 		String newExpectedAddress = "Bikini bottom";
-		e1.setAddress(newExpectedAddress);
-		assertEquals(newExpectedAddress, e1.getAddress());
+		employee.setAddress(newExpectedAddress);
+		assertEquals(newExpectedAddress, employee.getAddress());
 	}
 
 	@Test
 	final void testGetPhoneNumber() {
-		assertNotNull(e1.getPhoneNumber());
-		assertEquals(expectedPhoneNumber, e1.getPhoneNumber());
+		assertNotNull(employee.getPhoneNumber());
+		assertEquals(expectedPhoneNumber, employee.getPhoneNumber());
 	}
 
 	@Test
 	final void testSetPhoneNumber() {
 		int newExpectedPhoneNumber = 47474747;
-		e1.setPhoneNumber(newExpectedPhoneNumber);
-		assertEquals(newExpectedPhoneNumber, e1.getPhoneNumber());
+		employee.setPhoneNumber(newExpectedPhoneNumber);
+		assertEquals(newExpectedPhoneNumber, employee.getPhoneNumber());
 	}
 
 	@Test
