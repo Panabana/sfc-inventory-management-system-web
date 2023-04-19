@@ -120,6 +120,7 @@
         	document.getElementById("error-label").innerHTML = errorMessage;
         	return false;
         }else if(employeePhoneNumber === ""){	
+        errorMessage = "Phone Number is required to be filled in"
         document.getElementById("error-label").innerHTML = errorMessage;
         return false;
         }
