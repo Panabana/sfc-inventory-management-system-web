@@ -30,6 +30,9 @@ public class Customer implements Serializable {
 		this.purchases = purchases;
 	}
 	
+	public Customer() {
+		// TODO Auto-generated constructor stub
+	}
 	
 	@Id
 	@Column(name="CustomerID")
