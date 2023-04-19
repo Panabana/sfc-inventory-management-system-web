@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
+import javax.interceptor.Interceptors;
 import javax.persistence.Query;
 
 import ims.ics.eao.CustomerEAOLocal;
@@ -16,6 +17,7 @@ import ims.ics.ejb.Employee;
 import ims.ics.ejb.Product;
 import ims.ics.ejb.Purchase;
 import ims.ics.ejb.Supplier;
+import ims.ics.interceptors.EmployeeLogger;
 
 /**
  * Session Bean implementation class Facade
@@ -38,27 +40,33 @@ public class Facade implements FacadeLocal {
 	}
 
 	// EMPLOYEE METHODS
+	@Interceptors(EmployeeLogger.class)
 	public List<Employee> findAllEmployees() {
 		return employee.findAllEmployees();
 	}
 
+	@Interceptors(EmployeeLogger.class)
 	public int countAllEmployees() {
 		return employee.countAllEmployees();
 	}
 
+	@Interceptors(EmployeeLogger.class)
 	public Employee findEmployeeById(int id) {
 		return employee.findEmployeeById(id);
 	}
 
+	@Interceptors(EmployeeLogger.class)
 	public Employee createEmployee(Employee employee) {
 		employee = this.employee.createEmployee(employee);
 		return employee;
 	}
 
+	@Interceptors(EmployeeLogger.class)
 	public void updateEmployee(Employee employee) {
 		this.employee.updateEmployee(employee);
 	}
 
+	@Interceptors(EmployeeLogger.class)
 	public void deleteEmployee(int employeeId) {
 		employee.deleteEmployee(employeeId);
 	}
