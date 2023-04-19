@@ -18,6 +18,17 @@ public class Supplier implements Serializable{
 	private String supplierAddress;
 	private int phoneNumber;
 	
+	public Supplier(int supplierId, String supplierName, String supplierAddress, int phoneNumber) {
+		super();
+		this.supplierId = supplierId;
+		this.supplierName = supplierName;
+		this.supplierAddress = supplierAddress;
+		this.phoneNumber = phoneNumber;
+	}
+	
+	public Supplier() {
+	}
+	
 	@ManyToMany(mappedBy ="ProductSupplier")
 	Set<Product> SupplierProduct;
 	
