@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import ims.ics.ejb.Employee;
 import ims.ics.ejb.Supplier;
 import ims.ics.facade.FacadeLocal;
 
@@ -33,10 +34,28 @@ public class SupplierServlet extends HttpServlet {
         // TODO Auto-generated constructor stub
     }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		String action = request.getParameter("action");
+	    if ("find-supplier".equals(action)) {
+	        String id = request.getParameter("find-supplier-id");
+	        int supplierId = 0;
+	        if (id != null) {
+	            supplierId = Integer.parseInt(id);
+	            Supplier supplier = facade.findSupplierById(supplierId);
+	            if (supplier != null) {
+	            	supplierId = supplier.getSupplierId();
+	                String supplierName = supplier.getSupplierName();
+	                String supplierAddress = supplier.getSupplierAddress();
+	                int supplierPhoneNbr = supplier.getPhoneNumber();
+	                request.setAttribute("supplierId", supplierId);
+	                request.setAttribute("supplierName", supplierName);
+	                request.setAttribute("supplierAddress", supplierAddress);
+	                request.setAttribute("employeePhoneNumber", supplierPhoneNbr);
+	                
+	            }
+	        }
+	    }
 		List<Supplier> suppliers = facade.findAllSuppliers();
 		request.setAttribute("suppliers", suppliers);
 		
@@ -44,9 +63,6 @@ public class SupplierServlet extends HttpServlet {
 		dispatcher.forward(request, response);
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String action = request.getParameter("action");
 
