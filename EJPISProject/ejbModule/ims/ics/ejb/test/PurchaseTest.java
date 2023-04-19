@@ -8,8 +8,17 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-class PurchaseTest {
+import ims.ics.ejb.Customer;
+import ims.ics.ejb.Employee;
+import ims.ics.ejb.Purchase;
 
+class PurchaseTest {
+	private int expectedId;
+	private Employee expectedEmployee;
+	private Customer expectedCustomer;
+	
+	private Purchase purchase;
+	
 	@BeforeAll
 	static void setUpBeforeClass() throws Exception {
 	}
@@ -20,40 +29,55 @@ class PurchaseTest {
 
 	@BeforeEach
 	void setUp() throws Exception {
+		expectedId = 3;
+		expectedEmployee = new Employee();
+		expectedCustomer = new Customer();
+		
+		purchase = new Purchase(expectedId, expectedEmployee, expectedCustomer);
 	}
 
 	@AfterEach
 	void tearDown() throws Exception {
+		purchase = null;
 	}
 
 	@Test
 	final void testGetPurchaseId() {
-		fail("Not yet implemented"); // TODO
+		assertNotNull(purchase.getPurchaseId());
+		assertEquals(expectedId, purchase.getPurchaseId());
 	}
 
 	@Test
 	final void testSetPurchaseId() {
-		fail("Not yet implemented"); // TODO
+		int newExpectedId = 50;
+		purchase.setPurchaseId(newExpectedId);
+		assertEquals(newExpectedId, purchase.getPurchaseId());
 	}
 
 	@Test
 	final void testGetEmployee() {
-		fail("Not yet implemented"); // TODO
+		assertNotNull(purchase.getEmployee());
+		assertEquals(expectedEmployee, purchase.getEmployee());
 	}
 
 	@Test
 	final void testSetEmployee() {
-		fail("Not yet implemented"); // TODO
+		Employee newExpectedEmployee = new Employee();
+		purchase.setEmployee(newExpectedEmployee);
+		assertEquals(newExpectedEmployee, purchase.getEmployee());
 	}
 
 	@Test
 	final void testGetCustomer() {
-		fail("Not yet implemented"); // TODO
+		assertNotNull(purchase.getCustomer());
+		assertEquals(expectedCustomer, purchase.getCustomer());
 	}
 
 	@Test
 	final void testSetCustomer() {
-		fail("Not yet implemented"); // TODO
+		Customer newExpectedCustomer = new Customer();
+		purchase.setCustomer(newExpectedCustomer);
+		assertEquals(newExpectedCustomer, purchase.getCustomer());
 	}
 
 }
