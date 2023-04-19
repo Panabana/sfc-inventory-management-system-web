@@ -51,7 +51,7 @@
 						<form action="EmployeeServlet" method="get" id="search-form">
 							<div class="form-group">
 								<input type="text" id="find-employee-id" name="find-employee-id"
-									class="form-control" placeholder="Enter employee ID...">
+									class="form-control" placeholder="Enter ID...">
 								<button type="submit" class="btn" name="action" id="search-btn"
 									value="find-employee">Search</button>
 								<button type="submit" class="btn" name="action" id="search-btn"
@@ -61,6 +61,7 @@
 					</div>
 					<div class="insert-form">
 						<form>
+							<h2 style="text-align: center;">Employee Form</h2>
 							<div class="form-group">
 								<input type="text" class="form-control item" id="***"
 									placeholder="Employee ID">
@@ -76,6 +77,17 @@
 							<div class="form-group">
 								<input type="text" class="form-control item" id="***"
 									placeholder="Phone Number">
+							</div>
+							<div class="button-container">
+								<button type="submit" class="btn" name="action"
+									value="add-employee">Add</button>
+								<button type="submit" class="btn" name="action"
+									value="update-employee">Update</button>
+								<button type="submit" class="btn">Remove</button>
+							</div>
+							<div class="error-label">
+								<!-- Error messages will be displayed here -->
+								<p>User messages will be displayed here</p>
 							</div>
 						</form>
 					</div>
