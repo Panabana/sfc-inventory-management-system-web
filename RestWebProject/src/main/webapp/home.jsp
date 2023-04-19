@@ -123,6 +123,7 @@
 				for="empPhone">Employee Phone:</label> <input type="number"
 				id="empPhone" name="empPhoneAdd"><br> <br> <input
 				type="submit" value="Add Employee" id="addEmpBtn">
+				<input type="submit" value="Update Employee" id="updtEmpBtn">
 		</form>
 		<table id="customerTable">
 			<caption>Customers</caption>
@@ -154,15 +155,15 @@
 			Customer</button>
 		<form action="#" method="POST">
 			<label for="customerIdAdd">Customer ID:</label> <input type="number"
-				id="customerIdAdd" name="customerId"><br> <br> <label
-				for="customerName">Customer Name:</label> <input type="text"
-				id="customerName" name="customerName"><br> <br> <label
-				for="customerAddress">Customer Address:</label> <input type="text"
-				id="customerAddress" name="customerAddress"><br> <br>
-			<label for="customerPhone">Customer Phone:</label> <input
-				type="number" id="customerPhone" name="customerPhone"><br>
-			<br> <input type="submit" value="Add Customer"
-				id="addCustomerBtn">
+				id="customerIdAdd" name="customerId"><br> <br> 
+				<label for="customerName">Customer Name:</label>
+				 <input type="text" id="customerName" name="customerName"><br><br> 
+				 <label for="customerAddress">Customer Address:</label> 
+				 <input type="text" id="customerAddress" name="customerAddress"><br><br>
+				 <label for="customerPhone">Customer Phone:</label>
+				 <input type="number" id="customerPhone" name="customerPhone"><br><br> 
+				 <input type="submit" value="Add Customer" id="addCustomerBtn"> 
+				 <input type="submit" value="Update Customer" id="updateCustomerBtn">
 		</form>
 
 	</div>

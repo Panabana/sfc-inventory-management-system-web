@@ -27,6 +27,11 @@
 				$("#CustomerId").text(result.CustomerId);
 				$("#CustomerAddress").text(result.CustomerAddress);
 				$("#CustomerPhone").text(result.Phone);
+				
+				$("#customerName").val(result.CustomerName);
+				$("#customerIdAdd").val(result.CustomerId);
+				$("#customerAddress").val(result.CustomerAddress);
+				$("#customerPhone").val(result.Phone);
 
 			}
 			function clearFields() {

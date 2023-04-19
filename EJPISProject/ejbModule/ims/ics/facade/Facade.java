@@ -55,8 +55,8 @@ public class Facade implements FacadeLocal {
 		return employee;
 	}
 
-	public void updateEmployee(Employee employee) {
-		this.employee.updateEmployee(employee);
+	public boolean updateEmployee(Employee employee) {
+		return this.updateEmployee(employee);
 	}
 
 	public void deleteEmployee(int employeeId) {

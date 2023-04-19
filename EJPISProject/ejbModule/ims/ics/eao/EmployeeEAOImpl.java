@@ -35,13 +35,13 @@ public class EmployeeEAOImpl implements EmployeeEAOLocal {
 	}
 
 	public void updateEmployee(Employee employee) {
-		Employee existingEmp = em.find(Employee.class, employee.getEmployeeId());
-		if (existingEmp != null) {
-			existingEmp.setName(employee.getName());
-			existingEmp.setAddress(employee.getAddress());
-			existingEmp.setPhoneNumber(employee.getPhoneNumber());
-			em.merge(existingEmp);
-		}
+		  Employee existingEmp = em.find(Employee.class, employee.getEmployeeId());
+		    if (existingEmp != null) {
+		        existingEmp.setName(employee.getName());
+		        existingEmp.setAddress(employee.getAddress());
+		        existingEmp.setPhoneNumber(employee.getPhoneNumber());
+		        em.merge(existingEmp);
+		    }
 	}
 
 	public void deleteEmployee(int employeeId) {

@@ -100,28 +100,26 @@ public class RestServlet extends HttpServlet {
 	protected void doPut(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		
-		String pathInfo = request.getPathInfo();
-		if(pathInfo == null || pathInfo.equals("/")){
-		response.sendError(HttpServletResponse.SC_BAD_REQUEST);
-		return;
-		}
-		String[] splits = pathInfo.split("/");
-		if(splits.length != 2) {
-		response.sendError(HttpServletResponse.SC_BAD_REQUEST);
-		return;
-		}
-		String id = splits[1];
-		BufferedReader reader = request.getReader();
-		Employee emp = parseJsonEmployee(reader);
-		//Uppdatera i db
-		try {
-		//emp = facade.updateEmployee(emp);
-		}catch(Exception e) {
-		System.out.println("facade Update Error");
-		}
-		sendAsJson(response, emp);
+		  String pathInfo = request.getPathInfo();
+		    if (pathInfo == null || pathInfo.equals("/")) {
+		        response.sendError(HttpServletResponse.SC_BAD_REQUEST);
+		        return;
+		    }
+
+		    String[] splits = pathInfo.split("/");
+		    if (splits.length != 2) {
+		        response.sendError(HttpServletResponse.SC_BAD_REQUEST);
+		        return;
+		    }
+
+		    String id = splits[1];
+		    BufferedReader reader = request.getReader();
+		    Employee emp = parseJsonEmployee(reader);
+		    
+		    facade.updateEmployee(emp);
+		    sendAsJson(response, emp);
 	}
-	/**
+	/**§
 	 * @see HttpServlet#doDelete(HttpServletRequest, HttpServletResponse)
 	 */
 	protected void doDelete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -206,17 +204,17 @@ public class RestServlet extends HttpServlet {
 	    if (empIdJson != null && empIdJson.getValueType() == ValueType.STRING) {
 	        emp.setEmployeeId(Integer.parseInt(((JsonString) empIdJson).getString()));
 	    }
-
+	    
 	    JsonValue empNameJson = jsonRoot.get("EmployeeName");
 	    if (empNameJson != null && empNameJson.getValueType() == ValueType.STRING) {
 	        emp.setName(((JsonString) empNameJson).getString());
 	    }
-
+	    
 	    JsonValue empAddressJson = jsonRoot.get("EmployeeAddress");
 	    if (empAddressJson != null && empAddressJson.getValueType() == ValueType.STRING) {
 	        emp.setAddress(((JsonString) empAddressJson).getString());
 	    }
-
+	    
 	    JsonValue empPhoneJson = jsonRoot.get("Phone");
 	    if (empPhoneJson != null && empPhoneJson.getValueType() == ValueType.STRING) {
 	        emp.setPhoneNumber(Integer.parseInt(((JsonString) empPhoneJson).getString()));
