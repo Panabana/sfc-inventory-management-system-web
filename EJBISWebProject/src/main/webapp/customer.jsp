@@ -20,8 +20,10 @@
 			<div class="search-form">
 				<form action="CustomerServlet" method="get" id="search-form">
 					<div class="form-group">
-						<input type="text" id="find-customer-id" name="find-customer-id" class="form-control" placeholder="Search...">
-						<button type="submit" class="btn" name="action" id="search-btn" value="find-customer">Search</button>
+						<input type="text" id="find-customer-id" name="find-customer-id"
+							class="form-control" placeholder="Search...">
+						<button type="submit" class="btn" name="action" id="search-btn"
+							value="find-customer">Search</button>
 					</div>
 				</form>
 			</div>
@@ -47,78 +49,82 @@
 					</tbody>
 				</table>
 			</div>
-			<form action="CustomerServlet" method="post" onSubmit="return validateForm()">
-			<div class="form-container">
-				<fieldset>
-					<legend>Customer Information:</legend>
-					<form>
-						<div class="form-row">
-							<label for="customer-id">Customer ID:</label> <input type="text"
-								id="customer-id" name="customer-id"> <label for="customer-name">
-								Name:</label> <input type="text" id="customer-name" name="customer-name">
-						</div>
-						<div class="form-row">
-							<label for="customer-address">Address:</label> <input type="text"
-								id="customer-address" name="customer-address"> <label for="customer-phone">Phone Number:</label>
-							<input type="text" id="customer-phone" name="customer-phone">
-						</div>
-						<div class="button-container">
-							<button type="submit" class="add-btn" name="action" value="add-customer">Add</button>
-							<button type="submit" class="update-btn" name="action" value="update-customer">Update</button>
-							<button type="submit" class="remove-btn">Remove</button>
-						</div>
-						<div class="error-label" id="error-label">
-							<!-- Error messages will be displayed here -->
-							<p>User messages will be displayed here</p>
-						</div>
-					</form>
-				</fieldset>
-			</div>
+			<form action="CustomerServlet" method="post"
+				onSubmit="return validateForm()">
+				<div class="form-container">
+					<fieldset>
+						<legend>Customer Information:</legend>
+						<form>
+							<div class="form-row">
+								<label for="customer-id">Customer ID:</label> <select
+									name="customer-id" id="employee-id">
+									<option value="">Select a Customer</option>
+									<c:forEach var="customer" items="${customers}">
+										<option value="${customer.customerId}">${customer.customerId}</option>
+									</c:forEach>
+								</select> <label for="customer-name"> Name:</label> <input type="text"
+									id="customer-name" name="customer-name">
+							</div>
+							<div class="form-row">
+								<label for="customer-address">Address:</label> <input
+									type="text" id="customer-address" name="customer-address">
+								<label for="customer-phone">Phone Number:</label> <input
+									type="text" id="customer-phone" name="customer-phone">
+							</div>
+							<div class="button-container">
+								<button type="submit" class="add-btn" name="action"
+									value="add-customer">Add</button>
+								<button type="submit" class="update-btn" name="action"
+									value="update-customer">Update</button>
+								<button type="submit" class="remove-btn">Remove</button>
+							</div>
+							<div class="error-label" id="error-label">
+								<!-- Error messages will be displayed here -->
+								<p>User messages will be displayed here</p>
+							</div>
+						</form>
+					</fieldset>
+				</div>
 			</form>
 		</div>
 	</main>
 	<script>
-	$(document).ready(function(){
-		$('#search-btn').click(function(){
-			$('search-form').submit()
+		$(document).ready(function() {
+			$('#search-btn').click(function() {
+				$('search-form').submit()
 			});
-		var customerId = '${customerId}';
-		var customerName = '${customerName}';
-		var customerAddress = '${customerAddress}';
-		var customerPhoneNbr = '${customerPhoneNumber}';
-		
-		$('#customer-id').val(customerId);
+			var customerId = '${customerId}';
+			var customerName = '${customerName}';
+			var customerAddress = '${customerAddress}';
+			var customerPhoneNbr = '${customerPhoneNumber}';
+
+			$('#customer-id').val(customerId);
 			$('#customer-name').val(customerName);
 			$('#customer-address').val(customerAddress);
 			$('#customer-phone').val(customerPhoneNbr);
-	});
-	
-	function validateForm() {
-        var customerId = document.getElementById("customer-id").value;
-        var customerName = document.getElementById("customer-name").value;
-        var customerAddress = document.getElementById("customer-address").value;
-        var customerPhoneNumber = document.getElementById("customer-phone").value;
-        var errorMessage = "";
+		});
 
-        if (customerId === "") { 
-            errorMessage = "Customer ID is required.";
-            document.getElementById("error-label").innerHTML = errorMessage;
-            return false;
-        } else if(customerName === ""){
-        	errorMessage = "Please enter a Name."
-        	document.getElementById("error-label").innerHTML = errorMessage;
-        	return false;
-        }else if(customerAddress === ""){
-        	errorMessage = "Please enter an Address."
-        	document.getElementById("error-label").innerHTML = errorMessage;
-        	return false;
-        }else if(customerPhoneNumber === ""){	
-        errorMessage = "Please enter a valid Phone Number."
-        document.getElementById("error-label").innerHTML = errorMessage;
-        return false;
-        }
-        return true;
-    }	
+		function validateForm() {
+			var customerName = document.getElementById("customer-name").value;
+			var customerAddress = document.getElementById("customer-address").value;
+			var customerPhoneNumber = document.getElementById("customer-phone").value;
+			var errorMessage = "";
+
+			if (customerName === "") {
+				errorMessage = "Please enter a Name."
+				document.getElementById("error-label").innerHTML = errorMessage;
+				return false;
+			} else if (customerAddress === "") {
+				errorMessage = "Please enter an Address."
+				document.getElementById("error-label").innerHTML = errorMessage;
+				return false;
+			} else if (customerPhoneNumber === "") {
+				errorMessage = "Please enter a valid Phone Number."
+				document.getElementById("error-label").innerHTML = errorMessage;
+				return false;
+			}
+			return true;
+		}
 	</script>
 	<%@ include file="footer.jsp"%>
 </body>

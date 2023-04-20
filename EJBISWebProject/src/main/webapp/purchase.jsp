@@ -53,15 +53,20 @@
 					<legend>Purchase Information:</legend>
 					<form>
 						<div class="form-row">
-							<label for="purchase-id">Purchase ID:</label> <input type="text"
-								id="purchase-id" name="purchase-id"> <label
-								for="supplier-name"> Employee ID:</label> <select
+							<label for="purchase-id">Purchase ID:</label> <select
+									name="purchase-id" id="purchase-id">
+									<option value="">Select a Purchase</option>
+									<c:forEach var="purchase" items="${purchases}">
+										<option value="${purchase.purchaseId}">${purchase.purchaseId}</option>
+									</c:forEach>
+								</select>  
+							<label for="supplier-name"> Employee ID:</label> <select
 								name="employee-id" id="employee-id">
 								<option value="test">Test</option>
 							</select>
 						</div>
 						<div class="form-row">
-							<label for="supplier-address">Customer ID:</label> <select
+							<label for="customer-id">Customer ID:</label> <select
 								name="customer-id" id="customer-id">
 								<option value="test">Test</option>
 							</select>
