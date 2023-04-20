@@ -115,9 +115,13 @@ public class RestServlet extends HttpServlet {
 		    String id = splits[1];
 		    BufferedReader reader = request.getReader();
 		    Employee emp = parseJsonEmployee(reader);
-		    
-		    facade.updateEmployee(emp);
-		    sendAsJson(response, emp);
+		    Employee updatedEmp = facade.updateEmployee(emp);
+
+		    if (updatedEmp != null) {
+		      sendAsJson(response, updatedEmp);
+		    } else {
+		      response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
+		    };
 	}
 	/**§
 	 * @see HttpServlet#doDelete(HttpServletRequest, HttpServletResponse)

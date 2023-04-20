@@ -32,7 +32,7 @@
 				$("#customerIdAdd").val(result.CustomerId);
 				$("#customerAddress").val(result.CustomerAddress);
 				$("#customerPhone").val(result.Phone);
-
+				
 			}
 			function clearFields() {
 				$("#CustomerName").text("");

@@ -80,8 +80,7 @@
 							</div>
 							<div class="button-container">
 								<button type="submit" class="btn" value="Add Employee" id="addEmpBtn">Add</button>
-								<button type="submit" class="btn" name="action"
-									value="update-employee">Update</button>
+								<button type="submit" class="btn" name="action" value="updtEmpBtn">Update</button>
 								<button type="submit" class="btn" id="delEmpBtn">Remove</button>
 							</div>
 							<div class="error-label">

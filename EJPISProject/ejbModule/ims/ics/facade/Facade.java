@@ -54,8 +54,9 @@ public class Facade implements FacadeLocal {
 	}
 
 	@Interceptors(EmployeeLogger.class)
-	public void updateEmployee(Employee employee) {
-		this.employee.updateEmployee(employee);
+	public Employee updateEmployee(Employee employee) {
+		employee = this.employee.updateEmployee(employee);
+		return employee;
 	}
 
 	@Interceptors(EmployeeLogger.class)
