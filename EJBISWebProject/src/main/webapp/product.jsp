@@ -44,7 +44,7 @@
 					</tbody>
 				</table>
 			</div>
-			<form action="ProductServlet" method="post">
+			<form action="ProductServlet" method="post" onSubmit="return validateForm()">
 			<div class="form-container">
 				<fieldset>
 					<legend>Product Information:</legend>
@@ -64,7 +64,7 @@
 							<button type="submit" class="update-btn" name="action" value="update-product">Update</button>
 							<button type="submit" class="remove-btn">Remove</button>
 						</div>
-						<div class="error-label">
+						<div class="error-label" id="error-label">
 							<!-- Error messages will be displayed here -->
 							<p>User messages will be displayed here</p>
 						</div>
@@ -87,6 +87,28 @@
 		$('#product-name').val(productName);
 		$('#product-price').val(productPrice);
 	});
+	
+	function validateForm() {
+        var productId = document.getElementById("product-id").value;
+        var productName = document.getElementById("product-name").value;
+        var productPrice = document.getElementById("product-price").value;
+        var errorMessage = "";
+
+        if (productId === "") { 
+            errorMessage = "Product ID is required.";
+            document.getElementById("error-label").innerHTML = errorMessage;
+            return false;
+        } else if(productName === ""){
+        	errorMessage = "Please enter a Product Name."
+        	document.getElementById("error-label").innerHTML = errorMessage;
+        	return false;
+        }else if(productPrice === ""){
+        	errorMessage = "Please enter a Price."
+        	document.getElementById("error-label").innerHTML = errorMessage;
+        	return false;
+        }
+        return true;
+    }
 	</script>
 	<%@ include file="footer.jsp"%>
 </body>

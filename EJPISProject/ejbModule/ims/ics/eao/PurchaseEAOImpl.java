@@ -6,6 +6,7 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
+import javax.persistence.TypedQuery;
 
 import ims.ics.ejb.Employee;
 import ims.ics.ejb.Purchase;
@@ -55,5 +56,9 @@ public class PurchaseEAOImpl implements PurchaseEAOLocal {
 		Query query = em.createQuery("SELECT COUNT(p) FROM Purchase p");
 		return ((Long) query.getSingleResult()).intValue();
 	}
-
+	
+	public List<Purchase> findPurchasesWithProductInfo() {
+	    TypedQuery<Purchase> query = em.createNamedQuery("Purchase.findPurchasesWithProductInfo", Purchase.class);
+	    return query.getResultList();
+	}
 }

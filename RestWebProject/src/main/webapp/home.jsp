@@ -21,6 +21,8 @@
 	<%@ include file="header.jsp"%>
 
 	<div class="main-content">
+	
+	<!-- Employees section -->
 		<div class="section">
 			<fieldset>
 				<legend>Employees Data</legend>
@@ -29,16 +31,16 @@
 						<table id="employeeTable">
 							<thead>
 								<tr>
-									<th>Employee ID</th>
 									<th>Name</th>
+									<th>Employee ID</th>
 									<th>Address</th>
 									<th>Phone Number</th>
 								</tr>
 							</thead>
 							<tbody>
 								<tr>
+									<td><span id="EmployeeId" ></span></td>
 									<td><span id="EmployeeName"></span></td>
-									<td><span id="EmployeeId"></span></td>
 									<td><span id="EmployeeAddress"></span></td>
 									<td><span id="EmployeePhone"></span></td>
 								</tr>
@@ -48,34 +50,115 @@
 				</div>
 				<div class="right-side">
 					<div class="search-form">
-						<form action="EmployeeServlet" method="get" id="search-form">
+						<form action="#">
 							<div class="form-group">
-								<input type="text" id="find-employee-id" name="find-employee-id"
-									class="form-control" placeholder="Enter employee ID...">
-								<button type="submit" class="btn" name="action" id="search-btn"
-									value="find-employee">Search</button>
-								<button type="submit" class="btn" name="action" id="search-btn"
-									value="find-employee">Find all</button>
+								<input type="text" id="empId" name="empId" class="form-control" placeholder="Enter ID...">
+								<button type="submit" class="btn" id="FindBtn">Search</button>
+								<button type="submit" class="btn" id="findAllBtn">Find all</button>
+									
 							</div>
 						</form>
 					</div>
 					<div class="insert-form">
 						<form>
+							<h2 style="text-align: center;">Employee Form</h2>
 							<div class="form-group">
-								<input type="text" class="form-control item" id="***"
+								<input type="text" class="form-control item" id="empIdAdd" name="empIdAdd"
 									placeholder="Employee ID">
 							</div>
 							<div class="form-group">
-								<input type="text" class="form-control item" id="***"
+								<input type="text" class="form-control item" id="empName" name="empNameAdd"
 									placeholder="Name">
 							</div>
 							<div class="form-group">
-								<input type="text" class="form-control item" id="***"
+								<input type="text" class="form-control item" id="empAddress" name="empAddressAdd"
 									placeholder="Address">
 							</div>
 							<div class="form-group">
-								<input type="text" class="form-control item" id="***"
+								<input type="text" class="form-control item" id="empPhone" name="empPhoneAdd"
 									placeholder="Phone Number">
+							</div>
+							<div class="button-container">
+								<button type="submit" class="btn" value="Add Employee" id="addEmpBtn">Add</button>
+								<button type="submit" class="btn" name="action"
+									value="update-employee">Update</button>
+								<button type="submit" class="btn" id="delEmpBtn">Remove</button>
+							</div>
+							<div class="error-label">
+								<!-- Error messages will be displayed here -->
+								<p>User messages will be displayed here</p>
+							</div>
+						</form>
+					</div>
+				</div>
+			</fieldset>
+		</div>
+		
+		<!-- Customers section -->
+		<div class="section">
+			<fieldset>
+				<legend>Customers Data</legend>
+				<div class="left-side">
+					<div class="table-container">
+						<table id="customerTable">
+							<thead>
+								<tr>
+									<th>Customer ID</th>
+									<th>Name</th>
+									<th>Address</th>
+									<th>Phone Number</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td><span id=CustomerId></span></td>
+									<td><span id="CustomerName"></span></td>
+									<td><span id="CustomerAddress"></span></td>
+									<td><span id="CustomerPhone"></span></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+				<div class="right-side">
+					<div class="search-form">
+						<form action="#">
+							<div class="form-group">
+								<input type="text" id="customerId" name="customerId" class="form-control" placeholder="Enter ID...">
+								<button type="submit" class="btn" id="FindCustomerBtn">Search</button>
+								<button type="submit" class="btn" id="findAllCustomersBtn">Find all</button>
+									
+							</div>
+						</form>
+					</div>
+					<div class="insert-form">
+						<form>
+							<h2 style="text-align: center;">Customer Form</h2>
+							<div class="form-group">
+								<input type="text" class="form-control item" id="customerIdAdd" name="customerId"
+									placeholder="Employee ID">
+							</div>
+							<div class="form-group">
+								<input type="text" class="form-control item" id="customerName" name="customerName"
+									placeholder="Name">
+							</div>
+							<div class="form-group">
+								<input type="text" class="form-control item" id="customerAddress" name="customerAddress"
+									placeholder="Address">
+							</div>
+							<div class="form-group">
+								<input type="text" class="form-control item" id="customerPhone" name="customerPhone"
+									placeholder="Phone Number">
+							</div>
+							<div class="button-container">
+								<button type="submit" class="btn" value="Add Customer" id="addCustomerBtn">Add</button>
+								<button type="submit" class="btn" name="action"
+									value="update-employee">Update</button>
+								<button type="submit" class="btn" id="delCustBtn">Remove</button>
+							</div>
+							<div class="error-label">
+								<!-- Error messages will be displayed here -->
+								<p>User messages will be displayed here</p>
 							</div>
 						</form>
 					</div>
@@ -83,6 +166,9 @@
 			</fieldset>
 		</div>
 	</div>
+	
+	
+	
 
 	<div class="main">
 		<form action="#">
@@ -125,6 +211,12 @@
 				type="submit" value="Add Employee" id="addEmpBtn">
 				<input type="submit" value="Update Employee" id="updtEmpBtn">
 		</form>
+		
+		
+		
+		
+		
+		
 		<table id="customerTable">
 			<caption>Customers</caption>
 			<thead>

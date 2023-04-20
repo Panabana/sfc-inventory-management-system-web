@@ -46,7 +46,7 @@
 					</tbody>
 				</table>
 			</div>
-			<form action="SupplierServlet" method="post" id="search-form">
+			<form action="SupplierServlet" method="post" id="search-form" onSubmit="return validateForm()">
 			<div class="form-container">
 				<fieldset>
 					<legend>Supplier Information:</legend>
@@ -68,7 +68,7 @@
 							<button type="submit" class="update-btn" name="action" value="update-supplier">Update</button>
 							<button type="submit" class="remove-btn">Remove</button>
 						</div>
-						<div class="error-label">
+						<div class="error-label" id="error-label">
 							<!-- Error messages will be displayed here -->
 							<p>User messages will be displayed here</p>
 						</div>
@@ -93,6 +93,33 @@
 			$('#supplier-address').val(supplierAddress);
 			$('#supplier-phone').val(supplierPhoneNbr);
 	});
+	
+	function validateForm() {
+        var supplierId = document.getElementById("supplier-id").value;
+        var supplierName = document.getElementById("supplier-name").value;
+        var supplierAddress = document.getElementById("supplier-address").value;
+        var supplierPhoneNumber = document.getElementById("supplier-phone").value;
+        var errorMessage = "";
+
+        if (supplierId === "") { 
+            errorMessage = "Supplier ID is required.";
+            document.getElementById("error-label").innerHTML = errorMessage;
+            return false;
+        } else if(supplierName === ""){
+        	errorMessage = "Please enter a Name."
+        	document.getElementById("error-label").innerHTML = errorMessage;
+        	return false;
+        }else if(supplierAddress === ""){
+        	errorMessage = "Please enter an Address."
+        	document.getElementById("error-label").innerHTML = errorMessage;
+        	return false;
+        }else if(supplierPhoneNumber === ""){	
+        errorMessage = "Please enter a valid Phone Number."
+        document.getElementById("error-label").innerHTML = errorMessage;
+        return false;
+        }
+        return true;
+    }	
 	</script>
 	<%@ include file="footer.jsp"%>
 </body>

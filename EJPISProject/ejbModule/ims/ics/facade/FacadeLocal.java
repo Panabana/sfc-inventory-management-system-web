@@ -6,9 +6,7 @@ import javax.ejb.Local;
 
 import ims.ics.ejb.Customer;
 import ims.ics.ejb.Employee;
-import ims.ics.ejb.Product;
 import ims.ics.ejb.Purchase;
-import ims.ics.ejb.Supplier;
 
 @Local
 public interface FacadeLocal {
@@ -36,20 +34,6 @@ public interface FacadeLocal {
 	public void updatePurchase(Purchase purchase);
 	public void deletePurchase(int purchaseId);
 	public int countAllPPurchases();
+	public List<Purchase> findPurchasesWithProductInfo();
 
-	//Product
-	public List<Product> findAllProducts();
-    public Product findProductByID(int productId);
-    public Product createProduct(Product product);
-    public void updateProduct(Product product);
-    public void deleteProduct(int productId);
-    public int countAllProducts();
-    
-    //Supplier
-    public List<Supplier>findAllSuppliers();
-    public Supplier findSupplierById(int supplierId);
-    public Supplier createSupplier(Supplier supplier);
-    public void updateSupplier(Supplier supplier);
-    public void deleteSupplier(int supplierId);
-    public int countAllSuppliers();
 }

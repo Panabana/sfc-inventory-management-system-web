@@ -36,18 +36,13 @@
 							<th>Product Name</th>
 							<th>Quantity</th>
 							<th>Total Price</th>
-
 						</tr>
 					</thead>
 					<tbody>
 						<c:forEach var="purchase" items="${purchases}">
 							<tr>
 								<td>${purchase.purchaseId}</td>
-								<!--
-								<td>${employee.name}</td>
-								<td>${employee.address}</td>
-								<td>${employee.phoneNumber}</td>
-								-->
+                    			
 							</tr>
 						</c:forEach>
 					</tbody>
