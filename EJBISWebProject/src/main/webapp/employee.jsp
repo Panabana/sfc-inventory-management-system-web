@@ -55,8 +55,7 @@
 						<legend>Employee Information:</legend>
 						<form>
 							<div class="form-row">
-								<label for="employee-id">Employee ID:</label> <input type="text"
-									id="employee-id" name="employee-id"> <label
+								<label for="employee-id">Employee ID:</label>  <label
 									for="employee-name"> Name:</label> <input type="text"
 									id="employee-name" name="employee-name">
 							</div>
@@ -101,17 +100,17 @@
 		
 
     function validateForm() {
-        var employeeId = document.getElementById("employee-id").value;
+      //  var employeeId = document.getElementById("employee-id").value;
         var employeeName = document.getElementById("employee-name").value;
         var employeeAddress = document.getElementById("employee-address").value;
         var employeePhoneNumber = document.getElementById("employee-phone").value;
         var errorMessage = "";
 
-        if (employeeId === "") { 
-            errorMessage = "Employee ID is required.";
-            document.getElementById("error-label").innerHTML = errorMessage;
-            return false;
-        } else if(employeeName === ""){
+        //if (employeeId === "") { 
+           // errorMessage = "Employee ID is required.";
+           // document.getElementById("error-label").innerHTML = errorMessage;
+           // return false;
+         if(employeeName === ""){
         	errorMessage = "Please enter a Name."
         	document.getElementById("error-label").innerHTML = errorMessage;
         	return false;
@@ -125,7 +124,7 @@
         return false;
         }
         return true;
-    }	
+    }		
 	</script>
 	<%@ include file="footer.jsp"%>
 </body>

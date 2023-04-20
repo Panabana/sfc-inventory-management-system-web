@@ -53,8 +53,7 @@
 					<legend>Customer Information:</legend>
 					<form>
 						<div class="form-row">
-							<label for="customer-id">Customer ID:</label> <input type="text"
-								id="customer-id" name="customer-id"> <label for="customer-name">
+							<label for="customer-id">Customer ID:</label>  <label for="customer-name">
 								Name:</label> <input type="text" id="customer-name" name="customer-name">
 						</div>
 						<div class="form-row">
@@ -94,17 +93,12 @@
 	});
 	
 	function validateForm() {
-        var customerId = document.getElementById("customer-id").value;
         var customerName = document.getElementById("customer-name").value;
         var customerAddress = document.getElementById("customer-address").value;
         var customerPhoneNumber = document.getElementById("customer-phone").value;
         var errorMessage = "";
 
-        if (customerId === "") { 
-            errorMessage = "Customer ID is required.";
-            document.getElementById("error-label").innerHTML = errorMessage;
-            return false;
-        } else if(customerName === ""){
+        if(customerName === ""){
         	errorMessage = "Please enter a Name."
         	document.getElementById("error-label").innerHTML = errorMessage;
         	return false;
