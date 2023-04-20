@@ -10,6 +10,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.PostLoad;
 import javax.persistence.Table;
 
 @Entity
@@ -59,8 +60,10 @@ public class Purchase implements Serializable {
 		this.customer = customer;
 	}
 	
-	
-	
-	
+	@PostLoad
+	public void logOperationPurchase() {
+		System.out.println("@PostLoad on id: " + this.getPurchaseId());
+		System.out.println("@PostLoad: " + this.getCustomer() + " " + this.getEmployee());
+	}
 
 }
