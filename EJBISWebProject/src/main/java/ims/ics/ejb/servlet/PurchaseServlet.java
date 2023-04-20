@@ -10,7 +10,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import ims.ics.ejb.Product;
 import ims.ics.ejb.Purchase;
 import ims.ics.facade.FacadeLocal;
 

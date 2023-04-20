@@ -9,14 +9,10 @@ import javax.persistence.Query;
 
 import ims.ics.eao.CustomerEAOLocal;
 import ims.ics.eao.EmployeeEAOLocal;
-import ims.ics.eao.ProductEAOLocal;
 import ims.ics.eao.PurchaseEAOLocal;
-import ims.ics.eao.SupplierEAOLocal;
 import ims.ics.ejb.Customer;
 import ims.ics.ejb.Employee;
-import ims.ics.ejb.Product;
 import ims.ics.ejb.Purchase;
-import ims.ics.ejb.Supplier;
 import ims.ics.interceptors.EmployeeLogger;
 
 /**
@@ -31,10 +27,6 @@ public class Facade implements FacadeLocal {
 	CustomerEAOLocal customer;
 	@EJB
 	PurchaseEAOLocal purchase;
-	@EJB
-	ProductEAOLocal product;
-	@EJB
-	SupplierEAOLocal supplier;
 
 	public Facade() {
 	}
@@ -126,57 +118,4 @@ public class Facade implements FacadeLocal {
 		  return purchase.findPurchasesWithProductInfo();
 	}
 	
-
-	// PRODUCT METHODS
-	public List<Product> findAllProducts() {
-		return product.findAllProducts();
-	}
-
-	public int countAllProducts() {
-		return product.countAllProducts();
-	}
-
-	public Product findProductByID(int productId) {
-		return product.findProductById(productId);
-	}
-
-	public Product createProduct(Product product) {
-		product = this.product.createProduct(product);
-		return product;
-	}
-
-	public void updateProduct(Product product) {
-		this.product.updateProduct(product);
-	}
-
-	public void deleteProduct(int productId) {
-		product.deleteProduct(productId);
-	}
-
-	// SUPPLIER METHODS
-	public List<Supplier> findAllSuppliers() {
-		return supplier.findAllSuppliers();
-	}
-
-	public int countAllSuppliers() {
-		return supplier.countAllSuppliers();
-	}
-
-	public Supplier findSupplierById(int supplierId) {
-		return supplier.findSupplierById(supplierId);
-	}
-
-	public Supplier createSupplier(Supplier supplier) {
-		supplier = this.supplier.createSupplier(supplier);
-		return supplier;
-	}
-
-	public void updateSupplier(Supplier supplier) {
-		this.supplier.updateSupplier(supplier);
-	}
-
-	public void deleteSupplier(int supplierId) {
-		this.supplier.deleteSupplier(supplierId);
-	}
-
 }
