@@ -75,7 +75,7 @@ public class Customer implements Serializable {
 	@PostLoad
 	public void logOperationCustomer() {
 		System.out.println("@PostLoad on id: " + this.getCustomerId());
-		System.out.println("@PostLoad: " + this.getName() + " " + this.getAddress() + " " + this.getPhoneNbr());
+		System.out.println("@PostLoad: " + this.getName() + " - " + this.getAddress() + " - " + this.getPhoneNbr());
 	}
 
 }
