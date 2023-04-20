@@ -58,7 +58,7 @@
 							<div class="form-row">
 								<label for="customer-id">Customer ID:</label> <select
 									name="customer-id" id="employee-id">
-									<option value="">Select an employee</option>
+									<option value="">Select a Customer</option>
 									<c:forEach var="customer" items="${customers}">
 										<option value="${customer.customerId}">${customer.customerId}</option>
 									</c:forEach>
