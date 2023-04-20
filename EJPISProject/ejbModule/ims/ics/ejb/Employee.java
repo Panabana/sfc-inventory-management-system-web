@@ -6,13 +6,17 @@ import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EntityListeners;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.PostLoad;
 import javax.persistence.Table;
 
+import ims.ics.listeners.EmployeeAuditor;
+
 @Entity
+@EntityListeners(EmployeeAuditor.class)
 @Table(name="Employee")
 public class Employee implements Serializable {
 	
