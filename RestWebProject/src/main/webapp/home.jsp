@@ -168,7 +168,7 @@
 	
 	
 	
-
+<!-- 
 	<div class="main">
 		<form action="#">
 			<label for="empId">Employee Id:</label> <input type="number"
@@ -212,7 +212,7 @@
 		</form>
 		
 		
-		
+		 -->
 		
 		
 		

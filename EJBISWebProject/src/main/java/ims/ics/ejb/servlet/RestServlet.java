@@ -114,7 +114,7 @@ public class RestServlet extends HttpServlet {
 
 		    String id = splits[1];
 		    BufferedReader reader = request.getReader();
-		    Employee emp = parseJsonEmployee(reader);
+		    Employee emp = parseJsonEmployeeUpdate(reader);
 		    Employee updatedEmp = facade.updateEmployee(emp);
 
 		    if (updatedEmp != null) {
@@ -206,11 +206,10 @@ public class RestServlet extends HttpServlet {
 		Employee emp = new Employee();
 		
 		/*
-		JsonValue empIdJson = jsonRoot.get("EmployeeId");
-	    if (empIdJson != null && empIdJson.getValueType() == ValueType.STRING) {
-	        emp.setEmployeeId(Integer.parseInt(((JsonString) empIdJson).getString()));
-	    }
-	    */
+		 * JsonValue empIdJson = jsonRoot.get("EmployeeId"); if (empIdJson != null &&
+		 * empIdJson.getValueType() == ValueType.STRING) {
+		 * emp.setEmployeeId(Integer.parseInt(((JsonString) empIdJson).getString())); }
+		 */
 	    
 	    JsonValue empNameJson = jsonRoot.get("EmployeeName");
 	    if (empNameJson != null && empNameJson.getValueType() == ValueType.STRING) {
@@ -229,5 +228,43 @@ public class RestServlet extends HttpServlet {
 	    
 		return emp;
 		}
+	
+	
+	private Employee parseJsonEmployeeUpdate(BufferedReader br) {
+		//javax.json-1.0.4.jar
+		JsonReader jsonReader = null;
+		JsonObject jsonRoot = null;
+		jsonReader = Json.createReader(br);
+		jsonRoot = jsonReader.readObject();
+		
+		//System.out.println("JsonRoot: "+jsonRoot);
+		Employee emp = new Employee();
+		
+		
+		JsonValue empIdJson = jsonRoot.get("EmployeeId");
+	    if (empIdJson != null && empIdJson.getValueType() == ValueType.STRING) {
+	        emp.setEmployeeId(Integer.parseInt(((JsonString) empIdJson).getString()));
+	    }
+	    
+	    
+	    JsonValue empNameJson = jsonRoot.get("EmployeeName");
+	    if (empNameJson != null && empNameJson.getValueType() == ValueType.STRING) {
+	        emp.setName(((JsonString) empNameJson).getString());
+	    }
+	    
+	    JsonValue empAddressJson = jsonRoot.get("EmployeeAddress");
+	    if (empAddressJson != null && empAddressJson.getValueType() == ValueType.STRING) {
+	        emp.setAddress(((JsonString) empAddressJson).getString());
+	    }
+	    
+	    JsonValue empPhoneJson = jsonRoot.get("Phone");
+	    if (empPhoneJson != null && empPhoneJson.getValueType() == ValueType.STRING) {
+	        emp.setPhoneNumber(Integer.parseInt(((JsonString) empPhoneJson).getString()));
+	    }
+	    
+		return emp;
+		}
+	
+	
 	
 }
