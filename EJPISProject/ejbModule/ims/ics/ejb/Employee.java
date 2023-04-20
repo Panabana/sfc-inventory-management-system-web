@@ -6,12 +6,17 @@ import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EntityListeners;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.PostLoad;
 import javax.persistence.Table;
 
+import ims.ics.listeners.EmployeeAuditor;
+
 @Entity
+@EntityListeners(EmployeeAuditor.class)
 @Table(name="Employee")
 public class Employee implements Serializable {
 	
@@ -21,7 +26,6 @@ public class Employee implements Serializable {
 	private int phoneNumber;
 	private Set<Purchase> purchases;
 	
-	// Added constructor with params, using in EmployeeTest
 	public Employee(int employeeId, String name, String address, int phoneNumber, Set<Purchase> purchases) {
 		super();
 		this.employeeId = employeeId;
@@ -32,7 +36,6 @@ public class Employee implements Serializable {
 	}
 	
 	public Employee() {
-		// TODO Auto-generated constructor stub
 	}
 
 	@Id
@@ -79,6 +82,12 @@ public class Employee implements Serializable {
 
 	public void setPurchases(Set<Purchase> purchases) {
 		this.purchases = purchases;
+	}
+	
+	@PostLoad
+	public void logOperationEmployee() {
+		System.out.println("@PostLoad on id: " + this.getEmployeeId());
+		System.out.println("@PostLoad: " + this.getName() + " - " + this.getAddress() + " - " + this.getPhoneNumber());
 	}
 
 }
