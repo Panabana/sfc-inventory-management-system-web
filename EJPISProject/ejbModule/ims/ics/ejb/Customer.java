@@ -75,10 +75,10 @@ public class Customer implements Serializable {
 		this.purchases = purchases;
 	}
 	
-	@PostLoad
-	public void logOperationCustomer() {
-		System.out.println("@PostLoad on id: " + this.getCustomerId());
-		System.out.println("@PostLoad: " + this.getName() + " - " + this.getAddress() + " - " + this.getPhoneNbr());
-	}
+//	@PostLoad
+//	public void logOperationCustomer() {
+//		System.out.println("@PostLoad on id: " + this.getCustomerId());
+//		System.out.println("@PostLoad: " + this.getName() + " - " + this.getAddress() + " - " + this.getPhoneNbr());
+//	}
 
 }

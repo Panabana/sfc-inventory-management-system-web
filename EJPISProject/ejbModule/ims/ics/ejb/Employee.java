@@ -88,10 +88,10 @@ public class Employee implements Serializable {
 		this.purchases = purchases;
 	}
 	
-	@PostLoad
-	public void logOperationEmployee() {
-		System.out.println("@PostLoad on id: " + this.getEmployeeId());
-		System.out.println("@PostLoad: " + this.getName() + " - " + this.getAddress() + " - " + this.getPhoneNumber());
-	}
+//	@PostLoad
+//	public void logOperationEmployee() {
+//		System.out.println("@PostLoad on id: " + this.getEmployeeId());
+//		System.out.println("@PostLoad: " + this.getName() + " - " + this.getAddress() + " - " + this.getPhoneNumber());
+//	}
 
 }
