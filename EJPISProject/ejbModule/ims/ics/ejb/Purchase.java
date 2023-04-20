@@ -63,7 +63,7 @@ public class Purchase implements Serializable {
 	@PostLoad
 	public void logOperationPurchase() {
 		System.out.println("@PostLoad on id: " + this.getPurchaseId());
-		System.out.println("@PostLoad: " + this.getCustomer() + " " + this.getEmployee());
+		System.out.println("@PostLoad: " + this.getCustomer() + " - " + this.getEmployee());
 	}
 
 }
