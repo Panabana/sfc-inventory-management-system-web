@@ -68,23 +68,16 @@ public class EmployeeServlet extends HttpServlet {
 		// ADD EMPLOYEE
 		if ("add-employee".equals(action)) {
 
-			String id = request.getParameter("employee-id");
 			String name = request.getParameter("employee-name");
 			String address = request.getParameter("employee-address");
 			String phoneNumber = request.getParameter("employee-phone");
-			int employeeId = 0;
 			int employeePhoneNbr = 0;
-
-			if (id != null) {
-				employeeId = Integer.parseInt(id);
-			}
 
 			if (phoneNumber != null) {
 				employeePhoneNbr = Integer.parseInt(phoneNumber);
 			}
 
 			Employee employee = new Employee();
-			employee.setEmployeeId(employeeId);
 			employee.setName(name);
 			employee.setAddress(address);
 			employee.setPhoneNumber(employeePhoneNbr);

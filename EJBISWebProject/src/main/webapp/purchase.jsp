@@ -53,8 +53,7 @@
 					<legend>Purchase Information:</legend>
 					<form>
 						<div class="form-row">
-							<label for="purchase-id">Purchase ID:</label> <input type="text"
-								id="purchase-id" name="purchase-id"> <label
+							<label for="purchase-id">Purchase ID:</label>  <label
 								for="supplier-name"> Employee ID:</label> <select
 								name="employee-id" id="employee-id">
 								<option value="test">Test</option>
