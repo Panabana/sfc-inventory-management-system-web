@@ -131,6 +131,7 @@ $(document).ready(function() {
 		var strPhone = $("#empPhone").val();
 		var obj = { EmployeeId: strId, EmployeeName: strName, EmployeeAddress: strAddress, Phone: strPhone };
 		var jsonString = JSON.stringify(obj);
+		alert(jsonString);
 		if (strId != "") {
 			$.ajax({
 				method: "PUT",

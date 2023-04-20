@@ -52,7 +52,7 @@ public class EmployeeEAOImpl implements EmployeeEAOLocal {
 			em.remove(employee);
 		}
 	}
-
+	
 	public int countAllEmployees() {
 		Query query = em.createQuery("SELECT COUNT(e) FROM Employee e");
 		return ((Long) query.getSingleResult()).intValue();

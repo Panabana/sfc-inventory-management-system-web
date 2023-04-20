@@ -122,6 +122,7 @@ public class RestServlet extends HttpServlet {
 		    } else {
 		      response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
 		    };
+		    
 	}
 	/**§
 	 * @see HttpServlet#doDelete(HttpServletRequest, HttpServletResponse)
@@ -204,10 +205,12 @@ public class RestServlet extends HttpServlet {
 		//System.out.println("JsonRoot: "+jsonRoot);
 		Employee emp = new Employee();
 		
+		/*
 		JsonValue empIdJson = jsonRoot.get("EmployeeId");
 	    if (empIdJson != null && empIdJson.getValueType() == ValueType.STRING) {
 	        emp.setEmployeeId(Integer.parseInt(((JsonString) empIdJson).getString()));
 	    }
+	    */
 	    
 	    JsonValue empNameJson = jsonRoot.get("EmployeeName");
 	    if (empNameJson != null && empNameJson.getValueType() == ValueType.STRING) {
