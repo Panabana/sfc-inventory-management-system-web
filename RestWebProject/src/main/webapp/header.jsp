@@ -3,10 +3,12 @@
     </div>
     <div id="navbar">
       <ul>
+     	 <!--  
         <li><a href="#">Products</a></li>
         <li><a href="#">Suppliers</a></li>
         <li><a href="#">Purchases</a></li>
-        <li><a href="#">Customers</a></li>
-        <li><a href="#">Employees</a></li>
+        -->
+        <li><a href="#Employees">Employees</a></li>
+        <li><a href="#Customer">Customers</a></li>
       </ul>
     </div>

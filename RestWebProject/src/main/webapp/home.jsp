@@ -23,7 +23,7 @@
 	<div class="main-content">
 	
 	<!-- Employees section -->
-		<div class="section">
+		<div class="section" id="Employee">
 			<fieldset>
 				<legend>Employees Data</legend>
 				<div class="left-side">
@@ -95,7 +95,7 @@
 		</div>
 		
 		<!-- Customers section -->
-		<div class="section">
+		<div class="section" id="Customer">
 			<fieldset>
 				<legend>Customers Data</legend>
 				<div class="left-side">
@@ -258,5 +258,7 @@
 		</form>
 
 	</div>
+	
+	<%@ include file="footer.jsp"%>
 </body>
 </html>
