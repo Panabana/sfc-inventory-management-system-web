@@ -30,19 +30,16 @@
 					<thead>
 						<tr>
 							<th>Purchase ID</th>
-
-							<th>Customer Name</th>
-							<th>Employee Name</th>
-							<th>Product Name</th>
-							<th>Quantity</th>
-							<th>Total Price</th>
+							<th>Customer</th>
+							<th>Employee</th>
 						</tr>
 					</thead>
 					<tbody>
 						<c:forEach var="purchase" items="${purchases}">
 							<tr>
 								<td>${purchase.purchaseId}</td>
-                    			
+								<td>${purchase.customer.customerId} - ${purchase.customer.name}</td>
+								<td>${purchase.employee.employeeId} - ${purchase.employee.name}</td>
 							</tr>
 						</c:forEach>
 						
@@ -75,15 +72,14 @@
 					<form>
 						<div class="form-row">
 							<label for="purchase-id">Purchase ID:</label> <select
-									name="purchase-id" id="purchase-id">
-									<option value="">Select a Purchase that you wish to update</option>
-									<c:forEach var="purchase" items="${purchases}">
-										<option value="${purchase.purchaseId}">${purchase.purchaseId}</option>
-									</c:forEach>
-								</select>  
-								<div class="form-row">
-							<label for="employee-id"> Employee ID:</label> <select
-								name="employee-id" id="employee-id">
+
+								name="purchase-id" id="purchase-id">
+								<option value="">Select a Purchase that you wish to update</option>
+								<c:forEach var="purchase" items="${purchases}">
+									<option value="${purchase.purchaseId}">${purchase.purchaseId}</option>
+								</c:forEach>
+							</select> <label for="supplier-name"> Employee ID:</label> <select
+name="employee-id" id="employee-id">
 								<option value="">Select an employee</option>
 									<c:forEach var="employee" items="${employees}">
 										<option value="${employee.employeeId}">${employee.employeeId}</option>

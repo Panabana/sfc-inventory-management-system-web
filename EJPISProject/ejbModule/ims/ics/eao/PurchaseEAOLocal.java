@@ -16,5 +16,5 @@ public interface PurchaseEAOLocal {
 	public void deletePurchase(int purchaseId);
 	public List<Purchase> findAllPurchases();
 	public int countAllPurchases();
-	public List<Purchase> findPurchasesWithProductInfo();
+	public List<Purchase> findPurchaseDetails();
 }
