@@ -48,31 +48,40 @@
 				</table>
 			</div>
 			<form action="CustomerServlet" method="post" onSubmit="return validateForm()">
-			<div class="form-container">
-				<fieldset>
-					<legend>Customer Information:</legend>
-					<form>
-						<div class="form-row">
-							<label for="customer-id">Customer ID:</label>  <label for="customer-name">
-								Name:</label> <input type="text" id="customer-name" name="customer-name">
-						</div>
-						<div class="form-row">
-							<label for="customer-address">Address:</label> <input type="text"
-								id="customer-address" name="customer-address"> <label for="customer-phone">Phone Number:</label>
-							<input type="text" id="customer-phone" name="customer-phone">
-						</div>
-						<div class="button-container">
-							<button type="submit" class="add-btn" name="action" value="add-customer">Add</button>
-							<button type="submit" class="update-btn" name="action" value="update-customer">Update</button>
-							<button type="submit" class="remove-btn">Remove</button>
-						</div>
-						<div class="error-label" id="error-label">
-							<!-- Error messages will be displayed here -->
-							<p>User messages will be displayed here</p>
-						</div>
-					</form>
-				</fieldset>
-			</div>
+				<div class="form-container">
+					<fieldset>
+						<legend>Customer Information:</legend>
+						<form>
+							<div class="form-row">
+								<label for="customer-id">Customer ID:</label> <select
+									name="customer-id" id="customer-id">
+									<option value="">Select a Customer</option>
+									<c:forEach var="customer" items="${customers}">
+										<option value="${customer.customerId}">${customer.customerId}</option>
+									</c:forEach>
+								</select> <label for="customer-name"> Name:</label> <input type="text"
+									id="customer-name" name="customer-name">
+							</div>
+							<div class="form-row">
+								<label for="customer-address">Address:</label> <input
+									type="text" id="customer-address" name="customer-address">
+								<label for="customer-phone">Phone Number:</label> <input
+									type="text" id="customer-phone" name="customer-phone">
+							</div>
+							<div class="button-container">
+								<button type="submit" class="add-btn" name="action"
+									value="add-customer">Add</button>
+								<button type="submit" class="update-btn" name="action"
+									value="update-customer">Update</button>
+								<button type="submit" class="remove-btn">Remove</button>
+							</div>
+							<div class="error-label" id="error-label">
+								<!-- Error messages will be displayed here -->
+								<p>User messages will be displayed here</p>
+							</div>
+						</form>
+					</fieldset>
+				</div>
 			</form>
 		</div>
 	</main>
