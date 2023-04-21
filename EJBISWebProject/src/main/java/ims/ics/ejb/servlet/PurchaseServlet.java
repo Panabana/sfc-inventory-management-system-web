@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import ims.ics.ejb.Customer;
+import ims.ics.ejb.Employee;
 import ims.ics.ejb.Purchase;
 import ims.ics.facade.FacadeLocal;
 
@@ -36,6 +38,10 @@ public class PurchaseServlet extends HttpServlet {
 		
 		List<Purchase> purchases = facade.findPurchasesWithProductInfo();
 		request.setAttribute("purchases", purchases);
+		List<Employee> employees = facade.findAllEmployees();
+		request.setAttribute("employees", employees);
+		List<Customer> customers = facade.findAllCustomers();	
+		request.setAttribute("customers", customers);
 
 		RequestDispatcher dispatcher = request.getRequestDispatcher("purchase.jsp");
 		dispatcher.forward(request, response);
