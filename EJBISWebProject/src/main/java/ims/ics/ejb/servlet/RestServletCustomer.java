@@ -69,26 +69,59 @@ public class RestServletCustomer extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		String pathInfo = request.getPathInfo();
-		if (pathInfo == null || pathInfo.equals("/")) {
-			BufferedReader reader = request.getReader();// Read JSON data
-			Customer cust = parseJsonCustomer(reader);
-			try {
-				cust = facade.createCustomer(cust);
-			} catch (Exception e) {
-				System.out.println("Duplicate key");
-			}
-			sendAsJson(response, cust);
-		}
-		
-		
-		doGet(request, response);
+
+	    // Check if the path info is valid
+	    if (pathInfo == null || pathInfo.equals("/")) {
+	        // Read the request body
+	        BufferedReader reader = request.getReader();
+	        // Parse the JSON data into a Customer object
+	        Customer customer = parseJsonCustomer(reader);
+
+	        try {
+	            // Attempt to create the new customer
+	            customer = facade.createCustomer(customer);
+	        } catch (Exception e) {
+	            // If the creation fails due to a duplicate key, return an error response
+	            response.sendError(HttpServletResponse.SC_CONFLICT, "Customer with the same ID already exists.");
+	            return;
+	        }
+
+	        // Send the created customer as a JSON response
+	        sendAsJson(response, customer);
+	    } else {
+	        // If the path info is invalid, return a 400 Bad Request error
+	        response.sendError(HttpServletResponse.SC_BAD_REQUEST);
+	    }
 	}
 
 	/**
 	 * @see HttpServlet#doPut(HttpServletRequest, HttpServletResponse)
 	 */
 	protected void doPut(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		
+		String pathInfo = request.getPathInfo();
+	    if (pathInfo == null || pathInfo.equals("/")) {
+	        response.sendError(HttpServletResponse.SC_BAD_REQUEST);
+	        return;
+	    }
+
+	    String[] splits = pathInfo.split("/");
+	    if (splits.length != 2) {
+	        response.sendError(HttpServletResponse.SC_BAD_REQUEST);
+	        return;
+	    }
+
+	    String id = splits[1];
+	    BufferedReader reader = request.getReader();
+	    Customer cust = parseJsonCustomerUpdate(reader);
+	    cust.setCustomerId(Integer.parseInt(id));
+	    Customer updatedCust = facade.updateCustomer(cust);
+
+	    if (updatedCust != null) {
+	        sendAsJson(response, updatedCust);
+	    } else {
+	        response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
+	    };
 	}
 
 	/**
@@ -167,6 +200,38 @@ public class RestServletCustomer extends HttpServlet {
 	}
 	
 	private Customer parseJsonCustomer(BufferedReader br) {
+		JsonReader jsonReader = null;
+		JsonObject jsonRoot = null;
+		jsonReader = Json.createReader(br);
+		jsonRoot = jsonReader.readObject();
+		
+		Customer customer = new Customer();
+		
+		/*
+		JsonValue customerIdJson = jsonRoot.get("CustomerId");
+		if (customerIdJson != null && customerIdJson.getValueType() == ValueType.STRING) {
+			customer.setCustomerId(Integer.parseInt(((JsonString) customerIdJson).getString()));
+		}
+		*/
+		JsonValue customerNameJson = jsonRoot.get("CustomerName");
+		if (customerNameJson != null && customerNameJson.getValueType() == ValueType.STRING) {
+			customer.setName(((JsonString) customerNameJson).getString());
+		}
+
+		JsonValue customerAddressJson = jsonRoot.get("CustomerAddress");
+		if (customerAddressJson != null && customerAddressJson.getValueType() == ValueType.STRING) {
+			customer.setAddress(((JsonString) customerAddressJson).getString());
+		}
+
+		JsonValue customerPhoneJson = jsonRoot.get("Phone");
+		if (customerPhoneJson != null && customerPhoneJson.getValueType() == ValueType.STRING) {
+			customer.setPhoneNbr(Integer.parseInt(((JsonString) customerPhoneJson).getString()));
+		}
+
+		return customer;
+	}
+	
+	private Customer parseJsonCustomerUpdate(BufferedReader br) {
 		JsonReader jsonReader = null;
 		JsonObject jsonRoot = null;
 		jsonReader = Json.createReader(br);

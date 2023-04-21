@@ -150,7 +150,7 @@
 									placeholder="Phone Number">
 							</div>
 							<div class="button-container">
-								<button type="submit" class="btn" value="Add Customer" id="addCustomerBtn">Add</button>
+								<button type="submit" class="btn" value="addCustomerBtn" id="addCustomerBtn">Add</button>
 								<button type="submit" class="btn" name="action"
 									value="update-employee">Update</button>
 								<button type="submit" class="btn" id="delCustBtn">Remove</button>
@@ -215,7 +215,7 @@
 		 -->
 		
 		
-		
+<!-- 		
 		<table id="customerTable">
 			<caption>Customers</caption>
 			<thead>
@@ -255,7 +255,7 @@
 				 <input type="number" id="customerPhone" name="customerPhone"><br><br> 
 				 <input type="submit" value="Add Customer" id="addCustomerBtn"> 
 				 <input type="submit" value="Update Customer" id="updateCustomerBtn">
-		</form>
+		</form> -->
 
 	</div>
 </body>

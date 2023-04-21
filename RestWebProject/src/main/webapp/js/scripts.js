@@ -24,11 +24,14 @@ $(document).ready(function() {
 			}
 
 			function parseJsonFileEmployee(result) {
-				$("#EmployeeName").text(result.EmployeeName);
-				$("#EmployeeId").text(result.EmployeeId);
-				$("#EmployeeAddress").text(result.EmployeeAddress);
-				$("#EmployeePhone").text(result.Phone);
-
+				clearTable();
+				clearFields();
+				var row = $("<tr>");
+				row.append($("<td>").text(result.EmployeeName));
+				row.append($("<td>").text(result.EmployeeId));
+				row.append($("<td>").text(result.EmployeeAddress));
+				row.append($("<td>").text(result.Phone));
+				$("#employeeTable tbody").empty().append(row);
 				$("#empName").val(result.EmployeeName);
 				$("#empIdAdd").val(result.EmployeeId);
 				$("#empAddress").val(result.EmployeeAddress);
@@ -61,10 +64,6 @@ $(document).ready(function() {
 
 
 	function displayEmployees(employees) {
-		// Clear existing table rows
-		$("#employeeTable tbody").empty();
-
-
 		$.each(employees, function(index, employee) {
 			var row = $("<tr>");
 			row.append($("<td>").text(employee.EmployeeName));
@@ -73,6 +72,7 @@ $(document).ready(function() {
 			row.append($("<td>").text(employee.Phone));
 			$("#employeeTable tbody").append(row);
 		});
+		clearTable();
 	}
 
 	$("#delEmpBtn").click(function(event) {
@@ -163,5 +163,11 @@ $(document).ready(function() {
 		console.log("Ajax-update employee: " + status);
 		displayEmployees(result);
 	}
+
+	function clearTable() {
+		$("#employeeTable tbody").empty();
+	}
+	
+	
 
 });
