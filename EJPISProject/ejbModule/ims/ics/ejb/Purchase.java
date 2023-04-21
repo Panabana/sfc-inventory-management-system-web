@@ -17,6 +17,11 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="Purchase")
+@NamedQuery(name = "Purchase.findPurchaseDetails",
+query = "SELECT p.purchaseId, c.customerId, c.name AS customerName, e.employeeId, e.name AS employeeName " +
+        "FROM Purchase p " +
+        "JOIN p.customer c " +
+        "JOIN p.employee e")
 public class Purchase implements Serializable {
 	
 	private int purchaseId;

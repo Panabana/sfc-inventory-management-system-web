@@ -57,8 +57,9 @@ public class PurchaseEAOImpl implements PurchaseEAOLocal {
 		return ((Long) query.getSingleResult()).intValue();
 	}
 	
-	public List<Purchase> findPurchasesWithProductInfo() {
-	    TypedQuery<Purchase> query = em.createNamedQuery("Purchase.findPurchasesWithProductInfo", Purchase.class);
+	public List<Purchase> findPurchaseDetails() {
+	    TypedQuery<Purchase> query = em.createNamedQuery("Purchase.findPurchaseDetails", Purchase.class);
 	    return query.getResultList();
 	}
+
 }

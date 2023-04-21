@@ -116,7 +116,8 @@ public class Facade implements FacadeLocal {
 		purchase.deletePurchase(purchaseId);
 	}
 	public List<Purchase> findPurchasesWithProductInfo() {
-		  return purchase.findPurchasesWithProductInfo();
+	    return purchase.findPurchaseDetails();
 	}
+
 	
 }
