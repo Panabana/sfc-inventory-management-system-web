@@ -151,8 +151,7 @@
 							</div>
 							<div class="button-container">
 								<button type="submit" class="btn" value="addCustomerBtn" id="addCustomerBtn">Add</button>
-								<button type="submit" class="btn" name="action"
-									value="update-employee">Update</button>
+								<button type="submit" class="btn" name=updtCustBtn value="updtCustBtn" id="updtCustBtn">Update</button>
 								<button type="submit" class="btn" id="delCustBtn">Remove</button>
 							</div>
 							<div class="error-label">

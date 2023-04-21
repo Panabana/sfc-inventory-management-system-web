@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.List;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EntityListeners;
@@ -71,7 +72,7 @@ public class Customer implements Serializable {
 	public void setPhoneNbr(int phoneNbr) {
 		this.phoneNbr = phoneNbr;
 	}
-	@OneToMany(mappedBy = "customer", fetch=FetchType.EAGER)
+	@OneToMany(mappedBy = "customer", fetch=FetchType.EAGER,  cascade = CascadeType.MERGE)
 	public Set<Purchase> getPurchases() {
 		return purchases;
 	}
