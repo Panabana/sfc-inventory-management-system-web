@@ -3,6 +3,7 @@ package ims.ics.ejb.servlet;
 import java.io.IOException;
 import java.util.List;
 
+import javax.ejb.EJB;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -22,6 +23,7 @@ import ims.ics.facade.FacadeLocal;
 public class PurchaseServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
+	@EJB
 	FacadeLocal facade;
     /**
      * @see HttpServlet#HttpServlet()
