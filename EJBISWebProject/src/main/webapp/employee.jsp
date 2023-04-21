@@ -49,14 +49,20 @@
 					</tbody>
 				</table>
 			</div>
-			<form action="EmployeeServlet" method="post" onsubmit="return validateForm()">
+			<form action="EmployeeServlet" method="post"
+				onsubmit="return validateForm()">
 				<div class="form-container">
 					<fieldset>
 						<legend>Employee Information:</legend>
 						<form>
 							<div class="form-row">
-								<label for="employee-id">Employee ID:</label>  <label
-									for="employee-name"> Name:</label> <input type="text"
+								<label for="employee-id">Employee ID:</label> <select
+									name="employee-id" id="employee-id">
+									<option value="">Select an employee that you wish to update</option>
+									<c:forEach var="employee" items="${employees}">
+										<option value="${employee.employeeId}">${employee.employeeId}</option>
+									</c:forEach>
+								</select> <label for="employee-name"> Name:</label> <input type="text"
 									id="employee-name" name="employee-name">
 							</div>
 							<div class="form-row">
@@ -97,34 +103,33 @@
 			$('#employee-address').val(employeeAddress);
 			$('#employee-phone').val(employeePhoneNumber);
 		});
-		
 
-    function validateForm() {
-      //  var employeeId = document.getElementById("employee-id").value;
-        var employeeName = document.getElementById("employee-name").value;
-        var employeeAddress = document.getElementById("employee-address").value;
-        var employeePhoneNumber = document.getElementById("employee-phone").value;
-        var errorMessage = "";
+		function validateForm() {
+			//  var employeeId = document.getElementById("employee-id").value;
+			var employeeName = document.getElementById("employee-name").value;
+			var employeeAddress = document.getElementById("employee-address").value;
+			var employeePhoneNumber = document.getElementById("employee-phone").value;
+			var errorMessage = "";
 
-        //if (employeeId === "") { 
-           // errorMessage = "Employee ID is required.";
-           // document.getElementById("error-label").innerHTML = errorMessage;
-           // return false;
-         if(employeeName === ""){
-        	errorMessage = "Please enter a Name."
-        	document.getElementById("error-label").innerHTML = errorMessage;
-        	return false;
-        }else if(employeeAddress === ""){
-        	errorMessage = "Please enter an Address."
-        	document.getElementById("error-label").innerHTML = errorMessage;
-        	return false;
-        }else if(employeePhoneNumber === ""){	
-        errorMessage = "Please enter a valid Phone Number"
-        document.getElementById("error-label").innerHTML = errorMessage;
-        return false;
-        }
-        return true;
-    }		
+			//if (employeeId === "") { 
+			// errorMessage = "Employee ID is required.";
+			// document.getElementById("error-label").innerHTML = errorMessage;
+			// return false;
+			if (employeeName === "") {
+				errorMessage = "Please enter a Name."
+				document.getElementById("error-label").innerHTML = errorMessage;
+				return false;
+			} else if (employeeAddress === "") {
+				errorMessage = "Please enter an Address."
+				document.getElementById("error-label").innerHTML = errorMessage;
+				return false;
+			} else if (employeePhoneNumber === "") {
+				errorMessage = "Please enter a valid Phone Number"
+				document.getElementById("error-label").innerHTML = errorMessage;
+				return false;
+			}
+			return true;
+		}
 	</script>
 	<%@ include file="footer.jsp"%>
 </body>
