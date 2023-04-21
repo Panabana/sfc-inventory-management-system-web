@@ -36,13 +36,30 @@ public class PurchaseServlet extends HttpServlet {
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String action = request.getParameter("action");
+        if("find-purchase".equals(action)) {
+            String id = request.getParameter("find-purchase-id");
+            int purchaseId = 0;
+            if(id != null) {
+                purchaseId = Integer.parseInt(id);
+                Purchase purchase = facade.findPurchaseById(purchaseId);
+                if(purchase != null) {
+                    purchaseId = purchase.getPurchaseId();
+                    int employeeId = purchase.getEmployee().getEmployeeId();
+                    int customerId = purchase.getCustomer().getCustomerId();
+                    request.setAttribute("purchaseId", purchaseId);
+                    request.setAttribute("employeeId", employeeId);
+                    request.setAttribute("customerId", customerId);
+                }
+            }
+        }
+
 		List<Purchase> purchases = facade.findPurchasesWithProductInfo();
 		request.setAttribute("purchases", purchases);
 		List<Employee> employees = facade.findAllEmployees();
 		request.setAttribute("employees", employees);
-		List<Customer> customers = facade.findAllCustomers();	
+		List<Customer> customers = facade.findAllCustomers();
 		request.setAttribute("customers", customers);
 
 		RequestDispatcher dispatcher = request.getRequestDispatcher("purchase.jsp");
