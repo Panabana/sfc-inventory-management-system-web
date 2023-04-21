@@ -114,7 +114,7 @@ public class RestServletCustomer extends HttpServlet {
 	    String id = splits[1];
 	    BufferedReader reader = request.getReader();
 	    Customer cust = parseJsonCustomerUpdate(reader);
-	    cust.setCustomerId(Integer.parseInt(id));
+	    //cust.setCustomerId(Integer.parseInt(id));
 	    Customer updatedCust = facade.updateCustomer(cust);
 
 	    if (updatedCust != null) {
