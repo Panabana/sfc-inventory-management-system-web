@@ -66,7 +66,7 @@
 							</select>
 						</div>
 						<div class="form-row">
-							<label for="customer-id">Customer ID:</label> <select
+							<label for="supplier-address">Customer ID:</label> <select
 								name="customer-id" id="customer-id">
 								<option value="test">Test</option>
 							</select>
