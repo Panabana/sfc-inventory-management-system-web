@@ -4,6 +4,7 @@ import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EntityListeners;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -15,7 +16,10 @@ import javax.persistence.NamedQuery;
 import javax.persistence.PostLoad;
 import javax.persistence.Table;
 
+import ims.ics.listeners.PurchaseAuditor;
+
 @Entity
+@EntityListeners(PurchaseAuditor.class)
 @Table(name="Purchase")
 public class Purchase implements Serializable {
 	
