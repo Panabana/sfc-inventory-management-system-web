@@ -15,7 +15,7 @@ public interface FacadeLocal {
 	public List<Employee> findAllEmployees();
 	public Employee findEmployeeById(int id);
 	public Employee createEmployee(Employee employee);
-	public void updateEmployee(Employee employee);
+	public Employee updateEmployee(Employee employee);
 	public void deleteEmployee(int employeeId);
 	public int countAllEmployees();
 	
