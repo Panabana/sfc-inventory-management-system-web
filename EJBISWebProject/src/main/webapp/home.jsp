@@ -1,17 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="ISO-8859-1">
 <link rel="stylesheet" type="text/css" href="css/style.css">
+<!-- Is font-awesome still being used? -->
 <link rel="stylesheet" type="text/css"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-<title>IMS - Home</title>
 <script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js">
-	
-</script>
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 <script>
 	$(document).ready(function() {
 		$("#welcome").click(function() {
@@ -19,6 +17,7 @@
 		});
 	});
 </script>
+<title>IMS - Home</title>
 </head>
 <body>
 	<%@ include file="header.jsp"%>
@@ -28,7 +27,7 @@
 			<h1>Spongebob Fan Clubinator</h1>
 			<div class="container" id="welcome" style="font-family: Arial">
 				<h2 class="container">
-					Welcome to<br>the Spongebob Inventory Management System
+					Welcome to the<br>Spongebob Inventory Management System
 				</h2>
 				<br> <br>
 				<p>
