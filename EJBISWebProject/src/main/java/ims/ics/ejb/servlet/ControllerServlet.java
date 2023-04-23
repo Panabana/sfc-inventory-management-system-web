@@ -53,14 +53,8 @@ public class ControllerServlet extends HttpServlet {
 		case "about":
 			page = "about.jsp";
 			break;
-		case "test":
-			page = "test.jsp";
-			break;
 		case "employee":
 			response.sendRedirect("EmployeeServlet");
-			break;
-		case "product":
-			response.sendRedirect("ProductServlet");
 			break;
 		case "customer":
 			response.sendRedirect("CustomerServlet");
@@ -69,9 +63,6 @@ public class ControllerServlet extends HttpServlet {
 			page = "purchase.jsp";
 			List<Purchase> purchases = facade.findAllPurchases();
 			request.setAttribute("purchases", purchases);
-			break;
-		case "supplier":
-			response.sendRedirect("SupplierServlet");
 			break;
 		case "home":
 			page = "home.jsp";
@@ -82,7 +73,6 @@ public class ControllerServlet extends HttpServlet {
 			int countPurchases = facade.countAllPPurchases();
 			request.setAttribute("countPurchases", countPurchases);
 			break;
-
 		default:
 			page = "home.jsp";
 		}
