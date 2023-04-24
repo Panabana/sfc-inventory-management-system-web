@@ -81,7 +81,7 @@
 							</div>
 							<div class="error-label" id="error-label">
 								<!-- Error messages will be displayed here -->
-								<p>User messages will be displayed here</p>
+								<p></p>
 							</div>
 						</form>
 					</fieldset>
