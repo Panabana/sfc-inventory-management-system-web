@@ -57,15 +57,14 @@
 						<div class="form-row">
 							<label for="purchase-id">Purchase ID:</label> <select
 								name="purchase-id" id="purchase-id">
-								<option disabled selected value="">Select a Purchase that you wish to
+								<option value="">Select a Purchase that you wish to
 									update</option>
 								<c:forEach var="purchase" items="${purchases}">
 									<option value="${purchase.purchaseId}">${purchase.purchaseId}</option>
 								</c:forEach>
 							</select> <label for="employee-id"> Employee ID:</label> <select
 								name="employee-id" id="employee-id">
-
-								<option disabled selected value="">Select an employee</option>
+								<option value="">Select an employee</option>
 								<c:forEach var="employee" items="${employees}">
 									<option value="${employee.employeeId}">${employee.employeeId}</option>
 								</c:forEach>

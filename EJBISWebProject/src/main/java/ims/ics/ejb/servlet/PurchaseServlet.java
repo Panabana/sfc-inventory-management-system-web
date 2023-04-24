@@ -37,8 +37,12 @@ public class PurchaseServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    	
     	List<Employee> employees = facade.findAllEmployees();
 		request.setAttribute("employees", employees);
+		List<Customer> customers = facade.findAllCustomers();
+		request.setAttribute("customers", customers);
+		
         String action = request.getParameter("action");
         if("find-purchase".equals(action)) {
             String id = request.getParameter("find-purchase-id");
@@ -59,8 +63,6 @@ public class PurchaseServlet extends HttpServlet {
 
 		List<Purchase> purchases = facade.findPurchasesWithProductInfo();
 		request.setAttribute("purchases", purchases);
-		List<Customer> customers = facade.findAllCustomers();
-		request.setAttribute("customers", customers);
 		RequestDispatcher dispatcher = request.getRequestDispatcher("purchase.jsp");
 		dispatcher.forward(request, response);
 		
