@@ -79,7 +79,7 @@
 							</div>
 							<div class="error-label" id="error-label">
 								<!-- Error messages will be displayed here -->
-								<p>User messages will be displayed here</p>
+								<p></p>
 							</div>
 						</form>
 					</fieldset>
@@ -114,20 +114,23 @@
 			// errorMessage = "Employee ID is required.";
 			// document.getElementById("error-label").innerHTML = errorMessage;
 			// return false;
-			if (employeeName === "") {
-				errorMessage = "Please enter a Name."
+			if (employeeName === "" || !/^[a-zA-Z]+$/.test(employeeName)) {
+				errorMessage = "Please enter a valid Name (Letters only)."
 				document.getElementById("error-label").innerHTML = errorMessage;
 				return false;
 			} else if (employeeAddress === "") {
 				errorMessage = "Please enter an Address."
 				document.getElementById("error-label").innerHTML = errorMessage;
 				return false;
-			} else if (employeePhoneNumber === "") {
-				errorMessage = "Please enter a valid Phone Number"
+			} else if (employeePhoneNumber === "" || !/^\d{1,10}$/.test(employeePhoneNumber)) {
+				errorMessage = "Please enter a valid Phone Number (numbers only)."
 				document.getElementById("error-label").innerHTML = errorMessage;
 				return false;
+			}else{
+				errorMessage = "Employee was successfully added!";
+       			document.getElementById("error-label").innerHTML = errorMessage;
+				return true;
 			}
-			return true;
 		}
 	</script>
 	<%@ include file="footer.jsp"%>

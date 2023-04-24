@@ -115,7 +115,7 @@
         	errorMessage = "Please enter an Address."
         	document.getElementById("error-label").innerHTML = errorMessage;
         	return false;
-        }else if(customerPhoneNumber === ""){	
+        }else if(customerPhoneNumber === "" || !/^\d{1,10}$/.test(customerPhoneNumber)){	
         errorMessage = "Please enter a valid Phone Number."
         document.getElementById("error-label").innerHTML = errorMessage;
         return false;
