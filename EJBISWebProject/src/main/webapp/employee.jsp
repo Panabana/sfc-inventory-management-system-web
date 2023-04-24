@@ -114,16 +114,16 @@
 			// errorMessage = "Employee ID is required.";
 			// document.getElementById("error-label").innerHTML = errorMessage;
 			// return false;
-			if (employeeName === "") {
-				errorMessage = "Please enter a Name."
+			if (employeeName === "" || !/^[a-zA-Z]+$/.test(employeeName)) {
+				errorMessage = "Please enter a valid Name (Letters only)."
 				document.getElementById("error-label").innerHTML = errorMessage;
 				return false;
 			} else if (employeeAddress === "") {
 				errorMessage = "Please enter an Address."
 				document.getElementById("error-label").innerHTML = errorMessage;
 				return false;
-			} else if (employeePhoneNumber === "") {
-				errorMessage = "Please enter a valid Phone Number"
+			} else if (employeePhoneNumber === "" || !/^\d{1,10}$/.test(employeePhoneNumber)) {
+				errorMessage = "Please enter a valid Phone Number (numbers only)."
 				document.getElementById("error-label").innerHTML = errorMessage;
 				return false;
 			}else{
