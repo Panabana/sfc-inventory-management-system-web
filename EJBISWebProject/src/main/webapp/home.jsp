@@ -61,18 +61,6 @@
 				</div>
 
 				<div class="stats-card">
-					<i class="fas fa-box"></i>
-					<h3>${countProducts}</h3>
-					<p>Total Products</p>
-				</div>
-
-				<div class="stats-card">
-					<i class="fas fa-truck"></i>
-					<h3>${countSuppliers}</h3>
-					<p>Total Suppliers</p>
-				</div>
-
-				<div class="stats-card">
 					<i class="fas fa-user"></i>
 					<h3>${countCustomers}</h3>
 					<p>Total Customers</p>
@@ -83,32 +71,20 @@
 					<h3>${countEmployees}</h3>
 					<p>Total Employees</p>
 				</div>
-			</div>
-			<div class="table-container">
-				<table>
-					<thead>
-						<tr>
-							<th>Purchase ID</th>
-							<th>Customer Name</th>
-							<th>Employee Name</th>
-							<th>Product Name</th>
-							<th>Quantity</th>
-							<th>Total Price</th>
-						</tr>
-					</thead>
-					<tbody>
-						<!-- 
-						<c:forEach var="customer" items="${customers}">
-							<tr>
-								<td>${customer.customerId}</td>
-								<td>${customer.name}</td>
-								<td>${customer.address}</td>
-								<td>${customer.phoneNbr}</td>
-							</tr>
-						</c:forEach>
-						-->
-					</tbody>
-				</table>
+
+				<div class="stats-card">
+					<i class="fas fa-tachometer-alt"></i>
+					<h3>${countProducts}</h3>
+					<p>Most active employee</p>
+				</div>
+
+				<div class="stats-card">
+					<i class="fas fa-chart-line"></i>
+					<h3>${countSuppliers}</h3>
+					<p>Most active customer</p>
+				</div>
+
+
 			</div>
 		</div>
 	</main>
