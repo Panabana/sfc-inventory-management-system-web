@@ -23,6 +23,9 @@
 			}
 
 			function parseJsonFileCustomer(result) {
+				
+				clearTable();
+				
 				$("#CustomerId").text(result.CustomerId);
 				$("#CustomerName").text(result.CustomerName);
 				$("#CustomerAddress").text(result.CustomerAddress);
@@ -127,7 +130,7 @@
     }
 })
 
-$("#updateCustomerBtn").click(function(event) {
+$("#updtCustBtn").click(function(event) {
 	event.preventDefault();
 
     var strId = $("#customerIdAdd").val();
@@ -159,6 +162,10 @@ $("#updateCustomerBtn").click(function(event) {
         }
     }
 })
+
+	 function clearTable() {
+		 $("#customerTable tbody").empty();
+	 }
 
 
 });

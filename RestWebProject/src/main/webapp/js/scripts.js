@@ -72,7 +72,7 @@ $(document).ready(function() {
 			row.append($("<td>").text(employee.Phone));
 			$("#employeeTable tbody").append(row);
 		});
-		clearTable();
+		//clearTable();
 	}
 
 	$("#delEmpBtn").click(function(event) {
