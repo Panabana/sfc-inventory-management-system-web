@@ -57,7 +57,7 @@
 							<div class="form-row">
 								<label for="employee-id">Employee ID:</label> <select
 									name="employee-id" id="employee-id">
-									<option value="">Select an employee that you wish to update</option>
+									<option disabled selected value="">Select an employee that you wish to update</option>
 									<c:forEach var="employee" items="${employees}">
 										<option value="${employee.employeeId}">${employee.employeeId}</option>
 									</c:forEach>
