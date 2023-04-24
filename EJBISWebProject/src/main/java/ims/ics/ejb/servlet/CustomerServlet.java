@@ -100,7 +100,7 @@ public class CustomerServlet extends HttpServlet {
 				if (request.getParameter("customer-phone") != null) {
 					customer.setPhoneNbr(Integer.parseInt(request.getParameter("customer-phone")));
 				}
-			}
+			
 			facade.updateCustomer(customer);
 			response.sendRedirect("CustomerServlet");
 
@@ -109,5 +109,5 @@ public class CustomerServlet extends HttpServlet {
 			doGet(request, response);
 		}
 	}
-
+	}
 }

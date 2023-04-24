@@ -57,7 +57,8 @@
 							<div class="form-row">
 								<label for="employee-id">Employee ID:</label> <select
 									name="employee-id" id="employee-id">
-									<option disabled selected value="">Select an employee that you wish to update</option>
+									<option disabled selected value="">Select an employee
+										that you wish to update</option>
 									<c:forEach var="employee" items="${employees}">
 										<option value="${employee.employeeId}">${employee.employeeId}</option>
 									</c:forEach>
@@ -114,21 +115,23 @@
 			// errorMessage = "Employee ID is required.";
 			// document.getElementById("error-label").innerHTML = errorMessage;
 			// return false;
-			if (employeeName === "" || !/^[a-zA-Z]+$/.test(employeeName)) {
+			if (employeeName === "" || !/^[a-zA-ZÂ‰ˆ≈ƒ÷]+$/.test(employeeName)) {
 				errorMessage = "Please enter a valid Name (Letters only)."
 				document.getElementById("error-label").innerHTML = errorMessage;
 				return false;
-			} else if (employeeAddress === "") {
-				errorMessage = "Please enter an Address."
+			} else if (employeeAddress === ""
+					|| !/^[a-zA-Z0-9\sÂ‰ˆ≈ƒ÷]*$/.test(employeeAddress)) {
+				errorMessage = "Please enter an Address (Only letters and numbers allowed)."
 				document.getElementById("error-label").innerHTML = errorMessage;
 				return false;
-			} else if (employeePhoneNumber === "" || !/^\d{1,10}$/.test(employeePhoneNumber)) {
+			} else if (employeePhoneNumber === ""
+					|| !/^\d{1,10}$/.test(employeePhoneNumber)) {
 				errorMessage = "Please enter a valid Phone Number (numbers only)."
 				document.getElementById("error-label").innerHTML = errorMessage;
 				return false;
-			}else{
+			} else {
 				errorMessage = "Employee was successfully added!";
-       			document.getElementById("error-label").innerHTML = errorMessage;
+				document.getElementById("error-label").innerHTML = errorMessage;
 				return true;
 			}
 		}

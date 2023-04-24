@@ -67,7 +67,6 @@ public class EmployeeServlet extends HttpServlet {
 
 		// ADD EMPLOYEE
 		if ("add-employee".equals(action)) {
-
 			String name = request.getParameter("employee-name");
 			String address = request.getParameter("employee-address");
 			String phoneNumber = request.getParameter("employee-phone");
@@ -87,7 +86,6 @@ public class EmployeeServlet extends HttpServlet {
 
 			// UPDATE EMPLOYEE
 		} else if ("update-employee".equals(action)) {
-
 			String id = request.getParameter("employee-id");
 			int empId = Integer.parseInt(id);
 
@@ -102,6 +100,7 @@ public class EmployeeServlet extends HttpServlet {
 				if (request.getParameter("employee-phone") != null) {
 					employee.setPhoneNumber(Integer.parseInt(request.getParameter("employee-phone")));
 				}
+			
 
 				facade.updateEmployee(employee);
 				response.sendRedirect("EmployeeServlet");
