@@ -36,7 +36,7 @@ public class CustomerEAOImpl implements CustomerEAOLocal {
 		return customer;
 	}
 
-	public void updateCustomer(Customer customer) {
+	public Customer updateCustomer(Customer customer) {
 		Customer existingCus = em.find(Customer.class, customer.getCustomerId());
 		if (existingCus != null) {
 			existingCus.setName(customer.getName());
@@ -44,6 +44,7 @@ public class CustomerEAOImpl implements CustomerEAOLocal {
 			existingCus.setPhoneNbr(customer.getPhoneNbr());
 			em.merge(existingCus);
 		}
+		return existingCus;
 	}
 
 	public void deleteCustomer(int customerId) {
