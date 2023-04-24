@@ -53,25 +53,24 @@ public class ControllerServlet extends HttpServlet {
 		case "about":
 			page = "about.jsp";
 			break;
-		case "test":
-			page = "test.jsp";
-			break;
 		case "employee":
-			response.sendRedirect("EmployeeServlet");
-			break;
-		case "product":
-			response.sendRedirect("ProductServlet");
+			page= "employee.jsp";
+			List<Employee> employees = facade.findAllEmployees();
+			request.setAttribute("employees", employees);
 			break;
 		case "customer":
-			response.sendRedirect("CustomerServlet");
+			page = "customer.jsp";
+			List<Customer> customers = facade.findAllCustomers();
+			request.setAttribute("customers", customers);
 			break;
 		case "purchase":
 			page = "purchase.jsp";
 			List<Purchase> purchases = facade.findAllPurchases();
 			request.setAttribute("purchases", purchases);
-			break;
-		case "supplier":
-			response.sendRedirect("SupplierServlet");
+			List<Employee> employeeList = facade.findAllEmployees();
+			request.setAttribute("employees", employeeList);
+			List<Customer> customerList = facade.findAllCustomers();
+			request.setAttribute("customers", customerList);
 			break;
 		case "home":
 			page = "home.jsp";
@@ -82,7 +81,6 @@ public class ControllerServlet extends HttpServlet {
 			int countPurchases = facade.countAllPPurchases();
 			request.setAttribute("countPurchases", countPurchases);
 			break;
-
 		default:
 			page = "home.jsp";
 		}

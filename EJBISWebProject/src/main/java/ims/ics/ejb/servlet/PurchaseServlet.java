@@ -22,39 +22,109 @@ import ims.ics.facade.FacadeLocal;
 @WebServlet("/PurchaseServlet")
 public class PurchaseServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
+
 	@EJB
 	FacadeLocal facade;
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public PurchaseServlet() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#HttpServlet()
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		List<Purchase> purchases = facade.findPurchasesWithProductInfo();
-		request.setAttribute("purchases", purchases);
-		List<Employee> employees = facade.findAllEmployees();
-		request.setAttribute("employees", employees);
-		List<Customer> customers = facade.findAllCustomers();	
-		request.setAttribute("customers", customers);
-
-		RequestDispatcher dispatcher = request.getRequestDispatcher("purchase.jsp");
-		dispatcher.forward(request, response);
-		
+	public PurchaseServlet() {
+		super();
+		// TODO Auto-generated constructor stub
 	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+
+		List<Employee> employees = facade.findAllEmployees();
+		request.setAttribute("employees", employees);
+		List<Customer> customers = facade.findAllCustomers();
+		request.setAttribute("customers", customers);
+
+		String action = request.getParameter("action");
+		if ("find-purchase".equals(action)) {
+			String id = request.getParameter("find-purchase-id");
+			int purchaseId = 0;
+
+			purchaseId = Integer.parseInt(id);
+			Purchase purchase = facade.findPurchaseById(purchaseId);
+			if (purchase != null) {
+				purchaseId = purchase.getPurchaseId();
+				int employeeId = purchase.getEmployee().getEmployeeId();
+				int customerId = purchase.getCustomer().getCustomerId();
+				request.setAttribute("purchaseId", purchaseId);
+				request.setAttribute("employeeId", employeeId);
+				request.setAttribute("customerId", customerId);
+			}
+
+		}
+
+		List<Purchase> purchases = facade.findPurchasesWithProductInfo();
+		request.setAttribute("purchases", purchases);
+		RequestDispatcher dispatcher = request.getRequestDispatcher("purchase.jsp");
+		dispatcher.forward(request, response);
+
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+
+		String action = request.getParameter("action");
+
+		if ("add-purchase".equals(action)) {
+			String employeeId = request.getParameter("employee-id");
+			String customerId = request.getParameter("customer-id");
+			int empId = Integer.parseInt(employeeId);
+			int custId = Integer.parseInt(customerId);
+
+			Purchase purchase = new Purchase();
+
+			Employee employee = facade.findEmployeeById(empId);
+			Customer customer = facade.findCustomerById(custId);
+
+			purchase.setEmployee(employee);
+			purchase.setCustomer(customer);
+
+			facade.createPurchase(purchase);
+			response.sendRedirect("PurchaseServlet");
+
+		}
+
+		// Update
+		if ("update-purchase".equals(action)) {
+			String id = request.getParameter("purchase-id");
+			int purchaseId = 0;
+			try {
+				purchaseId = Integer.parseInt(id);
+				Purchase purchase = facade.findPurchaseById(purchaseId);
+				if (purchase != null) {
+					String employeeId = request.getParameter("employee-id");
+					String customerId = request.getParameter("customer-id");
+
+					int empId = Integer.parseInt(employeeId);
+					int custId = Integer.parseInt(customerId);
+
+					Employee employee = facade.findEmployeeById(empId);
+					Customer customer = facade.findCustomerById(custId);
+
+					purchase.setEmployee(employee);
+					purchase.setCustomer(customer);
+
+					facade.updatePurchase(purchase);
+				}
+			} catch (NumberFormatException e) {
+				// handle invalid purchase id
+			}
+		}
 		doGet(request, response);
 	}
 
