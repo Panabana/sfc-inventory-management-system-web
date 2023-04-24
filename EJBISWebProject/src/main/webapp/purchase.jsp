@@ -49,7 +49,7 @@
 					</tbody>
 				</table>
 			</div>
-			<form action="PurchaseServlet" method="post">
+			<form action="PurchaseServlet" method="post" onSubmit="return validateForm()">
 			<div class="form-container">
 				<fieldset>
 					<legend>Purchase Information:</legend>
@@ -84,7 +84,7 @@
 								value="update-purchase">Update</button>
 							<button type="submit" class="remove-btn">Remove</button>
 						</div>
-						<div class="error-label">
+						<div class="error-label" id="error-label">
 							<!-- Error messages will be displayed here -->
 							<p>User messages will be displayed here</p>
 						</div>
@@ -108,7 +108,24 @@
 		$('#employee-id').val(employeeId);
 		$('#customer-id').val(customerId);
 	});
-</script>
+	
+	function validateForm(){
+	var employeeId = document.getElementById("employee-id").value;
+	var customerId = document.getElementById("customer-id").value;
+	var errorMessage = "";
+	
+	if(employeeId === ""){
+		errorMessage = "Please select an Employee ID."
+		document.getElementById("error-label").innerHTML = errorMessage;
+		return false;
+	}else if(customerId === ""){
+		errorMessage = "Please select a Customer ID."
+		document.getElementById("error-label").innerHTML = errorMessage;
+		return false;
+		}
+		return true;
+	}
+</script>	
 	<%@ include file="footer.jsp"%>
 </body>
 </html>
