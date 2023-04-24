@@ -73,7 +73,27 @@ public class PurchaseServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		
+		String action = request.getParameter("action");
+		
+		if("add-purchase".equals(action)) {
+			String employeeId = request.getParameter("employee-id");
+			String customerId = request.getParameter("customer-id");
+			int empId = Integer.parseInt(employeeId);
+			int custId = Integer.parseInt(customerId);
+			
+			Purchase purchase = new Purchase();
+			 
+			Employee employee = facade.findEmployeeById(empId);
+			Customer customer = facade.findCustomerById(custId);
+			
+			purchase.setEmployee(employee);
+			purchase.setCustomer(customer);
+			
+			facade.createPurchase(purchase);
+			response.sendRedirect("PurchaseServlet");
+			
+		}
 		doGet(request, response);
 	}
 
