@@ -49,6 +49,7 @@
 					</tbody>
 				</table>
 			</div>
+			<form action="PurchaseServlet" method="post">
 			<div class="form-container">
 				<fieldset>
 					<legend>Purchase Information:</legend>
@@ -64,8 +65,8 @@
 							</select> <label for="employee-id"> Employee ID:</label> <select
 								name="employee-id" id="employee-id">
 								<option value="">Select an employee</option>
-								<c:forEach var="purchase" items="${purchases}">
-									<option value="${purchase.employee.employeeId}">${purchase.employee.employeeId}</option>
+								<c:forEach var="employee" items="${employees}">
+									<option value="${employee.employeeId}">${employee.employeeId}</option>
 								</c:forEach>
 							</select> <label for="customer-id"> Customer ID:</label> <select
 								name="customer-id" id="customer-id">
@@ -90,6 +91,7 @@
 					</form>
 				</fieldset>
 			</div>
+			</form>
 		</div>
 	</main>
 	<script>
