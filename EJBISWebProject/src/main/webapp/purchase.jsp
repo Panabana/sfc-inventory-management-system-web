@@ -70,7 +70,7 @@
 								</c:forEach>
 							</select> <label for="customer-id"> Customer ID:</label> <select
 								name="customer-id" id="customer-id">
-								<option value="">Select a customer</option>
+								<option disabled selected value="">Select a customer</option>
 								<c:forEach var="customer" items="${customers}">
 									<option value="${customer.customerId}">${customer.customerId}</option>
 								</c:forEach>
