@@ -72,6 +72,7 @@ public class EmployeeServlet extends HttpServlet {
 			String address = request.getParameter("employee-address");
 			String phoneNumber = request.getParameter("employee-phone");
 			int employeePhoneNbr = 0;
+		
 
 			if (phoneNumber != null) {
 				employeePhoneNbr = Integer.parseInt(phoneNumber);

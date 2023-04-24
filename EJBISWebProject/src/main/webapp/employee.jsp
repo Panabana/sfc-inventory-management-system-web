@@ -79,7 +79,7 @@
 							</div>
 							<div class="error-label" id="error-label">
 								<!-- Error messages will be displayed here -->
-								<p>User messages will be displayed here</p>
+								<p></p>
 							</div>
 						</form>
 					</fieldset>
@@ -126,8 +126,11 @@
 				errorMessage = "Please enter a valid Phone Number"
 				document.getElementById("error-label").innerHTML = errorMessage;
 				return false;
+			}else{
+				errorMessage = "Employee was successfully added!";
+       			document.getElementById("error-label").innerHTML = errorMessage;
+				return true;
 			}
-			return true;
 		}
 	</script>
 	<%@ include file="footer.jsp"%>
