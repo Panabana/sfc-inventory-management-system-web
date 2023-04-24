@@ -23,7 +23,7 @@ public interface FacadeLocal {
 	public List<Customer> findAllCustomers();
 	public Customer findCustomerById(int id);
 	public Customer createCustomer(Customer customer);
-	public Customer updateCustomer(Customer customer);
+	public void updateCustomer(Customer customer);
 	public void deleteCustomer(int customerId);
 	public int countAllCustomers();
 	
