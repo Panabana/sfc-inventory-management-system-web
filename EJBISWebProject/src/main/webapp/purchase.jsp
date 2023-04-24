@@ -66,13 +66,13 @@
 								name="employee-id" id="employee-id">
 								<option disabled selected value="">Select an employee</option>
 								<c:forEach var="employee" items="${employees}">
-									<option value="${employee.employeeId}">${employee.employeeId}</option>
+									<option value="${employee.employeeId}">${employee.employeeId} - ${employee.name}</option>
 								</c:forEach>
 							</select> <label for="customer-id"> Customer ID:</label> <select
 								name="customer-id" id="customer-id">
 								<option disabled selected value="">Select a customer</option>
 								<c:forEach var="customer" items="${customers}">
-									<option value="${customer.customerId}">${customer.customerId}</option>
+									<option value="${customer.customerId}">${customer.customerId} - ${customer.name}</option>
 								</c:forEach>
 							</select>
 
