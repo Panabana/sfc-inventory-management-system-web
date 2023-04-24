@@ -83,9 +83,13 @@ public class PurchaseServlet extends HttpServlet {
 		if ("add-purchase".equals(action)) {
 			String employeeId = request.getParameter("employee-id");
 			String customerId = request.getParameter("customer-id");
-			int empId = Integer.parseInt(employeeId);
-			int custId = Integer.parseInt(customerId);
-
+			int empId = 0;
+			int custId = 0;
+			
+			if(customerId != null && employeeId != null) {
+			empId = Integer.parseInt(employeeId);
+			custId = Integer.parseInt(customerId);
+			
 			Purchase purchase = new Purchase();
 
 			Employee employee = facade.findEmployeeById(empId);
@@ -96,7 +100,7 @@ public class PurchaseServlet extends HttpServlet {
 
 			facade.createPurchase(purchase);
 			response.sendRedirect("PurchaseServlet");
-
+		}
 		}
 
 		// Update
