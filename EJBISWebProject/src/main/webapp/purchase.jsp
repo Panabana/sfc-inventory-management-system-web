@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
-<%@ page import="java.util.List, ims.ics.ejb.Purchase"%>
+<%@ page
+	import="java.util.List, ims.ics.ejb.Purchase, ims.ics.ejb.Employee, ims.ics.ejb.Customer"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
@@ -18,10 +19,10 @@
 	<main>
 		<div class="main-content">
 			<div class="search-form">
-				<form action="#">
+				<form action="PurchaseServlet" method="get" id="search-form">
 					<div class="form-group">
-						<input type="text" class="form-control" placeholder="Search...">
-						<button type="submit" class="btn">Search</button>
+						<input type="text" id="find-purchase-id" name="find-purchase-id" class="form-control" placeholder="Search...">
+						<button type="submit" class="btn" name="action" id="search-btn" value="find-purchase">Search</button>
 					</div>
 				</form>
 			</div>
@@ -30,21 +31,21 @@
 					<thead>
 						<tr>
 							<th>Purchase ID</th>
-
-							<th>Customer Name</th>
-							<th>Employee Name</th>
-							<th>Product Name</th>
-							<th>Quantity</th>
-							<th>Total Price</th>
+							<th>Customer</th>
+							<th>Employee</th>
 						</tr>
 					</thead>
 					<tbody>
 						<c:forEach var="purchase" items="${purchases}">
 							<tr>
 								<td>${purchase.purchaseId}</td>
-                    			
+								<td>${purchase.customer.customerId}-
+									${purchase.customer.name}</td>
+								<td>${purchase.employee.employeeId}-
+									${purchase.employee.name}</td>
 							</tr>
 						</c:forEach>
+
 					</tbody>
 				</table>
 			</div>
@@ -53,22 +54,33 @@
 					<legend>Purchase Information:</legend>
 					<form>
 						<div class="form-row">
-							<label for="purchase-id">Purchase ID:</label> <input type="text"
-								id="purchase-id" name="purchase-id"> <label
-								for="supplier-name"> Employee ID:</label> <select
+							<label for="purchase-id">Purchase ID:</label> <select
+								name="purchase-id" id="purchase-id">
+								<option value="">Select a Purchase that you wish to
+									update</option>
+								<c:forEach var="purchase" items="${purchases}">
+									<option value="${purchase.purchaseId}">${purchase.purchaseId}</option>
+								</c:forEach>
+							</select> <label for="employee-id"> Employee ID:</label> <select
 								name="employee-id" id="employee-id">
-								<option value="test">Test</option>
-							</select>
-						</div>
-						<div class="form-row">
-							<label for="supplier-address">Customer ID:</label> <select
+								<option value="">Select an employee</option>
+								<c:forEach var="purchase" items="${purchases}">
+									<option value="${purchase.employee.employeeId}">${purchase.employee.employeeId}</option>
+								</c:forEach>
+							</select> <label for="customer-id"> Customer ID:</label> <select
 								name="customer-id" id="customer-id">
-								<option value="test">Test</option>
+								<option value="">Select a customer</option>
+								<c:forEach var="purchase" items="${purchases}">
+									<option value="${purchase.customer.customerId}">${purchase.customer.customerId}</option>
+								</c:forEach>
 							</select>
+
 						</div>
 						<div class="button-container">
-							<button type="submit" class="add-btn">Add</button>
-							<button type="submit" class="update-btn">Update</button>
+							<button type="submit" class="add-btn" name="action"
+								value="add-purchase">Add</button>
+							<button type="submit" class="update-btn" name="action"
+								value="update-purchase">Update</button>
 							<button type="submit" class="remove-btn">Remove</button>
 						</div>
 						<div class="error-label">
@@ -80,6 +92,21 @@
 			</div>
 		</div>
 	</main>
+	<script>
+	$(document).ready(function() {
+		$('#search-btn').click(function() {
+			$('#search-form').submit();
+		});
+
+		var purchaseId = '${purchaseId}';
+		var employeeId = '${employeeId}';
+		var customerId = '${customerId}';
+
+		$('#purchase-id').val(purchaseId);
+		$('#employee-id').val(employeeId);
+		$('#customer-id').val(customerId);
+	});
+</script>
 	<%@ include file="footer.jsp"%>
 </body>
 </html>

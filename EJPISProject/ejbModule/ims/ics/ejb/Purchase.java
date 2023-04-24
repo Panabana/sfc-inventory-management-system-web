@@ -4,15 +4,22 @@ import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EntityListeners;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.PostLoad;
 import javax.persistence.Table;
 
+import ims.ics.listeners.PurchaseAuditor;
+
 @Entity
+@EntityListeners(PurchaseAuditor.class)
 @Table(name="Purchase")
 public class Purchase implements Serializable {
 	
@@ -31,6 +38,7 @@ public class Purchase implements Serializable {
 	}
 
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="PurchaseID")
 	public int getPurchaseId() {
 		return purchaseId;
@@ -59,8 +67,10 @@ public class Purchase implements Serializable {
 		this.customer = customer;
 	}
 	
-	
-	
-	
+//	@PostLoad
+//	public void logOperationPurchase() {
+//		System.out.println("@PostLoad on id: " + this.getPurchaseId());
+//		System.out.println("@PostLoad: " + this.getCustomer() + " - " + this.getEmployee());
+//	}
 
 }

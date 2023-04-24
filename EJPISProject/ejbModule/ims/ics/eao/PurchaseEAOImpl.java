@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
+import javax.persistence.NamedQuery;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import javax.persistence.TypedQuery;
@@ -57,8 +58,14 @@ public class PurchaseEAOImpl implements PurchaseEAOLocal {
 		return ((Long) query.getSingleResult()).intValue();
 	}
 	
-	public List<Purchase> findPurchasesWithProductInfo() {
-	    TypedQuery<Purchase> query = em.createNamedQuery("Purchase.findPurchasesWithProductInfo", Purchase.class);
+	public List<Purchase> findPurchaseDetails() {
+	    TypedQuery<Purchase> query = em.createQuery("SELECT p " +  
+	                                "FROM Purchase p " +
+	                                "JOIN p.customer c " +
+	                                "JOIN p.employee e", Purchase.class);
 	    return query.getResultList();
 	}
-}
+
+	}
+
+

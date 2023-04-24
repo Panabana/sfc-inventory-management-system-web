@@ -6,12 +6,19 @@ import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EntityListeners;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.PostLoad;
 import javax.persistence.Table;
 
+import ims.ics.listeners.CustomerAuditor;
+
 @Entity
+@EntityListeners(CustomerAuditor.class)
 @Table(name="Customer")
 public class Customer implements Serializable {
 	
@@ -35,6 +42,7 @@ public class Customer implements Serializable {
 	}
 	
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="CustomerID")
 	public int getCustomerId() {
 		return customerId;
@@ -71,7 +79,10 @@ public class Customer implements Serializable {
 		this.purchases = purchases;
 	}
 	
-	
-	
+//	@PostLoad
+//	public void logOperationCustomer() {
+//		System.out.println("@PostLoad on id: " + this.getCustomerId());
+//		System.out.println("@PostLoad: " + this.getName() + " - " + this.getAddress() + " - " + this.getPhoneNbr());
+//	}
 
 }

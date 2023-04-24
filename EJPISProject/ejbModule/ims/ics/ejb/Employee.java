@@ -4,16 +4,25 @@ import java.io.Serializable;
 import java.util.List;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EntityListeners;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.PostLoad;
 import javax.persistence.Table;
 
+import ims.ics.listeners.EmployeeAuditor;
+
 @Entity
+@EntityListeners(EmployeeAuditor.class)
 @Table(name="Employee")
 public class Employee implements Serializable {
+	
 	
 	private int employeeId;
 	private String name;
@@ -21,7 +30,6 @@ public class Employee implements Serializable {
 	private int phoneNumber;
 	private Set<Purchase> purchases;
 	
-	// Added constructor with params, using in EmployeeTest
 	public Employee(int employeeId, String name, String address, int phoneNumber, Set<Purchase> purchases) {
 		super();
 		this.employeeId = employeeId;
@@ -32,10 +40,10 @@ public class Employee implements Serializable {
 	}
 	
 	public Employee() {
-		// TODO Auto-generated constructor stub
 	}
 
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "EmployeeID")
 	public int getEmployeeId() {
 		return employeeId;
@@ -72,7 +80,7 @@ public class Employee implements Serializable {
 		this.phoneNumber = phoneNumber;
 	}
 
-	@OneToMany(mappedBy = "employee", fetch = FetchType.EAGER)
+	@OneToMany(mappedBy = "employee", fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
 	public Set<Purchase> getPurchases() {
 		return purchases;
 	}
@@ -80,5 +88,11 @@ public class Employee implements Serializable {
 	public void setPurchases(Set<Purchase> purchases) {
 		this.purchases = purchases;
 	}
+	
+//	@PostLoad
+//	public void logOperationEmployee() {
+//		System.out.println("@PostLoad on id: " + this.getEmployeeId());
+//		System.out.println("@PostLoad: " + this.getName() + " - " + this.getAddress() + " - " + this.getPhoneNumber());
+//	}
 
 }

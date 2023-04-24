@@ -80,8 +80,7 @@
 							</div>
 							<div class="button-container">
 								<button type="submit" class="btn" value="Add Employee" id="addEmpBtn">Add</button>
-								<button type="submit" class="btn" name="action"
-									value="update-employee">Update</button>
+								<button type="submit" class="btn" name="updtEmpBtn" value="updtEmpBtn" id="updtEmpBtn">Update</button>
 								<button type="submit" class="btn" id="delEmpBtn">Remove</button>
 							</div>
 							<div class="error-label">
@@ -169,7 +168,7 @@
 	
 	
 	
-
+<!-- 
 	<div class="main">
 		<form action="#">
 			<label for="empId">Employee Id:</label> <input type="number"
@@ -209,10 +208,11 @@
 				for="empPhone">Employee Phone:</label> <input type="number"
 				id="empPhone" name="empPhoneAdd"><br> <br> <input
 				type="submit" value="Add Employee" id="addEmpBtn">
+				<input type="submit" value="Update Employee" id="updtEmpBtn">
 		</form>
 		
 		
-		
+		 -->
 		
 		
 		
@@ -246,15 +246,15 @@
 			Customer</button>
 		<form action="#" method="POST">
 			<label for="customerIdAdd">Customer ID:</label> <input type="number"
-				id="customerIdAdd" name="customerId"><br> <br> <label
-				for="customerName">Customer Name:</label> <input type="text"
-				id="customerName" name="customerName"><br> <br> <label
-				for="customerAddress">Customer Address:</label> <input type="text"
-				id="customerAddress" name="customerAddress"><br> <br>
-			<label for="customerPhone">Customer Phone:</label> <input
-				type="number" id="customerPhone" name="customerPhone"><br>
-			<br> <input type="submit" value="Add Customer"
-				id="addCustomerBtn">
+				id="customerIdAdd" name="customerId"><br> <br> 
+				<label for="customerName">Customer Name:</label>
+				 <input type="text" id="customerName" name="customerName"><br><br> 
+				 <label for="customerAddress">Customer Address:</label> 
+				 <input type="text" id="customerAddress" name="customerAddress"><br><br>
+				 <label for="customerPhone">Customer Phone:</label>
+				 <input type="number" id="customerPhone" name="customerPhone"><br><br> 
+				 <input type="submit" value="Add Customer" id="addCustomerBtn"> 
+				 <input type="submit" value="Update Customer" id="updateCustomerBtn">
 		</form>
 
 	</div>

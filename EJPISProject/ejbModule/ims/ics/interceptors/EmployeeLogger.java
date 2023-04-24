@@ -9,7 +9,7 @@ public class EmployeeLogger {
 
 	@AroundInvoke
 	public Object logMethod(InvocationContext iCtx) throws Exception {
-		System.out.println("**** Entering method: " + iCtx.getMethod().getName());
+		System.out.println("*** Entering method: " + iCtx.getMethod().getName());
 		System.out.println("Target class: " + iCtx.getTarget().getClass());
 		System.out.println("Parameters: " + iCtx.getParameters().length);
 		
@@ -17,7 +17,7 @@ public class EmployeeLogger {
 			System.out.println("Parameter: " + iCtx.getParameters()[i].toString());
 		}
 		
-		System.out.println("****************************************************");
+		System.out.println("*********************************");
 		return iCtx.proceed();
 	}
 

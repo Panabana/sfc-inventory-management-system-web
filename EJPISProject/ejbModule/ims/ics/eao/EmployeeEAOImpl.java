@@ -34,14 +34,16 @@ public class EmployeeEAOImpl implements EmployeeEAOLocal {
 		return employee;
 	}
 
-	public void updateEmployee(Employee employee) {
-		Employee existingEmp = em.find(Employee.class, employee.getEmployeeId());
-		if (existingEmp != null) {
-			existingEmp.setName(employee.getName());
-			existingEmp.setAddress(employee.getAddress());
-			existingEmp.setPhoneNumber(employee.getPhoneNumber());
-			em.merge(existingEmp);
-		}
+	public Employee updateEmployee(Employee employee) {
+		  Employee existingEmp = em.find(Employee.class, employee.getEmployeeId());
+		    if (existingEmp != null) {
+		        existingEmp.setName(employee.getName());
+		        existingEmp.setAddress(employee.getAddress());
+		        existingEmp.setPhoneNumber(employee.getPhoneNumber());
+		        em.merge(existingEmp);
+		        return existingEmp;
+		    }
+		    return existingEmp;
 	}
 
 	public void deleteEmployee(int employeeId) {
@@ -50,7 +52,7 @@ public class EmployeeEAOImpl implements EmployeeEAOLocal {
 			em.remove(employee);
 		}
 	}
-
+	
 	public int countAllEmployees() {
 		Query query = em.createQuery("SELECT COUNT(e) FROM Employee e");
 		return ((Long) query.getSingleResult()).intValue();

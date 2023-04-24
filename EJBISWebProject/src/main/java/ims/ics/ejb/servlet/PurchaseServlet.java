@@ -3,6 +3,7 @@ package ims.ics.ejb.servlet;
 import java.io.IOException;
 import java.util.List;
 
+import javax.ejb.EJB;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -10,7 +11,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import ims.ics.ejb.Product;
+import ims.ics.ejb.Customer;
+import ims.ics.ejb.Employee;
 import ims.ics.ejb.Purchase;
 import ims.ics.facade.FacadeLocal;
 
@@ -21,6 +23,7 @@ import ims.ics.facade.FacadeLocal;
 public class PurchaseServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
+	@EJB
 	FacadeLocal facade;
     /**
      * @see HttpServlet#HttpServlet()
@@ -33,10 +36,31 @@ public class PurchaseServlet extends HttpServlet {
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String action = request.getParameter("action");
+        if("find-purchase".equals(action)) {
+            String id = request.getParameter("find-purchase-id");
+            int purchaseId = 0;
+            if(id != null) {
+                purchaseId = Integer.parseInt(id);
+                Purchase purchase = facade.findPurchaseById(purchaseId);
+                if(purchase != null) {
+                    purchaseId = purchase.getPurchaseId();
+                    int employeeId = purchase.getEmployee().getEmployeeId();
+                    int customerId = purchase.getCustomer().getCustomerId();
+                    request.setAttribute("purchaseId", purchaseId);
+                    request.setAttribute("employeeId", employeeId);
+                    request.setAttribute("customerId", customerId);
+                }
+            }
+        }
+
 		List<Purchase> purchases = facade.findPurchasesWithProductInfo();
 		request.setAttribute("purchases", purchases);
+		List<Employee> employees = facade.findAllEmployees();
+		request.setAttribute("employees", employees);
+		List<Customer> customers = facade.findAllCustomers();
+		request.setAttribute("customers", customers);
 
 		RequestDispatcher dispatcher = request.getRequestDispatcher("purchase.jsp");
 		dispatcher.forward(request, response);

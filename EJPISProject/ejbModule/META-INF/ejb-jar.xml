@@ -3,7 +3,19 @@
   <display-name>EJPISProject </display-name>
   <interceptors>
   	<interceptor>
+  		<interceptor-class>ims.ics.interceptors.DefaultInterceptor</interceptor-class>
+  		<around-invoke>
+  			<method-name>defaultLogger</method-name>
+  		</around-invoke>
+  	</interceptor>
+  	<interceptor>
   		<interceptor-class>ims.ics.interceptors.EmployeeLogger</interceptor-class>
   	</interceptor>
   </interceptors> 
+  <assembly-descriptor>
+  	<interceptor-binding>
+  		<ejb-name>*</ejb-name>
+  		<interceptor-class>ims.ics.interceptors.DefaultInterceptor</interceptor-class>
+  	</interceptor-binding>
+  </assembly-descriptor>
  </ejb-jar>

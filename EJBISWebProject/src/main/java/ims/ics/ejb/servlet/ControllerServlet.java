@@ -12,9 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import ims.ics.ejb.Customer;
 import ims.ics.ejb.Employee;
-import ims.ics.ejb.Product;
 import ims.ics.ejb.Purchase;
-import ims.ics.ejb.Supplier;
 import ims.ics.facade.FacadeLocal;
 
 /**
@@ -55,14 +53,8 @@ public class ControllerServlet extends HttpServlet {
 		case "about":
 			page = "about.jsp";
 			break;
-		case "test":
-			page = "test.jsp";
-			break;
 		case "employee":
 			response.sendRedirect("EmployeeServlet");
-			break;
-		case "product":
-			response.sendRedirect("ProductServlet");
 			break;
 		case "customer":
 			response.sendRedirect("CustomerServlet");
@@ -72,23 +64,15 @@ public class ControllerServlet extends HttpServlet {
 			List<Purchase> purchases = facade.findAllPurchases();
 			request.setAttribute("purchases", purchases);
 			break;
-		case "supplier":
-			response.sendRedirect("SupplierServlet");
-			break;
 		case "home":
 			page = "home.jsp";
 			int countEmployees = facade.countAllEmployees();
 			request.setAttribute("countEmployees", countEmployees);
 			int countCustomers = facade.countAllCustomers();
 			request.setAttribute("countCustomers", countCustomers);
-			int countProducts = facade.countAllProducts();
-			request.setAttribute("countProducts", countProducts);
 			int countPurchases = facade.countAllPPurchases();
 			request.setAttribute("countPurchases", countPurchases);
-			int countSuppliers = facade.countAllSuppliers();
-			request.setAttribute("countSuppliers", countSuppliers);
 			break;
-
 		default:
 			page = "home.jsp";
 		}
