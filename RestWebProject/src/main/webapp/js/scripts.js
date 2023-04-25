@@ -54,6 +54,7 @@ $(document).ready(function() {
 			method: "GET",
 			url: "http://localhost:8080/EJBISWebProject/RestServlet/",
 			success: function(result) {
+				clearTable();
 				displayEmployees(result);
 			},
 			error: function(xhr, status, error) {
@@ -72,7 +73,6 @@ $(document).ready(function() {
 			row.append($("<td>").text(employee.Phone));
 			$("#employeeTable tbody").append(row);
 		});
-		//clearTable();
 	}
 
 	$("#delEmpBtn").click(function(event) {
@@ -167,7 +167,7 @@ $(document).ready(function() {
 	function clearTable() {
 		$("#employeeTable tbody").empty();
 	}
-	
-	
+
+
 
 });
