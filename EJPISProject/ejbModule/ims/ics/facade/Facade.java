@@ -82,9 +82,9 @@ public class Facade implements FacadeLocal {
 		return customer;
 	}
 
-	public void updateCustomer(Customer customer) {
+	public Customer updateCustomer(Customer customer) {
 		customer = this.customer.updateCustomer(customer);
-		//return customer;
+		return customer;
 	}
 
 	public void deleteCustomer(int customerId) {
