@@ -80,6 +80,8 @@ public class ControllerServlet extends HttpServlet {
 			request.setAttribute("countCustomers", countCustomers);
 			int countPurchases = facade.countAllPPurchases();
 			request.setAttribute("countPurchases", countPurchases);
+			String getTopCustomer = facade.getTopCustomer();
+			request.setAttribute("getTopCustomer", getTopCustomer);
 			break;
 		default:
 			page = "home.jsp";

@@ -35,5 +35,6 @@ public interface FacadeLocal {
 	public void deletePurchase(int purchaseId);
 	public int countAllPPurchases();
 	public List<Purchase> findPurchasesWithProductInfo();
+	public String getTopCustomer();
 
 }
