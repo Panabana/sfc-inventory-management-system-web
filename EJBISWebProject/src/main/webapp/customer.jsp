@@ -18,7 +18,8 @@
 	<main>
 		<div class="main-content">
 			<div class="search-form">
-				<form action="CustomerServlet" method="get" id="search-form">
+				<form action="CustomerServlet" method="get" id="search-form"
+					onsubmit="return validateSearchForm()">
 					<div class="form-group">
 						<input type="text" id="find-customer-id" name="find-customer-id"
 							class="form-control" placeholder="Search...">
@@ -28,7 +29,7 @@
 				</form>
 			</div>
 			<div class="table-container">
-				<table>
+				<table name="customers-table" id="customers-table">
 					<thead>
 						<tr>
 							<th>Customer ID</th>
@@ -61,7 +62,8 @@
 									<option disabled selected value="">Select a Customer
 										that you wish to update</option>
 									<c:forEach var="customer" items="${customers}">
-										<option value="${customer.customerId}">${customer.customerId} - ${customer.name}</option>
+										<option value="${customer.customerId}">${customer.customerId}
+											- ${customer.name}</option>
 									</c:forEach>
 								</select> <label for="customer-name"> Name:</label> <input type="text"
 									id="customer-name" name="customer-name">
@@ -131,6 +133,32 @@
 				return true;
 			}
 		}
+
+		function validateSearchForm() {
+		    var customerId = document.getElementById("find-customer-id").value;
+
+		    if (customerId === "" || !/^\d{1,10}$/.test(customerId)) {
+		        errorMessage = "Please enter a valid ID (number only) to search for.."
+		        document.getElementById("error-label").innerHTML = errorMessage;
+		        return false;
+		    } else {
+		        var customerExists = false;
+		        $('#customers-table tbody tr').each(function() {
+		            var rowCustomerId = $(this).find('td:eq(0)').text();
+		            if (rowCustomerId === customerId) {
+		                customerExists = true;
+		                return false; // break the loop
+		            }
+		        });
+		        if (!customerExists) {
+		            errorMessage = "Customer with ID " + customerId + " doesn't exist.";
+		            document.getElementById("error-label").innerHTML = errorMessage;
+		            return false;
+		        }
+		    }
+		    return true;
+		}
+
 	</script>
 	<%@ include file="footer.jsp"%>
 </body>
