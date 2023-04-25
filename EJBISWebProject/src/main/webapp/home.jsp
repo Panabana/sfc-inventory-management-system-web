@@ -24,10 +24,10 @@
 	<%@ include file="sidebar.jsp"%>
 	<main>
 		<div class="main-content">
-			<h1>Spongebob Fan Clubinator</h1>
+			<h1>Inventory Management System</h1>
 			<div class="container" id="welcome" style="font-family: Arial">
 				<h2 class="container">
-					Welcome to the<br>Spongebob Inventory Management System
+					Welcome to the<br>Spongebob Fan Club's<br>Inventory Management System
 				</h2>
 				<br> <br>
 				<p>
