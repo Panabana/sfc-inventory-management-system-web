@@ -79,7 +79,7 @@
 									placeholder="Phone Number">
 							</div>
 							<div class="button-container">
-								<button type="submit" class="btn" value="Add Employee" id="addEmpBtn">Add</button>
+								<button type="submit" class="btn" name = "addEmpBtn" value="Add Employee" id="addEmpBtn">Add</button>
 								<button type="submit" class="btn" name="updtEmpBtn" value="updtEmpBtn" id="updtEmpBtn">Update</button>
 								<button type="submit" class="btn" id="delEmpBtn">Remove</button>
 							</div>

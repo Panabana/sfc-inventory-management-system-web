@@ -61,7 +61,7 @@
 									<option disabled selected value="">Select a Customer
 										that you wish to update</option>
 									<c:forEach var="customer" items="${customers}">
-										<option value="${customer.customerId}">${customer.customerId}</option>
+										<option value="${customer.customerId}">${customer.customerId} - ${customer.name}</option>
 									</c:forEach>
 								</select> <label for="customer-name"> Name:</label> <input type="text"
 									id="customer-name" name="customer-name">

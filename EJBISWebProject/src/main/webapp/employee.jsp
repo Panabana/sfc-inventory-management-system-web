@@ -60,7 +60,7 @@
 									<option disabled selected value="">Select an employee
 										that you wish to update</option>
 									<c:forEach var="employee" items="${employees}">
-										<option value="${employee.employeeId}">${employee.employeeId}</option>
+										<option value="${employee.employeeId}">${employee.employeeId} - ${employee.name}</option>
 									</c:forEach>
 								</select> <label for="employee-name"> Name:</label> <input type="text"
 									id="employee-name" name="employee-name">
