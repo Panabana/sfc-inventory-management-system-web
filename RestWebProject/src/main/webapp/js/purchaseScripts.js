@@ -84,13 +84,14 @@
 	
 	$("#addPurBtn").click(function(event) {
     event.preventDefault();
-
+	
+	var purchaseId = $("#purIdAdd").val();
     var employeeId = $("#purEmpIdAdd").val();
     var customerId = $("#purCustIdAdd").val();
 
-    var obj = { employee: { employeeId: employeeId }, customer: { customerId: customerId }};
+    var obj = {purchaseId: purchaseId, employeeId: employeeId, customerId: customerId };
     var jsonString = JSON.stringify(obj);
-    
+    alert(jsonString);
     if (employeeId != "" && customerId != "") {
         $.ajax({
             method: "POST",
