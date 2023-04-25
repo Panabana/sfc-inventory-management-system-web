@@ -119,6 +119,10 @@ public class Facade implements FacadeLocal {
 	public List<Purchase> findPurchasesWithProductInfo() {
 	    return purchase.findPurchaseDetails();
 	}
+	
+	public String getTopCustomer() {
+	    return purchase.getTopCustomer();
+	}
 
 	
 }

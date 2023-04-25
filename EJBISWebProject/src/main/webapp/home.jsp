@@ -80,7 +80,7 @@
 
 				<div class="stats-card">
 					<i class="fas fa-chart-line"></i>
-					<h3>${countSuppliers}</h3>
+					<h3>${getTopCustomer}</h3>
 					<p>Most active customer</p>
 				</div>
 
