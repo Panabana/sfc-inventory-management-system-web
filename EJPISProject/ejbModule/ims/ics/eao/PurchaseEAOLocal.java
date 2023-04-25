@@ -18,4 +18,5 @@ public interface PurchaseEAOLocal {
 	public int countAllPurchases();
 	public List<Purchase> findPurchaseDetails();
 	public String getTopCustomer();
+	public String getTopEmployee();
 }

@@ -82,6 +82,8 @@ public class ControllerServlet extends HttpServlet {
 			request.setAttribute("countPurchases", countPurchases);
 			String getTopCustomer = facade.getTopCustomer();
 			request.setAttribute("getTopCustomer", getTopCustomer);
+			String getTopEmployee = facade.getTopEmployee();
+			request.setAttribute("getTopEmployee", getTopEmployee);
 			break;
 		default:
 			page = "home.jsp";
