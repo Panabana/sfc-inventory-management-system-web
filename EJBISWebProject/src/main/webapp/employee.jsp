@@ -27,7 +27,7 @@
 				</form>
 			</div>
 			<div class="table-container">
-				<table>
+				<table id="employee-table">
 					<thead>
 						<tr>
 							<th>Employee ID</th>
@@ -142,9 +142,23 @@
 				errorMessage = "Please enter a valid ID to search for!"
 					document.getElementById("error-label").innerHTML = errorMessage;
 					return false;
-				}
-			return true;
-			}
+			} else {
+		        var employeeExists = false;
+		        $('#employee-table tbody tr').each(function() {
+		            var rowEmployeeId = $(this).find('td:eq(0)').text();
+		            if (rowEmployeeId === employeeId) {
+		                employeeExists = true;
+		                return false; // break the loop
+		            }
+		        });
+		        if (!employeeExists) {
+		            errorMessage = "Employee with ID " + employeeId + " doesn't exist.";
+		            document.getElementById("error-label").innerHTML = errorMessage;
+		            return false;
+		        }
+		    }
+		    return true;
+		}
 	</script>
 	<%@ include file="footer.jsp"%>
 </body>
