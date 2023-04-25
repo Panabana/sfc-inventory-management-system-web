@@ -77,6 +77,18 @@ public class PurchaseEAOImpl implements PurchaseEAOLocal {
 	                                  .getSingleResult();
 	    return (String) result[0];
 	}
+	
+	public String getTopEmployee() {
+	    String query = "SELECT e.name, COUNT(p.purchaseId) " +
+                "FROM Purchase p " +
+                "JOIN p.employee e " +
+                "GROUP BY e.employeeId, e.name " +
+                "ORDER BY COUNT(p.purchaseId) DESC";
+	    Object[] result = (Object[]) em.createQuery(query)
+	                                  .setMaxResults(1)
+	                                  .getSingleResult();
+	    return (String) result[0];
+	}
 
 	}
 

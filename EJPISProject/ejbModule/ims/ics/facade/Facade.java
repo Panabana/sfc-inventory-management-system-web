@@ -123,6 +123,10 @@ public class Facade implements FacadeLocal {
 	public String getTopCustomer() {
 	    return purchase.getTopCustomer();
 	}
+	
+	public String getTopEmployee() {
+	    return purchase.getTopEmployee();
+	}
 
 	
 }

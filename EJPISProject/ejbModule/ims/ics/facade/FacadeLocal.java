@@ -36,5 +36,6 @@ public interface FacadeLocal {
 	public int countAllPPurchases();
 	public List<Purchase> findPurchasesWithProductInfo();
 	public String getTopCustomer();
+	public String getTopEmployee();
 
 }

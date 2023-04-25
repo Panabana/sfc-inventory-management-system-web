@@ -74,7 +74,7 @@
 
 				<div class="stats-card">
 					<i class="fas fa-tachometer-alt"></i>
-					<h3>${countProducts}</h3>
+					<h3>${getTopEmployee}</h3>
 					<p>Most active employee</p>
 				</div>
 
