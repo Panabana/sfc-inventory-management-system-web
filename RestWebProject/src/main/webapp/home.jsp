@@ -11,12 +11,13 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js">
 	
 </script>
-<script src=js/scripts.js>
-	
+<script src=js/scripts.js>	
 </script>
-<script src=js/customerScripts.js>
-	
+<script src=js/customerScripts.js>	
 </script>
+<script src=js/purchaseScripts.js>	
+</script>
+
 <body>
 	<%@ include file="header.jsp"%>
 
@@ -173,44 +174,41 @@
  
 	<div class="main">
 		<form action="#">
-			<label for="empId">Employee Id:</label> <input type="number"
-				id="empId" name="empId"><br> <br> <input
-				type="submit" value="Find Employee" id="FindBtn">
+			<label for="purId">Purchase Id:</label> 
+			<input type="number" id="purId" name="purId"><br> <br>
+			 <input type="submit" value="Find Purchase" id="findPurBtn">
 		</form>
-		<button type="submit" class="findAllBtn" id="findAllBtn">Find
-			All</button>
-		<button type="submit" class="deleteEmployee" id="delEmpBtn">Delete
-			Employee</button>
-		<table id="employeeTable">
-			<caption>Employees</caption>
+		<button type="submit" class="findAllPurBtn" id="findAllPurBtn">Find All</button>
+		<button type="submit" class="deletePurchase" id="delPurBtn">Delete Employee</button>
+		<table id="purchaseTable">
+			<caption>Purchases</caption>
 			<thead>
 				<tr>
-					<th>Employee name</th>
+					<th>Purchase Id</th>
 					<th>Employee Id</th>
-					<th>Address</th>
-					<th>Phone</th>
+					<th>Customer Id</th>
 				</tr>
 			</thead>
 			<tbody>
 				<tr>
-					<td><span id="EmployeeName"></span></td>
+					<td><span id="PurchaseId"></span></td>
 					<td><span id="EmployeeId"></span></td>
-					<td><span id="EmployeeAddress"></span></td>
-					<td><span id="EmployeePhone"></span></td>
+					<td><span id="CustomerId"></span></td>
 				</tr>
 			</tbody>
 		</table>
 		<form action="#">
-			<label for="empIdAdd">Employee Id:</label> <input type="number"
-				id="empIdAdd" name="empIdAdd"><br> <br> <label
-				for="empAddress">Employee Name:</label> <input type="text"
-				id="empName" name="empNameAdd"><br> <br> <label
-				for="empAddress">Employee Address:</label> <input type="text"
-				id="empAddress" name="empAddressAdd"><br> <br> <label
-				for="empPhone">Employee Phone:</label> <input type="number"
-				id="empPhone" name="empPhoneAdd"><br> <br> <input
-				type="submit" value="Add Employee" id="addEmpBtn">
-				<input type="submit" value="Update Employee" id="updtEmpBtn">
+			<label for="purIdAdd">Purchase Id:</label> 
+			<input type="number" id="purIdAdd" name="purIdAdd"><br> <br> 
+			<label for="purEmpIdAdd">Employee Id:</label>
+			<input type="text" id="purEmpIdAdd" name="purEmpIdAdd"><br> <br>
+			<label for="purCustIdAdd">Customer Id:</label>
+			<input type="text" id="purCustIdAdd" name="purCustIdAdd"><br> <br> 
+			<input type="submit" value="Add Purchase" id="addPurBtn">
+			<input type="submit" value="Update Purchase" id="updtPurBtn">
+			<select name="Employee" id="employeeSelect"></select>
+			<select name="Customer" id="customerSelect"></select>
+			
 		</form>
 		
 		

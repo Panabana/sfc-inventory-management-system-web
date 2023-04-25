@@ -2,6 +2,17 @@
  * 
  */
  $(document).ready(function() {
+	 
+	populateCustomerSelectBox();
+
+	// Event listener for the select box
+	$('#customerSelect').on('change', function() {
+		// Retrieve the selected employee ID and name
+		var selectedCust = $(this).val();
+		console.log(selectedCust);
+	});
+	 
+	 
 	$(document).on("click", "#FindCustomerBtn", function(event) {
 		event.preventDefault();
 		var strValue = $("#customerId").val();
@@ -90,6 +101,7 @@
 
 			function ajaxDelReturnSuccess(result, status, xhr) {
 				clearFields();
+				displayCustomers();
 				$("#CustomerName").attr("placeholder", "Customer deleted");
 			}
 
@@ -121,6 +133,7 @@
         })
         function ajaxAddReturnSuccess(result, status, xhr) {
             clearFields();
+            displayCustomers();
             $("#customerName").attr("placeholder", "Customer added");
         }
         function ajaxAddReturnError(result, status, xhr) {
@@ -166,6 +179,25 @@ $("#updtCustBtn").click(function(event) {
 	 function clearTable() {
 		 $("#customerTable tbody").empty();
 	 }
+	 
+	 
+	 function populateCustomerSelectBox() {
+	$.ajax({
+		method: "GET",
+		url: "http://localhost:8080/EJBISWebProject/RestServletCustomer/",
+		success: function(result) {
+			var selectBox = $("#customerSelect");
+			selectBox.empty();
+			$.each(result, function(index, customer) {
+				var option = $("<option>").val(customer.CustomerId).text(customer.CustomerId + " - " + customer.CustomerName);
+				selectBox.append(option);
+			});
+		},
+		error: function(xhr, status, error) {
+			console.error("Error in fetching customers:", error);
+		}
+	});
+}
 
 
 });
