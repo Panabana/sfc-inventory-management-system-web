@@ -32,82 +32,93 @@ public class CustomerServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		String action = request.getParameter("action");
-	    if ("find-customer".equals(action)) {
-	        String id = request.getParameter("find-customer-id");
-	        int customerId = 0;
-	        if (id != null) {
-	            customerId = Integer.parseInt(id);
-	            Customer customer = facade.findCustomerById(customerId);
-	            if (customer != null) {
-	            	customerId = customer.getCustomerId();
-	                String customerName = customer.getName();
-	                String customerAddress = customer.getAddress();
-	                int customerPhoneNbr = customer.getPhoneNbr();
-	                request.setAttribute("customerId", customerId);
-	                request.setAttribute("customerName", customerName);
-	                request.setAttribute("customerAddress", customerAddress);
-	                request.setAttribute("customerPhoneNumber", customerPhoneNbr);
-	                
-	            }
-	        }
-	    }
-		List<Customer> customers = facade.findAllCustomers();
-		request.setAttribute("customers", customers);
+		try {
+			String action = request.getParameter("action");
+			if ("find-customer".equals(action)) {
+				String id = request.getParameter("find-customer-id");
+				int customerId = 0;
+				if (id != null) {
+					customerId = Integer.parseInt(id);
+					Customer customer = facade.findCustomerById(customerId);
+					if (customer != null) {
+						customerId = customer.getCustomerId();
+						String customerName = customer.getName();
+						String customerAddress = customer.getAddress();
+						int customerPhoneNbr = customer.getPhoneNbr();
+						request.setAttribute("customerId", customerId);
+						request.setAttribute("customerName", customerName);
+						request.setAttribute("customerAddress", customerAddress);
+						request.setAttribute("customerPhoneNumber", customerPhoneNbr);
 
-		RequestDispatcher dispatcher = request.getRequestDispatcher("customer.jsp");
-		dispatcher.forward(request, response);
+					}
+				}
+			}
+			List<Customer> customers = facade.findAllCustomers();
+			request.setAttribute("customers", customers);
+
+			RequestDispatcher dispatcher = request.getRequestDispatcher("customer.jsp");
+			dispatcher.forward(request, response);
+
+		} catch (Exception e) {
+			String errorMessage = "Something went wrong...";
+			request.setAttribute("error", errorMessage);
+		}
+
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		try {
+			String action = request.getParameter("action");
 
-		String action = request.getParameter("action");
+			// ADD CUSTOMER
+			if ("add-customer".equals(action)) {
+				String name = request.getParameter("customer-name");
+				String address = request.getParameter("customer-address");
+				String phoneNumber = request.getParameter("customer-phone");
+				int customerId = 0;
+				int customerPhoneNbr = 0;
 
-		// ADD CUSTOMER
-		if ("add-customer".equals(action)) {
-			String name = request.getParameter("customer-name");
-			String address = request.getParameter("customer-address");
-			String phoneNumber = request.getParameter("customer-phone");
-			int customerId = 0;
-			int customerPhoneNbr = 0;
+				if (phoneNumber != null) {
+					customerPhoneNbr = Integer.parseInt(phoneNumber);
+				}
 
-			if (phoneNumber != null) {
-				customerPhoneNbr = Integer.parseInt(phoneNumber);
+				Customer customer = new Customer();
+				customer.setName(name);
+				customer.setAddress(address);
+				customer.setPhoneNbr(customerPhoneNbr);
+				facade.createCustomer(customer);
+				response.sendRedirect("CustomerServlet");
 			}
 
-			Customer customer = new Customer();
-			customer.setName(name);
-			customer.setAddress(address);
-			customer.setPhoneNbr(customerPhoneNbr);
-			facade.createCustomer(customer);
-			response.sendRedirect("CustomerServlet");
+			// UPDATE CUSTOMER
+			else if ("update-customer".equals(action)) {
+				String id = request.getParameter("customer-id");
+				int customerId = Integer.parseInt(id);
+
+				Customer customer = facade.findCustomerById(customerId);
+				if (customer != null) {
+					if (request.getParameter("customer-name") != null) {
+						customer.setName(request.getParameter("customer-name"));
+					}
+					if (request.getParameter("customer-address") != null) {
+						customer.setAddress(request.getParameter("customer-address"));
+					}
+					if (request.getParameter("customer-phone") != null) {
+						customer.setPhoneNbr(Integer.parseInt(request.getParameter("customer-phone")));
+					}
+
+					facade.updateCustomer(customer);
+					response.sendRedirect("CustomerServlet");
+
+				} else {
+					doGet(request, response);
+				}
+			}
+		} catch (Exception e) {
+			String errorMessage = "Something went wrong...";
+			request.setAttribute("error", errorMessage);
 		}
 
-		// UPDATE CUSTOMER
-		else if ("update-customer".equals(action)) {
-			String id = request.getParameter("customer-id");
-			int customerId = Integer.parseInt(id);
-
-			Customer customer = facade.findCustomerById(customerId);
-			if (customer != null) {
-				if (request.getParameter("customer-name") != null) {
-					customer.setName(request.getParameter("customer-name"));
-				}
-				if (request.getParameter("customer-address") != null) {
-					customer.setAddress(request.getParameter("customer-address"));
-				}
-				if (request.getParameter("customer-phone") != null) {
-					customer.setPhoneNbr(Integer.parseInt(request.getParameter("customer-phone")));
-				}
-			
-			facade.updateCustomer(customer);
-			response.sendRedirect("CustomerServlet");
-
-		} else {
-
-			doGet(request, response);
-		}
-	}
 	}
 }

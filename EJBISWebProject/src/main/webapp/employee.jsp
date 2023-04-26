@@ -80,7 +80,7 @@
 							</div>
 							<div class="error-label" id="error-label">
 								<!-- Error messages will be displayed here -->
-								<p></p>
+								<p>${error}</p>
 							</div>
 						</form>
 					</fieldset>
