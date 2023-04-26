@@ -14,8 +14,6 @@ $(document).ready(function() {
 		console.log(selectedEmp);
 	});
 
-
-
 $(document).on("click", "#FindBtn", function(event) {
 	event.preventDefault();
 	var strValue = $("#empId").val();

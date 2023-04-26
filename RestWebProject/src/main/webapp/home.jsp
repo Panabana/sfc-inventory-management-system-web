@@ -14,9 +14,11 @@
 <script src=js/scripts.js>
 	
 </script>
-<script src=js/customerScripts.js>
-	
+<script src=js/customerScripts.js>	
 </script>
+<script src=js/purchaseScripts.js>
+</script>
+
 <body>
 	<%@ include file="header.jsp"%>
 
@@ -180,7 +182,7 @@
 			<legend>Purchases Data</legend>
 			<div class="left-side">
 				<div class="table-container">
-					<table id="customerTable">
+					<table id="purchaseTable">
 						<thead>
 							<tr>
 								<th>Purchase ID</th>
@@ -202,7 +204,7 @@
 				<div class="search-form">
 					<form action="#">
 						<div class="form-group">
-							<input type="text" id="purchaseId" name="purchaseId"
+							<input type="text" id="purId" name="purchaseId"
 								class="form-control" placeholder="Enter ID...">
 							<button type="submit" class="btn" id="findPurBtn">Search</button>
 							<button type="submit" class="btn" id="findAllPurBtn">Find
