@@ -1,7 +1,6 @@
-/**
- * 
- */
-$(document).ready(function() {
+(function() {
+	
+	$(document).ready(function() {
 
 	populateCustomerSelectBox();
 
@@ -11,7 +10,6 @@ $(document).ready(function() {
 		var selectedCust = $(this).val();
 		console.log(selectedCust);
 	});
-
 
 	$(document).on("click", "#FindCustomerBtn", function(event) {
 		event.preventDefault();
@@ -34,7 +32,6 @@ $(document).ready(function() {
 			}
 
 			function parseJsonFileCustomer(result) {
-
 				clearTable();
 
 				$("#CustomerId").text(result.CustomerId);
@@ -74,7 +71,6 @@ $(document).ready(function() {
 			}
 		});
 	});
-
 
 	function displayCustomers(customers) {
 		// Clear existing table rows
@@ -183,7 +179,6 @@ $(document).ready(function() {
 		$("#customerTable tbody").empty();
 	}
 
-
 	function populateCustomerSelectBox() {
 		$.ajax({
 			method: "GET",
@@ -201,6 +196,5 @@ $(document).ready(function() {
 			}
 		});
 	}
-
-
 });
+})();
