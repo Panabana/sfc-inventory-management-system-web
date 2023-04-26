@@ -1,7 +1,6 @@
-/**
- * 
- */
-$(document).ready(function() {
+(function() {
+	
+	$(document).ready(function() {
 
 	populateCustomerSelectBox();
 
@@ -11,7 +10,6 @@ $(document).ready(function() {
 		var selectedCust = $(this).val();
 		console.log(selectedCust);
 	});
-
 
 	$(document).on("click", "#FindCustomerBtn", function(event) {
 		event.preventDefault();
@@ -37,11 +35,10 @@ $(document).ready(function() {
 				clearFields();
 				clearTable();
 				
-
-				$("#CustCustomerId").text(result.CustomerId);
-				$("#CustCustomerName").text(result.CustomerName);
-				$("#CustCustomerAddress").text(result.CustomerAddress);
-				$("#CustCustomerPhone").text(result.Phone);
+				$("#CustomerId").text(result.CustomerId);
+				$("#CustomerName").text(result.CustomerName);
+				$("#CustomerAddress").text(result.CustomerAddress);
+				$("#CustomerPhone").text(result.Phone);
 
 				$("#customerIdAdd").val(result.CustomerId);
 				$("#customerName").val(result.CustomerName);
@@ -50,10 +47,10 @@ $(document).ready(function() {
 
 			}
 			function clearFields() {
-				$("#CustCustomerName").text("");
-				$("#CustCustomerId").text("");
-				$("#CustCustomerAddress").text("");
-				$("#CustCustomerPhone").text("");
+				$("#CustomerName").text("");
+				$("#CustomerId").text("");
+				$("#CustomerAddress").text("");
+				$("#CustomerPhone").text("");
 			}
 		}
 	});
@@ -75,7 +72,6 @@ $(document).ready(function() {
 			}
 		});
 	});
-
 
 	function displayCustomers(customers) {
 		// Clear existing table rows
@@ -184,7 +180,6 @@ $(document).ready(function() {
 		$("#customerTable tbody").empty();
 	}
 
-
 	function populateCustomerSelectBox() {
 		$.ajax({
 			method: "GET",
@@ -202,6 +197,5 @@ $(document).ready(function() {
 			}
 		});
 	}
-
-
 });
+})();
