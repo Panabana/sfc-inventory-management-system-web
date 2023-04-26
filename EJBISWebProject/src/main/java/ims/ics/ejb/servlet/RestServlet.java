@@ -50,10 +50,11 @@ public class RestServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String pathInfo = request.getPathInfo();
 		if(pathInfo == null || pathInfo.equals("/")){
-			//System.out.println("Alla");
-			//System.out.println(pathInfo);
 			
-			List<ims.ics.ejb.Employee>allEmployees = facade.findAllEmployees();
+			// System.out.println("Alla");
+			// System.out.println(pathInfo);
+			
+			List<ims.ics.ejb.Employee> allEmployees = facade.findAllEmployees();
 			sendAsJson(response, allEmployees);
 			
 			return;
