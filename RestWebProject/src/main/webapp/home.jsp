@@ -41,10 +41,10 @@
 							</thead>
 							<tbody>
 								<tr>
-									<td><span id="EmployeeId"></span></td>
-									<td><span id="EmployeeName"></span></td>
-									<td><span id="EmployeeAddress"></span></td>
-									<td><span id="EmployeePhone"></span></td>
+									<td><span id="EmpEmployeeId"></span></td>
+									<td><span id="EmpEmployeeName"></span></td>
+									<td><span id="EmpEmployeeAddress"></span></td>
+									<td><span id="EmpEmployeePhone"></span></td>
 								</tr>
 							</tbody>
 						</table>
@@ -116,10 +116,10 @@
 							</thead>
 							<tbody>
 								<tr>
-									<td><span id=CustomerId></span></td>
-									<td><span id="CustomerName"></span></td>
-									<td><span id="CustomerAddress"></span></td>
-									<td><span id="CustomerPhone"></span></td>
+									<td><span id=CustCustomerId></span></td>
+									<td><span id="CustCustomerName"></span></td>
+									<td><span id="CustCustomerAddress"></span></td>
+									<td><span id="CustCustomerPhone"></span></td>
 								</tr>
 							</tbody>
 						</table>
@@ -192,9 +192,9 @@
 						</thead>
 						<tbody>
 							<tr>
-								<td><span id=PurchaseId></span></td>
-								<td><span id="CustomerId"></span></td>
-								<td><span id="EmployeeId"></span></td>
+								<td><span id=PurPurchaseId></span></td>
+								<td><span id="PurEmployeeId"></span></td>
+								<td><span id="PurCustomerId"></span></td>
 							</tr>
 						</tbody>
 					</table>
@@ -204,8 +204,12 @@
 				<div class="search-form">
 					<form action="#">
 						<div class="form-group">
-							<input type="text" id="purId" name="purchaseId"
-								class="form-control" placeholder="Enter ID...">
+							<select class="form-group" name="purchase-id" id="purchaseSelect">
+								<option disabled selected value="">Select a purchase</option>
+								<c:forEach var="" items="">
+									<option value=""></option>
+								</c:forEach>
+							</select>
 							<button type="submit" class="btn" id="findPurBtn">Search</button>
 							<button type="submit" class="btn" id="findAllPurBtn">Find
 								all</button>
@@ -217,12 +221,7 @@
 					<form>
 						<h2 style="text-align: center;">Purchase Form</h2>
 						<div class="form-group">
-							<select name="purchase-id" id="purchase-id">
-								<option disabled selected value="">Select a purchase</option>
-								<c:forEach var="" items="">
-									<option value=""></option>
-								</c:forEach>
-							</select>
+							
 						</div>
 						<div class="form-group">
 							<select name="customer-id" id="customerSelect">
@@ -263,7 +262,7 @@
 
 
 
-
+<!-- 
 	<div class="main">
 		<form action="#">
 			<label for="empId">Employee Id:</label> <input type="number"
@@ -309,7 +308,7 @@
 
 
 
-
+ -->
 		<!-- 		
 		<table id="customerTable">
 			<caption>Customers</caption>
