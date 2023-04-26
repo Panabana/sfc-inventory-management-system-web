@@ -172,7 +172,7 @@
 				</div>
 			</fieldset>
 		</div>
-	</div>
+	
 
 	<!-- Purchase section -->
 	<div class="section" id="Purchase">
@@ -254,7 +254,7 @@
 			</div>
 		</fieldset>
 	</div>
-	</div>
+
 
 
 
