@@ -19,7 +19,7 @@
 	<main>
 		<div class="main-content">
 			<div class="search-form">
-				<form action="PurchaseServlet" method="get" id="search-form">
+				<form action="PurchaseServlet" method="get" id="search-form" onsubmit = "return validateSearchForm()">
 					<div class="form-group">
 						<input type="text" id="find-purchase-id" name="find-purchase-id"
 							class="form-control" placeholder="Search...">
@@ -29,7 +29,7 @@
 				</form>
 			</div>
 			<div class="table-container">
-				<table>
+				<table id="purchase-table">
 					<thead>
 						<tr>
 							<th>Purchase ID</th>
@@ -132,6 +132,31 @@
 				document.getElementById("error-label").innerHTML = errorMessage;
 				return true;
 			}
+		}
+
+		function validateSearchForm() {
+		    var purchaseId = document.getElementById("find-purchase-id").value;
+
+		    if (purchaseId === "" || !/^\d{1,10}$/.test(purchaseId)) {
+		        errorMessage = "Please enter a valid ID (number only) to search for.."
+		        document.getElementById("error-label").innerHTML = errorMessage;
+		        return false;
+		    } else {
+		        var purchaseExists = false;
+		        $('#purchase-table tbody tr').each(function() {
+		            var rowPurchaseId = $(this).find('td:eq(0)').text();
+		            if (rowPurchaseId === purchaseId) {
+		                purchaseExists = true;
+		                return false; // break the loop
+		            }
+		        });
+		        if (!purchaseExists) {
+		            errorMessage = "Purchase with ID " + purchaseId + " doesn't exist.";
+		            document.getElementById("error-label").innerHTML = errorMessage;
+		            return false;
+		        }
+		    }
+		    return true;
 		}
 	</script>
 	<%@ include file="footer.jsp"%>

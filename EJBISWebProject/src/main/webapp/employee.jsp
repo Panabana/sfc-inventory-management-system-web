@@ -17,7 +17,7 @@
 	<main>
 		<div class="main-content">
 			<div class="search-form">
-				<form action="EmployeeServlet" method="get" id="search-form">
+				<form action="EmployeeServlet" method="get" id="search-form" onsubmit="return validateSearchForm()">
 					<div class="form-group">
 						<input type="text" id="find-employee-id" name="find-employee-id"
 							class="form-control" placeholder="Search...">
@@ -27,7 +27,7 @@
 				</form>
 			</div>
 			<div class="table-container">
-				<table>
+				<table id="employee-table">
 					<thead>
 						<tr>
 							<th>Employee ID</th>
@@ -105,17 +105,17 @@
 		});
 
 		function validateForm() {
-			//  var employeeId = document.getElementById("employee-id").value;
+		    var employeeId = document.getElementById("employee-id").value;
 			var employeeName = document.getElementById("employee-name").value;
 			var employeeAddress = document.getElementById("employee-address").value;
 			var employeePhoneNumber = document.getElementById("employee-phone").value;
 			var errorMessage = "";
 
-			//if (employeeId === "") { 
-			// errorMessage = "Employee ID is required.";
-			// document.getElementById("error-label").innerHTML = errorMessage;
-			// return false;
-			if (employeeName === "" || !/^[a-zA-ZÂ‰ˆ≈ƒ÷]+$/.test(employeeName)) {
+			if (employeeId === "") { 
+			 errorMessage = "Employee ID is required.";
+			 document.getElementById("error-label").innerHTML = errorMessage;
+			 return false;
+			} else if (employeeName === "" || !/^[a-zA-ZÂ‰ˆ≈ƒ÷]+$/.test(employeeName)) {
 				errorMessage = "Please enter a valid Name (Letters only)."
 				document.getElementById("error-label").innerHTML = errorMessage;
 				return false;
@@ -134,6 +134,30 @@
 				document.getElementById("error-label").innerHTML = errorMessage;
 				return true;
 			}
+		}
+
+		function validateSearchForm(){
+			var employeeId = document.getElementById("find-employee-id").value;
+			if(employeeId === "" || !/^\d{1,10}$/.test(employeeId)){
+				errorMessage = "Please enter a valid ID to search for!"
+					document.getElementById("error-label").innerHTML = errorMessage;
+					return false;
+			} else {
+		        var employeeExists = false;
+		        $('#employee-table tbody tr').each(function() {
+		            var rowEmployeeId = $(this).find('td:eq(0)').text();
+		            if (rowEmployeeId === employeeId) {
+		                employeeExists = true;
+		                return false; // break the loop
+		            }
+		        });
+		        if (!employeeExists) {
+		            errorMessage = "Employee with ID " + employeeId + " doesn't exist.";
+		            document.getElementById("error-label").innerHTML = errorMessage;
+		            return false;
+		        }
+		    }
+		    return true;
 		}
 	</script>
 	<%@ include file="footer.jsp"%>
