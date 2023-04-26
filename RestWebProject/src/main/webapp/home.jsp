@@ -141,7 +141,7 @@
 							<h2 style="text-align: center;">Customer Form</h2>
 							<div class="form-group">
 								<input type="text" class="form-control item" id="customerIdAdd"
-									name="customerId" placeholder="Employee ID" disabled>
+									name="customerId" placeholder="Customer ID" disabled>
 							</div>
 							<div class="form-group">
 								<input type="text" class="form-control item" id="customerName"
