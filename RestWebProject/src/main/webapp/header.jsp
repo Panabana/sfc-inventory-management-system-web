@@ -6,9 +6,9 @@
      	 <!--  
         <li><a href="#">Products</a></li>
         <li><a href="#">Suppliers</a></li>
-        <li><a href="#">Purchases</a></li>
         -->
-        <li><a href="#Employees">Employees</a></li>
+        <li><a href="#Employee">Employees</a></li>
         <li><a href="#Customer">Customers</a></li>
+        <li><a href="#Purchase">Purchases</a></li>
       </ul>
     </div>
