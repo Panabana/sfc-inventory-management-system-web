@@ -49,27 +49,27 @@ public class RestServlet extends HttpServlet {
     
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String pathInfo = request.getPathInfo();
-		if(pathInfo == null || pathInfo.equals("/")){
-			
+		if (pathInfo == null || pathInfo.equals("/")) {
+
 			// System.out.println("Alla");
 			// System.out.println(pathInfo);
-			
+
 			List<ims.ics.ejb.Employee> allEmployees = facade.findAllEmployees();
 			sendAsJson(response, allEmployees);
-			
+
 			return;
-			}
-		
+		}
+
 		String[] splits = pathInfo.split("/");
-		if(splits.length != 2) {
-		//System.out.println("Alla2");
-		response.sendError(HttpServletResponse.SC_BAD_REQUEST);
-		return;
+		if (splits.length != 2) {
+			// System.out.println("Alla2");
+			response.sendError(HttpServletResponse.SC_BAD_REQUEST);
+			return;
 		}
 		String id = splits[1];
 		Employee emp = facade.findEmployeeById(Integer.parseInt(id));
 		sendAsJson(response, emp);
-		}
+	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
