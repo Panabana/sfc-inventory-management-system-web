@@ -51,6 +51,7 @@ public class RestServletCustomer extends HttpServlet {
 		if(pathInfo == null || pathInfo.equals("/")){
 			List<Customer> allCustomers = facade.findAllCustomers();
 			sendAsJson(response, allCustomers);
+			return;
 		} else {
 			String[] splits = pathInfo.split("/");
 			if(splits.length != 2) {
