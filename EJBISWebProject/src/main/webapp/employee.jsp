@@ -76,11 +76,10 @@
 									value="add-employee">Add</button>
 								<button type="submit" class="update-btn" name="action"
 									value="update-employee">Update</button>
-								<button type="submit" class="remove-btn">Remove</button>
 							</div>
 							<div class="error-label" id="error-label">
 								<!-- Error messages will be displayed here -->
-								<p></p>
+								<p>${error}</p>
 							</div>
 						</form>
 					</fieldset>
