@@ -35,10 +35,10 @@
 				clearFields();
 				clearTable();
 				
-				$("#CustomerId").text(result.CustomerId);
-				$("#CustomerName").text(result.CustomerName);
-				$("#CustomerAddress").text(result.CustomerAddress);
-				$("#CustomerPhone").text(result.Phone);
+				$("#CustCustomerId").text(result.CustomerId);
+				$("#CustCustomerName").text(result.CustomerName);
+				$("#CustCustomerAddress").text(result.CustomerAddress);
+				$("#CustCustomerPhone").text(result.Phone);
 
 				$("#customerIdAdd").val(result.CustomerId);
 				$("#customerName").val(result.CustomerName);
@@ -78,13 +78,13 @@
 		// $("#customerTable tbody").empty();
 
 		$.each(customers, function(index, customer) {
-			var row = $("<tr>");
-			row.append($("<td>").text(customer.CustomerId));
-			row.append($("<td>").text(customer.CustomerName));
-			row.append($("<td>").text(customer.CustomerAddress));
-			row.append($("<td>").text(customer.Phone));
-			$("#customerTable tbody").append(row);
-		});
+				var row = $("<tr>");
+				row.append($("<td>").text(customer.CustomerId));
+				row.append($("<td>").text(customer.CustomerName));
+				row.append($("<td>").text(customer.CustomerAddress));
+				row.append($("<td>").text(customer.Phone));
+				$("#customerTable tbody").append(row);
+			});
 	}
 
 	$("#delCustBtn").click(function(event) {
@@ -115,7 +115,7 @@
 	$("#addCustomerBtn").click(function(event) {
 		event.preventDefault();
 
-		//var strId = $("#customerIdAdd").val();
+		
 		var strName = $("#customerName").val();
 		var strAddress = $("#customerAddress").val();
 		var strPhone = $("#customerPhone").val();

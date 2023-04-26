@@ -18,6 +18,7 @@ $(document).ready(function() {
 	$(document).on("click", "#findPurBtn", function(event) {
 		event.preventDefault();
 		var strValue = $("#purchaseSelect").val();
+		alert(strValue);
 		if (strValue != "") {
 			$.ajax({
 				method: "GET",
