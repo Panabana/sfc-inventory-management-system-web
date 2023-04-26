@@ -67,9 +67,11 @@ $("#findAllBtn").click(function(event) {
 		success: function(result) {
 			clearTable();
 			displayEmployees(result);
+			$(".error-label-employee").text("Employees found.");
 		},
 		error: function(xhr, status, error) {
 			console.error("Error in fetching employees:", error);
+			$(".error-label-employee").text("Error in fetching employees");
 		}
 	});
 });
