@@ -107,7 +107,7 @@
 	}
 
 	// Add new employee
-	function addEmployee(event) {
+	function addEmployee() {
 		$("#addEmpBtn").click(function(event) {
 			event.preventDefault();
 			// var strId = $("#empIdAdd").val();

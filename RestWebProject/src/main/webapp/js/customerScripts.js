@@ -115,12 +115,12 @@
 	$("#addCustomerBtn").click(function(event) {
 		event.preventDefault();
 
-		var strId = $("#customerIdAdd").val();
+		//var strId = $("#customerIdAdd").val();
 		var strName = $("#customerName").val();
 		var strAddress = $("#customerAddress").val();
 		var strPhone = $("#customerPhone").val();
 
-		var obj = { CustomerId: strId, CustomerName: strName, CustomerAddress: strAddress, Phone: strPhone };
+		var obj = { CustomerName: strName, CustomerAddress: strAddress, Phone: strPhone };
 		var jsonString = JSON.stringify(obj);
 		if (strId != "") {
 			$.ajax({
