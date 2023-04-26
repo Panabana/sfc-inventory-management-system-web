@@ -17,7 +17,7 @@
 			function ajaxRestReturn_Success(result, status, xhr) {
 				parseJsonFilePurchase(result);
 			}
-
+			
 			function ajaxRestReturn_Error(result, status, xhr) {
 				alert("Error in rest Service");
 				console.log("Ajax-find Purchase: " + status);
@@ -85,9 +85,9 @@
 	$("#addPurBtn").click(function(event) {
     event.preventDefault();
 	
-	var purchaseId = $("#purIdAdd").val();
-    var employeeId = $("#purEmpIdAdd").val();
-    var customerId = $("#purCustIdAdd").val();
+	var purchaseId = $("#employeeSelect").val();
+    var employeeId = $("#employeeSelect").val();
+    var customerId = $("#customerSelect").val();
 
     var obj = {purchaseId: purchaseId, employeeId: employeeId, customerId: customerId };
     var jsonString = JSON.stringify(obj);
