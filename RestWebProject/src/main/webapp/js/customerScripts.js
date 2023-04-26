@@ -34,13 +34,14 @@ $(document).ready(function() {
 			}
 
 			function parseJsonFileCustomer(result) {
-
+				clearFields();
 				clearTable();
+				
 
-				$("#CustomerId").text(result.CustomerId);
-				$("#CustomerName").text(result.CustomerName);
-				$("#CustomerAddress").text(result.CustomerAddress);
-				$("#CustomerPhone").text(result.Phone);
+				$("#CustCustomerId").text(result.CustomerId);
+				$("#CustCustomerName").text(result.CustomerName);
+				$("#CustCustomerAddress").text(result.CustomerAddress);
+				$("#CustCustomerPhone").text(result.Phone);
 
 				$("#customerIdAdd").val(result.CustomerId);
 				$("#customerName").val(result.CustomerName);
@@ -49,10 +50,10 @@ $(document).ready(function() {
 
 			}
 			function clearFields() {
-				$("#CustomerName").text("");
-				$("#CustomerId").text("");
-				$("#CustomerAddress").text("");
-				$("#CustomerPhone").text("");
+				$("#CustCustomerName").text("");
+				$("#CustCustomerId").text("");
+				$("#CustCustomerAddress").text("");
+				$("#CustCustomerPhone").text("");
 			}
 		}
 	});
