@@ -40,7 +40,6 @@ public class RestServlet extends HttpServlet {
      */
     public RestServlet() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
 	/**
@@ -49,8 +48,6 @@ public class RestServlet extends HttpServlet {
     
     
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		
 		String pathInfo = request.getPathInfo();
 		if(pathInfo == null || pathInfo.equals("/")){
 			//System.out.println("Alla");
@@ -77,7 +74,6 @@ public class RestServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		//doGet(request, response);
 		
 		String pathInfo = request.getPathInfo();
