@@ -89,9 +89,9 @@
 									value="updtEmpBtn" id="updtEmpBtn">Update</button>
 								<button type="submit" class="btn" id="delEmpBtn">Remove</button>
 							</div>
-							<div class="error-label">
+							<div class="error-label-employee">
 								<!-- Error messages will be displayed here -->
-								<p>User messages will be displayed here</p>
+								<p></p>
 							</div>
 						</form>
 					</div>
@@ -165,9 +165,9 @@
 									value="updtCustBtn" id="updtCustBtn">Update</button>
 								<button type="submit" class="btn" id="delCustBtn">Remove</button>
 							</div>
-							<div class="error-label">
+							<div class="error-label-customer">
 								<!-- Error messages will be displayed here -->
-								<p>User messages will be displayed here</p>
+								<p></p>
 							</div>
 						</form>
 					</div>
@@ -247,9 +247,9 @@
 								value="updtCustBtn" id="updtCustBtn">Update</button>
 							<button type="submit" class="btn" id="delPurBtn">Remove</button>
 						</div>
-						<div class="error-label">
+						<div class="error-label-purchase">
 							<!-- Error messages will be displayed here -->
-							<p>User messages will be displayed here</p>
+							<p></p>
 						</div>
 					</form>
 				</div>
