@@ -3,33 +3,37 @@
  */
 
  $(document).ready(function() {
-	$(document).on("click", "#findPurBtn", function(event) {
-		event.preventDefault();
-		var strValue = $("#purId").val();
-		if (strValue != "") {
-			$.ajax({
-				method: "GET",
-				url: "http://localhost:8080/EJBISWebProject/RestServletPurchase/" + strValue,
-				error: ajaxRestReturn_Error,
-				success: ajaxRestReturn_Success
-			})
+	
+	 $(document).on("click", "#findPurBtn", function(event) {
+		 event.preventDefault();
+		 var strValue = $("#purId").val();
+		 if (strValue != "") {
+			 $.ajax({
+				 method: "GET",
+				 url: "http://localhost:8080/EJBISWebProject/RestServletPurchase/" + strValue,
+				 error: ajaxRestReturn_Error,
+				 success: ajaxRestReturn_Success
+			 })
 
-			function ajaxRestReturn_Success(result, status, xhr) {
-				parseJsonFilePurchase(result);
-			}
-			
-			function ajaxRestReturn_Error(result, status, xhr) {
-				alert("Error in rest Service");
-				console.log("Ajax-find Purchase: " + status);
-			}
+			 function ajaxRestReturn_Success(result, status, xhr) {
+				 parseJsonFilePurchase(result);
+				 $("#error-label-purchase").empty();
+				 $("#error-label-purchase").append("Chosen purchase found.");
+			 }
 
-			function parseJsonFilePurchase(result) {
-				$("#purIdAdd").val(result.purchaseId);
-				$("#purEmpIdAdd").val(result.employeeId);
-				$("#purCustIdAdd").val(result.customerId);
-			}
-		}
-	});
+			 function ajaxRestReturn_Error(result, status, xhr) {
+				 alert("Error in rest Service");
+				 console.log("Ajax-find Purchase: " + status);
+				 $("#error-label-purchase").append("Error in fetching purchase");
+			 }
+
+			 function parseJsonFilePurchase(result) {
+				 $("#purIdAdd").val(result.purchaseId);
+				 $("#purEmpIdAdd").val(result.employeeId);
+				 $("#purCustIdAdd").val(result.customerId);
+			 }
+		 }
+	 });
 
 	$("#findAllPurBtn").click(function(event) {
 		event.preventDefault();
