@@ -240,6 +240,13 @@ tr:nth-child(even) {
 	padding: 10px 20px;
 }
 
+.insert-form select {
+	width: 100%;
+	border-radius: 20px;
+	margin-bottom: 25px;
+	padding: 10px 20px;
+}
+
 .button-container {
 	display: block;
 	align-items: center;
