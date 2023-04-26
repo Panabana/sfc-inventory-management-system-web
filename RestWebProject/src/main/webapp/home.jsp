@@ -204,8 +204,8 @@
 						<div class="form-group">
 							<input type="text" id="purchaseId" name="purchaseId"
 								class="form-control" placeholder="Enter ID...">
-							<button type="submit" class="btn" id="FindPurchaseBtn">Search</button>
-							<button type="submit" class="btn" id="findAllPurchaseBtn">Find
+							<button type="submit" class="btn" id="findPurBtn">Search</button>
+							<button type="submit" class="btn" id="findAllPurBtn">Find
 								all</button>
 
 						</div>
@@ -223,7 +223,7 @@
 							</select>
 						</div>
 						<div class="form-group">
-							<select name="customer-id" id="customer-id">
+							<select name="customer-id" id="customerSelect">
 								<option disabled selected value="">Select a customer</option>
 								<c:forEach var="" items="">
 									<option value=""></option>
@@ -231,7 +231,7 @@
 							</select>
 						</div>
 						<div class="form-group">
-							<select name="employee-id" id="employee-id">
+							<select name="employee-id" id="employeeSelect">
 								<option disabled selected value="">Select an employee</option>
 								<c:forEach var="" items="">
 									<option value=""></option>
@@ -239,11 +239,11 @@
 							</select>
 						</div>
 						<div class="button-container">
-							<button type="submit" class="btn" value="addpurchaseBtn"
-								id="addCustomerBtn">Add</button>
+							<button type="submit" class="btn" value="addPurBtn"
+								id="addPurBtn">Add</button>
 							<button type="submit" class="btn" name=updtpurchaseBtn
 								value="updtCustBtn" id="updtCustBtn">Update</button>
-							<button type="submit" class="btn" id="delpurchaseBtn">Remove</button>
+							<button type="submit" class="btn" id="delPurBtn">Remove</button>
 						</div>
 						<div class="error-label">
 							<!-- Error messages will be displayed here -->
