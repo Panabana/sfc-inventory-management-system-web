@@ -1,7 +1,18 @@
 /**
  * 
  */
- $(document).ready(function() {
+$(document).ready(function() {
+
+	populateCustomerSelectBox();
+
+	// Event listener for the select box
+	$('#customerSelect').on('change', function() {
+		// Retrieve the selected employee ID and name
+		var selectedCust = $(this).val();
+		console.log(selectedCust);
+	});
+
+
 	$(document).on("click", "#FindCustomerBtn", function(event) {
 		event.preventDefault();
 		var strValue = $("#customerId").val();
@@ -23,19 +34,19 @@
 			}
 
 			function parseJsonFileCustomer(result) {
-				
+
 				clearTable();
-				
+
 				$("#CustomerId").text(result.CustomerId);
 				$("#CustomerName").text(result.CustomerName);
 				$("#CustomerAddress").text(result.CustomerAddress);
 				$("#CustomerPhone").text(result.Phone);
-				
+
 				$("#customerIdAdd").val(result.CustomerId);
 				$("#customerName").val(result.CustomerName);
 				$("#customerAddress").val(result.CustomerAddress);
 				$("#customerPhone").val(result.Phone);
-				
+
 			}
 			function clearFields() {
 				$("#CustomerName").text("");
@@ -90,6 +101,7 @@
 
 			function ajaxDelReturnSuccess(result, status, xhr) {
 				clearFields();
+				displayCustomers();
 				$("#CustomerName").attr("placeholder", "Customer deleted");
 			}
 
@@ -99,73 +111,93 @@
 			}
 		}
 	})
-	
+
 	$("#addCustomerBtn").click(function(event) {
-	event.preventDefault();
+		event.preventDefault();
 
-    var strId = $("#customerIdAdd").val();
-    var strName = $("#customerName").val();
-    var strAddress = $("#customerAddress").val();
-    var strPhone = $("#customerPhone").val();
+		var strId = $("#customerIdAdd").val();
+		var strName = $("#customerName").val();
+		var strAddress = $("#customerAddress").val();
+		var strPhone = $("#customerPhone").val();
 
-    var obj = { CustomerId: strId, CustomerName: strName, CustomerAddress: strAddress, Phone: strPhone };
-    var jsonString = JSON.stringify(obj);
-    if (strId != "") {
-        $.ajax({
-            method: "POST",
-            url: "http://localhost:8080/EJBISWebProject/RestServletCustomer/",
-            data: jsonString,
-            dataType: 'json',
-            error: ajaxAddReturnError,
-            success: ajaxAddReturnSuccess
-        })
-        function ajaxAddReturnSuccess(result, status, xhr) {
-            clearFields();
-            $("#customerName").attr("placeholder", "Customer added");
-        }
-        function ajaxAddReturnError(result, status, xhr) {
-            alert("Error Add");
-            console.log("Ajax-find customer: " + status);
-        }
-    }
-})
+		var obj = { CustomerId: strId, CustomerName: strName, CustomerAddress: strAddress, Phone: strPhone };
+		var jsonString = JSON.stringify(obj);
+		if (strId != "") {
+			$.ajax({
+				method: "POST",
+				url: "http://localhost:8080/EJBISWebProject/RestServletCustomer/",
+				data: jsonString,
+				dataType: 'json',
+				error: ajaxAddReturnError,
+				success: ajaxAddReturnSuccess
+			})
+			function ajaxAddReturnSuccess(result, status, xhr) {
+				clearFields();
+				displayCustomers();
+				$("#customerName").attr("placeholder", "Customer added");
+			}
+			function ajaxAddReturnError(result, status, xhr) {
+				alert("Error Add");
+				console.log("Ajax-find customer: " + status);
+			}
+		}
+	})
 
-$("#updtCustBtn").click(function(event) {
-	event.preventDefault();
+	$("#updtCustBtn").click(function(event) {
+		event.preventDefault();
 
-    var strId = $("#customerIdAdd").val();
-    var strName = $("#customerName").val();
-    var strAddress = $("#customerAddress").val();
-    var strPhone = $("#customerPhone").val();
+		var strId = $("#customerIdAdd").val();
+		var strName = $("#customerName").val();
+		var strAddress = $("#customerAddress").val();
+		var strPhone = $("#customerPhone").val();
 
-    var obj = { CustomerId: strId, CustomerName: strName, CustomerAddress: strAddress, Phone: strPhone };
-    var jsonString = JSON.stringify(obj);
-    if (strId != "") {
-        $.ajax({
-            method: "PUT",
-            url: "http://localhost:8080/EJBISWebProject/RestServletCustomer/" + strId,
-            data: jsonString,
-            dataType: 'json',
-            error: ajaxUpdateReturnError,
-            success: ajaxUpdateReturnSuccess
-        })
-        function ajaxUpdateReturnSuccess(result, status, xhr) {
-            clearFields();
-            $("#customerName").attr("placeholder", "Customer updated");
-            alert("Success")
-            displayCustomers(result);
-        }
-        function ajaxUpdateReturnError(result, status, xhr) {
-            alert("Error updating customer");
-            console.log("Ajax-update customer: " + status);
-            displayCustomers(result);
-        }
-    }
-})
+		var obj = { CustomerId: strId, CustomerName: strName, CustomerAddress: strAddress, Phone: strPhone };
+		var jsonString = JSON.stringify(obj);
+		if (strId != "") {
+			$.ajax({
+				method: "PUT",
+				url: "http://localhost:8080/EJBISWebProject/RestServletCustomer/" + strId,
+				data: jsonString,
+				dataType: 'json',
+				error: ajaxUpdateReturnError,
+				success: ajaxUpdateReturnSuccess
+			})
+			function ajaxUpdateReturnSuccess(result, status, xhr) {
+				clearFields();
+				$("#customerName").attr("placeholder", "Customer updated");
+				alert("Success")
+				displayCustomers(result);
+			}
+			function ajaxUpdateReturnError(result, status, xhr) {
+				alert("Error updating customer");
+				console.log("Ajax-update customer: " + status);
+				displayCustomers(result);
+			}
+		}
+	})
 
-	 function clearTable() {
-		 $("#customerTable tbody").empty();
-	 }
+	function clearTable() {
+		$("#customerTable tbody").empty();
+	}
+
+
+	function populateCustomerSelectBox() {
+		$.ajax({
+			method: "GET",
+			url: "http://localhost:8080/EJBISWebProject/RestServletCustomer/",
+			success: function(result) {
+				var selectBox = $("#customerSelect");
+				selectBox.empty();
+				$.each(result, function(index, customer) {
+					var option = $("<option>").val(customer.CustomerId).text(customer.CustomerId + " - " + customer.CustomerName);
+					selectBox.append(option);
+				});
+			},
+			error: function(xhr, status, error) {
+				console.error("Error in fetching customers:", error);
+			}
+		});
+	}
 
 
 });
