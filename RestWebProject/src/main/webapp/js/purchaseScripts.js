@@ -37,10 +37,14 @@
 			method: "GET",
 			url: "http://localhost:8080/EJBISWebProject/RestServletPurchase/",
 			success: function(result) {
+				clearTable();
 				displayPurchases(result);
+				$("#error-label-purchase").empty();
+				$("#error-label-purchase").append("All purchases found.");
 			},
 			error: function(xhr, status, error) {
 				console.error("Error in fetching purchases:", error);
+				$("#error-label-purchase").append("Error in fetching purchases");
 			}
 		});
 	});
