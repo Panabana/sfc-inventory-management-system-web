@@ -19,47 +19,45 @@
 				<div class="team-member">
 					<img src="images/alex.jpg" alt="Alexander Bengtsson">
 					<h2>Alexander Bengtsson</h2>
-					<p>Hobbies: Eating</p>
-					<p>JHe is a hardworking individual who always puts in his best
-						effort. He is also a great team player, working collaboratively
-						with others to achieve common goals. Through his dedication and
-						commitment, he contributes greatly to the success of the team.</p>
+					<p>Hobby: Chess</p>
+					<p>Alex is our resident chess enthusiast, always eager to challenge his mind
+						and expand his strategic thinking. As a result, his keen intellect and ability
+						to analyze complex problems have made him an invaluable asset to the team.</p>
 				</div>
 				<div class="team-member">
 					<img src="images/axel.jpg" alt="Axel Alvinger">
 					<h2>Axel Alvinger</h2>
-					<p>Hobbies: Eating</p>
-					<p>JHe is a hardworking individual who always puts in his best
-						effort. He is also a great team player, working collaboratively
-						with others to achieve common goals. Through his dedication and
-						commitment, he contributes greatly to the success of the team.</p>
+					<p>Hobbies: Working out</p>
+					<p>Axel is passionate about working out and maintaining a healthy lifestyle.
+						His dedication to fitness not only keeps him in great shape, but also helps
+						him stay focused and disciplined in his work, inspiring the rest of the
+						team to push their limits.</p>
 				</div>
 				<div class="team-member">
 					<img src="images/elias.jpg" alt="Elias Sirviö">
 					<h2>Elias Sirviö</h2>
-					<p>Hobbies: Eating</p>
-					<p>JHe is a hardworking individual who always puts in his best
-						effort. He is also a great team player, working collaboratively
-						with others to achieve common goals. Through his dedication and
-						commitment, he contributes greatly to the success of the team.</p>
+					<p>Hobbies: Music</p>
+					<p>As a true music lover, Elias brings a creative flair to the team with his vast
+						knowledge of various genres and artists. His enthusiasm for music has a
+						positive impact on the workplace atmosphere, fostering a harmonious environment
+						for everyone.</p>
 				</div>
 				<div class="team-member">
 					<img src="images/mahmood.jpg" alt="Joseph Nordin">
 					<h2>Joseph Nordin</h2>
-					<p>Hobbies: Eating</p>
-					<p>JHe is a hardworking individual who always puts in his best
-						effort. He is also a great team player, working collaboratively
-						with others to achieve common goals. Through his dedication and
-						commitment, he contributes greatly to the success of the team.</p>
+					<p>Hobbies: Kickboxing & eating</p>
+					<p>Combining his love for kickboxing and eating, Joseph is both a fierce competitor
+						and a self-proclaimed foodie. He brings a unique energy to the team, balancing
+						his intensity in the gym with his ability to find the best local cuisine for
+						team lunches.</p>
 				</div>
 				<div class="team-member">
-					<img src="images/lukas.jpg" alt="ALukas Yorke">
+					<img src="images/lukas.jpg" alt="Lukas Yorke">
 					<h2>Lukas Yorke</h2>
-					<p>Hobbies: Eating</p>
-					<p>JHe is a hardworking individual who always puts in his best
-						effort. He is also a great team player, working collaboratively
-						with others to achieve common goals. Through his dedication and
-						commitment, he contributes greatly to the success of the team.</p>
+					<p>Hobbies: Football</p>
+					<p>An avid football fan, Lukas is a team player both on and off the field. His
+					strong sense of camaraderie and sportsmanship make him an exceptional colleague,
+					always eager to support his teammates and help the company score big wins.</p>
 				</div>
 			</div>
 		</div>
