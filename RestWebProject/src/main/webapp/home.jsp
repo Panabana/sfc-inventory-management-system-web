@@ -1,29 +1,22 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="ISO-8859-1">
-<link rel="stylesheet" type="text/css" href="css/style.css">
-<title>IMS - REST</title>
+	<meta charset="ISO-8859-1">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<title>IMS - REST</title>
 </head>
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js">
-	
-</script>
-<script src=js/scripts.js>
-	
-</script>
-<script src=js/customerScripts.js>	
-</script>
-<script src=js/purchaseScripts.js>
-</script>
-
 <body>
 	<%@ include file="header.jsp"%>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+	
+	<!--  Include custom JS files -->
+	<script src=js/scripts.js></script>
+	<script src=js/customerScripts.js></script>
+	<script src=js/purchaseScripts.js></script>
 
 	<div class="main-content">
-
+		
 		<!-- Employees section -->
 		<div class="section" id="Employee">
 			<fieldset>
@@ -54,12 +47,9 @@
 					<div class="search-form">
 						<form action="#">
 							<div class="form-group">
-								<input type="text" id="empId" name="empId" class="form-control"
-									placeholder="Enter ID...">
+								<input type="text" id="empId" name="empId" class="form-control" placeholder="Enter ID..." />
 								<button type="submit" class="btn" id="FindBtn">Search</button>
-								<button type="submit" class="btn" id="findAllBtn">Find
-									all</button>
-
+								<button type="submit" class="btn" id="findAllBtn">Find all</button>
 							</div>
 						</form>
 					</div>
@@ -89,9 +79,9 @@
 									value="updtEmpBtn" id="updtEmpBtn">Update</button>
 								<button type="submit" class="btn" id="delEmpBtn">Remove</button>
 							</div>
-							<div class="error-label-employee">
+							<div>
 								<!-- Error messages will be displayed here -->
-								<p></p>
+								<p id="error-label-employee"></p>
 							</div>
 						</form>
 					</div>
@@ -129,12 +119,9 @@
 					<div class="search-form">
 						<form action="#">
 							<div class="form-group">
-								<input type="text" id="customerId" name="customerId"
-									class="form-control" placeholder="Enter ID...">
+								<input type="text" id="customerId" name="customerId" class="form-control" placeholder="Enter ID..." />
 								<button type="submit" class="btn" id="FindCustomerBtn">Search</button>
-								<button type="submit" class="btn" id="findAllCustomersBtn">Find
-									all</button>
-
+								<button type="submit" class="btn" id="findAllCustomersBtn">Find all</button>
 							</div>
 						</form>
 					</div>
@@ -165,105 +152,97 @@
 									value="updtCustBtn" id="updtCustBtn">Update</button>
 								<button type="submit" class="btn" id="delCustBtn">Remove</button>
 							</div>
-							<div class="error-label-customer">
+							<div>
 								<!-- Error messages will be displayed here -->
-								<p></p>
+								<p id="error-label-customer"></p>
 							</div>
 						</form>
 					</div>
 				</div>
 			</fieldset>
 		</div>
-	
 
-	<!-- Purchase section -->
-	<div class="section" id="Purchase">
-		<fieldset>
-			<legend>Purchases Data</legend>
-			<div class="left-side">
-				<div class="table-container">
-					<table id="purchaseTable">
-						<thead>
-							<tr>
-								<th>Purchase ID</th>
-								<th>Customer</th>
-								<th>Employee</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<td><span id=PurchaseId></span></td>
-								<td><span id="CustomerId"></span></td>
-								<td><span id="EmployeeId"></span></td>
-							</tr>
-						</tbody>
-					</table>
+		<!-- Purchase section -->
+		<div class="section" id="Purchase">
+			<fieldset>
+				<legend>Purchases Data</legend>
+				<div class="left-side">
+					<div class="table-container">
+						<table id="purchaseTable">
+							<thead>
+								<tr>
+									<th>Purchase ID</th>
+									<th>Customer</th>
+									<th>Employee</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td><span id=PurchaseId></span></td>
+									<td><span id="CustomerId"></span></td>
+									<td><span id="EmployeeId"></span></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
 				</div>
-			</div>
-			<div class="right-side">
-				<div class="search-form">
-					<form action="#">
-						<div class="form-group">
-							<input type="text" id="purId" name="purchaseId"
-								class="form-control" placeholder="Enter ID...">
-							<button type="submit" class="btn" id="findPurBtn">Search</button>
-							<button type="submit" class="btn" id="findAllPurBtn">Find
-								all</button>
-
-						</div>
-					</form>
+				<div class="right-side">
+					<div class="search-form">
+						<form action="#">
+							<div class="form-group">
+								<input type="text" id="purId" name="purchaseId"
+									class="form-control" placeholder="Enter ID...">
+								<button type="submit" class="btn" id="findPurBtn">Search</button>
+								<button type="submit" class="btn" id="findAllPurBtn">Find all</button>
+							</div>
+						</form>
+					</div>
+					<div class="insert-form">
+						<form>
+							<h2 style="text-align: center;">Purchase Form</h2>
+							<div class="form-group">
+								<select name="purchase-id" id="purchase-id">
+									<option disabled selected value="">Select a purchase</option>
+									<c:forEach var="" items="">
+										<option value=""></option>
+									</c:forEach>
+								</select>
+							</div>
+							<div class="form-group">
+								<select name="customer-id" id="customerSelect">
+									<option disabled selected value="">Select a customer</option>
+									<c:forEach var="" items="">
+										<option value=""></option>
+									</c:forEach>
+								</select>
+							</div>
+							<div class="form-group">
+								<select name="employee-id" id="employeeSelect">
+									<option disabled selected value="">Select an employee</option>
+									<c:forEach var="" items="">
+										<option value=""></option>
+									</c:forEach>
+								</select>
+							</div>
+							<div class="button-container">
+								<button type="submit" class="btn" value="addPurBtn"
+									id="addPurBtn">Add</button>
+								<button type="submit" class="btn" name=updtpurchaseBtn
+									value="updtCustBtn" id="updtCustBtn">Update</button>
+								<button type="submit" class="btn" id="delPurBtn">Remove</button>
+							</div>
+							<div>
+								<!-- Error messages will be displayed here -->
+								<p id="error-label-purchase"></p>
+							</div>
+						</form>
+					</div>
 				</div>
-				<div class="insert-form">
-					<form>
-						<h2 style="text-align: center;">Purchase Form</h2>
-						<div class="form-group">
-							<select name="purchase-id" id="purchase-id">
-								<option disabled selected value="">Select a purchase</option>
-								<c:forEach var="" items="">
-									<option value=""></option>
-								</c:forEach>
-							</select>
-						</div>
-						<div class="form-group">
-							<select name="customer-id" id="customerSelect">
-								<option disabled selected value="">Select a customer</option>
-								<c:forEach var="" items="">
-									<option value=""></option>
-								</c:forEach>
-							</select>
-						</div>
-						<div class="form-group">
-							<select name="employee-id" id="employeeSelect">
-								<option disabled selected value="">Select an employee</option>
-								<c:forEach var="" items="">
-									<option value=""></option>
-								</c:forEach>
-							</select>
-						</div>
-						<div class="button-container">
-							<button type="submit" class="btn" value="addPurBtn"
-								id="addPurBtn">Add</button>
-							<button type="submit" class="btn" name=updtpurchaseBtn
-								value="updtCustBtn" id="updtCustBtn">Update</button>
-							<button type="submit" class="btn" id="delPurBtn">Remove</button>
-						</div>
-						<div class="error-label-purchase">
-							<!-- Error messages will be displayed here -->
-							<p></p>
-						</div>
-					</form>
-				</div>
-			</div>
-		</fieldset>
+			</fieldset>
+		</div>
 	</div>
-</div>
 
-
-
-
-
-
-
+	<!-- 
 	<div class="main">
 		<form action="#">
 			<label for="empId">Employee Id:</label> <input type="number"
@@ -305,12 +284,6 @@
 				type="submit" value="Add Employee" id="addEmpBtn"> <input
 				type="submit" value="Update Employee" id="updtEmpBtn">
 		</form>
-
-
-
-
-
-		<!-- 		
 		<table id="customerTable">
 			<caption>Customers</caption>
 			<thead>
@@ -350,10 +323,10 @@
 				 <input type="number" id="customerPhone" name="customerPhone"><br><br> 
 				 <input type="submit" value="Add Customer" id="addCustomerBtn"> 
 				 <input type="submit" value="Update Customer" id="updateCustomerBtn">
-		</form> -->
-
-	</div>
-
+		</form> 
+	</div> 
+	-->
+	
 	<%@ include file="footer.jsp"%>
 </body>
 </html>
