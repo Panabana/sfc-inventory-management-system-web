@@ -107,8 +107,8 @@
 	}
 
 	// Add new employee
-	function addEmployee() {
-		$("#addEmpBtn").click(function(event) {
+	function addEmployee(event) {
+		
 			event.preventDefault();
 			// var strId = $("#empIdAdd").val();
 			var strName = $("#empName").val();
@@ -127,11 +127,11 @@
 				error: ajaxAddReturnError,
 				success: ajaxAddReturnSuccess
 			})
-		});
+		
 	}
 
 	// Update employee
-	function updateEmployee(event) {
+	function updateEmployee() {
 		$("#updtEmpBtn").click(function(event) {
 			event.preventDefault();
 			var strId = $("#empIdAdd").val();
