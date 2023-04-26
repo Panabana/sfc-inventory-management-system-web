@@ -66,7 +66,7 @@
 							<h2 style="text-align: center;">Employee Form</h2>
 							<div class="form-group">
 								<input type="text" class="form-control item" id="empIdAdd"
-									name="empIdAdd" placeholder="Employee ID">
+									name="empIdAdd" placeholder="Employee ID" disabled>
 							</div>
 							<div class="form-group">
 								<input type="text" class="form-control item" id="empName"
@@ -141,7 +141,7 @@
 							<h2 style="text-align: center;">Customer Form</h2>
 							<div class="form-group">
 								<input type="text" class="form-control item" id="customerIdAdd"
-									name="customerId" placeholder="Employee ID">
+									name="customerId" placeholder="Employee ID" disabled>
 							</div>
 							<div class="form-group">
 								<input type="text" class="form-control item" id="customerName"
@@ -254,7 +254,7 @@
 			</div>
 		</fieldset>
 	</div>
-
+</div>
 
 
 
