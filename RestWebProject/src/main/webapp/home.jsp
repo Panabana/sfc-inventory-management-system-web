@@ -162,83 +162,81 @@
 				</div>
 			</fieldset>
 		</div>
-
-		<!-- Purchase section -->
-		<div class="section" id="Purchase">
-			<fieldset>
-				<legend>Purchases Data</legend>
-				<div class="left-side">
-					<div class="table-container">
-						<table id="purchaseTable">
-							<thead>
-								<tr>
-									<th>Purchase ID</th>
-									<th>Customer</th>
-									<th>Employee</th>
-								</tr>
-							</thead>
-							<tbody>
-								<tr>
-									<td><span id=PurchaseId></span></td>
-									<td><span id="CustomerId"></span></td>
-									<td><span id="EmployeeId"></span></td>
-								</tr>
-							</tbody>
-						</table>
-					</div>
+	<!-- Purchase section -->
+	<div class="section" id="Purchase">
+		<fieldset>
+			<legend>Purchases Data</legend>
+			<div class="left-side">
+				<div class="table-container">
+					<table id="purchaseTable">
+						<thead>
+							<tr>
+								<th>Purchase ID</th>
+								<th>Customer</th>
+								<th>Employee</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td><span id=PurPurchaseId></span></td>
+								<td><span id="PurEmployeeId"></span></td>
+								<td><span id="PurCustomerId"></span></td>
+							</tr>
+						</tbody>
+					</table>
 				</div>
-				<div class="right-side">
-					<div class="search-form">
-						<form action="#">
-							<div class="form-group">
-								<input type="text" id="purId" name="purchaseId"
-									class="form-control" placeholder="Enter ID...">
-								<button type="submit" class="btn" id="findPurBtn">Search</button>
-								<button type="submit" class="btn" id="findAllPurBtn">Find
-									all</button>
-							</div>
-						</form>
-					</div>
-					<div class="insert-form">
-						<form>
-							<h2 style="text-align: center;">Purchase Form</h2>
-							<div class="form-group">
-								<select name="purchase-id" id="purchase-id">
-									<option disabled selected value="">Select a purchase</option>
-									<c:forEach var="" items="">
-										<option value=""></option>
-									</c:forEach>
-								</select>
-							</div>
-							<div class="form-group">
-								<select name="customer-id" id="customerSelect">
-									<option disabled selected value="">Select a customer</option>
-									<c:forEach var="" items="">
-										<option value=""></option>
-									</c:forEach>
-								</select>
-							</div>
-							<div class="form-group">
-								<select name="employee-id" id="employeeSelect">
-									<option disabled selected value="">Select an employee</option>
-									<c:forEach var="" items="">
-										<option value=""></option>
-									</c:forEach>
-								</select>
-							</div>
-							<div class="button-container">
-								<button type="submit" class="btn" value="addPurBtn"
-									id="addPurBtn">Add</button>
-								<button type="submit" class="btn" name=updtpurchaseBtn
-									value="updtCustBtn" id="updtCustBtn">Update</button>
-								<button type="submit" class="btn" id="delPurBtn">Remove</button>
-							</div>
-							<div>
-								<!-- Error messages will be displayed here -->
-								<p id="error-label-purchase"></p>
-							</div>
-						</form>
-					</div>
+			</div>
+			<div class="right-side">
+				<div class="search-form">
+					<form action="#">
+						<div class="form-group">
+							<select class="form-group" name="purchase-id" id="purchaseSelect">
+								<option disabled selected value="">Select a purchase</option>
+								<c:forEach var="" items="">
+									<option value=""></option>
+								</c:forEach>
+							</select>
+							<button type="submit" class="btn" id="findPurBtn">Search</button>
+							<button type="submit" class="btn" id="findAllPurBtn">Find
+								all</button>
+
+						</div>
+					</form>
+				</div>
+				<div class="insert-form">
+					<form>
+						<h2 style="text-align: center;">Purchase Form</h2>
+						<div class="form-group">
+							
+						</div>
+						<div class="form-group">
+							<select name="customer-id" id="customerSelect">
+								<option disabled selected value="">Select a customer</option>
+								<c:forEach var="" items="">
+									<option value=""></option>
+								</c:forEach>
+							</select>
+						</div>
+						<div class="form-group">
+							<select name="employee-id" id="employeeSelect">
+								<option disabled selected value="">Select an employee</option>
+								<c:forEach var="" items="">
+									<option value=""></option>
+								</c:forEach>
+							</select>
+						</div>
+						<div class="button-container">
+							<button type="submit" class="btn" value="addPurBtn"
+								id="addPurBtn">Add</button>
+							<button type="submit" class="btn" name=updtpurchaseBtn
+								value="updtCustBtn" id="updtCustBtn">Update</button>
+							<button type="submit" class="btn" id="delPurBtn">Remove</button>
+						</div>
+						<div class="error-label">
+							<!-- Error messages will be displayed here -->
+							<p id="error-label-purchase">User messages will be displayed here</p>
+						</div>
+					</form>
 				</div>
 			</fieldset>
 		</div>

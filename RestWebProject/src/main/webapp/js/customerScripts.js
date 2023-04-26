@@ -32,8 +32,9 @@
 			}
 
 			function parseJsonFileCustomer(result) {
+				clearFields();
 				clearTable();
-
+				
 				$("#CustomerId").text(result.CustomerId);
 				$("#CustomerName").text(result.CustomerName);
 				$("#CustomerAddress").text(result.CustomerAddress);
