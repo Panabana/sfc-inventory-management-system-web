@@ -110,9 +110,9 @@ main {
 .footer {
 	background-color: #f8f9fc;
 	padding: 1.5rem;
-	margin-top: 80vh;
+	margin-top: 50vh;
 	margin-bottom: 0px;
-	margin-left: 270px;
+	margin-left: 240px;
 	margin-right: auto;
 	width: auto;
 }
@@ -121,6 +121,7 @@ main {
 	color: #6c757d;
 	margin-bottom: 0;
 	text-align: center;
+	font-family: 'Roboto', sans-serif;
 }
 
 /*Style Main*/
