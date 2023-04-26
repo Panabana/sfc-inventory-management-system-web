@@ -1,29 +1,22 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="ISO-8859-1">
-<link rel="stylesheet" type="text/css" href="css/style.css">
-<title>IMS - REST</title>
+	<meta charset="ISO-8859-1">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<title>IMS - REST</title>
 </head>
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js">
-	
-</script>
-<script src=js/scripts.js>
-	
-</script>
-<script src=js/customerScripts.js>	
-</script>
-<script src=js/purchaseScripts.js>
-</script>
-
 <body>
 	<%@ include file="header.jsp"%>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+	
+	<!--  Include custom JS files -->
+	<script src=js/scripts.js></script>
+	<script src=js/customerScripts.js></script>
+	<script src=js/purchaseScripts.js></script>
 
 	<div class="main-content">
-
+		
 		<!-- Employees section -->
 		<div class="section" id="Employee">
 			<fieldset>
@@ -54,12 +47,9 @@
 					<div class="search-form">
 						<form action="#">
 							<div class="form-group">
-								<input type="text" id="empId" name="empId" class="form-control"
-									placeholder="Enter ID...">
+								<input type="text" id="empId" name="empId" class="form-control" placeholder="Enter ID..." />
 								<button type="submit" class="btn" id="FindBtn">Search</button>
-								<button type="submit" class="btn" id="findAllBtn">Find
-									all</button>
-
+								<button type="submit" class="btn" id="findAllBtn">Find all</button>
 							</div>
 						</form>
 					</div>
@@ -89,9 +79,9 @@
 									value="updtEmpBtn" id="updtEmpBtn">Update</button>
 								<button type="submit" class="btn" id="delEmpBtn">Remove</button>
 							</div>
-							<div class="error-label">
+							<div>
 								<!-- Error messages will be displayed here -->
-								<p>User messages will be displayed here</p>
+								<p id="error-label-employee"></p>
 							</div>
 						</form>
 					</div>
@@ -129,12 +119,9 @@
 					<div class="search-form">
 						<form action="#">
 							<div class="form-group">
-								<input type="text" id="customerId" name="customerId"
-									class="form-control" placeholder="Enter ID...">
+								<input type="text" id="customerId" name="customerId" class="form-control" placeholder="Enter ID..." />
 								<button type="submit" class="btn" id="FindCustomerBtn">Search</button>
-								<button type="submit" class="btn" id="findAllCustomersBtn">Find
-									all</button>
-
+								<button type="submit" class="btn" id="findAllCustomersBtn">Find all</button>
 							</div>
 						</form>
 					</div>
@@ -165,17 +152,15 @@
 									value="updtCustBtn" id="updtCustBtn">Update</button>
 								<button type="submit" class="btn" id="delCustBtn">Remove</button>
 							</div>
-							<div class="error-label">
+							<div>
 								<!-- Error messages will be displayed here -->
-								<p>User messages will be displayed here</p>
+								<p id="error-label-customer"></p>
 							</div>
 						</form>
 					</div>
 				</div>
 			</fieldset>
 		</div>
-	
-
 	<!-- Purchase section -->
 	<div class="section" id="Purchase">
 		<fieldset>
@@ -252,9 +237,10 @@
 						</div>
 					</form>
 				</div>
-			</div>
-		</fieldset>
+			</fieldset>
+		</div>
 	</div>
+
 </div>
 
 
@@ -308,8 +294,10 @@
 
 
 
+
  -->
 		<!-- 		
+
 		<table id="customerTable">
 			<caption>Customers</caption>
 			<thead>
@@ -349,10 +337,10 @@
 				 <input type="number" id="customerPhone" name="customerPhone"><br><br> 
 				 <input type="submit" value="Add Customer" id="addCustomerBtn"> 
 				 <input type="submit" value="Update Customer" id="updateCustomerBtn">
-		</form> -->
-
-	</div>
-
+		</form> 
+	</div> 
+	-->
+	
 	<%@ include file="footer.jsp"%>
 </body>
 </html>

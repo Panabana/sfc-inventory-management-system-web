@@ -64,10 +64,14 @@ $(document).ready(function() {
 			method: "GET",
 			url: "http://localhost:8080/EJBISWebProject/RestServletCustomer/",
 			success: function(result) {
+				clearTable();
 				displayCustomers(result);
+				$("#error-label-customer").empty();
+				$("#error-label-customer").append("All customers found.");
 			},
 			error: function(xhr, status, error) {
 				console.error("Error in fetching customers:", error);
+				$(".#error-label-customer").append("Error in fetching customers");
 			}
 		});
 	});
@@ -75,8 +79,7 @@ $(document).ready(function() {
 
 	function displayCustomers(customers) {
 		// Clear existing table rows
-		$("#customerTable tbody").empty();
-
+		// $("#customerTable tbody").empty();
 
 		$.each(customers, function(index, customer) {
 			var row = $("<tr>");
