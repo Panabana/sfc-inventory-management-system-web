@@ -213,28 +213,28 @@ public class RestServletPurchase extends HttpServlet {
 
 	private Purchase parseJsonPurchase(BufferedReader br) {
 		JsonReader jsonReader = Json.createReader(br);
-		JsonObject jsonRoot = jsonReader.readObject();
+	    JsonObject jsonRoot = jsonReader.readObject();
 
-		Purchase purchase = new Purchase();
+	    Purchase purchase = new Purchase();
 
-		 JsonValue employeeIdJson = jsonRoot.get("employeeId");
-		    if (employeeIdJson != null && employeeIdJson.getValueType() == JsonValue.ValueType.STRING) {
-		        int employeeId = ((JsonNumber) employeeIdJson).intValue();
-		        Employee employee = facade.findEmployeeById(employeeId);
-		        if (employee != null) {
-		            purchase.setEmployee(employee);
-		        }
-		    }
-		    
-		    JsonValue customerIdJson = jsonRoot.get("customerId");
-		    if (customerIdJson != null && customerIdJson.getValueType() == JsonValue.ValueType.STRING) {
-		        int customerId = ((JsonNumber) customerIdJson).intValue();
-		        Customer customer = facade.findCustomerById(customerId);
-		        if (customer != null) {
-		            purchase.setCustomer(customer);
-		        }
-		    }
-		return purchase;
+	    JsonValue employeeIdJson = jsonRoot.get("employeeId");
+	    if (employeeIdJson != null && employeeIdJson.getValueType() == JsonValue.ValueType.NUMBER) {
+	        int employeeId = ((JsonNumber) employeeIdJson).intValue();
+	        Employee employee = facade.findEmployeeById(employeeId);
+	        if (employee != null) {
+	            purchase.setEmployee(employee);
+	        }
+	    }
+
+	    JsonValue customerIdJson = jsonRoot.get("customerId");
+	    if (customerIdJson != null && customerIdJson.getValueType() == JsonValue.ValueType.NUMBER) {
+	        int customerId = ((JsonNumber) customerIdJson).intValue();
+	        Customer customer = facade.findCustomerById(customerId);
+	        if (customer != null) {
+	            purchase.setCustomer(customer);
+	        }
+	    }
+	    return purchase;
 	}
 
 	private Purchase parseJsonPurchaseUpdate(BufferedReader br) {
