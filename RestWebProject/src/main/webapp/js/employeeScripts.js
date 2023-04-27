@@ -60,14 +60,14 @@
 	// Find employee by ID
 	function findEmployeeById() {
 		try {
-			$(document).on("click", "#findBtn", function(event) {
+			
 				event.preventDefault();
 
 				var strValue = $("#empId").val();
 				if (strValue != "") {
 					$.ajax({
 						method: "GET",
-						url: "http://localhost:8080/EJBISWebProject/RestServlet/" + strValue,
+						url: "http://localhost:8080/EJBISWebProject/RestServletEmployee/" + strValue,
 						error: ajaxRestReturnError,
 						success: ajaxRestReturnSuccess
 					})
@@ -75,7 +75,7 @@
 					$("#error-label-employee").empty();
 					$("#error-label-employee").append("Please enter a valid ID");
 				}
-			});
+			
 		} catch (error) {
 			console.error("An error occurred: ", error);
 		}
@@ -85,12 +85,12 @@
 	// Find all employees
 	function findAllEmployees() {
 		try {
-			$("#findAllBtn").click(function(event) {
+			
 				event.preventDefault();
 
 				$.ajax({
 					method: "GET",
-					url: "http://localhost:8080/EJBISWebProject/RestServlet/",
+					url: "http://localhost:8080/EJBISWebProject/RestServletEmployee/",
 					success: function(result) {
 						clearTable();
 						displayEmployees(result);
@@ -103,21 +103,21 @@
 						$("#error-label-employee").append("Error in fetching employees");
 					}
 				});
-			});
+			
 		} catch (error) {
 			console.error("An error occurred: ", error);
 		}
 	}
 
 	// Delete employee by ID
-	function deleteEmployeeById() {
+	function deleteEmployeeById(event) {
 		event.preventDefault();
 
 		var strValue = $("#empId").val();
 		if (strValue != "") {
 			$.ajax({
 				method: "DELETE",
-				url: "http://localhost:8080/EJBISWebProject/RestServlet/" + strValue,
+				url: "http://localhost:8080/EJBISWebProject/RestServletEmployee/" + strValue,
 				error: ajaxDelReturnError,
 				success: ajaxDelReturnSuccess
 			});
@@ -151,7 +151,7 @@
 			// Send AJAX request
 			$.ajax({
 				method: "POST",
-				url: "http://localhost:8080/EJBISWebProject/RestServlet/",
+				url: "http://localhost:8080/EJBISWebProject/RestServletEmployee/",
 				data: jsonString,
 				dataType: 'json',
 				error: ajaxAddReturnError,
@@ -202,7 +202,7 @@
 			if (strId !== "") {
 				$.ajax({
 					method: "PUT",
-					url: "http://localhost:8080/EJBISWebProject/RestServlet/" + strId,
+					url: "http://localhost:8080/EJBISWebProject/RestServletEmployee/" + strId,
 					data: jsonString,
 					dataType: 'json',
 					error: ajaxUpdateReturnError,
@@ -234,7 +234,7 @@
 		try {
 			$.ajax({
 				method: "GET",
-				url: "http://localhost:8080/EJBISWebProject/RestServlet/",
+				url: "http://localhost:8080/EJBISWebProject/RestServletEmployee/",
 				success: function(result) {
 					var selectBox = $("#employeeSelect");
 					selectBox.empty();

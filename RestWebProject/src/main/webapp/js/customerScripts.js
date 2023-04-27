@@ -59,8 +59,8 @@
 	}
 
 	// Find Customer by ID
-	function findCustomerById() {
-		$(document).on("click", "#FindCustomerBtn", function(event) {
+	function findCustomerById(event) {
+		
 			event.preventDefault();
 
 			var strValue = $("#customerId").val();
@@ -110,12 +110,12 @@
 					$("#CustomerPhone").text("");
 				}
 			}
-		});
+		
 	}
 
 	// Find all customers
-	function findAllCustomers() {
-		$("#findAllCustomersBtn").click(function(event) {
+	function findAllCustomers(event) {
+		
 			event.preventDefault();
 
 			$.ajax({
@@ -133,7 +133,7 @@
 					$(".#error-label-customer").append("Error in fetching customers");
 				}
 			});
-		});
+		
 	}
 
 	//Delete customer by ID
