@@ -27,8 +27,9 @@ $(document).ready(function() {
 			})
 
 			function ajaxRestReturn_Success(result, status, xhr) {
-
 				parseJsonFilePurchase(result);
+				displayPurchases(result);
+				populatePurchaseSelectBox();
 			}
 
 			function ajaxRestReturn_Error(result, status, xhr) {
@@ -102,8 +103,10 @@ $(document).ready(function() {
 			})
 
 			function ajaxDelReturnSuccess(result, status, xhr) {
-				clearFields();
+				// clearFields();
+				displayPurchases(result);
 				$("#employeeId").attr("placeholder", "Purchase deleted");
+				populatePurchaseSelectBox();
 			}
 
 			function ajaxDelReturnError(result, status, xhr) {
@@ -133,8 +136,10 @@ $(document).ready(function() {
 				success: ajaxAddReturnSuccess
 			})
 			function ajaxAddReturnSuccess(result, status, xhr) {
-				clearFields();
+				// clearFields();
+				displayPurchases(result);
 				$("#purchaseAmountAdd").attr("placeholder", "Purchase added");
+				populatePurchaseSelectBox();
 			}
 			function ajaxAddReturnError(result, status, xhr) {
 				alert("Error Add");
@@ -163,6 +168,17 @@ $(document).ready(function() {
 	function clearTable() {
 		$("#purchaseTable tbody").empty();
 	}
-
+	
+	/*
+	function clearFields() {
+		try {
+			$("#PurchaseSelect").text("");
+			$("#customerSelect").text("");
+			$("employeeSelect").text("");
+		} catch (error) {
+			console.error("An error occurred: ", error);
+		}
+	}
+	*/
 
 })
