@@ -1,6 +1,7 @@
 
 
 function validateForm() {
+	var customerId = document.getElementById("customer-id").value;
 	var customerName = document.getElementById("customer-name").value;
 	var customerAddress = document.getElementById("customer-address").value;
 	var customerPhoneNumber = document.getElementById("customer-phone").value;
@@ -20,36 +21,15 @@ function validateForm() {
 		errorMessage = "Please enter a valid Phone Number (number only)."
 		document.getElementById("error-label").innerHTML = errorMessage;
 		return false;
+	} else if (document.activeElement.value === "update-customer" && customerId === "") {
+		errorMessage = "Please select a Customer ID you want to Update.";
+		document.getElementById("error-label").innerHTML = errorMessage;
+		return false;
 	} else {
 		errorMessage = "Customer was successfully aded!";
 		document.getElementById("error-label").innerHTML = errorMessage;
 		return true;
 	}
-}
-
-function validateSearchForm() {
-	var customerId = document.getElementById("find-customer-id").value;
-
-	if (customerId === "" || !/^\d{1,10}$/.test(customerId)) {
-		errorMessage = "Please enter a valid ID (number only) to search for.."
-		document.getElementById("error-label").innerHTML = errorMessage;
-		return false;
-	} else {
-		var customerExists = false;
-		$('#customers-table tbody tr').each(function() {
-			var rowCustomerId = $(this).find('td:eq(0)').text();
-			if (rowCustomerId === customerId) {
-				customerExists = true;
-				return false; // break the loop
-			}
-		});
-		if (!customerExists) {
-			errorMessage = "Customer with ID " + customerId + " doesn't exist.";
-			document.getElementById("error-label").innerHTML = errorMessage;
-			return false;
-		}
-	}
-	return true;
 }
 
 document.addEventListener("DOMContentLoaded", function() {
@@ -95,7 +75,7 @@ document.addEventListener("DOMContentLoaded", function() {
 			var errorLabel = document.getElementById("error-label");
 			errorLabel.innerText = "Chosen customer found.";
 		}
-	
+
 	});
 });
 
