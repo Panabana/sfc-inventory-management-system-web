@@ -14,6 +14,7 @@ import javax.json.JsonNumber;
 import javax.json.JsonObject;
 import javax.json.JsonObjectBuilder;
 import javax.json.JsonReader;
+import javax.json.JsonString;
 import javax.json.JsonValue;
 import javax.json.JsonValue.ValueType;
 import javax.servlet.ServletException;
@@ -43,7 +44,6 @@ public class RestServletPurchase extends HttpServlet {
 	 */
 	public RestServletPurchase() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	/**
@@ -85,8 +85,12 @@ public class RestServletPurchase extends HttpServlet {
 			// Read the request body
 			BufferedReader reader = request.getReader();
 			// Parse the JSON data into a Purchase object
+			
+			
 			Purchase purchase = parseJsonPurchase(reader);
-
+			
+			System.out.println("Parsed Purchase object: " + purchase);
+			
 			try {
 				// Attempt to create the new purchase
 				purchase = facade.createPurchase(purchase);
@@ -217,21 +221,33 @@ public class RestServletPurchase extends HttpServlet {
 
 	    Purchase purchase = new Purchase();
 
+	    //System.out.println(((JsonNumber) employeeIdJson).intValue());
+	    
 	    JsonValue employeeIdJson = jsonRoot.get("employeeId");
-	    if (employeeIdJson != null && employeeIdJson.getValueType() == JsonValue.ValueType.NUMBER) {
-	        int employeeId = ((JsonNumber) employeeIdJson).intValue();
-	        Employee employee = facade.findEmployeeById(employeeId);
-	        if (employee != null) {
-	            purchase.setEmployee(employee);
+	    if (employeeIdJson != null && employeeIdJson.getValueType() == JsonValue.ValueType.STRING) {
+	        String employeeIdStr = ((JsonString) employeeIdJson).getString();
+	        try {
+	            int employeeId = Integer.parseInt(employeeIdStr);
+	            Employee employee = facade.findEmployeeById(employeeId);
+	            if (employee != null) {
+	                purchase.setEmployee(employee);
+	            }
+	        } catch (NumberFormatException e) {
+	            // handle the exception
 	        }
 	    }
 
 	    JsonValue customerIdJson = jsonRoot.get("customerId");
-	    if (customerIdJson != null && customerIdJson.getValueType() == JsonValue.ValueType.NUMBER) {
-	        int customerId = ((JsonNumber) customerIdJson).intValue();
-	        Customer customer = facade.findCustomerById(customerId);
-	        if (customer != null) {
-	            purchase.setCustomer(customer);
+	    if (customerIdJson != null && customerIdJson.getValueType() == JsonValue.ValueType.STRING) {
+	        String customerIdStr = ((JsonString) customerIdJson).getString();
+	        try {
+	            int customerId = Integer.parseInt(customerIdStr);
+	            Customer customer = facade.findCustomerById(customerId);
+	            if (customer != null) {
+	                purchase.setCustomer(customer);
+	            }
+	        } catch (NumberFormatException e) {
+	            // handle the exception
 	        }
 	    }
 	    return purchase;
