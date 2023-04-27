@@ -286,13 +286,13 @@
 			clearTable();
 			clearFields();
 			var row = $("<tr>");
-			row.append($("<td>").text(result.EmployeeName));
 			row.append($("<td>").text(result.EmployeeId));
+			row.append($("<td>").text(result.EmployeeName));
 			row.append($("<td>").text(result.EmployeeAddress));
 			row.append($("<td>").text(result.Phone));
 			$("#employeeTable tbody").empty().append(row);
-			$("#empName").val(result.EmployeeName);
 			$("#empIdAdd").val(result.EmployeeId);
+			$("#empName").val(result.EmployeeName);
 			$("#empAddress").val(result.EmployeeAddress);
 			$("#empPhone").val(result.Phone);
 		} catch (error) {
