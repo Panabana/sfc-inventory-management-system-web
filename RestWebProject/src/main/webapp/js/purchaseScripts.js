@@ -1,20 +1,48 @@
-/**
- * 
- */
+(function() {
 
-$(document).ready(function() {
+	$(document).ready(function() {
+		// Call the function to populate the select box
+		populatePurchaseSelectBox();
 
-	// Call the function to populate the select box
-	populatePurchaseSelectBox();
-
-	// Event listener for the select box
-	$('#purchaseSelect').on('change', function() {
-		// Retrieve the selected employee ID and name
-		var selectedPur = $(this).val();
-		console.log(selectedPur);
+		// Event listeners
+		initEventListeners();
 	});
 
+	function initEventListeners() {
+		// Event listener for the select box
+		$('#purchaseSelect').on('change', function() {
+			// Retrieve the selected purchase ID and name
+			var selectedPur = $(this).val();
+			console.log(selectedPur);
+		});
 
+		$("#findPurBtn").click(findPurchaseById);
+
+		$("#findAllPurBtn").click(findAllPurchases);
+
+		$("#delPurBtn").click(deletePurchaseById);
+
+		$("#addPurBtn").click(addPurchase);
+
+		// "Aaand this is where i'd put an update. IF I HAD ONE" -Fairly Odd Parents
+		$("#").click(updatePurchase);
+	}
+
+	// Display purchase table
+	function displayPurchases(purchases) {
+		// Clear existing table rows
+		$("#purchaseTable tbody").empty();
+
+		$.each(purchases, function(index, purchase) {
+			var row = $("<tr>");
+			row.append($("<td>").text(purchase.purchaseId));
+			row.append($("<td>").text(purchase.employeeId));
+			row.append($("<td>").text(purchase.customerId));
+			$("#purchaseTable tbody").append(row);
+		});
+	}
+
+	// Find Purchase by ID
 	$(document).on("click", "#findPurBtn", function(event) {
 		event.preventDefault();
 		var strValue = $("#purchaseSelect").val();
@@ -29,6 +57,8 @@ $(document).ready(function() {
 			function ajaxRestReturn_Success(result, status, xhr) {
 				parseJsonFilePurchase(result);
 				displayPurchases(result);
+				$("#error-label-purchase").empty();
+				$("#error-label-purchase").append("Chosen purchase found.");
 				populatePurchaseSelectBox();
 			}
 
@@ -38,7 +68,6 @@ $(document).ready(function() {
 			}
 
 			function parseJsonFilePurchase(result) {
-
 				clearTable();
 
 				$.each(result, function(index, purchase) {
@@ -59,95 +88,97 @@ $(document).ready(function() {
 		}
 	});
 
-	$("#findAllPurBtn").click(function(event) {
-		event.preventDefault();
-		$.ajax({
-			method: "GET",
-			url: "http://localhost:8080/EJBISWebProject/RestServletPurchase/",
-			success: function(result) {
-				clearTable();
-				displayPurchases(result);
-				$("#error-label-purchase").empty();
-				$("#error-label-purchase").append("All purchases found.");
-			},
-			error: function(xhr, status, error) {
-				console.error("Error in fetching purchases:", error);
-				$("#error-label-purchase").append("Error in fetching purchases");
-			}
-		});
-	});
-
-	function displayPurchases(purchases) {
-		// Clear existing table rows
-		$("#purchaseTable tbody").empty();
-
-		$.each(purchases, function(index, purchase) {
-			var row = $("<tr>");
-			row.append($("<td>").text(purchase.purchaseId));
-			row.append($("<td>").text(purchase.employeeId));
-			row.append($("<td>").text(purchase.customerId));
-			$("#purchaseTable tbody").append(row);
+	// Find all purchases
+	function findAllPurchases() {
+		$("#findAllPurBtn").click(function(event) {
+			event.preventDefault();
+			$.ajax({
+				method: "GET",
+				url: "http://localhost:8080/EJBISWebProject/RestServletPurchase/",
+				success: function(result) {
+					clearTable();
+					displayPurchases(result);
+					$("#error-label-purchase").empty();
+					$("#error-label-purchase").append("All purchases found.");
+				},
+				error: function(xhr, status, error) {
+					console.error("Error in fetching purchases:", error);
+					$("#error-label-purchase").append("Error in fetching purchases");
+				}
+			});
 		});
 	}
 
-	$("#delPurBtn").click(function(event) {
-		event.preventDefault();
+	// Delete purchase by ID
+	function deletePurchaseById() {
+		$("#delPurBtn").click(function(event) {
+			event.preventDefault();
 
-		var strValue = $("#purchaseSelect").val();
-		if (strValue != "") {
-			$.ajax({
-				method: "DELETE",
-				url: "http://localhost:8080/EJBISWebProject/RestServletPurchase/" + strValue,
-				error: ajaxDelReturnError,
-				success: ajaxDelReturnSuccess
-			})
+			var strValue = $("#purchaseSelect").val();
+			if (strValue != "") {
+				$.ajax({
+					method: "DELETE",
+					url: "http://localhost:8080/EJBISWebProject/RestServletPurchase/" + strValue,
+					error: ajaxDelReturnError,
+					success: ajaxDelReturnSuccess
+				})
 
-			function ajaxDelReturnSuccess(result, status, xhr) {
-				// clearFields();
-				displayPurchases(result);
-				$("#employeeId").attr("placeholder", "Purchase deleted");
-				populatePurchaseSelectBox();
+				function ajaxDelReturnSuccess(result, status, xhr) {
+					// clearFields();
+					displayPurchases(result);
+					$("#employeeId").attr("placeholder", "Purchase deleted");
+					populatePurchaseSelectBox();
+				}
+
+				function ajaxDelReturnError(result, status, xhr) {
+					alert("Error");
+					console.log("Ajax-find Purchase: " + status);
+				}
 			}
+		});
+	}
 
-			function ajaxDelReturnError(result, status, xhr) {
-				alert("Error");
-				console.log("Ajax-find Purchase: " + status);
+	// Add new purchase
+	function addPurchase() {
+		$("#addPurBtn").click(function(event) {
+			event.preventDefault();
+
+			var purchaseId = $("#employeeSelect").val();
+			var employeeId = $("#employeeSelect").val();
+			var customerId = $("#customerSelect").val();
+
+			var obj = { purchaseId: purchaseId, employeeId: employeeId, customerId: customerId };
+			var jsonString = JSON.stringify(obj);
+			alert(jsonString);
+			if (employeeId != "" && customerId != "") {
+				$.ajax({
+					method: "POST",
+					url: "http://localhost:8080/EJBISWebProject/RestServletPurchase/",
+					data: jsonString,
+					dataType: 'json',
+					error: ajaxAddReturnError,
+					success: ajaxAddReturnSuccess
+				})
+				function ajaxAddReturnSuccess(result, status, xhr) {
+					// clearFields();
+					displayPurchases(result);
+					$("#purchaseAmountAdd").attr("placeholder", "Purchase added");
+					populatePurchaseSelectBox();
+				}
+				function ajaxAddReturnError(result, status, xhr) {
+					alert("Error Add");
+					console.log("Ajax-add purchase: " + status);
+				}
 			}
-		}
-	})
+		});
+	}
+	
+	// Update purchase
+	function updatePurchase() {
+		
+	}
 
-	$("#addPurBtn").click(function(event) {
-		event.preventDefault();
-
-		var purchaseId = $("#employeeSelect").val();
-		var employeeId = $("#employeeSelect").val();
-		var customerId = $("#customerSelect").val();
-
-		var obj = { purchaseId: purchaseId, employeeId: employeeId, customerId: customerId };
-		var jsonString = JSON.stringify(obj);
-		alert(jsonString);
-		if (employeeId != "" && customerId != "") {
-			$.ajax({
-				method: "POST",
-				url: "http://localhost:8080/EJBISWebProject/RestServletPurchase/",
-				data: jsonString,
-				dataType: 'json',
-				error: ajaxAddReturnError,
-				success: ajaxAddReturnSuccess
-			})
-			function ajaxAddReturnSuccess(result, status, xhr) {
-				// clearFields();
-				displayPurchases(result);
-				$("#purchaseAmountAdd").attr("placeholder", "Purchase added");
-				populatePurchaseSelectBox();
-			}
-			function ajaxAddReturnError(result, status, xhr) {
-				alert("Error Add");
-				console.log("Ajax-add purchase: " + status);
-			}
-		}
-	})
-
+	// Populate purchase select box
 	function populatePurchaseSelectBox() {
 		$.ajax({
 			method: "GET",
@@ -168,8 +199,11 @@ $(document).ready(function() {
 	function clearTable() {
 		$("#purchaseTable tbody").empty();
 	}
-	
+
 	/*
+	
+	// Commented out because maybe uneccesary
+	
 	function clearFields() {
 		try {
 			$("#PurchaseSelect").text("");
@@ -181,4 +215,4 @@ $(document).ready(function() {
 	}
 	*/
 
-})
+})();
