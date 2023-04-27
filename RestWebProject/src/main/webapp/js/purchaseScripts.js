@@ -43,7 +43,8 @@
 	}
 
 	// Find Purchase by ID
-	$(document).on("click", "#findPurBtn", function(event) {
+	function findPurchaseById(event) {
+	
 		event.preventDefault();
 		var strValue = $("#purchaseSelect").val();
 		if (strValue != "") {
@@ -53,7 +54,7 @@
 				error: ajaxRestReturn_Error,
 				success: ajaxRestReturn_Success
 			})
-
+	
 			function ajaxRestReturn_Success(result, status, xhr) {
 				parseJsonFilePurchase(result);
 				displayPurchases(result);
@@ -86,11 +87,12 @@
 				$("#customerSelect").val(result[0].customerId);
 			}
 		}
-	});
+		
+	}
 
 	// Find all purchases
-	function findAllPurchases() {
-		$("#findAllPurBtn").click(function(event) {
+	function findAllPurchases(event) {
+		
 			event.preventDefault();
 			$.ajax({
 				method: "GET",
@@ -106,12 +108,12 @@
 					$("#error-label-purchase").append("Error in fetching purchases");
 				}
 			});
-		});
+		
 	}
 
 	// Delete purchase by ID
-	function deletePurchaseById() {
-		$("#delPurBtn").click(function(event) {
+	function deletePurchaseById(event) {
+		
 			event.preventDefault();
 
 			var strValue = $("#purchaseSelect").val();
@@ -135,12 +137,12 @@
 					console.log("Ajax-find Purchase: " + status);
 				}
 			}
-		});
+		
 	}
 
 	// Add new purchase
-	function addPurchase() {
-		$("#addPurBtn").click(function(event) {
+	function addPurchase(event) {
+		
 			event.preventDefault();
 
 			var purchaseId = $("#employeeSelect").val();
@@ -170,7 +172,7 @@
 					console.log("Ajax-add purchase: " + status);
 				}
 			}
-		});
+		
 	}
 	
 	// Update purchase

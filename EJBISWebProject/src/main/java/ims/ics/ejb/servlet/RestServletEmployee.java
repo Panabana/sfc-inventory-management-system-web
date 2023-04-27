@@ -28,14 +28,14 @@ import ims.ics.facade.FacadeLocal;
 /**
  * Servlet implementation class RestServlet
  */
-@WebServlet("/RestServlet/*")
-public class RestServlet extends HttpServlet {
+@WebServlet("/RestServletEmployee/*")
+public class RestServletEmployee extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	@EJB
 	FacadeLocal facade;
 
-	public RestServlet() {
+	public RestServletEmployee() {
 		super();
 	}
 
