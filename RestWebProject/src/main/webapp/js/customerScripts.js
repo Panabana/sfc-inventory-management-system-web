@@ -26,6 +26,7 @@
 						parseJsonFileCustomer(result);
 						$("#error-label-customer").empty();
 						$("#error-label-customer").append("Chosen customer found.");
+						populateCustomerSelectBox();
 					}
 
 					function ajaxRestReturn_Error(result, status, xhr) {
@@ -69,6 +70,7 @@
 						displayCustomers(result);
 						$("#error-label-customer").empty();
 						$("#error-label-customer").append("All customers found.");
+						populateCustomerSelectBox();
 					},
 					error: function(xhr, status, error) {
 						console.error("Error in fetching customers:", error);
@@ -114,7 +116,8 @@
 					function ajaxDelReturnSuccess(result, status, xhr) {
 						clearFields();
 						displayCustomers(Customers);
-						$("#CustomerName").attr("placeholder", "Customer deleted");
+						// $("#CustomerName").attr("placeholder", "Customer deleted");
+						populateCustomerSelectBox();
 					}
 
 					function ajaxDelReturnError(result, status, xhr) {
@@ -122,7 +125,7 @@
 						console.log("Ajax-find Customer: " + status);
 					}
 				}
-			})
+			});
 
 			$("#addCustomerBtn").click(function(event) {
 				event.preventDefault();
@@ -145,8 +148,9 @@
 					});
 					function ajaxAddReturnSuccess(result, status, xhr) {
 						clearFields();
-						displayCustomers();
-						$("#customerName").attr("placeholder", "Customer added");
+						displayCustomers(result);
+						// $("#customerName").attr("placeholder", "Customer added");
+						populateCustomerSelectBox();
 					}
 					function ajaxAddReturnError(result, status, xhr) {
 						alert("Error Add");
@@ -155,7 +159,7 @@
 				} catch (error) {
 					console.error(error);
 				}
-			})
+			});
 
 			$("#updtCustBtn").click(function(event) {
 				event.preventDefault();
@@ -181,6 +185,7 @@
 						$("#customerName").attr("placeholder", "Customer updated");
 						alert("Success");
 						displayCustomers(result);
+						populateCustomerSelectBox();
 					}
 					function ajaxUpdateReturnError(result, status, xhr) {
 						alert("Error updating customer");
