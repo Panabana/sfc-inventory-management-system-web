@@ -8,7 +8,6 @@
 		initEventListeners();
 	});
 
-	// Initialize
 	function initEventListeners() {
 		try {
 			// Event listener for the select box
@@ -19,7 +18,7 @@
 			});
 
 			$("#findBtn").click(findEmployeeById);
-			
+
 			$("#findAllBtn").click(findAllEmployees);
 
 			$("#delEmpBtn").click(deleteEmployeeById);
@@ -27,6 +26,7 @@
 			$("#addEmpBtn").click(addEmployee);
 
 			$("#updtEmpBtn").click(updateEmployee);
+			
 		} catch (error) {
 			console.error("An error occurred: ", error);
 		}
@@ -62,6 +62,7 @@
 		try {
 			$(document).on("click", "#findBtn", function(event) {
 				event.preventDefault();
+				
 				var strValue = $("#empId").val();
 				if (strValue != "") {
 					$.ajax({
@@ -86,6 +87,7 @@
 		try {
 			$("#findAllBtn").click(function(event) {
 				event.preventDefault();
+				
 				$.ajax({
 					method: "GET",
 					url: "http://localhost:8080/EJBISWebProject/RestServlet/",
@@ -109,23 +111,18 @@
 
 	// Delete employee by ID
 	function deleteEmployeeById() {
-		try {
-			$("#delEmpBtn").click(function(event) {
-				event.preventDefault();
-				var strValue = $("#empId").val();
-				if (strValue != "") {
-					$.ajax({
-						method: "DELETE",
-						url: "http://localhost:8080/EJBISWebProject/RestServlet/" + strValue,
-						error: ajaxDelReturnError,
-						success: ajaxDelReturnSuccess
-					});
-				} else {
-					console.log("strValue is blank/null");
-				}
+		event.preventDefault();
+		
+		var strValue = $("#empId").val();
+		if (strValue != "") {
+			$.ajax({
+				method: "DELETE",
+				url: "http://localhost:8080/EJBISWebProject/RestServlet/" + strValue,
+				error: ajaxDelReturnError,
+				success: ajaxDelReturnSuccess
 			});
-		} catch (error) {
-			console.error("An error occurred: ", error);
+		} else {
+			console.log("strValue is blank/null");
 		}
 	}
 
@@ -133,6 +130,7 @@
 	function addEmployee(event) {
 		try {
 			event.preventDefault();
+			
 			var strName = $("#empName").val();
 			var strAddress = $("#empAddress").val();
 			var strPhone = $("#empPhone").val();
@@ -159,7 +157,7 @@
 				error: ajaxAddReturnError,
 				success: ajaxAddReturnSuccess
 			});
-			
+
 			// Show success message
 			document.getElementById("error-label-employee").innerHTML = "Employee was successfully added!";
 			// Clear input fields
@@ -167,7 +165,7 @@
 			$("#empAddress").val("");
 			$("#empPhone").val("");
 			return true;
-			
+
 		} catch (error) {
 			// Handle error and show error message
 			console.error("An error occurred: ", error);
@@ -177,29 +175,25 @@
 	}
 
 	// Update employee
-	function updateEmployee() {
-		try {
-			$("#updtEmpBtn").click(function(event) {
-				event.preventDefault();
-				var strId = $("#empId").val();
-				var strName = $("#empName").val();
-				var strAddress = $("#empAddress").val();
-				var strPhone = $("#empPhone").val();
-				var obj = { EmployeeId: strId, EmployeeName: strName, EmployeeAddress: strAddress, Phone: strPhone };
-				var jsonString = JSON.stringify(obj);
-				if (strId != "") {
-					$.ajax({
-						method: "PUT",
-						url: "http://localhost:8080/EJBISWebProject/RestServlet/" + strId,
-						data: jsonString,
-						dataType: 'json',
-						error: ajaxUpdateReturnError,
-						success: ajaxUpdateReturnSuccess
-					});
-				}
+	function updateEmployee(event) {
+		event.preventDefault();
+		
+		var strId = $("#empId").val();
+		var strName = $("#empName").val();
+		var strAddress = $("#empAddress").val();
+		var strPhone = $("#empPhone").val();
+		
+		var obj = { EmployeeId: strId, EmployeeName: strName, EmployeeAddress: strAddress, Phone: strPhone };
+		var jsonString = JSON.stringify(obj);
+		if (strId != "") {
+			$.ajax({
+				method: "PUT",
+				url: "http://localhost:8080/EJBISWebProject/RestServlet/" + strId,
+				data: jsonString,
+				dataType: 'json',
+				error: ajaxUpdateReturnError,
+				success: ajaxUpdateReturnSuccess
 			});
-		} catch (error) {
-			console.error("An error occurred: ", error);
 		}
 	}
 
@@ -249,7 +243,7 @@
 
 	function ajaxUpdateReturnError(result, status, xhr) {
 		$("#error-label-employee").empty();
-		$("#error-label-employee").append("Error updating employee");		
+		$("#error-label-employee").append("Error updating employee");
 		console.log("Ajax-update employee: " + status);
 		displayEmployees(result);
 	}

@@ -62,6 +62,7 @@
 	function findCustomerById() {
 		$(document).on("click", "#FindCustomerBtn", function(event) {
 			event.preventDefault();
+			
 			var strValue = $("#customerId").val();
 			if (strValue != "") {
 				$.ajax({
@@ -116,6 +117,7 @@
 	function findAllCustomers() {
 		$("#findAllCustomersBtn").click(function(event) {
 			event.preventDefault();
+			
 			$.ajax({
 				method: "GET",
 				url: "http://localhost:8080/EJBISWebProject/RestServletCustomer/",
@@ -137,7 +139,7 @@
 	//Delete customer by ID
 	function deleteCustomerById(event) {
 		event.preventDefault();
-
+		
 		var strValue = $("#customerId").val();
 		if (strValue != "") {
 			$.ajax({
@@ -165,6 +167,9 @@
 			function ajaxDelReturnError(result, status, xhr) {
 				alert("Error");
 				console.log("Ajax-find Customer: " + status);
+				displayCustomers(result);
+				$("#error-label-customer").empty();
+				$("#error-label-customer").append("Error deleting customer");
 			}
 		}
 	}
@@ -173,6 +178,7 @@
 	function addCustomer(event) {
 		try {
 			event.preventDefault();
+			
 			var strName = $("#customerName").val();
 			var strAddress = $("#customerAddress").val();
 			var strPhone = $("#customerPhone").val();
