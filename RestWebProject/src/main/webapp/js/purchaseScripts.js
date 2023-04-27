@@ -16,7 +16,7 @@
 			console.log(selectedPur);
 		});
 
-		$("#findPurBtn").click(findPurchaseById);
+		$("#findPurBtn").click(findPurchaseByID);
 
 		$("#findAllPurBtn").click(findAllPurchases);
 
@@ -43,50 +43,52 @@
 	}
 
 	// Find Purchase by ID
-	$(document).on("click", "#findPurBtn", function(event) {
-		event.preventDefault();
-		var strValue = $("#purchaseSelect").val();
-		if (strValue != "") {
-			$.ajax({
-				method: "GET",
-				url: "http://localhost:8080/EJBISWebProject/RestServletPurchase/" + strValue,
-				error: ajaxRestReturn_Error,
-				success: ajaxRestReturn_Success
-			})
+	function findPurchaseByID() {
+		$(document).on("click", "#findPurBtn", function(event) {
+			event.preventDefault();
+			var strValue = $("#purchaseSelect").val();
+			if (strValue != "") {
+				$.ajax({
+					method: "GET",
+					url: "http://localhost:8080/EJBISWebProject/RestServletPurchase/" + strValue,
+					error: ajaxRestReturn_Error,
+					success: ajaxRestReturn_Success
+				})
 
-			function ajaxRestReturn_Success(result, status, xhr) {
-				parseJsonFilePurchase(result);
-				displayPurchases(result);
-				$("#error-label-purchase").empty();
-				$("#error-label-purchase").append("Chosen purchase found.");
-				populatePurchaseSelectBox();
+				function ajaxRestReturn_Success(result, status, xhr) {
+					parseJsonFilePurchase(result);
+					displayPurchases(result);
+					$("#error-label-purchase").empty();
+					$("#error-label-purchase").append("Chosen purchase found.");
+					populatePurchaseSelectBox();
+				}
+
+				function ajaxRestReturn_Error(result, status, xhr) {
+					alert("Error in rest Service");
+					console.log("Ajax-find Purchase: " + status);
+				}
+
+				function parseJsonFilePurchase(result) {
+					clearTable();
+
+					$.each(result, function(index, purchase) {
+						var row = $("<tr>");
+						row.append($("<td>").text(purchase.purchaseId));
+						row.append($("<td>").text(purchase.employeeId));
+						row.append($("<td>").text(purchase.customerId));
+						$("#purchaseTable tbody").append(row);
+					});
+
+					$("#PurPurchaseId").text(result[0].purchaseId);
+					$("#PurEmployeeId").text(result[0].employeeId);
+					$("#PurCustomerId").text(result[0].customerId);
+
+					$("#employeeSelect").val(result[0].employeeId);
+					$("#customerSelect").val(result[0].customerId);
+				}
 			}
-
-			function ajaxRestReturn_Error(result, status, xhr) {
-				alert("Error in rest Service");
-				console.log("Ajax-find Purchase: " + status);
-			}
-
-			function parseJsonFilePurchase(result) {
-				clearTable();
-
-				$.each(result, function(index, purchase) {
-					var row = $("<tr>");
-					row.append($("<td>").text(purchase.purchaseId));
-					row.append($("<td>").text(purchase.employeeId));
-					row.append($("<td>").text(purchase.customerId));
-					$("#purchaseTable tbody").append(row);
-				});
-
-				$("#PurPurchaseId").text(result[0].purchaseId);
-				$("#PurEmployeeId").text(result[0].employeeId);
-				$("#PurCustomerId").text(result[0].customerId);
-
-				$("#employeeSelect").val(result[0].employeeId);
-				$("#customerSelect").val(result[0].customerId);
-			}
-		}
-	});
+		});
+	}
 
 	// Find all purchases
 	function findAllPurchases() {
@@ -172,10 +174,10 @@
 			}
 		});
 	}
-	
+
 	// Update purchase
 	function updatePurchase() {
-		
+
 	}
 
 	// Populate purchase select box
