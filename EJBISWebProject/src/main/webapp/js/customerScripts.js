@@ -27,31 +27,6 @@ function validateForm() {
 	}
 }
 
-function validateSearchForm() {
-	var customerId = document.getElementById("find-customer-id").value;
-
-	if (customerId === "" || !/^\d{1,10}$/.test(customerId)) {
-		errorMessage = "Please enter a valid ID (number only) to search for.."
-		document.getElementById("error-label").innerHTML = errorMessage;
-		return false;
-	} else {
-		var customerExists = false;
-		$('#customers-table tbody tr').each(function() {
-			var rowCustomerId = $(this).find('td:eq(0)').text();
-			if (rowCustomerId === customerId) {
-				customerExists = true;
-				return false; // break the loop
-			}
-		});
-		if (!customerExists) {
-			errorMessage = "Customer with ID " + customerId + " doesn't exist.";
-			document.getElementById("error-label").innerHTML = errorMessage;
-			return false;
-		}
-	}
-	return true;
-}
-
 document.addEventListener("DOMContentLoaded", function() {
 	var searchForm = document.getElementById("search-form");
 	var findCustomerBtn = document.getElementById("search-btn");
@@ -95,7 +70,7 @@ document.addEventListener("DOMContentLoaded", function() {
 			var errorLabel = document.getElementById("error-label");
 			errorLabel.innerText = "Chosen customer found.";
 		}
-	
+
 	});
 });
 
