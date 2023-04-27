@@ -282,6 +282,7 @@
 
 	function ajaxDelReturnSuccess(result, status, xhr) {
 		clearFields();
+		clearTable();
 		$("#EmployeeName").attr("placeholder", "Employee deleted");
 		displayEmployees(result);
 		populateEmployeeSelectBox();
@@ -328,10 +329,10 @@
 
 	function clearFields() {
 		try {
-			$("#empIdAdd").text("");
-			$("#empName").text("");
-			$("#empAddress").text("");
-			$("#empPhone").text("");
+			$("#empIdAdd").val("");
+			$("#empName").val("");
+			$("#empAddress").val("");
+			$("#empPhone").val("");
 		} catch (error) {
 			console.error("An error occurred: ", error);
 		}

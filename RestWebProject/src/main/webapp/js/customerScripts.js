@@ -104,10 +104,10 @@
 				}
 
 				function clearFields() {
-					$("#customerName").text("");
-					$("#customerIdAdd").text("");
-					$("#customerAddress").text("");
-					$("#customerPhone").text("");
+					$("#customerName").val("");
+					$("#customerIdAdd").val("");
+					$("#customerAddress").val("");
+					$("#customerPhone").val("");
 				}
 			}
 		
