@@ -26,7 +26,7 @@
 			$("#addCustomerBtn").click(addCustomer);
 
 			$("#updtCustBtn").click(updateCustomer);
-			
+
 		} catch (error) {
 			console.error("An error occurred: ", error);
 		}
@@ -163,9 +163,8 @@
 			}
 
 			function ajaxDelReturnError(result, status, xhr) {
+				alert("Error");
 				console.log("Ajax-find Customer: " + status);
-				$("#error-label-customer").empty();
-				$("#error-label-customer").append("Error deleting customer");
 			}
 		}
 	}
@@ -206,11 +205,10 @@
 				displayCustomers(result);
 				// $("#customerName").attr("placeholder", "Customer added");
 				populateCustomerSelectBox();
-				$("#error-label-customer").empty();
-				$("#error-label-customer").append("Customer added!");
 			}
 
 			function ajaxAddReturnError(result, status, xhr) {
+				alert("Error Add");
 				console.log("Ajax-find customer: " + status);
 			}
 
@@ -232,42 +230,65 @@
 
 	// Update customer
 	function updateCustomer(event) {
-		event.preventDefault();
+		try {
+			event.preventDefault();
 
-		var strId = $("#customerIdAdd").val();
-		var strName = $("#customerName").val();
-		var strAddress = $("#customerAddress").val();
-		var strPhone = $("#customerPhone").val();
+			var strId = $("#customerIdAdd").val();
+			var strName = $("#customerName").val();
+			var strAddress = $("#customerAddress").val();
+			var strPhone = $("#customerPhone").val();
 
-		var obj = { CustomerId: strId, CustomerName: strName, CustomerAddress: strAddress, Phone: strPhone };
-		var jsonString = JSON.stringify(obj);
-		if (strId != "") {
-			$.ajax({
-				method: "PUT",
-				url: "http://localhost:8080/EJBISWebProject/RestServletCustomer/" + strId,
-				data: jsonString,
-				dataType: 'json',
-				error: ajaxUpdateReturnError,
-				success: ajaxUpdateReturnSuccess
-			})
+			// Validate input fields
+			if (strId === "" || !/^\d+$/.test(strId)) {
+				throw new Error("Please enter a valid Customer ID (Numbers only).");
+			} else if (strName === "" || !/^[a-zA-ZåäöÅÄÖ]+$/.test(strName)) {
+				throw new Error("Please enter a valid Name (Letters only).");
+			} else if (strAddress === "" || !/^[a-zA-Z0-9\såäöÅÄÖ]*$/.test(strAddress)) {
+				throw new Error("Please enter an Address (Only letters and numbers allowed).");
+			} else if (strPhone === "" || !/^\d{1,10}$/.test(strPhone)) {
+				throw new Error("Please enter a valid Phone Number (numbers only).");
+			}
+
+			var obj = { CustomerId: strId, CustomerName: strName, CustomerAddress: strAddress, Phone: strPhone };
+			var jsonString = JSON.stringify(obj);
+			if (strId != "") {
+				$.ajax({
+					method: "PUT",
+					url: "http://localhost:8080/EJBISWebProject/RestServletCustomer/" + strId,
+					data: jsonString,
+					dataType: 'json',
+					error: ajaxUpdateReturnError,
+					success: ajaxUpdateReturnSuccess
+				})
+			}
 
 			function ajaxUpdateReturnSuccess(result, status, xhr) {
-				clearFields();
+
 				$("#customerName").attr("placeholder", "Customer updated");
-				$("#error-label-customer").empty();
-				$("#error-label-customer").append("Customer updated!");
+				document.getElementById("error-label-customer").innerHTML = "Customer was successfully updated!";
+				// Clear input fields
+				$("#customerName").val("");
+				$("#customerAddress").val("");
+				$("#customerPhone").val("");
 				displayCustomers(result);
 				populateCustomerSelectBox();
 			}
 
-			function ajaxUpdateReturnError(result, status, xhr) {
+			function ajaxUpdateReturnError(xhr, status, error) {
+				console.error("An error occurred: ", error);
+				var errorMessage = xhr.responseText || "Error updating customer";
+				document.getElementById("error-label-customer").innerHTML = errorMessage;
 				console.log("Ajax-update customer: " + status);
 				displayCustomers(result);
-				$("#error-label-customer").empty();
-				$("#error-label-customer").append("Error updating customer");
 			}
+		} catch (error) {
+			// Handle error and show error message
+			console.error("An error occurred: ", error);
+			document.getElementById("error-label-customer").innerHTML = error.message;
 		}
 	}
+
+
 
 	// Populate customer select box
 	function populateCustomerSelectBox() {
