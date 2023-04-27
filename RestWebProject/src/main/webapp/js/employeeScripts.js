@@ -136,7 +136,7 @@
 			var strPhone = $("#empPhone").val();
 
 			// Validate input fields
-			if (strName === "" || !/^[a-zA-ZåäöÅÄÖ]+$/.test(strName)) {
+			if (strName === "" || !/^[a-zA-ZåäöÅÄÖ ]+$/.test(strName)) {
 				throw new Error("Please enter a valid Name (Letters only).");
 			} else if (strAddress === "" || !/^[a-zA-Z0-9\såäöÅÄÖ]*$/.test(strAddress)) {
 				throw new Error("Please enter an Address (Only letters and numbers allowed).");
