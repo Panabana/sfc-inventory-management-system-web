@@ -26,7 +26,7 @@
 			$("#addEmpBtn").click(addEmployee);
 
 			$("#updtEmpBtn").click(updateEmployee);
-			
+
 		} catch (error) {
 			console.error("An error occurred: ", error);
 		}
@@ -62,7 +62,7 @@
 		try {
 			$(document).on("click", "#findBtn", function(event) {
 				event.preventDefault();
-				
+
 				var strValue = $("#empId").val();
 				if (strValue != "") {
 					$.ajax({
@@ -87,7 +87,7 @@
 		try {
 			$("#findAllBtn").click(function(event) {
 				event.preventDefault();
-				
+
 				$.ajax({
 					method: "GET",
 					url: "http://localhost:8080/EJBISWebProject/RestServlet/",
@@ -112,7 +112,7 @@
 	// Delete employee by ID
 	function deleteEmployeeById() {
 		event.preventDefault();
-		
+
 		var strValue = $("#empId").val();
 		if (strValue != "") {
 			$.ajax({
@@ -130,7 +130,7 @@
 	function addEmployee(event) {
 		try {
 			event.preventDefault();
-			
+
 			var strName = $("#empName").val();
 			var strAddress = $("#empAddress").val();
 			var strPhone = $("#empPhone").val();
@@ -176,26 +176,57 @@
 
 	// Update employee
 	function updateEmployee(event) {
-		event.preventDefault();
-		
-		var strId = $("#empId").val();
-		var strName = $("#empName").val();
-		var strAddress = $("#empAddress").val();
-		var strPhone = $("#empPhone").val();
-		
-		var obj = { EmployeeId: strId, EmployeeName: strName, EmployeeAddress: strAddress, Phone: strPhone };
-		var jsonString = JSON.stringify(obj);
-		if (strId != "") {
-			$.ajax({
-				method: "PUT",
-				url: "http://localhost:8080/EJBISWebProject/RestServlet/" + strId,
-				data: jsonString,
-				dataType: 'json',
-				error: ajaxUpdateReturnError,
-				success: ajaxUpdateReturnSuccess
-			});
+		try {
+			event.preventDefault();
+
+			var strId = $("#empId").val();
+			var strName = $("#empName").val();
+			var strAddress = $("#empAddress").val();
+			var strPhone = $("#empPhone").val();
+
+			// Validate input fields
+			if (strId === "" || !/^\d+$/.test(strId)) {
+				throw new Error("Please enter a valid Employee ID (Numbers only).");
+			} else if (strName === "" || !/^[a-zA-ZåäöÅÄÖ]+$/.test(strName)) {
+				throw new Error("Please enter a valid Name (Letters only).");
+			} else if (strAddress === "" || !/^[a-zA-Z0-9\såäöÅÄÖ]*$/.test(strAddress)) {
+				throw new Error("Please enter an Address (Only letters and numbers allowed).");
+			} else if (strPhone === "" || !/^\d{1,10}$/.test(strPhone)) {
+				throw new Error("Please enter a valid Phone Number (Numbers only).");
+			}
+
+			var obj = { EmployeeId: strId, EmployeeName: strName, EmployeeAddress: strAddress, Phone: strPhone };
+			var jsonString = JSON.stringify(obj);
+
+			// Send AJAX request
+			if (strId !== "") {
+				$.ajax({
+					method: "PUT",
+					url: "http://localhost:8080/EJBISWebProject/RestServlet/" + strId,
+					data: jsonString,
+					dataType: 'json',
+					error: ajaxUpdateReturnError,
+					success: ajaxUpdateReturnSuccess
+				});
+				// Show success message
+				document.getElementById("error-label-employee").innerHTML = "Employee was successfully updated!";
+				// Clear input fields
+				$("#empName").val("");
+				$("#empAddress").val("");
+				$("#empPhone").val("");
+				return true;
+			} else {
+				throw new Error("Please enter a valid Employee ID.");
+			}
+
+		} catch (error) {
+			// Handle error and show error message
+			console.error("An error occurred: ", error);
+			document.getElementById("error-label-employee").innerHTML = error.message;
+			return false;
 		}
 	}
+
 
 	// Populate employee select box
 	function populateEmployeeSelectBox() {
