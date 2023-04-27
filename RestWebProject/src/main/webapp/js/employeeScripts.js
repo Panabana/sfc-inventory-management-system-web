@@ -77,7 +77,8 @@
 						success: ajaxRestReturnSuccess
 					})
 				} else {
-					alert("strValue not set");
+					$("#error-label-employee").empty();
+					$("#error-label-employee").append("Please enter a valid ID.");
 				}
 			});
 		} catch (error) {
@@ -240,10 +241,9 @@
 	}
 
 	function ajaxRestReturnError(result, status, xhr) {
-		alert("Error in rest Service");
 		console.log("Ajax-find Employee: " + status);
 		$("#error-label-employee").empty();
-		$("#error-label-employee").append("Error in fetching employee");
+		$("#error-label-employee").append("Please enter a valid ID.");
 	}
 
 	function ajaxUpdateReturnSuccess(result, status, xhr) {
@@ -255,23 +255,29 @@
 	}
 
 	function ajaxUpdateReturnError(result, status, xhr) {
-		alert("Error updating employee");
 		console.log("Ajax-update employee: " + status);
 		displayEmployees(result);
+		$("#error-label-employee").empty();
+		$("#error-label-employee").append("Error updating employee");
 	}
 
 	function ajaxDelReturnSuccess(result, status, xhr) {
 		clearFields();
-		alert("Success ", status);
 		$("#EmployeeName").attr("placeholder", "Employee deleted");
 		displayEmployees(result);
+<<<<<<< Updated upstream
 		populateEmployeeSelectBox();
+=======
+		$("#error-label-employee").empty();
+		$("#error-label-employee").append("Employee deleted");
+>>>>>>> Stashed changes
 	}
 
 	function ajaxDelReturnError(result, status, xhr) {
-		alert("Error");
 		console.log("Ajax-find Employee: " + status);
 		displayEmployees(result);
+		$("#error-label-employee").empty();
+		$("#error-label-employee").append("Error deleting employee");
 	}
 
 	function ajaxAddReturnSuccess(result, status, xhr) {
@@ -281,9 +287,10 @@
 		populateEmployeeSelectBox();
 	}
 	function ajaxAddReturnError(result, status, xhr) {
-		alert("Error Add");
 		console.log("Ajax-find employee: " + status);
 		displayEmployees(result);
+		$("#error-label-employee").empty();
+		$("#error-label-employee").append("Error adding employee");
 	}
 
 	function parseJsonFileEmployee(result) {
