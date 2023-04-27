@@ -175,7 +175,7 @@
 					function ajaxUpdateReturnSuccess(result, status, xhr) {
 						clearFields();
 						$("#customerName").attr("placeholder", "Customer updated");
-						alert("Success")
+						alert("Success");
 						displayCustomers(result);
 					}
 					function ajaxUpdateReturnError(result, status, xhr) {
