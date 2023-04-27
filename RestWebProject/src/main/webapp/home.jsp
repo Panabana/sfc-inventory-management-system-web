@@ -181,8 +181,8 @@
 						<thead>
 							<tr>
 								<th>Purchase ID</th>
-								<th>Customer</th>
 								<th>Employee</th>
+								<th>Customer</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -199,6 +199,7 @@
 				<div class="search-form">
 					<form action="#">
 						<div class="form-group">
+						<label>Select purchase:</label>
 							<select class="form-group" name="purchase-id" id="purchaseSelect">
 								<option disabled selected value="">Select a purchase</option>
 								<c:forEach var="" items="">
@@ -206,9 +207,7 @@
 								</c:forEach>
 							</select>
 							<button type="submit" class="btn" id="findPurBtn">Search</button>
-							<button type="submit" class="btn" id="findAllPurBtn">Find
-								all</button>
-
+							<button type="submit" class="btn" id="findAllPurBtn">Findall</button>
 						</div>
 					</form>
 				</div>
@@ -219,6 +218,7 @@
 							
 						</div>
 						<div class="form-group">
+						<label>Select customer:</label>
 							<select name="customer-id" id="customerSelect">
 								<option disabled selected value="">Select a customer</option>
 								<c:forEach var="" items="">
@@ -227,6 +227,7 @@
 							</select>
 						</div>
 						<div class="form-group">
+						<label>Select employee:</label>
 							<select name="employee-id" id="employeeSelect">
 								<option disabled selected value="">Select an employee</option>
 								<c:forEach var="" items="">
