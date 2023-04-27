@@ -34,13 +34,15 @@
 					}
 
 					function parseJsonFileCustomer(result) {
-						clearFields();
 						clearTable();
+						clearFields();
 
-						$("#CustomerId").text(result.CustomerId);
-						$("#CustomerName").text(result.CustomerName);
-						$("#CustomerAddress").text(result.CustomerAddress);
-						$("#CustomerPhone").text(result.Phone);
+						var row = $("<tr>");
+						row.append($("<td>").text(result.CustomerId));
+						row.append($("<td>").text(result.CustomerName));
+						row.append($("<td>").text(result.CustomerAddress));
+						row.append($("<td>").text(result.Phone));
+						$("#customerTable tbody").append(row);
 
 						$("#customerIdAdd").val(result.CustomerId);
 						$("#customerName").val(result.CustomerName);

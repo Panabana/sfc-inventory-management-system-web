@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8">
+<meta charset="ISO-8859-1">
 <link rel="stylesheet" type="text/css" href="css/style.css">
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
@@ -46,6 +46,15 @@
 					<div class="search-form">
 						<form action="#">
 							<div class="form-group">
+								
+								<!-- <div class="form-group">
+									<select name="employee-id" id="employeeSelect">
+									<option disabled selected value="">Select an employee</option>
+										<c:forEach var="" items="">
+											<option value=""></option>
+										</c:forEach>
+									</select>
+								</div> -->
 								<input type="text" id="empId" name="empId" class="form-control"
 									placeholder="Enter ID..." />
 								<button type="submit" class="btn" id="findBtn">Search</button>
