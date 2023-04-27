@@ -138,15 +138,24 @@
 	function addEmployee(event) {
 		try {
 			event.preventDefault();
-			// var strId = $("#empIdAdd").val();
 			var strName = $("#empName").val();
 			var strAddress = $("#empAddress").val();
 			var strPhone = $("#empPhone").val();
 
-			// Removed from obj: EmployeeId: strId, 
+			// Validate input fields
+			if (strName === "" || !/^[a-zA-ZåäöÅÄÖ]+$/.test(strName)) {
+				throw new Error("Please enter a valid Name (Letters only).");
+			} else if (strAddress === "" || !/^[a-zA-Z0-9\såäöÅÄÖ]*$/.test(strAddress)) {
+				throw new Error("Please enter an Address (Only letters and numbers allowed).");
+			} else if (strPhone === "" || !/^\d{1,10}$/.test(strPhone)) {
+				throw new Error("Please enter a valid Phone Number (numbers only).");
+			}
+
+			// Create employee object
 			var obj = { EmployeeName: strName, EmployeeAddress: strAddress, Phone: strPhone };
 			var jsonString = JSON.stringify(obj);
 
+			// Send AJAX request
 			$.ajax({
 				method: "POST",
 				url: "http://localhost:8080/EJBISWebProject/RestServlet/",
@@ -155,10 +164,22 @@
 				error: ajaxAddReturnError,
 				success: ajaxAddReturnSuccess
 			});
+
+			// Show success message
+			document.getElementById("error-label-employee").innerHTML = "Employee was successfully added!";
+			// Clear input fields
+			$("#empName").val("");
+			$("#empAddress").val("");
+			$("#empPhone").val("");
+			return true;
 		} catch (error) {
+			// Handle error and show error message
 			console.error("An error occurred: ", error);
+			document.getElementById("error-label-employee").innerHTML = error.message;
+			return false;
 		}
 	}
+
 
 	// Update employee
 	function updateEmployee() {
@@ -191,20 +212,20 @@
 	function populateEmployeeSelectBox() {
 		try {
 			$.ajax({
-			method: "GET",
-			url: "http://localhost:8080/EJBISWebProject/RestServlet/",
-			success: function(result) {
-				var selectBox = $("#employeeSelect");
-				selectBox.empty();
-				$.each(result, function(index, employee) {
-					var option = $("<option>").val(employee.EmployeeId).text(employee.EmployeeId + " - " + employee.EmployeeName);
-					selectBox.append(option);
-				});
-			},
-			error: function(xhr, status, error) {
-				console.error("Error in fetching employees:", error);
-			}
-		});
+				method: "GET",
+				url: "http://localhost:8080/EJBISWebProject/RestServlet/",
+				success: function(result) {
+					var selectBox = $("#employeeSelect");
+					selectBox.empty();
+					$.each(result, function(index, employee) {
+						var option = $("<option>").val(employee.EmployeeId).text(employee.EmployeeId + " - " + employee.EmployeeName);
+						selectBox.append(option);
+					});
+				},
+				error: function(xhr, status, error) {
+					console.error("Error in fetching employees:", error);
+				}
+			});
 		} catch (error) {
 			console.error("An error occurred: ", error);
 		}

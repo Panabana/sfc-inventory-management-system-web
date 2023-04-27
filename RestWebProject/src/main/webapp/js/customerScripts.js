@@ -124,18 +124,28 @@
 				}
 			})
 
-			$("#addCustomerBtn").click(function(event) {
-				event.preventDefault();
+function addCustomer(event) {
+		try {
+			event.preventDefault();
+			var strName = $("#customerName").val();
+			var strAddress = $("#customerAddress").val();
+			var strPhone = $("#customerPhone").val();
 
-				//var strId = $("#customerIdAdd").val();
-				var strName = $("#customerName").val();
-				var strAddress = $("#customerAddress").val();
-				var strPhone = $("#customerPhone").val();
+			// Validate input fields
+			if (strName === "" || !/^[a-zA-ZåäöÅÄÖ]+$/.test(strName)) {
+				throw new Error("Please enter a valid Name (Letters only).");
+			} else if (strAddress === "" || !/^[a-zA-Z0-9\såäöÅÄÖ]*$/.test(strAddress)) {
+				throw new Error("Please enter an Address (Only letters and numbers allowed).");
+			} else if (strPhone === "" || !/^\d{1,10}$/.test(strPhone)) {
+				throw new Error("Please enter a valid Phone Number (numbers only).");
+			}
 
-				var obj = { CustomerName: strName, CustomerAddress: strAddress, Phone: strPhone };
-				var jsonString = JSON.stringify(obj);
-				try {
-					$.ajax({
+			// Create Customer object
+			var obj = { CustomerName: strName, CustomerAddress: strAddress, Phone: strPhone };
+			var jsonString = JSON.stringify(obj);
+
+			// Send AJAX request
+						$.ajax({
 						method: "POST",
 						url: "http://localhost:8080/EJBISWebProject/RestServletCustomer/",
 						data: jsonString,
@@ -143,19 +153,21 @@
 						error: ajaxAddReturnError,
 						success: ajaxAddReturnSuccess
 					});
-					function ajaxAddReturnSuccess(result, status, xhr) {
-						clearFields();
-						displayCustomers();
-						$("#customerName").attr("placeholder", "Customer added");
-					}
-					function ajaxAddReturnError(result, status, xhr) {
-						alert("Error Add");
-						console.log("Ajax-find customer: " + status);
-					}
-				} catch (error) {
-					console.error(error);
-				}
-			})
+
+			// Show success message
+			document.getElementById("error-label-customer").innerHTML = "Customer was successfully added!";
+			// Clear input fields
+			$("#customerName").val("");
+			$("#customerAddress").val("");
+			$("#customerPhone").val("");
+			return true;
+		} catch (error) {
+			// Handle error and show error message
+			console.error("An error occurred: ", error);
+			document.getElementById("error-label-customer").innerHTML = error.message;
+			return false;
+		}
+	}
 
 			$("#updtCustBtn").click(function(event) {
 				event.preventDefault();
