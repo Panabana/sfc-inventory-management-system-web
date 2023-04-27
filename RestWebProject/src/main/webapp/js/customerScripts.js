@@ -26,6 +26,7 @@
 			$("#addCustomerBtn").click(addCustomer);
 
 			$("#updtCustBtn").click(updateCustomer);
+			
 		} catch (error) {
 			console.error("An error occurred: ", error);
 		}
@@ -134,40 +135,38 @@
 	}
 
 	//Delete customer by ID
-	function deleteCustomerById() {
-		$("#delCustBtn").click(function(event) {
-			event.preventDefault();
+	function deleteCustomerById(event) {
+		event.preventDefault();
 
-			var strValue = $("#customerId").val();
-			if (strValue != "") {
-				$.ajax({
-					method: "DELETE",
-					url: "http://localhost:8080/EJBISWebProject/RestServletCustomer/" + strValue,
-					success: function(result) {
-						clearTable();
-						displayCustomers(result);
-						$("#error-label-customer").empty();
-						$("#error-label-customer").append("Chosen customer deleted.");
-					},
-					error: function(xhr, status, error) {
-						console.error("Error in deleting customers:", error);
-						$(".#error-label-customer").append("Error in deleting customer");
-					}
-				});
-
-				function ajaxDelReturnSuccess(result, status, xhr) {
-					clearFields();
-					displayCustomers(Customers);
-					// $("#CustomerName").attr("placeholder", "Customer deleted");
-					populateCustomerSelectBox();
+		var strValue = $("#customerId").val();
+		if (strValue != "") {
+			$.ajax({
+				method: "DELETE",
+				url: "http://localhost:8080/EJBISWebProject/RestServletCustomer/" + strValue,
+				success: function(result) {
+					clearTable();
+					displayCustomers(result);
+					$("#error-label-customer").empty();
+					$("#error-label-customer").append("Chosen customer deleted.");
+				},
+				error: function(xhr, status, error) {
+					console.error("Error in deleting customers:", error);
+					$(".#error-label-customer").append("Error in deleting customer");
 				}
+			});
 
-				function ajaxDelReturnError(result, status, xhr) {
-					alert("Error");
-					console.log("Ajax-find Customer: " + status);
-				}
+			function ajaxDelReturnSuccess(result, status, xhr) {
+				clearFields();
+				displayCustomers(Customers);
+				// $("#CustomerName").attr("placeholder", "Customer deleted");
+				populateCustomerSelectBox();
 			}
-		});
+
+			function ajaxDelReturnError(result, status, xhr) {
+				alert("Error");
+				console.log("Ajax-find Customer: " + status);
+			}
+		}
 	}
 
 	// Add new customer
@@ -230,42 +229,40 @@
 	}
 
 	// Update customer
-	function updateCustomer() {
-		$("#updtCustBtn").click(function(event) {
-			event.preventDefault();
+	function updateCustomer(event) {
+		event.preventDefault();
 
-			var strId = $("#customerIdAdd").val();
-			var strName = $("#customerName").val();
-			var strAddress = $("#customerAddress").val();
-			var strPhone = $("#customerPhone").val();
+		var strId = $("#customerIdAdd").val();
+		var strName = $("#customerName").val();
+		var strAddress = $("#customerAddress").val();
+		var strPhone = $("#customerPhone").val();
 
-			var obj = { CustomerId: strId, CustomerName: strName, CustomerAddress: strAddress, Phone: strPhone };
-			var jsonString = JSON.stringify(obj);
-			if (strId != "") {
-				$.ajax({
-					method: "PUT",
-					url: "http://localhost:8080/EJBISWebProject/RestServletCustomer/" + strId,
-					data: jsonString,
-					dataType: 'json',
-					error: ajaxUpdateReturnError,
-					success: ajaxUpdateReturnSuccess
-				})
+		var obj = { CustomerId: strId, CustomerName: strName, CustomerAddress: strAddress, Phone: strPhone };
+		var jsonString = JSON.stringify(obj);
+		if (strId != "") {
+			$.ajax({
+				method: "PUT",
+				url: "http://localhost:8080/EJBISWebProject/RestServletCustomer/" + strId,
+				data: jsonString,
+				dataType: 'json',
+				error: ajaxUpdateReturnError,
+				success: ajaxUpdateReturnSuccess
+			})
 
-				function ajaxUpdateReturnSuccess(result, status, xhr) {
-					clearFields();
-					$("#customerName").attr("placeholder", "Customer updated");
-					alert("Success");
-					displayCustomers(result);
-					populateCustomerSelectBox();
-				}
-
-				function ajaxUpdateReturnError(result, status, xhr) {
-					alert("Error updating customer");
-					console.log("Ajax-update customer: " + status);
-					displayCustomers(result);
-				}
+			function ajaxUpdateReturnSuccess(result, status, xhr) {
+				clearFields();
+				$("#customerName").attr("placeholder", "Customer updated");
+				alert("Success");
+				displayCustomers(result);
+				populateCustomerSelectBox();
 			}
-		});
+
+			function ajaxUpdateReturnError(result, status, xhr) {
+				alert("Error updating customer");
+				console.log("Ajax-update customer: " + status);
+				displayCustomers(result);
+			}
+		}
 	}
 
 	// Populate customer select box
