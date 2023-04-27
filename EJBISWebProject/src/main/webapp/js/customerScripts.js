@@ -61,37 +61,41 @@ document.addEventListener("DOMContentLoaded", function() {
 
 		var strValue = document.getElementById("find-customer-id").value;
 
-		if (strValue !== "") {
-			var tableRows = document.querySelectorAll("#customers-table tbody tr");
-			var customerFound = false;
-
-			tableRows.forEach(function(row) {
-				var customerId = row.cells[0].innerText;
-
-				if (customerId === strValue) {
-					customerFound = true;
-
-					// Retrieve customer details
-					var customerName = row.cells[1].innerText;
-					var customerAddress = row.cells[2].innerText;
-					var customerPhone = row.cells[3].innerText;
-
-					// Fill in the text fields
-					document.getElementById("customer-id").value = strValue;
-					document.getElementById("customer-name").value = customerName;
-					document.getElementById("customer-address").value = customerAddress;
-					document.getElementById("customer-phone").value = customerPhone;
-				}
-			});
-
-			if (!customerFound) {
-				var errorLabel = document.getElementById("error-label");
-				errorLabel.innerText = "Customer not found.";
-			} else {
-				var errorLabel = document.getElementById("error-label");
-				errorLabel.innerText = "Chosen customer found.";
-			}
+		if (strValue == "" || !/^\d{1,10}$/.test(strValue)) {
+			var errorLabel = document.getElementById("error-label");
+			errorLabel.innerText = "Please enter a valid ID to search for!";
+			return;
 		}
+		var tableRows = document.querySelectorAll("#customers-table tbody tr");
+		var customerFound = false;
+
+		tableRows.forEach(function(row) {
+			var customerId = row.cells[0].innerText;
+
+			if (customerId === strValue) {
+				customerFound = true;
+
+				// Retrieve customer details
+				var customerName = row.cells[1].innerText;
+				var customerAddress = row.cells[2].innerText;
+				var customerPhone = row.cells[3].innerText;
+
+				// Fill in the text fields
+				document.getElementById("customer-id").value = strValue;
+				document.getElementById("customer-name").value = customerName;
+				document.getElementById("customer-address").value = customerAddress;
+				document.getElementById("customer-phone").value = customerPhone;
+			}
+		});
+
+		if (!customerFound) {
+			var errorLabel = document.getElementById("error-label");
+			errorLabel.innerText = "Customer with ID: " + strValue + " not found.";
+		} else {
+			var errorLabel = document.getElementById("error-label");
+			errorLabel.innerText = "Chosen customer found.";
+		}
+	
 	});
 });
 
