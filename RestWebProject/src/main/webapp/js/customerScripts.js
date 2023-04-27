@@ -29,8 +29,9 @@
 					}
 
 					function ajaxRestReturn_Error(result, status, xhr) {
-						alert("Error in rest Service");
 						console.log("Ajax-find Customer: " + status);
+						$("#error-label-customer").empty();
+						$("#error-label-customer").append("Please enter a valid ID.");
 					}
 
 					function parseJsonFileCustomer(result) {
