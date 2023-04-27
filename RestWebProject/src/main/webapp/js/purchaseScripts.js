@@ -44,8 +44,11 @@
 
 	// Find Purchase by ID
 	function findPurchaseById(event) {
+
 	
+
 		event.preventDefault();
+		
 		var strValue = $("#purchaseSelect").val();
 		if (strValue != "") {
 			$.ajax({
@@ -57,7 +60,6 @@
 	
 			function ajaxRestReturn_Success(result, status, xhr) {
 				parseJsonFilePurchase(result);
-				displayPurchases(result);
 				$("#error-label-purchase").empty();
 				$("#error-label-purchase").append("Chosen purchase found.");
 				populatePurchaseSelectBox();
@@ -83,11 +85,13 @@
 				$("#PurEmployeeId").text(result[0].employeeId);
 				$("#PurCustomerId").text(result[0].customerId);
 
-				$("#employeeSelect").val(result[0].employeeId);
-				$("#customerSelect").val(result[0].customerId);
+				$("#employeeSelect").val(result.employeeId);
+				$("#customerSelect").val(result.customerId);
 			}
 		}
+
 		
+
 	}
 
 	// Find all purchases
@@ -174,10 +178,10 @@
 			}
 		
 	}
-	
+
 	// Update purchase
 	function updatePurchase() {
-		
+
 	}
 
 	// Populate purchase select box

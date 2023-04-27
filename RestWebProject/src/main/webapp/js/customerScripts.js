@@ -62,7 +62,7 @@
 	function findCustomerById(event) {
 		
 			event.preventDefault();
-			
+
 			var strValue = $("#customerId").val();
 			if (strValue != "") {
 				$.ajax({
@@ -117,7 +117,7 @@
 	function findAllCustomers(event) {
 		
 			event.preventDefault();
-			
+
 			$.ajax({
 				method: "GET",
 				url: "http://localhost:8080/EJBISWebProject/RestServletCustomer/",
@@ -139,7 +139,7 @@
 	//Delete customer by ID
 	function deleteCustomerById(event) {
 		event.preventDefault();
-		
+
 		var strValue = $("#customerId").val();
 		if (strValue != "") {
 			$.ajax({
@@ -178,7 +178,7 @@
 	function addCustomer(event) {
 		try {
 			event.preventDefault();
-			
+
 			var strName = $("#customerName").val();
 			var strAddress = $("#customerAddress").val();
 			var strPhone = $("#customerPhone").val();
@@ -273,6 +273,7 @@
 				$("#customerName").attr("placeholder", "Customer updated");
 				document.getElementById("error-label-customer").innerHTML = "Customer was successfully updated!";
 				// Clear input fields
+				$("#customerIdAdd").val("");
 				$("#customerName").val("");
 				$("#customerAddress").val("");
 				$("#customerPhone").val("");
