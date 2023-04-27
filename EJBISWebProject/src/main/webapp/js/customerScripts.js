@@ -1,6 +1,7 @@
 
 
 function validateForm() {
+	var customerId = document.getElementById("customer-id").value;
 	var customerName = document.getElementById("customer-name").value;
 	var customerAddress = document.getElementById("customer-address").value;
 	var customerPhoneNumber = document.getElementById("customer-phone").value;
@@ -18,6 +19,10 @@ function validateForm() {
 	} else if (customerPhoneNumber === ""
 		|| !/^\d{1,10}$/.test(customerPhoneNumber)) {
 		errorMessage = "Please enter a valid Phone Number (number only)."
+		document.getElementById("error-label").innerHTML = errorMessage;
+		return false;
+	} else if (document.activeElement.value === "update-customer" && customerId === "") {
+		errorMessage = "Please select a Customer ID you want to Update.";
 		document.getElementById("error-label").innerHTML = errorMessage;
 		return false;
 	} else {

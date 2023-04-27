@@ -1,6 +1,7 @@
 
 
 function validateForm() {
+	var employeeId = document.getElementById("employee-id").value;
 	var employeeName = document.getElementById("employee-name").value;
 	var employeeAddress = document.getElementById("employee-address").value;
 	var employeePhoneNumber = document.getElementById("employee-phone").value;
@@ -18,6 +19,10 @@ function validateForm() {
 	} else if (employeePhoneNumber === ""
 		|| !/^\d{1,10}$/.test(employeePhoneNumber)) {
 		errorMessage = "Please enter a valid Phone Number (numbers only)."
+		document.getElementById("error-label").innerHTML = errorMessage;
+		return false;
+	} else if (document.activeElement.value === "update-employee" && employeeId === "") {
+		errorMessage = "Please select a Employee ID you want to Update.";
 		document.getElementById("error-label").innerHTML = errorMessage;
 		return false;
 	} else {
