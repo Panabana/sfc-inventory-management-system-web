@@ -104,10 +104,10 @@
 				}
 
 				function clearFields() {
-					$("#CustomerName").text("");
-					$("#CustomerId").text("");
-					$("#CustomerAddress").text("");
-					$("#CustomerPhone").text("");
+					$("#customerName").text("");
+					$("#customerIdAdd").text("");
+					$("#customerAddress").text("");
+					$("#customerPhone").text("");
 				}
 			}
 		
@@ -148,6 +148,9 @@
 				success: function(result) {
 					clearTable();
 					displayCustomers(result);
+					clearFields();
+					
+					
 					$("#error-label-customer").empty();
 					$("#error-label-customer").append("Chosen customer deleted.");
 				},

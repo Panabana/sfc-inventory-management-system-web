@@ -72,21 +72,26 @@
 
 			function parseJsonFilePurchase(result) {
 				clearTable();
+				
 
-				$.each(result, function(index, purchase) {
+				$.each(result, function() {
 					var row = $("<tr>");
-					row.append($("<td>").text(purchase.purchaseId));
-					row.append($("<td>").text(purchase.employeeId));
-					row.append($("<td>").text(purchase.customerId));
-					$("#purchaseTable tbody").append(row);
+					row.append($("<td>").text(result.purchaseId));
+					row.append($("<td>").text(result.employeeId));
+					row.append($("<td>").text(result.customerId));
+				
+					$("#purchaseTable tbody").empty().append(row);
+					
+					
+					$("#employeeSelect").val(result.employeeId);
+					$("#customerSelect").val(result.customerId);
 				});
 
-				$("#PurPurchaseId").text(result[0].purchaseId);
-				$("#PurEmployeeId").text(result[0].employeeId);
-				$("#PurCustomerId").text(result[0].customerId);
+				//$("#PurPurchaseId").text(result[0].purchaseId);
+				//$("#PurEmployeeId").text(result[0].employeeId);
+				//$("#PurCustomerId").text(result[0].customerId);
 
-				$("#employeeSelect").val(result.employeeId);
-				$("#customerSelect").val(result.customerId);
+				
 			}
 		}
 
