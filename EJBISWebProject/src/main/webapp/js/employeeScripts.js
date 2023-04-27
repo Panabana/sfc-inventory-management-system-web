@@ -1,18 +1,4 @@
 
-	$(document).ready(function() {
-				$('#search-btn').click(function() {
-					$('#search-form').submit();
-				});
-				var employeeId = '${employeeId}';
-				var employeeName = '${employeeName}';
-				var employeeAddress = '${employeeAddress}';
-				var employeePhoneNumber = '${employeePhoneNumber}'
-	
-				$('#employee-id').val(employeeId);
-				$('#employee-name').val(employeeName);
-				$('#employee-address').val(employeeAddress);
-				$('#employee-phone').val(employeePhoneNumber);
-			});
 	
 			function validateForm() {
 				var employeeName = document.getElementById("employee-name").value;
@@ -64,4 +50,53 @@
 			    }
 			    return true;
 			}
+			
+	document.addEventListener("DOMContentLoaded", function() {
+  var searchForm = document.getElementById("search-form");
+  var findEmployeeBtn = document.getElementById("search-btn");
+
+  findEmployeeBtn.addEventListener("click", function(event) {
+    event.preventDefault();
+
+    var strValue = document.getElementById("find-employee-id").value;
+
+    if (strValue == "" || !/^\d{1,10}$/.test(strValue)) {
+      var errorLabel = document.getElementById("error-label");
+      errorLabel.innerText = "Please enter a valid ID to search for!";
+      return;
+    }
+
+    var tableRows = document.querySelectorAll("#employee-table tbody tr");
+    var employeeFound = false;
+
+    tableRows.forEach(function(row) {
+      var employeeId = row.cells[0].innerText;
+
+      if (employeeId === strValue) {
+        employeeFound = true;
+
+        // Retrieve customer details
+        var employeeName = row.cells[1].innerText;
+        var employeeAddress = row.cells[2].innerText;
+        var employeePhone = row.cells[3].innerText;
+
+        // Fill in the text fields
+        document.getElementById("employee-id").value = strValue;
+        document.getElementById("employee-name").value = employeeName;
+        document.getElementById("employee-address").value = employeeAddress;
+        document.getElementById("employee-phone").value = employeePhone;
+      }
+    });
+
+    if (!employeeFound) {
+      var errorLabel = document.getElementById("error-label");
+      errorLabel.innerText = "Employee with ID: " + strValue + " not found.";
+    } else {
+      var errorLabel = document.getElementById("error-label");
+      errorLabel.innerText = "Chosen employee found.";
+    }
+  });
+});
+
+
  
