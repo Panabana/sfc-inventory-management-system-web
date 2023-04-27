@@ -104,17 +104,12 @@
 		});
 
 		function validateForm() {
-		    var employeeId = document.getElementById("employee-id").value;
 			var employeeName = document.getElementById("employee-name").value;
 			var employeeAddress = document.getElementById("employee-address").value;
 			var employeePhoneNumber = document.getElementById("employee-phone").value;
 			var errorMessage = "";
 
-			if (employeeId === "") { 
-			 errorMessage = "Employee ID is required.";
-			 document.getElementById("error-label").innerHTML = errorMessage;
-			 return false;
-			} else if (employeeName === "" || !/^[a-zA-ZÂ‰ˆ≈ƒ÷]+$/.test(employeeName)) {
+			if (employeeName === "" || !/^[a-zA-ZÂ‰ˆ≈ƒ÷]+$/.test(employeeName)) {
 				errorMessage = "Please enter a valid Name (Letters only)."
 				document.getElementById("error-label").innerHTML = errorMessage;
 				return false;
