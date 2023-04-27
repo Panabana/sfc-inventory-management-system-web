@@ -113,11 +113,14 @@
 			$('#customer-id').val(customerId);
 		});
 
+		var isUpdatePurchaseClicked = false;
+		
 		function validateForm() {
 			var employeeId = document.getElementById("employee-id").value;
 			var customerId = document.getElementById("customer-id").value;
+			var purchaseId = document.getElementById("purchase-id").value;
 			var errorMessage = "";
-
+			
 			if (employeeId === "") {
 				errorMessage = "Please select an Employee ID."
 				document.getElementById("error-label").innerHTML = errorMessage;
@@ -126,6 +129,10 @@
 				errorMessage = "Please select a Customer ID."
 				document.getElementById("error-label").innerHTML = errorMessage;
 				return false;
+			} else if (document.activeElement.value === "update-purchase" && purchaseId === "") {
+			    errorMessage = "Please select a Purchase ID you want to Update.";
+			    document.getElementById("error-label").innerHTML = errorMessage;
+			    return false;
 			} else {
 				errorMessage = "The Purchase was successfully added!"
 				document.getElementById("error-label").innerHTML = errorMessage;
