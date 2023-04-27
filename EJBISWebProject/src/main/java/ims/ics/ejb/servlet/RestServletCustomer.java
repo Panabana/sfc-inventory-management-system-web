@@ -40,7 +40,6 @@ public class RestServletCustomer extends HttpServlet {
      */
     public RestServletCustomer() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
 	/**
@@ -68,7 +67,6 @@ public class RestServletCustomer extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		String pathInfo = request.getPathInfo();
 
 	    // Check if the path info is valid
@@ -129,7 +127,6 @@ public class RestServletCustomer extends HttpServlet {
 	 * @see HttpServlet#doDelete(HttpServletRequest, HttpServletResponse)
 	 */
 	protected void doDelete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		String pathInfo = request.getPathInfo();
 	    if (pathInfo == null || pathInfo.equals("/")) {
 	        response.sendError(HttpServletResponse.SC_BAD_REQUEST);

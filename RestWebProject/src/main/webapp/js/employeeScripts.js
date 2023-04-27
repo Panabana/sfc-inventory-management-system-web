@@ -113,7 +113,7 @@
 	}
 
 	// Delete employee by ID
-	function deleteEmployeeById(event) {
+	function deleteEmployeeById() {
 		try {
 			$("#delEmpBtn").click(function(event) {
 				event.preventDefault();
@@ -125,6 +125,8 @@
 						error: ajaxDelReturnError,
 						success: ajaxDelReturnSuccess
 					});
+				} else {
+					console.log("strValue is blank/null");
 				}
 			});
 		} catch (error) {
@@ -163,7 +165,7 @@
 		try {
 			$("#updtEmpBtn").click(function(event) {
 				event.preventDefault();
-				var strId = $("#empIdAdd").val();
+				var strId = $("#empId").val();
 				var strName = $("#empName").val();
 				var strAddress = $("#empAddress").val();
 				var strPhone = $("#empPhone").val();
@@ -225,7 +227,7 @@
 	function ajaxUpdateReturnSuccess(result, status, xhr) {
 		clearFields();
 		$("#empName").attr("placeholder", "Employee updated");
-		alert("Success")
+		alert("Success" + status);
 		displayEmployees(result);
 	}
 
@@ -237,6 +239,7 @@
 
 	function ajaxDelReturnSuccess(result, status, xhr) {
 		clearFields();
+		alert("Success ", status);
 		$("#EmployeeName").attr("placeholder", "Employee deleted");
 		displayEmployees(result);
 	}
