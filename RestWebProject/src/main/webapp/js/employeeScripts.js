@@ -328,10 +328,10 @@
 
 	function clearFields() {
 		try {
-			$("#EmployeeId").text("");
-			$("#EmployeeName").text("");
-			$("#EmployeeAddress").text("");
-			$("#EmployeePhone").text("");
+			$("#empIdAdd").text("");
+			$("#empName").text("");
+			$("#empAddress").text("");
+			$("#empPhone").text("");
 		} catch (error) {
 			console.error("An error occurred: ", error);
 		}
