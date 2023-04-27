@@ -44,7 +44,6 @@ public class RestServletPurchase extends HttpServlet {
 	 */
 	public RestServletPurchase() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	/**

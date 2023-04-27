@@ -117,9 +117,7 @@ public class RestServlet extends HttpServlet {
 	/**
 	 * @see HttpServlet#doDelete(HttpServletRequest, HttpServletResponse)
 	 */
-	protected void doDelete(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		// TODO Auto-generated method stub
+	protected void doDelete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String pathInfo = request.getPathInfo();
 		if (pathInfo == null || pathInfo.equals("/")) {
 			response.sendError(HttpServletResponse.SC_BAD_REQUEST);
