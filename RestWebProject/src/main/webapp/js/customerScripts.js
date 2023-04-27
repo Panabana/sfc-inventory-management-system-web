@@ -289,6 +289,7 @@
 	}
 
 
+
 	// Populate customer select box
 	function populateCustomerSelectBox() {
 		$.ajax({
