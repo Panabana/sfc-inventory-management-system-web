@@ -12,7 +12,7 @@
 		try {
 			// Event listener for the select box
 			$('#customerSelect').on('change', function() {
-				// Retrieve the selected employee ID and name
+				// Retrieve the selected customer ID and name
 				var selectedCust = $(this).val();
 				console.log(selectedCust);
 			});
@@ -170,7 +170,7 @@
 		});
 	}
 
-	// Add new employee
+	// Add new customer
 	function addCustomer(event) {
 		try {
 			event.preventDefault();
@@ -229,8 +229,8 @@
 		}
 	}
 
-	// Update employee
-	function updateEmployee() {
+	// Update customer
+	function updateCustomer() {
 		$("#updtCustBtn").click(function(event) {
 			event.preventDefault();
 
