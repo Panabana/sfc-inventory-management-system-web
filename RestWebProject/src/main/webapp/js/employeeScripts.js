@@ -103,7 +103,7 @@
 					error: function(xhr, status, error) {
 						console.error("Error in fetching employees:", error);
 						$("#error-label-employee").empty();
-						$(".error-label-employee").append("Error in fetching employees");
+						$("#error-label-employee").append("Error in fetching employees");
 					}
 				});
 			});
@@ -242,7 +242,7 @@
 		alert("Error in rest Service");
 		console.log("Ajax-find Employee: " + status);
 		$("#error-label-employee").empty();
-		$(".error-label-employee").append("Error in fetching employee");
+		$("#error-label-employee").append("Error in fetching employee");
 	}
 
 	function ajaxUpdateReturnSuccess(result, status, xhr) {
