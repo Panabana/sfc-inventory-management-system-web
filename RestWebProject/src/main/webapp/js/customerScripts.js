@@ -24,6 +24,8 @@
 
 					function ajaxRestReturn_Success(result, status, xhr) {
 						parseJsonFileCustomer(result);
+						$("#error-label-customer").empty();
+						$("#error-label-customer").append("Chosen customer found.");
 					}
 
 					function ajaxRestReturn_Error(result, status, xhr) {
