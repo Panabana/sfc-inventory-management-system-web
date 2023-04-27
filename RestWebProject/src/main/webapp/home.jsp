@@ -46,15 +46,6 @@
 					<div class="search-form">
 						<form action="#">
 							<div class="form-group">
-								
-								<!-- <div class="form-group">
-									<select name="employee-id" id="employeeSelect">
-									<option disabled selected value="">Select an employee</option>
-										<c:forEach var="" items="">
-											<option value=""></option>
-										</c:forEach>
-									</select>
-								</div> -->
 								<input type="text" id="empId" name="empId" class="form-control"
 									placeholder="Enter ID..." />
 								<button type="submit" class="btn" id="findBtn">Search</button>
@@ -207,7 +198,7 @@
 								</c:forEach>
 							</select>
 							<button type="submit" class="btn" id="findPurBtn">Search</button>
-							<button type="submit" class="btn" id="findAllPurBtn">Findall</button>
+							<button type="submit" class="btn" id="findAllPurBtn">Find all</button>
 						</div>
 					</form>
 				</div>
