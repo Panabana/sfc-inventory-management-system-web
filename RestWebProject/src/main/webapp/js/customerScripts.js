@@ -1,15 +1,64 @@
 (function() {
 
 	$(document).ready(function() {
+		// Call the function to populate the select box
 		populateCustomerSelectBox();
 
-		// Event listener for the select box
-		$('#customerSelect').on('change', function() {
-			// Retrieve the selected employee ID and name
-			var selectedCust = $(this).val();
-			console.log(selectedCust);
-		});
+		// Event listeners
+		initEventListeners();
+	});
 
+	function initEventListeners() {
+		try {
+			// Event listener for the select box
+			$('#customerSelect').on('change', function() {
+				// Retrieve the selected employee ID and name
+				var selectedCust = $(this).val();
+				console.log(selectedCust);
+			});
+
+			$("#FindCustomerBtn").click(findCustomerById);
+
+			$("#findAllCustomersBtn").click(findAllCustomers);
+
+			$("#delCustBtn").click(deleteCustomerById);
+
+			$("#addCustomerBtn").click(addCustomer);
+
+			$("#updtCustBtn").click(updateCustomer);
+		} catch (error) {
+			console.error("An error occurred: ", error);
+		}
+	}
+
+	// Display customer table
+	function displayCustomers(customers) {
+		// Clear existing table rows
+		$("#customerTable tbody").empty();
+
+		$.each(customers, function(index, customer) {
+			var row = $("<tr>");
+			row.append($("<td>").text(customer.CustomerId));
+			row.append($("<td>").text(customer.CustomerName));
+			row.append($("<td>").text(customer.CustomerAddress));
+			row.append($("<td>").text(customer.Phone));
+			$("#customerTable tbody").append(row);
+		});
+	}
+
+	function clearFields() {
+		$("#CustomerId").text("");
+		$("#CustomerName").text("");
+		$("#CustomerAddress").text("");
+		$("#CustomerPhone").text("");
+	}
+
+	function clearTable() {
+		$("#customerTable tbody").empty();
+	}
+
+	// Find Customer by ID
+	function findCustomerById() {
 		$(document).on("click", "#FindCustomerBtn", function(event) {
 			event.preventDefault();
 			var strValue = $("#customerId").val();
@@ -60,7 +109,10 @@
 				}
 			}
 		});
+	}
 
+	// Find all customers
+	function findAllCustomers() {
 		$("#findAllCustomersBtn").click(function(event) {
 			event.preventDefault();
 			$.ajax({
@@ -79,21 +131,10 @@
 				}
 			});
 		});
+	}
 
-		function displayCustomers(customers) {
-			// Clear existing table rows
-			$("#customerTable tbody").empty();
-
-			$.each(customers, function(index, customer) {
-				var row = $("<tr>");
-				row.append($("<td>").text(customer.CustomerId));
-				row.append($("<td>").text(customer.CustomerName));
-				row.append($("<td>").text(customer.CustomerAddress));
-				row.append($("<td>").text(customer.Phone));
-				$("#customerTable tbody").append(row);
-			});
-		}
-
+	//Delete customer by ID
+	function deleteCustomerById() {
 		$("#delCustBtn").click(function(event) {
 			event.preventDefault();
 
@@ -127,71 +168,69 @@
 				}
 			}
 		});
+	}
 
-		function addCustomer(event) {
-			try {
-				event.preventDefault();
-				var strName = $("#customerName").val();
-				var strAddress = $("#customerAddress").val();
-				var strPhone = $("#customerPhone").val();
+	// Add new employee
+	function addCustomer(event) {
+		try {
+			event.preventDefault();
+			var strName = $("#customerName").val();
+			var strAddress = $("#customerAddress").val();
+			var strPhone = $("#customerPhone").val();
 
-				// Validate input fields
-				if (strName === "" || !/^[a-zA-ZåäöÅÄÖ]+$/.test(strName)) {
-					throw new Error("Please enter a valid Name (Letters only).");
-				} else if (strAddress === "" || !/^[a-zA-Z0-9\såäöÅÄÖ]*$/.test(strAddress)) {
-					throw new Error("Please enter an Address (Only letters and numbers allowed).");
-				} else if (strPhone === "" || !/^\d{1,10}$/.test(strPhone)) {
-					throw new Error("Please enter a valid Phone Number (numbers only).");
-				}
-
-				// Create Customer object
-				var obj = { CustomerName: strName, CustomerAddress: strAddress, Phone: strPhone };
-				var jsonString = JSON.stringify(obj);
-
-				// Send AJAX request
-				$.ajax({
-					method: "POST",
-					url: "http://localhost:8080/EJBISWebProject/RestServletCustomer/",
-					data: jsonString,
-					dataType: 'json',
-					error: ajaxAddReturnError,
-					success: ajaxAddReturnSuccess
-				});
-
-				function ajaxAddReturnSuccess(result, status, xhr) {
-					clearFields();
-					displayCustomers(result);
-					// $("#customerName").attr("placeholder", "Customer added");
-					populateCustomerSelectBox();
-				}
-
-				function ajaxAddReturnError(result, status, xhr) {
-					alert("Error Add");
-					console.log("Ajax-find customer: " + status);
-				}
-
-			} catch (error) {
-				console.error(error);
+			// Validate input fields
+			if (strName === "" || !/^[a-zA-ZåäöÅÄÖ]+$/.test(strName)) {
+				throw new Error("Please enter a valid Name (Letters only).");
+			} else if (strAddress === "" || !/^[a-zA-Z0-9\såäöÅÄÖ]*$/.test(strAddress)) {
+				throw new Error("Please enter an Address (Only letters and numbers allowed).");
+			} else if (strPhone === "" || !/^\d{1,10}$/.test(strPhone)) {
+				throw new Error("Please enter a valid Phone Number (numbers only).");
 			}
+
+			// Create Customer object
+			var obj = { CustomerName: strName, CustomerAddress: strAddress, Phone: strPhone };
+			var jsonString = JSON.stringify(obj);
+
+			// Send AJAX request
+			$.ajax({
+				method: "POST",
+				url: "http://localhost:8080/EJBISWebProject/RestServletCustomer/",
+				data: jsonString,
+				dataType: 'json',
+				error: ajaxAddReturnError,
+				success: ajaxAddReturnSuccess
+			});
+
+			function ajaxAddReturnSuccess(result, status, xhr) {
+				clearFields();
+				displayCustomers(result);
+				// $("#customerName").attr("placeholder", "Customer added");
+				populateCustomerSelectBox();
+			}
+
+			function ajaxAddReturnError(result, status, xhr) {
+				alert("Error Add");
+				console.log("Ajax-find customer: " + status);
+			}
+
+			// Show success message
+			document.getElementById("error-label-customer").innerHTML = "Customer was successfully added!";
+			// Clear input fields
+			$("#customerName").val("");
+			$("#customerAddress").val("");
+			$("#customerPhone").val("");
+			return true;
+
+		} catch (error) {
+			// Handle error and show error message
+			console.error("An error occurred: ", error);
+			document.getElementById("error-label-customer").innerHTML = error.message;
+			return false;
 		}
+	}
 
-		/*
-		// Show success message
-		document.getElementById("error-label-customer").innerHTML = "Customer was successfully added!";
-		// Clear input fields
-		$("#customerName").val("");
-		$("#customerAddress").val("");
-		$("#customerPhone").val("");
-		return true;
-	 	catch (error) {
-		// Handle error and show error message
-		console.error("An error occurred: ", error);
-		document.getElementById("error-label-customer").innerHTML = error.message;
-		return false;
-		}
-		*/
-
-
+	// Update employee
+	function updateEmployee() {
 		$("#updtCustBtn").click(function(event) {
 			event.preventDefault();
 
@@ -211,7 +250,7 @@
 					error: ajaxUpdateReturnError,
 					success: ajaxUpdateReturnSuccess
 				})
-				
+
 				function ajaxUpdateReturnSuccess(result, status, xhr) {
 					clearFields();
 					$("#customerName").attr("placeholder", "Customer updated");
@@ -219,7 +258,7 @@
 					displayCustomers(result);
 					populateCustomerSelectBox();
 				}
-				
+
 				function ajaxUpdateReturnError(result, status, xhr) {
 					alert("Error updating customer");
 					console.log("Ajax-update customer: " + status);
@@ -227,35 +266,25 @@
 				}
 			}
 		});
+	}
 
-		function clearFields() {
-			$("#CustomerId").text("");
-			$("#CustomerName").text("");
-			$("#CustomerAddress").text("");
-			$("#CustomerPhone").text("");
-		}
+	// Populate customer select box
+	function populateCustomerSelectBox() {
+		$.ajax({
+			method: "GET",
+			url: "http://localhost:8080/EJBISWebProject/RestServletCustomer/",
+			success: function(result) {
+				var selectBox = $("#customerSelect");
+				selectBox.empty();
+				$.each(result, function(index, customer) {
+					var option = $("<option>").val(customer.CustomerId).text(customer.CustomerId + " - " + customer.CustomerName);
+					selectBox.append(option);
+				});
+			},
+			error: function(xhr, status, error) {
+				console.error("Error in fetching customers:", error);
+			}
+		});
+	}
 
-		function clearTable() {
-			$("#customerTable tbody").empty();
-		}
-
-		function populateCustomerSelectBox() {
-			$.ajax({
-				method: "GET",
-				url: "http://localhost:8080/EJBISWebProject/RestServletCustomer/",
-				success: function(result) {
-					var selectBox = $("#customerSelect");
-					selectBox.empty();
-					$.each(result, function(index, customer) {
-						var option = $("<option>").val(customer.CustomerId).text(customer.CustomerId + " - " + customer.CustomerName);
-						selectBox.append(option);
-					});
-				},
-				error: function(xhr, status, error) {
-					console.error("Error in fetching customers:", error);
-				}
-			});
-		}
-
-	});
 })();

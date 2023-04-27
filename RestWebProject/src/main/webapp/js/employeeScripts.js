@@ -18,24 +18,18 @@
 				console.log(selectedEmp);
 			});
 
-			// Find employee by ID
-			$("#findBtn").click(findEmployeeById());
+			$("#findBtn").click(findEmployeeById);
+			
+			$("#findAllBtn").click(findAllEmployees);
 
-			// Find all employees
-			$("#findAllBtn").click(findAllEmployees());
-
-			// Delete employee by ID
 			$("#delEmpBtn").click(deleteEmployeeById);
 
-			// Add new employee
 			$("#addEmpBtn").click(addEmployee);
 
-			// Update employee
 			$("#updtEmpBtn").click(updateEmployee);
 		} catch (error) {
 			console.error("An error occurred: ", error);
 		}
-
 	}
 
 	// Display employee table
@@ -165,7 +159,7 @@
 				error: ajaxAddReturnError,
 				success: ajaxAddReturnSuccess
 			});
-
+			
 			// Show success message
 			document.getElementById("error-label-employee").innerHTML = "Employee was successfully added!";
 			// Clear input fields
@@ -173,6 +167,7 @@
 			$("#empAddress").val("");
 			$("#empPhone").val("");
 			return true;
+			
 		} catch (error) {
 			// Handle error and show error message
 			console.error("An error occurred: ", error);
@@ -180,7 +175,6 @@
 			return false;
 		}
 	}
-
 
 	// Update employee
 	function updateEmployee() {
