@@ -254,6 +254,8 @@
 			function ajaxUpdateReturnSuccess(result, status, xhr) {
 				clearFields();
 				$("#customerName").attr("placeholder", "Customer updated");
+				$("#error-label-customer").empty();
+				$("#error-label-customer").append("Customer updated!");
 				displayCustomers(result);
 				populateCustomerSelectBox();
 			}
