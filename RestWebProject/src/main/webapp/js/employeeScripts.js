@@ -215,6 +215,7 @@
 		parseJsonFileEmployee(result);
 		$("#error-label-employee").empty();
 		$("#error-label-employee").append("Chosen employee found.");
+		populateEmployeeSelectBox();
 	}
 
 	function ajaxRestReturnError(result, status, xhr) {
@@ -229,6 +230,7 @@
 		$("#empName").attr("placeholder", "Employee updated");
 		alert("Success" + status);
 		displayEmployees(result);
+		populateEmployeeSelectBox();
 	}
 
 	function ajaxUpdateReturnError(result, status, xhr) {
@@ -242,6 +244,7 @@
 		alert("Success ", status);
 		$("#EmployeeName").attr("placeholder", "Employee deleted");
 		displayEmployees(result);
+		populateEmployeeSelectBox();
 	}
 
 	function ajaxDelReturnError(result, status, xhr) {
@@ -254,6 +257,7 @@
 		clearFields();
 		$("#EmployeeName").attr("placeholder", "Employee added");
 		displayEmployees(result);
+		populateEmployeeSelectBox();
 	}
 	function ajaxAddReturnError(result, status, xhr) {
 		alert("Error Add");
