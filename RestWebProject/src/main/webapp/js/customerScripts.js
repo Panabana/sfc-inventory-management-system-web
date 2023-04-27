@@ -273,6 +273,7 @@
 				$("#customerName").attr("placeholder", "Customer updated");
 				document.getElementById("error-label-customer").innerHTML = "Customer was successfully updated!";
 				// Clear input fields
+				$("#customerIdAdd").val("");
 				$("#customerName").val("");
 				$("#customerAddress").val("");
 				$("#customerPhone").val("");

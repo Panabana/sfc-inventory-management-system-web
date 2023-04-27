@@ -179,7 +179,7 @@
 		try {
 			event.preventDefault();
 
-			var strId = $("#empId").val();
+			var strId = $("#empIdAdd").val();
 			var strName = $("#empName").val();
 			var strAddress = $("#empAddress").val();
 			var strPhone = $("#empPhone").val();
@@ -211,6 +211,7 @@
 				// Show success message
 				document.getElementById("error-label-employee").innerHTML = "Employee was successfully updated!";
 				// Clear input fields
+				$("#empIdAdd").val("");
 				$("#empName").val("");
 				$("#empAddress").val("");
 				$("#empPhone").val("");
