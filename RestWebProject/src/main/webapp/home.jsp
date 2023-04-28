@@ -229,13 +229,11 @@
 						<div class="button-container">
 							<button type="submit" class="btn" value="addPurBtn"
 								id="addPurBtn">Add</button>
-							<button type="submit" class="btn" name=updtpurchaseBtn
-								value="updtCustBtn" id="updtCustBtn">Update</button>
 							<button type="submit" class="btn" id="delPurBtn">Remove</button>
 						</div>
 						<div class="error-label">
 							<!-- Error messages will be displayed here -->
-							<p id="error-label-purchase">User messages will be displayed here</p>
+							<p id="error-label-purchase"></p>
 						</div>
 					</form>
 				</div>
