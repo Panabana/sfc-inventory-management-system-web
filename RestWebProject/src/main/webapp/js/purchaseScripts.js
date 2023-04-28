@@ -45,8 +45,6 @@
 	// Find Purchase by ID
 	function findPurchaseById(event) {
 
-	
-
 		event.preventDefault();
 		
 		var strValue = $("#purchaseSelect").val();
@@ -60,13 +58,12 @@
 	
 			function ajaxRestReturn_Success(result, status, xhr) {
 				parseJsonFilePurchase(result);
+				populatePurchaseSelectBox();
 				$("#error-label-purchase").empty();
 				$("#error-label-purchase").append("Chosen purchase found.");
-				populatePurchaseSelectBox();
 			}
 
 			function ajaxRestReturn_Error(result, status, xhr) {
-				alert("Error in rest Service");
 				console.log("Ajax-find Purchase: " + status);
 			}
 
@@ -82,7 +79,6 @@
 				
 					$("#purchaseTable tbody").empty().append(row);
 					
-					
 					$("#employeeSelect").val(result.employeeId);
 					$("#customerSelect").val(result.customerId);
 				});
@@ -91,11 +87,8 @@
 				//$("#PurEmployeeId").text(result[0].employeeId);
 				//$("#PurCustomerId").text(result[0].customerId);
 
-				
 			}
 		}
-
-		
 
 	}
 
@@ -137,13 +130,16 @@
 				function ajaxDelReturnSuccess(result, status, xhr) {
 					// clearFields();
 					displayPurchases(result);
-					$("#employeeId").attr("placeholder", "Purchase deleted");
 					populatePurchaseSelectBox();
+					$("#employeeId").attr("placeholder", "Purchase deleted");
+					$("#error-label-purchase").empty();
+					$("#error-label-purchase").append("Chosen purchase deleted.");
 				}
 
 				function ajaxDelReturnError(result, status, xhr) {
-					alert("Error");
 					console.log("Ajax-find Purchase: " + status);
+					$("#error-label-purchase").empty();
+					$("#error-label-purchase").append("Error in deleting purchase.");
 				}
 			}
 		
@@ -160,7 +156,6 @@
 
 			var obj = { purchaseId: purchaseId, employeeId: employeeId, customerId: customerId };
 			var jsonString = JSON.stringify(obj);
-			alert(jsonString);
 			if (employeeId != "" && customerId != "") {
 				$.ajax({
 					method: "POST",
@@ -173,12 +168,15 @@
 				function ajaxAddReturnSuccess(result, status, xhr) {
 					// clearFields();
 					displayPurchases(result);
-					$("#purchaseAmountAdd").attr("placeholder", "Purchase added");
 					populatePurchaseSelectBox();
+					$("#purchaseAmountAdd").attr("placeholder", "Purchase added");
+					$("#error-label-purchase").empty();
+					$("#error-label-purchase").append("Purchase added.");
 				}
 				function ajaxAddReturnError(result, status, xhr) {
-					alert("Error Add");
 					console.log("Ajax-add purchase: " + status);
+					$("#error-label-purchase").empty();
+					$("#error-label-purchase").append("Error in adding purchase.");
 				}
 			}
 		
