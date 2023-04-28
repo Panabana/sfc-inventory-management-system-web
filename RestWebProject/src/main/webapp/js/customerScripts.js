@@ -188,9 +188,9 @@
 			var strPhone = $("#customerPhone").val();
 
 			// Validate input fields
-			if (strName === "" || !/^[a-zA-ZåäöÅÄÖ ]+$/.test(strName)) {
+			if (strName === "" || !/^[a-zA-Z\u00C4\u00E4\u00D6\u00F6\u00C5\u00E5\s ]+$/.test(strName)) {
 				throw new Error("Please enter a valid Name (Letters only).");
-			} else if (strAddress === "" || !/^[a-zA-Z0-9\såäöÅÄÖ]*$/.test(strAddress)) {
+			} else if (strAddress === "" || !/^[a-zA-Z0-9\u00C4\u00E4\u00D6\u00F6\u00C5\u00E5\s ]+$/.test(strAddress)) {
 				throw new Error("Please enter an Address (Only letters and numbers allowed).");
 			} else if (strPhone === "" || !/^\d{1,10}$/.test(strPhone)) {
 				throw new Error("Please enter a valid Phone Number (numbers only).");
@@ -254,9 +254,9 @@
 			// Validate input fields
 			if (strId === "" || !/^\d+$/.test(strId)) {
 				throw new Error("Please enter a valid Customer ID (Numbers only).");
-			} else if (strName === "" || !/^[a-zA-ZåäöÅÄÖ]+$/.test(strName)) {
+			} else if (strName === "" || !/^[a-zA-Z\u00C4\u00E4\u00D6\u00F6\u00C5\u00E5\s ]+$/.test(strName)) {
 				throw new Error("Please enter a valid Name (Letters only).");
-			} else if (strAddress === "" || !/^[a-zA-Z0-9\såäöÅÄÖ]*$/.test(strAddress)) {
+			} else if (strAddress === "" || !/^[a-zA-Z0-9\u00C4\u00E4\u00D6\u00F6\u00C5\u00E5\s ]+$/.test(strAddress)) {
 				throw new Error("Please enter an Address (Only letters and numbers allowed).");
 			} else if (strPhone === "" || !/^\d{1,10}$/.test(strPhone)) {
 				throw new Error("Please enter a valid Phone Number (numbers only).");
