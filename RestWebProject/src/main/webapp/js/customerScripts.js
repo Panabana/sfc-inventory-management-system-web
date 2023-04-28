@@ -61,7 +61,7 @@
 
 	// Find Customer by ID
 	function findCustomerById(event) {
-		
+		try {
 			event.preventDefault();
 
 			var strValue = $("#customerId").val();
@@ -74,10 +74,17 @@
 				})
 
 				function ajaxRestReturn_Success(result, status, xhr) {
-					parseJsonFileCustomer(result);
-					populateCustomerSelectBox();
-					$("#error-label-customer").empty();
-					$("#error-label-customer").append("Chosen customer found.");
+					if (result.CustomerId !== "") {
+						parseJsonFileCustomer(result);
+						populateCustomerSelectBox();
+						$("#error-label-customer").empty();
+						$("#error-label-customer").append("Chosen customer found.");
+					} else {
+						$("#error-label-customer").empty();
+						$("#error-label-customer").append("ID not found. Please enter a valid ID.");
+						clearFields();
+						clearTable();
+					}
 				}
 
 				function ajaxRestReturn_Error(result, status, xhr) {
@@ -87,6 +94,19 @@
 				}
 
 				function parseJsonFileCustomer(result) {
+					/*
+					console.log($("#customerId").val());
+					console.log("Before each:" + result.customerId);
+
+					$.each(result, function(customer) {
+						if ($("#customerId").val() != customer.CustomerId) {
+							console.log("In if:" + result.customerId);
+							ajaxRestReturn_Error();
+						}
+						console.log("In each:" + result.customerId);
+					});
+					*/
+
 					clearTable();
 					clearFields();
 
@@ -111,30 +131,33 @@
 					$("#customerPhone").val("");
 				}
 			}
-		
+		} catch (error) {
+			console.log("Error: " + error);
+		}
+
 	}
 
 	// Find all customers
 	function findAllCustomers(event) {
-		
-			event.preventDefault();
 
-			$.ajax({
-				method: "GET",
-				url: "http://localhost:8080/EJBISWebProject/RestServletCustomer/",
-				success: function(result) {
-					clearTable();
-					displayCustomers(result);
-					$("#error-label-customer").empty();
-					$("#error-label-customer").append("All customers found.");
-					populateCustomerSelectBox();
-				},
-				error: function(xhr, status, error) {
-					console.error("Error in fetching customers:", error);
-					$(".#error-label-customer").append("Error in fetching customers");
-				}
-			});
-		
+		event.preventDefault();
+
+		$.ajax({
+			method: "GET",
+			url: "http://localhost:8080/EJBISWebProject/RestServletCustomer/",
+			success: function(result) {
+				clearTable();
+				displayCustomers(result);
+				$("#error-label-customer").empty();
+				$("#error-label-customer").append("All customers found.");
+				populateCustomerSelectBox();
+			},
+			error: function(xhr, status, error) {
+				console.error("Error in fetching customers:", error);
+				$(".#error-label-customer").append("Error in fetching customers");
+			}
+		});
+
 	}
 
 	//Delete customer by ID
@@ -150,7 +173,7 @@
 					clearTable();
 					displayCustomers(result);
 					clearFields();
-					
+
 					$("#error-label-customer").empty();
 					$("#error-label-customer").append("Chosen customer deleted.");
 				},
