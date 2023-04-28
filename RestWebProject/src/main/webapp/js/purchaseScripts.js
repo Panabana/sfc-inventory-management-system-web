@@ -184,10 +184,6 @@
 		
 	}
 
-	// Update purchase
-	function updatePurchase() {
-
-	}
 
 	// Populate purchase select box
 	function populatePurchaseSelectBox() {
