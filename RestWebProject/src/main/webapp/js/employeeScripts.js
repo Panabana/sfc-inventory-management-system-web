@@ -255,9 +255,9 @@
 	// Helper functions for AJAX calls
 	function ajaxRestReturnSuccess(result, status, xhr) {
 		parseJsonFileEmployee(result);
+		populateEmployeeSelectBox();
 		$("#error-label-employee").empty();
 		$("#error-label-employee").append("Chosen employee found.");
-		populateEmployeeSelectBox();
 	}
 
 	function ajaxRestReturnError(result, status, xhr) {
@@ -268,24 +268,28 @@
 
 	function ajaxUpdateReturnSuccess(result, status, xhr) {
 		clearFields();
-		$("#empName").attr("placeholder", "Employee updated");
 		displayEmployees(result);
 		populateEmployeeSelectBox();
+		// $("#empName").attr("placeholder", "Employee updated");
+		$("#error-label-employee").empty();
+		$("#error-label-employee").append("Chosen employee updated.");
 	}
 
 	function ajaxUpdateReturnError(result, status, xhr) {
-		$("#error-label-employee").empty();
-		$("#error-label-employee").append("Error updating employee");
 		console.log("Ajax-update employee: " + status);
 		displayEmployees(result);
+		$("#error-label-employee").empty();
+		$("#error-label-employee").append("Error updating employee");
 	}
 
 	function ajaxDelReturnSuccess(result, status, xhr) {
 		clearFields();
 		clearTable();
-		$("#EmployeeName").attr("placeholder", "Employee deleted");
 		displayEmployees(result);
 		populateEmployeeSelectBox();
+		// $("#EmployeeName").attr("placeholder", "Employee deleted");
+		$("#error-label-employee").empty();
+		$("#error-label-employee").append("Chosen employee deleted.");
 	}
 
 	function ajaxDelReturnError(result, status, xhr) {
@@ -297,9 +301,11 @@
 
 	function ajaxAddReturnSuccess(result, status, xhr) {
 		clearFields();
-		$("#EmployeeName").attr("placeholder", "Employee added");
 		displayEmployees(result);
 		populateEmployeeSelectBox();
+		// $("#EmployeeName").attr("placeholder", "Employee added");
+		$("#error-label-employee").empty();
+		$("#error-label-employee").append("Employee added.");
 	}
 	function ajaxAddReturnError(result, status, xhr) {
 		console.log("Ajax-find employee: " + status);
