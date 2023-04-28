@@ -233,7 +233,7 @@
 						</div>
 						<div class="error-label">
 							<!-- Error messages will be displayed here -->
-							<p id="error-label-purchase">User messages will be displayed here</p>
+							<p id="error-label-purchase"></p>
 						</div>
 					</form>
 				</div>
