@@ -48,10 +48,11 @@
 	}
 
 	function clearFields() {
-		$("#CustomerId").text("");
-		$("#CustomerName").text("");
-		$("#CustomerAddress").text("");
-		$("#CustomerPhone").text("");
+		$("#customerId").val("");
+		$("#customerIdAdd").val("");
+		$("#customerName").val("");
+		$("#customerAddress").val("");
+		$("#customerPhone").val("");
 	}
 
 	function clearTable() {
@@ -74,9 +75,9 @@
 
 				function ajaxRestReturn_Success(result, status, xhr) {
 					parseJsonFileCustomer(result);
+					populateCustomerSelectBox();
 					$("#error-label-customer").empty();
 					$("#error-label-customer").append("Chosen customer found.");
-					populateCustomerSelectBox();
 				}
 
 				function ajaxRestReturn_Error(result, status, xhr) {
@@ -150,7 +151,6 @@
 					displayCustomers(result);
 					clearFields();
 					
-					
 					$("#error-label-customer").empty();
 					$("#error-label-customer").append("Chosen customer deleted.");
 				},
@@ -163,12 +163,13 @@
 			function ajaxDelReturnSuccess(result, status, xhr) {
 				clearFields();
 				displayCustomers(Customers);
-				// $("#CustomerName").attr("placeholder", "Customer deleted");
 				populateCustomerSelectBox();
+				$("#CustomerName").attr("placeholder", "Customer deleted");
+				$("#error-label-customer").empty();
+				$("#error-label-customer").append("Chosen customer deleted.");
 			}
 
 			function ajaxDelReturnError(result, status, xhr) {
-				alert("Error");
 				console.log("Ajax-find Customer: " + status);
 				displayCustomers(result);
 				$("#error-label-customer").empty();
@@ -212,13 +213,16 @@
 			function ajaxAddReturnSuccess(result, status, xhr) {
 				clearFields();
 				displayCustomers(result);
-				// $("#customerName").attr("placeholder", "Customer added");
 				populateCustomerSelectBox();
+				$("#customerName").attr("placeholder", "Customer added");
+				$("#error-label-customer").empty();
+				$("#error-label-customer").append("Customer added.");
 			}
 
 			function ajaxAddReturnError(result, status, xhr) {
-				alert("Error Add");
 				console.log("Ajax-find customer: " + status);
+				$("#error-label-customer").empty();
+				$("#error-label-customer").append("Error adding customer.");
 			}
 
 			// Show success message
@@ -272,23 +276,23 @@
 			}
 
 			function ajaxUpdateReturnSuccess(result, status, xhr) {
-
-				$("#customerName").attr("placeholder", "Customer updated");
-				document.getElementById("error-label-customer").innerHTML = "Customer was successfully updated!";
-				// Clear input fields
 				$("#customerIdAdd").val("");
-				$("#customerName").val("");
-				$("#customerAddress").val("");
-				$("#customerPhone").val("");
+				clearFields();
 				displayCustomers(result);
 				populateCustomerSelectBox();
+				document.getElementById("error-label-customer").innerHTML = "Customer was successfully updated!";
+				$("#customerName").attr("placeholder", "Customer updated");
+				$("#error-label-customer").empty();
+				$("#error-label-customer").append("Chosen customer updated");
 			}
 
 			function ajaxUpdateReturnError(xhr, status, error) {
-				console.error("An error occurred: ", error);
+				$("#error-label-customer").empty();
+				$("#error-label-customer").append("Error updating customer");
 				var errorMessage = xhr.responseText || "Error updating customer";
 				document.getElementById("error-label-customer").innerHTML = errorMessage;
-				console.log("Ajax-update customer: " + status);
+				console.error("An error occurred: ", error);
+				console.log("Erorr in ajax-update customer: " + status);
 				displayCustomers(result);
 			}
 		} catch (error) {
