@@ -229,8 +229,6 @@
 						<div class="button-container">
 							<button type="submit" class="btn" value="addPurBtn"
 								id="addPurBtn">Add</button>
-							<button type="submit" class="btn" name=updtpurchaseBtn
-								value="updtCustBtn" id="updtCustBtn">Update</button>
 							<button type="submit" class="btn" id="delPurBtn">Remove</button>
 						</div>
 						<div class="error-label">
