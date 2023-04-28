@@ -130,6 +130,9 @@
 					$("#customerAddress").val("");
 					$("#customerPhone").val("");
 				}
+			} else {
+				$("#error-label-customer").empty();
+				$("#error-label-customer").append("Please enter an ID");
 			}
 		} catch (error) {
 			console.log("Error: " + error);
