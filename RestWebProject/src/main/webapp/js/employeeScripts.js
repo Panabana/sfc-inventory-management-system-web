@@ -58,24 +58,23 @@
 	}
 
 	// Find employee by ID
-	function findEmployeeById() {
+	function findEmployeeById(event) {
 		try {
-			
-				event.preventDefault();
+			event.preventDefault();
 
-				var strValue = $("#empId").val();
-				if (strValue != "") {
-					$.ajax({
-						method: "GET",
-						url: "http://localhost:8080/EJBISWebProject/RestServletEmployee/" + strValue,
-						error: ajaxRestReturnError,
-						success: ajaxRestReturnSuccess
-					})
-				} else {
-					$("#error-label-employee").empty();
-					$("#error-label-employee").append("Please enter a valid ID");
-				}
-			
+			var strValue = $("#empId").val();
+			if (strValue != "") {
+				$.ajax({
+					method: "GET",
+					url: "http://localhost:8080/EJBISWebProject/RestServletEmployee/" + strValue,
+					error: ajaxRestReturnError,
+					success: ajaxRestReturnSuccess
+				})
+			} else {
+				$("#error-label-employee").empty();
+				$("#error-label-employee").append("Please enter an ID");
+			}
+
 		} catch (error) {
 			console.error("An error occurred: ", error);
 		}
@@ -85,25 +84,25 @@
 	// Find all employees
 	function findAllEmployees() {
 		try {
-			
-				event.preventDefault();
 
-				$.ajax({
-					method: "GET",
-					url: "http://localhost:8080/EJBISWebProject/RestServletEmployee/",
-					success: function(result) {
-						clearTable();
-						displayEmployees(result);
-						$("#error-label-employee").empty();
-						$("#error-label-employee").append("All employees found.");
-					},
-					error: function(xhr, status, error) {
-						console.error("Error in fetching employees:", error);
-						$("#error-label-employee").empty();
-						$("#error-label-employee").append("Error in fetching employees");
-					}
-				});
-			
+			event.preventDefault();
+
+			$.ajax({
+				method: "GET",
+				url: "http://localhost:8080/EJBISWebProject/RestServletEmployee/",
+				success: function(result) {
+					clearTable();
+					displayEmployees(result);
+					$("#error-label-employee").empty();
+					$("#error-label-employee").append("All employees found.");
+				},
+				error: function(xhr, status, error) {
+					console.error("Error in fetching employees:", error);
+					$("#error-label-employee").empty();
+					$("#error-label-employee").append("Error in fetching employees");
+				}
+			});
+
 		} catch (error) {
 			console.error("An error occurred: ", error);
 		}
@@ -254,10 +253,18 @@
 
 	// Helper functions for AJAX calls
 	function ajaxRestReturnSuccess(result, status, xhr) {
-		parseJsonFileEmployee(result);
-		populateEmployeeSelectBox();
-		$("#error-label-employee").empty();
-		$("#error-label-employee").append("Chosen employee found.");
+		if (result.EmployeeId !== "") {
+			parseJsonFileEmployee(result);
+			populateEmployeeSelectBox();
+			$("#error-label-employee").empty();
+			$("#error-label-employee").append("Chosen employee found.");
+		} else {
+			$("#error-label-employee").empty();
+			$("#error-label-employee").append("ID not found. Please enter a valid ID");
+			clearFields();
+			clearTable();
+		}
+
 	}
 
 	function ajaxRestReturnError(result, status, xhr) {
