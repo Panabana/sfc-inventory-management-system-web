@@ -58,14 +58,9 @@
 						<legend>Purchase Information:</legend>
 						<form>
 							<div class="form-row">
-								<label for="purchase-id">Purchase ID:</label> <select
-									name="purchase-id" id="purchase-id">
-									<option disabled selected value="">Select a Purchase
-										that you wish to update</option>
-									<c:forEach var="purchase" items="${purchases}">
-										<option value="${purchase.purchaseId}">${purchase.purchaseId}</option>
-									</c:forEach>
-								</select> <label for="employee-id"> Employee ID:</label> <select
+								<label for="purchase-id">Purchase ID:</label> <input type= "text" 
+								id="purchase-id" name ="purchase-id">
+								<label for="employee-id"> Employee ID:</label> <select
 									name="employee-id" id="employee-id">
 									<option disabled selected value="">Select an employee</option>
 									<c:forEach var="employee" items="${employees}">
@@ -80,7 +75,6 @@
 											- ${customer.name}</option>
 									</c:forEach>
 								</select>
-
 							</div>
 							<div class="button-container">
 								<button type="submit" class="add-btn" name="action"

@@ -56,14 +56,9 @@
 						<legend>Employee Information:</legend>
 						<form>
 							<div class="form-row">
-								<label for="employee-id">Employee ID:</label> <select
-									name="employee-id" id="employee-id">
-									<option disabled selected value="">Select an employee
-										that you wish to update</option>
-									<c:forEach var="employee" items="${employees}">
-										<option value="${employee.employeeId}">${employee.employeeId} - ${employee.name}</option>
-									</c:forEach>
-								</select> <label for="employee-name"> Name:</label> <input type="text"
+							<label for ="employee-id">Employee ID:</label> <input type="text"
+									id="employee-id" name="employee-id">
+								<label for="employee-name"> Name:</label> <input type="text"
 									id="employee-name" name="employee-name">
 							</div>
 							<div class="form-row">

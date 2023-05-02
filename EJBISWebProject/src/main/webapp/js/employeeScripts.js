@@ -7,7 +7,11 @@ function validateForm() {
 	var employeePhoneNumber = document.getElementById("employee-phone").value;
 	var errorMessage = "";
 
-	if (employeeName === "" || !/^[a-zA-ZåäöÅÄÖ]+$/.test(employeeName)) {
+	if (employeeId === "" || !/^\d*$/.test(employeeId)) {
+		errorMessage = "Please enter a valid ID (numbers only).";
+		document.getElementById("error-label").innerHTML = errorMessage;
+		return false;
+	}else if (employeeName === "" || !/^[a-zA-ZåäöÅÄÖ]+$/.test(employeeName)) {
 		errorMessage = "Please enter a valid Name (Letters only)."
 		document.getElementById("error-label").innerHTML = errorMessage;
 		return false;
@@ -22,7 +26,7 @@ function validateForm() {
 		document.getElementById("error-label").innerHTML = errorMessage;
 		return false;
 	} else if (document.activeElement.value === "update-employee" && employeeId === "") {
-		errorMessage = "Please select a Employee ID you want to Update.";
+		errorMessage = "Please enter an Employee ID you want to Update.";
 		document.getElementById("error-label").innerHTML = errorMessage;
 		return false;
 	} else {

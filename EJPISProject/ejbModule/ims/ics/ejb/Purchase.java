@@ -38,7 +38,6 @@ public class Purchase implements Serializable {
 	}
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="PurchaseID")
 	public int getPurchaseId() {
 		return purchaseId;
