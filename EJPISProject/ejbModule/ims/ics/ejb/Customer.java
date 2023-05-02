@@ -43,7 +43,6 @@ public class Customer implements Serializable {
 	}
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="CustomerID")
 	public int getCustomerId() {
 		return customerId;

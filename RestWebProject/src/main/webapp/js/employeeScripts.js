@@ -129,7 +129,8 @@
 	function addEmployee(event) {
 		try {
 			event.preventDefault();
-
+			
+			var strId = $("#empIdAdd").val();
 			var strName = $("#empName").val();
 			var strAddress = $("#empAddress").val();
 			var strPhone = $("#empPhone").val();
@@ -144,7 +145,7 @@
 			}
 
 			// Create employee object
-			var obj = { EmployeeName: strName, EmployeeAddress: strAddress, Phone: strPhone };
+			var obj = {EmployeeId: strId, EmployeeName: strName, EmployeeAddress: strAddress, Phone: strPhone };
 			var jsonString = JSON.stringify(obj);
 
 			// Send AJAX request
@@ -160,6 +161,7 @@
 			// Show success message
 			document.getElementById("error-label-employee").innerHTML = "Employee was successfully added!";
 			// Clear input fields
+			$("#empIdAdd").val("");
 			$("#empName").val("");
 			$("#empAddress").val("");
 			$("#empPhone").val("");

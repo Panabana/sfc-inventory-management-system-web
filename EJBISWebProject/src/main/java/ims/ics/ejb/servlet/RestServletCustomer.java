@@ -205,12 +205,12 @@ public class RestServletCustomer extends HttpServlet {
 		
 		Customer customer = new Customer();
 		
-		/*
+		
 		JsonValue customerIdJson = jsonRoot.get("CustomerId");
 		if (customerIdJson != null && customerIdJson.getValueType() == ValueType.STRING) {
 			customer.setCustomerId(Integer.parseInt(((JsonString) customerIdJson).getString()));
 		}
-		*/
+		
 		JsonValue customerNameJson = jsonRoot.get("CustomerName");
 		if (customerNameJson != null && customerNameJson.getValueType() == ValueType.STRING) {
 			customer.setName(((JsonString) customerNameJson).getString());
