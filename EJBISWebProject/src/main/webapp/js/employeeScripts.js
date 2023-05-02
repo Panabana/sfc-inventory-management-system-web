@@ -74,7 +74,6 @@ function validateForm() {
 	}
 }
 
-
 document.addEventListener("DOMContentLoaded", function() {
 	var findEmployeeBtn = document.getElementById("search-btn");
 	findEmployeeBtn.addEventListener("click", function(event) {
@@ -97,12 +96,12 @@ document.addEventListener("DOMContentLoaded", function() {
 			if (employeeId === strValue) {
 				employeeFound = true;
 
-				// Retrieve employee details
+				// Retrieve details
 				var employeeName = row.cells[1].innerText;
 				var employeeAddress = row.cells[2].innerText;
 				var employeePhone = row.cells[3].innerText;
 
-				// Fill in the text fields
+				// Fill text fields wit found employee
 				document.getElementById("employee-id").value = strValue;
 				document.getElementById("employee-name").value = employeeName;
 				document.getElementById("employee-address").value = employeeAddress;
@@ -117,7 +116,6 @@ document.addEventListener("DOMContentLoaded", function() {
 			var errorLabel = document.getElementById("error-label");
 			errorLabel.innerText = "Chosen employee found.";
 		}
-
 
 	});
 });

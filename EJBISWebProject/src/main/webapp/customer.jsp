@@ -56,7 +56,6 @@
 				<div class="form-container">
 					<fieldset>
 						<legend>Customer Information:</legend>
-						<form>
 							<div class="form-row">
 								<label for="customer-id">Customer ID:</label> <input type="text" 
 								id="customer-id" name ="customer-id">
@@ -79,7 +78,6 @@
 								<!-- Error messages will be displayed here -->
 								<p>${error}</p>
 							</div>
-						</form>
 					</fieldset>
 				</div>
 			</form>
