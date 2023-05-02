@@ -46,7 +46,7 @@
 	function findPurchaseById(event) {
 
 		event.preventDefault();
-		
+
 		var strValue = $("#purchaseSelect").val();
 		if (strValue != "") {
 			$.ajax({
@@ -55,7 +55,7 @@
 				error: ajaxRestReturn_Error,
 				success: ajaxRestReturn_Success
 			})
-	
+
 			function ajaxRestReturn_Success(result, status, xhr) {
 				parseJsonFilePurchase(result);
 				populatePurchaseSelectBox();
@@ -69,16 +69,16 @@
 
 			function parseJsonFilePurchase(result) {
 				clearTable();
-				
+
 
 				$.each(result, function() {
 					var row = $("<tr>");
 					row.append($("<td>").text(result.purchaseId));
 					row.append($("<td>").text(result.employeeId));
 					row.append($("<td>").text(result.customerId));
-				
+
 					$("#purchaseTable tbody").empty().append(row);
-					
+
 					$("#employeeSelect").val(result.employeeId);
 					$("#customerSelect").val(result.customerId);
 				});
@@ -94,92 +94,102 @@
 
 	// Find all purchases
 	function findAllPurchases(event) {
-		
-			event.preventDefault();
-			$.ajax({
-				method: "GET",
-				url: "http://localhost:8080/EJBISWebProject/RestServletPurchase/",
-				success: function(result) {
-					clearTable();
-					displayPurchases(result);
-					$("#error-label-purchase").empty();
-					$("#error-label-purchase").append("All purchases found.");
-				},
-				error: function(xhr, status, error) {
-					console.error("Error in fetching purchases:", error);
-					$("#error-label-purchase").append("Error in fetching purchases");
-				}
-			});
-		
+
+		event.preventDefault();
+		$.ajax({
+			method: "GET",
+			url: "http://localhost:8080/EJBISWebProject/RestServletPurchase/",
+			success: function(result) {
+				clearTable();
+				displayPurchases(result);
+				$("#error-label-purchase").empty();
+				$("#error-label-purchase").append("All purchases found.");
+			},
+			error: function(xhr, status, error) {
+				console.error("Error in fetching purchases:", error);
+				$("#error-label-purchase").append("Error in fetching purchases");
+			}
+		});
+
 	}
 
 	// Delete purchase by ID
 	function deletePurchaseById(event) {
-		
-			event.preventDefault();
 
-			var strValue = $("#purchaseSelect").val();
-			if (strValue != "") {
-				$.ajax({
-					method: "DELETE",
-					url: "http://localhost:8080/EJBISWebProject/RestServletPurchase/" + strValue,
-					error: ajaxDelReturnError,
-					success: ajaxDelReturnSuccess
-				})
+		event.preventDefault();
 
-				function ajaxDelReturnSuccess(result, status, xhr) {
-					// clearFields();
-					displayPurchases(result);
-					populatePurchaseSelectBox();
-					$("#employeeId").attr("placeholder", "Purchase deleted");
-					$("#error-label-purchase").empty();
-					$("#error-label-purchase").append("Chosen purchase deleted.");
-				}
+		var strValue = $("#purchaseSelect").val();
+		if (strValue != "") {
+			$.ajax({
+				method: "DELETE",
+				url: "http://localhost:8080/EJBISWebProject/RestServletPurchase/" + strValue,
+				error: ajaxDelReturnError,
+				success: ajaxDelReturnSuccess
+			})
 
-				function ajaxDelReturnError(result, status, xhr) {
-					console.log("Ajax-find Purchase: " + status);
-					$("#error-label-purchase").empty();
-					$("#error-label-purchase").append("Error in deleting purchase.");
-				}
+			function ajaxDelReturnSuccess(result, status, xhr) {
+				// clearFields();
+				displayPurchases(result);
+				populatePurchaseSelectBox();
+				$("#employeeId").attr("placeholder", "Purchase deleted");
+				$("#error-label-purchase").empty();
+				$("#error-label-purchase").append("Chosen purchase deleted.");
 			}
-		
+
+			function ajaxDelReturnError(result, status, xhr) {
+				console.log("Ajax-find Purchase: " + status);
+				$("#error-label-purchase").empty();
+				$("#error-label-purchase").append("Error in deleting purchase.");
+			}
+		}
+
 	}
 
 	// Add new purchase
 	function addPurchase(event) {
-		
-			event.preventDefault();
 
-			var purchaseId = $("#purchaseIdAdd").val();
-			var employeeId = $("#employeeSelect").val();
-			var customerId = $("#customerSelect").val();
+		event.preventDefault();
 
-			var obj = { purchaseId: purchaseId, employeeId: employeeId, customerId: customerId };
-			var jsonString = JSON.stringify(obj);
-			if (employeeId != "" && customerId != "") {
-				$.ajax({
-					method: "POST",
-					url: "http://localhost:8080/EJBISWebProject/RestServletPurchase/",
-					data: jsonString,
-					dataType: 'json',
-					error: ajaxAddReturnError,
-					success: ajaxAddReturnSuccess
-				})
-				function ajaxAddReturnSuccess(result, status, xhr) {
-					// clearFields();
-					displayPurchases(result);
-					populatePurchaseSelectBox();
-					$("#purchaseAmountAdd").attr("placeholder", "Purchase added");
-					$("#error-label-purchase").empty();
-					$("#error-label-purchase").append("Purchase added.");
-				}
-				function ajaxAddReturnError(result, status, xhr) {
-					console.log("Ajax-add purchase: " + status);
-					$("#error-label-purchase").empty();
-					$("#error-label-purchase").append("Error in adding purchase.");
-				}
+		var purchaseId = $("#purchaseIdAdd").val();
+		var employeeId = $("#employeeSelect").val();
+		var customerId = $("#customerSelect").val();
+
+		if (purchaseId === "" || !/^\d{1,10}$/.test(purchaseId)) {
+			$("#error-label-purchase").empty();
+			$("#error-label-purchase").append("Please enter a valid ID (numbers only).");
+			return;
+		}
+
+		var obj = { purchaseId: purchaseId, employeeId: employeeId, customerId: customerId };
+		var jsonString = JSON.stringify(obj);
+		if (employeeId != "" && customerId != "") {
+			$.ajax({
+				method: "POST",
+				url: "http://localhost:8080/EJBISWebProject/RestServletPurchase/",
+				data: jsonString,
+				dataType: 'json',
+				error: ajaxAddReturnError,
+				success: ajaxAddReturnSuccess
+			})
+
+
+			function ajaxAddReturnSuccess(result, status, xhr) {
+				// clearFields();
+				displayPurchases(result);
+				populatePurchaseSelectBox();
+				$("#purchaseAmountAdd").attr("placeholder", "Purchase added");
+				$("#error-label-purchase").empty();
+				$("#error-label-purchase").append("Purchase added.");
+				$("#purchaseIdAdd").val("");
+
 			}
-		
+			function ajaxAddReturnError(result, status, xhr) {
+				console.log("Ajax-add purchase: " + status);
+				$("#error-label-purchase").empty();
+				$("#error-label-purchase").append("Error in adding purchase.");
+			}
+		}
+
 	}
 
 
