@@ -11,7 +11,7 @@ function validateForm() {
 		errorMessage = "Please enter a valid ID (numbers only).";
 		document.getElementById("error-label").innerHTML = errorMessage;
 		return false;
-	}else if (employeeName === "" || !/^[a-zA-ZåäöÅÄÖ]+$/.test(employeeName)) {
+	} else if (employeeName === "" || !/^[a-zA-ZåäöÅÄÖ]+$/.test(employeeName)) {
 		errorMessage = "Please enter a valid Name (Letters only)."
 		document.getElementById("error-label").innerHTML = errorMessage;
 		return false;
@@ -30,16 +30,34 @@ function validateForm() {
 		document.getElementById("error-label").innerHTML = errorMessage;
 		return false;
 	} else {
-		errorMessage = "Employee was successfully added!";
-		document.getElementById("error-label").innerHTML = errorMessage;
-		return true;
+		var tableRows = document.querySelectorAll("#employee-table tbody tr");
+		var employeeExists = false;
+
+		tableRows.forEach(function(row) {
+			var existingEmployeeId = row.cells[0].innerText;
+
+			if (existingEmployeeId === employeeId) {
+				employeeExists = true;
+			}
+		});
+
+		if (employeeExists) {
+			errorMessage = "Employee with ID: " + employeeId + " already exist!";
+			document.getElementById("error-label").innerHTML = errorMessage;
+			return false;
+		} else {
+			errorMessage = "Employee was successfully added!";
+			document.getElementById("error-label").innerHTML = errorMessage;
+			return true;
+		}
 	}
 }
 
 
 document.addEventListener("DOMContentLoaded", function() {
-	var searchForm = document.getElementById("search-form");
+	//var searchForm = document.getElementById("search-form");
 	var findEmployeeBtn = document.getElementById("search-btn");
+
 
 	findEmployeeBtn.addEventListener("click", function(event) {
 		event.preventDefault();
@@ -61,7 +79,7 @@ document.addEventListener("DOMContentLoaded", function() {
 			if (employeeId === strValue) {
 				employeeFound = true;
 
-				// Retrieve customer details
+				// Retrieve employee details
 				var employeeName = row.cells[1].innerText;
 				var employeeAddress = row.cells[2].innerText;
 				var employeePhone = row.cells[3].innerText;
@@ -81,6 +99,8 @@ document.addEventListener("DOMContentLoaded", function() {
 			var errorLabel = document.getElementById("error-label");
 			errorLabel.innerText = "Chosen employee found.";
 		}
+
+
 	});
 });
 

@@ -30,14 +30,30 @@ function validateForm() {
 		document.getElementById("error-label").innerHTML = errorMessage;
 		return false;
 	} else {
-		errorMessage = "Customer was successfully aded!";
-		document.getElementById("error-label").innerHTML = errorMessage;
-		return true;
+		var tableRows = document.querySelectorAll("#customers-table tbody tr");
+		var customerExists = false;
+
+		tableRows.forEach(function(row) {
+			var existingCustomerId = row.cells[0].innerText;
+
+			if (existingCustomerId === customerId) {
+				customerExists = true;
+			}
+		});
+
+		if (customerExists) {
+			errorMessage = "Customer with ID: " + customerId + " already exist!";
+			document.getElementById("error-label").innerHTML = errorMessage;
+			return false;
+		} else {
+			errorMessage = "Customer was successfully added!";
+			document.getElementById("error-label").innerHTML = errorMessage;
+			return true;
+		}
 	}
 }
 
 document.addEventListener("DOMContentLoaded", function() {
-	var searchForm = document.getElementById("search-form");
 	var findCustomerBtn = document.getElementById("search-btn");
 
 	findCustomerBtn.addEventListener("click", function(event) {

@@ -12,13 +12,14 @@
 <title>IMS - Employee</title>
 </head>
 <body>
-<script src="js/employeeScripts.js"></script>
+	<script src="js/employeeScripts.js"></script>
 	<%@ include file="header.jsp"%>
 	<%@ include file="sidebar.jsp"%>
 	<main>
 		<div class="main-content">
 			<div class="search-form">
-				<form action="EmployeeServlet" method="get" id="search-form" onsubmit="return validateSearchForm()">
+				<form action="EmployeeServlet" method="get" id="search-form"
+					onsubmit="return validateSearchForm()">
 					<div class="form-group">
 						<input type="text" id="find-employee-id" name="find-employee-id"
 							class="form-control" placeholder="Search...">
@@ -54,30 +55,28 @@
 				<div class="form-container">
 					<fieldset>
 						<legend>Employee Information:</legend>
-						<form>
-							<div class="form-row">
-							<label for ="employee-id">Employee ID:</label> <input type="text"
-									id="employee-id" name="employee-id">
-								<label for="employee-name"> Name:</label> <input type="text"
-									id="employee-name" name="employee-name">
-							</div>
-							<div class="form-row">
-								<label for="employee-address">Address:</label> <input
-									type="text" id="employee-address" name="employee-address">
-								<label for="employee-phone">Phone Number:</label> <input
-									type="text" id="employee-phone" name="employee-phone">
-							</div>
-							<div class="button-container">
-								<button type="submit" class="add-btn" name="action"
-									value="add-employee">Add</button>
-								<button type="submit" class="update-btn" name="action"
-									value="update-employee">Update</button>
-							</div>
-							<div class="error-label" id="error-label">
-								<!-- Error messages will be displayed here -->
-								<p>${error}</p>
-							</div>
-						</form>
+						<div class="form-row">
+							<label for="employee-id">Employee ID:</label> <input type="text"
+								id="employee-id" name="employee-id"> <label
+								for="employee-name">Name:</label> <input type="text"
+								id="employee-name" name="employee-name">
+						</div>
+						<div class="form-row">
+							<label for="employee-address">Address:</label> <input type="text"
+								id="employee-address" name="employee-address"> <label
+								for="employee-phone">Phone Number:</label> <input type="text"
+								id="employee-phone" name="employee-phone">
+						</div>
+						<div class="button-container">
+							<button type="submit" class="add-btn" name="action"
+								value="add-employee">Add</button>
+							<button type="submit" class="update-btn" name="action"
+								value="update-employee">Update</button>
+						</div>
+						<div class="error-label" id="error-label">
+							<!-- Error messages will be displayed here -->
+							<p>${error}</p>
+						</div>
 					</fieldset>
 				</div>
 			</form>

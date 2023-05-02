@@ -18,11 +18,28 @@
 			    document.getElementById("error-label").innerHTML = errorMessage;
 			    return false;
 			} else {
-				errorMessage = "The Purchase was successfully added!"
-				document.getElementById("error-label").innerHTML = errorMessage;
-				return true;
+		var tableRows = document.querySelectorAll("#purchase-table tbody tr");
+		var purchaseExists = false;
+
+		tableRows.forEach(function(row) {
+			var existingPurchaseId = row.cells[0].innerText;
+
+			if (existingPurchaseId === purchaseId) {
+				purchaseExists = true;
 			}
+		});
+
+		if (purchaseExists) {
+			errorMessage = "Purchase with ID: " + purchaseId + " already exist!";
+			document.getElementById("error-label").innerHTML = errorMessage;
+			return false;
+		} else {
+			errorMessage = "Purchase was successfully added!";
+			document.getElementById("error-label").innerHTML = errorMessage;
+			return true;
 		}
+	}
+}
 
 		
 		
