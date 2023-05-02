@@ -73,7 +73,6 @@
 		
 		
 		document.addEventListener("DOMContentLoaded", function() {
-  var searchForm = document.getElementById("search-form");
   var findPurchaseBtn = document.getElementById("search-btn");
 
   findPurchaseBtn.addEventListener("click", function(event) {
