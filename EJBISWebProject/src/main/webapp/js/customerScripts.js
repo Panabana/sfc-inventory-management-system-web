@@ -11,7 +11,7 @@ function validateForm() {
 		errorMessage = "Please enter a valid ID (numbers only).";
 		document.getElementById("error-label").innerHTML = errorMessage;
 		return false;
-	}else if (customerName === "" || !/^[a-zA-Z\u00C4\u00E4\u00D6\u00F6\u00C5\u00E5\s ]+$/.test(customerName)) {
+	} else if (customerName === "" || !/^[a-zA-Z\u00C4\u00E4\u00D6\u00F6\u00C5\u00E5\s ]+$/.test(customerName)) {
 		errorMessage = "Please enter a valid Name (Letters only)."
 		document.getElementById("error-label").innerHTML = errorMessage;
 		return false;
@@ -30,26 +30,48 @@ function validateForm() {
 		document.getElementById("error-label").innerHTML = errorMessage;
 		return false;
 	} else {
-		var tableRows = document.querySelectorAll("#customers-table tbody tr");
-		var customerExists = false;
+		if (document.activeElement.value === "add-customer") {
+			var tableRows = document.querySelectorAll("#customers-table tbody tr");
+			var customerExists = false;
 
-		tableRows.forEach(function(row) {
-			var existingCustomerId = row.cells[0].innerText;
+			tableRows.forEach(function(row) {
+				var existingCustomerId = row.cells[0].innerText;
 
-			if (existingCustomerId === customerId) {
-				customerExists = true;
+				if (existingCustomerId === customerId) {
+					customerExists = true;
+				}
+			});
+
+			if (customerExists) {
+				errorMessage = "Customer with ID: " + customerId + " already exists!";
+				document.getElementById("error-label").innerHTML = errorMessage;
+				return false;
+			} else {
+				errorMessage = "Customer was successfully added!";
 			}
-		});
+		} else if (document.activeElement.value === "update-customer") {
+			var tableRows = document.querySelectorAll("#customers-table tbody tr");
+			var customerExists = false;
 
-		if (customerExists) {
-			errorMessage = "Customer with ID: " + customerId + " already exist!";
-			document.getElementById("error-label").innerHTML = errorMessage;
-			return false;
-		} else {
-			errorMessage = "Customer was successfully added!";
-			document.getElementById("error-label").innerHTML = errorMessage;
-			return true;
+			tableRows.forEach(function(row) {
+				var existingCustomerId = row.cells[0].innerText;
+
+				if (existingCustomerId === customerId) {
+					customerExists = true;
+				}
+			});
+
+			if (!customerExists) {
+				errorMessage = "You can't update a non-existing customer";
+				document.getElementById("error-label").innerHTML = errorMessage;
+				return false;
+			} else {
+				errorMessage = "Customer was successfully updated!";
+			}
 		}
+
+		document.getElementById("error-label").innerHTML = errorMessage;
+		return true;
 	}
 }
 
