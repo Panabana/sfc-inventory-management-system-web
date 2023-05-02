@@ -16,12 +16,14 @@ import javax.json.JsonReader;
 import javax.json.JsonString;
 import javax.json.JsonValue;
 import javax.json.JsonValue.ValueType;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import ims.ics.ejb.Customer;
 import ims.ics.ejb.Employee;
 import ims.ics.facade.FacadeLocal;
 
@@ -69,21 +71,30 @@ public class RestServletEmployee extends HttpServlet {
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		// doGet(request, response);
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	    String pathInfo = request.getPathInfo();
+	    String url = "RestWebProject/home.jsp#Employee";
+	    // Check if the path info is valid
+	    if (pathInfo == null || pathInfo.equals("/")) {
+	        // Read the request body
+	        BufferedReader reader = request.getReader();
+	        // Parse the JSON data into a Employee object
+	        Employee employee = parseJsonEmployee(reader);
 
-		String pathInfo = request.getPathInfo();
-		if (pathInfo == null || pathInfo.equals("/")) {
-			BufferedReader reader = request.getReader();// Läs data Json
-			Employee emp = parseJsonEmployee(reader);
-			try {
-				emp = facade.createEmployee(emp);
-			} catch (Exception e) {
-				System.out.println("duplicate key");
-			}
-			sendAsJson(response, emp);
-		}
+	        try {
+	            employee = facade.createEmployee(employee);
+	            // Set employee as a request attribute
+	            request.setAttribute("employee", employee);
+	        } catch (Exception e) {
+	            request.setAttribute("error-label-employee", "Employee with the same ID already exists.");
+	        }
+
+	        // Forward the request to JSP page
+	        RequestDispatcher dispatcher = request.getRequestDispatcher(url);
+	        dispatcher.forward(request, response);
+	    } else {
+	        response.sendError(HttpServletResponse.SC_BAD_REQUEST);
+	    }
 	}
 
 	/**
@@ -183,39 +194,21 @@ public class RestServletEmployee extends HttpServlet {
 	}
 
 	private Employee parseJsonEmployee(BufferedReader br) {
-		// javax.json-1.0.4.jar
-		JsonReader jsonReader = null;
-		JsonObject jsonRoot = null;
-		jsonReader = Json.createReader(br);
-		jsonRoot = jsonReader.readObject();
+	    JsonReader jsonReader = null;
+	    JsonObject jsonRoot = null;
+	    jsonReader = Json.createReader(br);
+	    jsonRoot = jsonReader.readObject();
 
-		// System.out.println("JsonRoot: "+jsonRoot);
-		Employee emp = new Employee();
-			
-		
-		
-		JsonValue empIdJson = jsonRoot.get("EmployeeId");
-		if (empIdJson != null && empIdJson.getValueType() == ValueType.STRING) {
-		emp.setEmployeeId(Integer.parseInt(((JsonString) empIdJson).getString())); 
-		}
+	    Employee employee = new Employee();
 
-		JsonValue empNameJson = jsonRoot.get("EmployeeName");
-		if (empNameJson != null && empNameJson.getValueType() == ValueType.STRING) {
-			emp.setName(((JsonString) empNameJson).getString());
-		}
+	    employee.setEmployeeId(jsonRoot.getInt("EmployeeId"));
+	    employee.setName(jsonRoot.getString("EmployeeName"));
+	    employee.setAddress(jsonRoot.getString("EmployeeAddress"));
+	    employee.setPhoneNumber(jsonRoot.getInt("Phone"));
 
-		JsonValue empAddressJson = jsonRoot.get("EmployeeAddress");
-		if (empAddressJson != null && empAddressJson.getValueType() == ValueType.STRING) {
-			emp.setAddress(((JsonString) empAddressJson).getString());
-		}
-
-		JsonValue empPhoneJson = jsonRoot.get("Phone");
-		if (empPhoneJson != null && empPhoneJson.getValueType() == ValueType.STRING) {
-			emp.setPhoneNumber(Integer.parseInt(((JsonString) empPhoneJson).getString()));
-		}
-
-		return emp;
+	    return employee;
 	}
+
 
 	private Employee parseJsonEmployeeUpdate(BufferedReader br) {
 		// javax.json-1.0.4.jar
