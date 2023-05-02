@@ -11,13 +11,13 @@ function validateForm() {
 		errorMessage = "Please enter a valid ID (numbers only).";
 		document.getElementById("error-label").innerHTML = errorMessage;
 		return false;
-	}else if (customerName === "" || !/^[a-zA-ZåäöÅÄÖ]+$/.test(customerName)) {
+	}else if (customerName === "" || !/^[a-zA-Z\u00C4\u00E4\u00D6\u00F6\u00C5\u00E5\s ]+$/.test(customerName)) {
 		errorMessage = "Please enter a valid Name (Letters only)."
 		document.getElementById("error-label").innerHTML = errorMessage;
 		return false;
 	} else if (customerAddress === ""
-		|| !/^[a-zA-Z0-9\såäöÅÄÖ]*$/.test(customerAddress)) {
-		errorMessage = "Please enter an Address (Only letters and numbers allowed)."
+		|| !/^[a-zA-Z0-9\u00C4\u00E4\u00D6\u00F6\u00C5\u00E5\s ]+$/.test(customerAddress)) {
+		errorMessage = "Please enter a valid Address (Only letters and numbers and whitespaces allowed)."
 		document.getElementById("error-label").innerHTML = errorMessage;
 		return false;
 	} else if (customerPhoneNumber === ""
