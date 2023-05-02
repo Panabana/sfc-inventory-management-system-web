@@ -251,7 +251,7 @@
 			function ajaxAddReturnError(result, status, xhr) {
 				console.log("Ajax-find customer: " + status);
 				$("#error-label-customer").empty();
-				$("#error-label-customer").append("Customer with ID already exists!");
+				$("#error-label-customer").append("Error adding customer.");
 			}
 
 			// Show success message
