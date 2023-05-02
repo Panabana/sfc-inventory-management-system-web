@@ -22,28 +22,52 @@
 			    document.getElementById("error-label").innerHTML = errorMessage;
 			    return false;
 			} else {
-		var tableRows = document.querySelectorAll("#purchase-table tbody tr");
-		var purchaseExists = false;
+				if(document.activeElement.value === "add-purchase"){
+					var tableRows = document.querySelectorAll("#purchase-table tbody tr");
+					var purchaseExists = false;
 
-		tableRows.forEach(function(row) {
-			var existingPurchaseId = row.cells[0].innerText;
+					tableRows.forEach(function(row) {
+						var existingPurchaseId = row.cells[0].innerText;
 
-			if (existingPurchaseId === purchaseId) {
-				purchaseExists = true;
+						if (existingPurchaseId === purchaseId) {
+							purchaseExists = true;
+						}
+					});
+
+				if (purchaseExists) {
+					errorMessage = "Purchase with ID: " + purchaseId + " already exist!";
+					document.getElementById("error-label").innerHTML = errorMessage;
+					return false;
+				} else {
+					errorMessage = "Purchase was successfully added!";
+					document.getElementById("error-label").innerHTML = errorMessage;
+					return true;
+				}
+				} else if(document.activeElement.value==="update-purchase"){
+					var tableRows = document.querySelectorAll("#purchase-table tbody tr");
+					var purchaseExists = false;
+					
+					tableRows.forEach(function(row){
+						var existingPurchaseId = row.cells[0].innerText;
+						
+						if(existingPurchaseId === purchaseId){
+							purchaseExists = true;
+						}
+					});
+					
+					if(!purchaseExists){
+						errorMessage = "You can't update a non-existing purchase";
+						document.getElementById("error-label").innerHTML = errorMessage;
+						return false;
+					} else{
+						errorMessage = "Purchase was successfully updated";
+					}
+				}
+				
+				document.getElementById("error-label").innerHTML = errorMessage;
+				return true;
+				
 			}
-		});
-
-		if (purchaseExists) {
-			errorMessage = "Purchase with ID: " + purchaseId + " already exist!";
-			document.getElementById("error-label").innerHTML = errorMessage;
-			return false;
-		} else {
-			errorMessage = "Purchase was successfully added!";
-			document.getElementById("error-label").innerHTML = errorMessage;
-			return true;
-		}
-		
-	}
 }
 
 		
