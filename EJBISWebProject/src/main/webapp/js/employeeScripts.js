@@ -16,9 +16,9 @@ function validateForm() {
 		document.getElementById("error-label").innerHTML = errorMessage;
 		return false;
 	} else if (employeeAddress === "" || !/^[a-zA-Z0-9\u00C4\u00E4\u00D6\u00F6\u00C5\u00E5\s ]+$/.test(employeeAddress)) {
-    errorMessage = "Please enter a valid Address (Only letters, numbers, and whitespaces allowed).";
-    document.getElementById("error-label").innerHTML = errorMessage;
-    return false;
+		errorMessage = "Please enter a valid Address (Only letters, numbers, and whitespaces allowed).";
+		document.getElementById("error-label").innerHTML = errorMessage;
+		return false;
 	} else if (employeePhoneNumber === ""
 		|| !/^\d{1,10}$/.test(employeePhoneNumber)) {
 		errorMessage = "Please enter a valid Phone Number (numbers only)."
@@ -29,28 +29,51 @@ function validateForm() {
 		document.getElementById("error-label").innerHTML = errorMessage;
 		return false;
 	} else {
-		var tableRows = document.querySelectorAll("#employee-table tbody tr");
-		var employeeExists = false;
+		if (document.activeElement.value === "add-employee") {
+			var tableRows = document.querySelectorAll("#employee-table tbody tr");
+			var employeeExists = false;
 
-		tableRows.forEach(function(row) {
-			var existingEmployeeId = row.cells[0].innerText;
+			tableRows.forEach(function(row) {
+				var existingEmployeeId = row.cells[0].innerText;
 
-			if (existingEmployeeId === employeeId) {
-				employeeExists = true;
+				if (existingEmployeeId === employeeId) {
+					employeeExists = true;
+				}
+			});
+
+			if (employeeExists) {
+				errorMessage = "Employee with ID: " + employeeId + " already exists!";
+				document.getElementById("error-label").innerHTML = errorMessage;
+				return false;
+			} else {
+				errorMessage = "Employee was successfully added!";
 			}
-		});
+		} else if (document.activeElement.value === "update-employee") {
+			var tableRows = document.querySelectorAll("#employee-table tbody tr");
+			var employeeExists = false;
 
-		if (employeeExists) {
-			errorMessage = "Employee with ID: " + employeeId + " already exist!";
-			document.getElementById("error-label").innerHTML = errorMessage;
-			return false;
-		} else {
-			errorMessage = "Employee was successfully added!";
-			document.getElementById("error-label").innerHTML = errorMessage;
-			return true;
+			tableRows.forEach(function(row) {
+				var existingEmployeeId = row.cells[0].innerText;
+
+				if (existingEmployeeId === employeeId) {
+					employeeExists = true;
+				}
+			});
+
+			if (!employeeExists) {
+				errorMessage = "You can't update a non-existing employee";
+				document.getElementById("error-label").innerHTML = errorMessage;
+				return false;
+			} else {
+				errorMessage = "Employee was successfully updated!";
+			}
 		}
+
+		document.getElementById("error-label").innerHTML = errorMessage;
+		return true;
 	}
 }
+
 
 document.addEventListener("DOMContentLoaded", function() {
 	var findEmployeeBtn = document.getElementById("search-btn");
