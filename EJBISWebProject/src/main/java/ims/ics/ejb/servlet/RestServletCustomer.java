@@ -16,7 +16,6 @@ import javax.json.JsonReader;
 import javax.json.JsonString;
 import javax.json.JsonValue;
 import javax.json.JsonValue.ValueType;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -67,33 +66,32 @@ public class RestServletCustomer extends HttpServlet {
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String pathInfo = request.getPathInfo();
 
-		protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		    String pathInfo = request.getPathInfo();
-		    String url = "RestWebProject/home.jsp#Customer";
-		    // Check if the path info is valid
-		    if (pathInfo == null || pathInfo.equals("/")) {
-		        // Read the request body
-		        BufferedReader reader = request.getReader();
-		        // Parse the JSON data into a Customer object
-		        Customer customer = parseJsonCustomer(reader);
+	    // Check if the path info is valid
+	    if (pathInfo == null || pathInfo.equals("/")) {
+	        // Read the request body
+	        BufferedReader reader = request.getReader();
+	        // Parse the JSON data into a Customer object
+	        Customer customer = parseJsonCustomer(reader);
 
-		        try {
-		            customer = facade.createCustomer(customer);
-		            // Set customer as a request attribute
-		            request.setAttribute("customer", customer);
-		        } catch (Exception e) {
-		            request.setAttribute("error-label-customer", "Customer with the same ID already exists.");
-		        }
+	        try {
+	            // Attempt to create the new customer
+	            customer = facade.createCustomer(customer);
+	        } catch (Exception e) {
+	            // If the creation fails due to a duplicate key, return an error response
+	            response.sendError(HttpServletResponse.SC_CONFLICT, "Customer with the same ID already exists.");
+	            return;
+	        }
 
-		        // Forward the request to JSP page
-		        RequestDispatcher dispatcher = request.getRequestDispatcher(url);
-		        dispatcher.forward(request, response);
-		    } else {
-		        response.sendError(HttpServletResponse.SC_BAD_REQUEST);
-		    }
-		}
-
+	        // Send the created customer as a JSON response
+	        sendAsJson(response, customer);
+	    } else {
+	        // If the path info is invalid, return a 400 Bad Request error
+	        response.sendError(HttpServletResponse.SC_BAD_REQUEST);
+	    }
+	}
 
 	/**
 	 * @see HttpServlet#doPut(HttpServletRequest, HttpServletResponse)
@@ -200,21 +198,37 @@ public class RestServletCustomer extends HttpServlet {
 	}
 	
 	private Customer parseJsonCustomer(BufferedReader br) {
-	    JsonReader jsonReader = null;
-	    JsonObject jsonRoot = null;
-	    jsonReader = Json.createReader(br);
-	    jsonRoot = jsonReader.readObject();
+		JsonReader jsonReader = null;
+		JsonObject jsonRoot = null;
+		jsonReader = Json.createReader(br);
+		jsonRoot = jsonReader.readObject();
+		
+		Customer customer = new Customer();
+		
+		
+		JsonValue customerIdJson = jsonRoot.get("CustomerId");
+		if (customerIdJson != null && customerIdJson.getValueType() == ValueType.STRING) {
+			customer.setCustomerId(Integer.parseInt(((JsonString) customerIdJson).getString()));
+		}
+		
+		JsonValue customerNameJson = jsonRoot.get("CustomerName");
+		if (customerNameJson != null && customerNameJson.getValueType() == ValueType.STRING) {
+			customer.setName(((JsonString) customerNameJson).getString());
+		}
 
-	    Customer customer = new Customer();
+		JsonValue customerAddressJson = jsonRoot.get("CustomerAddress");
+		if (customerAddressJson != null && customerAddressJson.getValueType() == ValueType.STRING) {
+			customer.setAddress(((JsonString) customerAddressJson).getString());
+		}
 
-	    customer.setCustomerId(jsonRoot.getInt("CustomerId"));
-	    customer.setName(jsonRoot.getString("CustomerName"));
-	    customer.setAddress(jsonRoot.getString("CustomerAddress"));
-	    customer.setPhoneNbr(jsonRoot.getInt("Phone"));
+		JsonValue customerPhoneJson = jsonRoot.get("Phone");
+		if (customerPhoneJson != null && customerPhoneJson.getValueType() == ValueType.STRING) {
+			customer.setPhoneNbr(Integer.parseInt(((JsonString) customerPhoneJson).getString()));
+		}
 
-	    return customer;
+		return customer;
 	}
-
+	
 	private Customer parseJsonCustomerUpdate(BufferedReader br) {
 		JsonReader jsonReader = null;
 		JsonObject jsonRoot = null;

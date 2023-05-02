@@ -129,7 +129,7 @@
 	function addEmployee(event) {
 		try {
 			event.preventDefault();
-
+			
 			var strId = $("#empIdAdd").val();
 			var strName = $("#empName").val();
 			var strAddress = $("#empAddress").val();
@@ -142,12 +142,12 @@
 				throw new Error("Please enter an Address (Only letters and numbers allowed).");
 			} else if (strPhone === "" || !/^\d{1,10}$/.test(strPhone)) {
 				throw new Error("Please enter a valid Phone Number (numbers only).");
-			} else if (strId === "" || !/^\d{1,10}$/.test(strId)) {
+			}else if (strId === "" || !/^\d{1,10}$/.test(strId)) {
 				throw new Error("Please enter a valid ID (numbers only).");
 			}
 
 			// Create employee object
-			var obj = { EmployeeId: strId, EmployeeName: strName, EmployeeAddress: strAddress, Phone: strPhone };
+			var obj = {EmployeeId: strId, EmployeeName: strName, EmployeeAddress: strAddress, Phone: strPhone };
 			var jsonString = JSON.stringify(obj);
 
 			// Send AJAX request
@@ -159,21 +159,6 @@
 				error: ajaxAddReturnError,
 				success: ajaxAddReturnSuccess
 			});
-
-			function ajaxAddReturnSuccess(result, status, xhr) {
-				clearFields();
-				displayEmployees(result);
-				populateEmployeeSelectBox();
-				 $("#EmployeeName").attr("placeholder", "Employee added");
-				$("#error-label-employee").empty();
-				$("#error-label-employee").append("Employee added.");
-			}
-			function ajaxAddReturnError(result, status, xhr) {
-				console.log("Ajax-find employee: " + status);
-
-				$("#error-label-employee").empty();
-				$("#error-label-employee").append("Employee with ID already exists!");
-			}
 
 			// Show success message
 			document.getElementById("error-label-employee").innerHTML = "Employee was successfully added!";
@@ -325,6 +310,20 @@
 		$("#error-label-employee").append("Error deleting employee");
 	}
 
+	function ajaxAddReturnSuccess(result, status, xhr) {
+		clearFields();
+		displayEmployees(result);
+		populateEmployeeSelectBox();
+		// $("#EmployeeName").attr("placeholder", "Employee added");
+		$("#error-label-employee").empty();
+		$("#error-label-employee").append("Employee added.");
+	}
+	function ajaxAddReturnError(result, status, xhr) {
+		console.log("Ajax-find employee: " + status);
+		displayEmployees(result);
+		$("#error-label-employee").empty();
+		$("#error-label-employee").append("Error adding employee");
+	}
 
 	function parseJsonFileEmployee(result) {
 		try {
