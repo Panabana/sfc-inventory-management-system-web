@@ -226,6 +226,11 @@
 								</c:forEach>
 							</select>
 						</div>
+						<div class="form-group">
+						<label>Add PurchaseId:</label>
+							<input type="text" class="form-control item" id="purchaseIdAdd"
+									name="purchaseId" placeholder="Purchase Id">
+						</div>
 						<div class="button-container">
 							<button type="submit" class="btn" value="addPurBtn"
 								id="addPurBtn">Add</button>

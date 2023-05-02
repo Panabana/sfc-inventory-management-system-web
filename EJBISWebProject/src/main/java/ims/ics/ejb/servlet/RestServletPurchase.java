@@ -222,6 +222,11 @@ public class RestServletPurchase extends HttpServlet {
 	    Purchase purchase = new Purchase();
 
 	    //System.out.println(((JsonNumber) employeeIdJson).intValue());
+	    JsonValue purchaseIdJson = jsonRoot.get("purchaseId");
+	    
+		if (purchaseIdJson != null && purchaseIdJson.getValueType() == ValueType.STRING) {
+			purchase.setPurchaseId(Integer.parseInt(((JsonString) purchaseIdJson).getString()));
+		}
 	    
 	    JsonValue employeeIdJson = jsonRoot.get("employeeId");
 	    if (employeeIdJson != null && employeeIdJson.getValueType() == JsonValue.ValueType.STRING) {

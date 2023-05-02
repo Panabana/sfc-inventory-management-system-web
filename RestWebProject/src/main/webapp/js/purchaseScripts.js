@@ -150,7 +150,7 @@
 		
 			event.preventDefault();
 
-			var purchaseId = $("#employeeSelect").val();
+			var purchaseId = $("#purchaseIdAdd").val();
 			var employeeId = $("#employeeSelect").val();
 			var customerId = $("#customerSelect").val();
 

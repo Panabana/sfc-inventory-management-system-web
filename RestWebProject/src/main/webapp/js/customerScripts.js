@@ -213,7 +213,7 @@
 			var strName = $("#customerName").val();
 			var strAddress = $("#customerAddress").val();
 			var strPhone = $("#customerPhone").val();
-
+			
 			// Validate input fields
 			if (strName === "" || !/^[a-zA-Z\u00C4\u00E4\u00D6\u00F6\u00C5\u00E5\s ]+$/.test(strName)) {
 				throw new Error("Please enter a valid Name (Letters only).");
@@ -222,7 +222,7 @@
 			} else if (strPhone === "" || !/^\d{1,10}$/.test(strPhone)) {
 				throw new Error("Please enter a valid Phone Number (numbers only).");
 			}
-
+			
 			// Create Customer object
 			var obj = {CustomerId: strId, CustomerName: strName, CustomerAddress: strAddress, Phone: strPhone };
 			var jsonString = JSON.stringify(obj);
