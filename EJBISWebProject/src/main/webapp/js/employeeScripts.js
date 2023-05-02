@@ -11,15 +11,14 @@ function validateForm() {
 		errorMessage = "Please enter a valid ID (numbers only).";
 		document.getElementById("error-label").innerHTML = errorMessage;
 		return false;
-	} else if (employeeName === "" || !/^[a-zA-ZåäöÅÄÖ]+$/.test(employeeName)) {
+	} else if (employeeName === "" || !/^[a-zA-Z\u00C4\u00E4\u00D6\u00F6\u00C5\u00E5\s ]+$/.test(employeeName)) {
 		errorMessage = "Please enter a valid Name (Letters only)."
 		document.getElementById("error-label").innerHTML = errorMessage;
 		return false;
-	} else if (employeeAddress === ""
-		|| !/^[a-zA-Z0-9\såäöÅÄÖ]*$/.test(employeeAddress)) {
-		errorMessage = "Please enter an Address (Only letters and numbers allowed)."
-		document.getElementById("error-label").innerHTML = errorMessage;
-		return false;
+	} else if (employeeAddress === "" || !/^[a-zA-Z0-9\u00C4\u00E4\u00D6\u00F6\u00C5\u00E5\s ]+$/.test(employeeAddress)) {
+    errorMessage = "Please enter a valid Address (Only letters, numbers, and whitespaces allowed).";
+    document.getElementById("error-label").innerHTML = errorMessage;
+    return false;
 	} else if (employeePhoneNumber === ""
 		|| !/^\d{1,10}$/.test(employeePhoneNumber)) {
 		errorMessage = "Please enter a valid Phone Number (numbers only)."
@@ -53,12 +52,8 @@ function validateForm() {
 	}
 }
 
-
 document.addEventListener("DOMContentLoaded", function() {
-	//var searchForm = document.getElementById("search-form");
 	var findEmployeeBtn = document.getElementById("search-btn");
-
-
 	findEmployeeBtn.addEventListener("click", function(event) {
 		event.preventDefault();
 

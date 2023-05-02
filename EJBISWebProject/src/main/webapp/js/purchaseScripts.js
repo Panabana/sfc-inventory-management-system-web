@@ -5,7 +5,11 @@
 			var purchaseId = document.getElementById("purchase-id").value;
 			var errorMessage = "";
 			
-			if (employeeId === "") {
+			if(purchaseId === "" || !/^\d*$/.test(purchaseId)){
+			errorMessage = "Please enter a valid Purchase ID (Numbers only)";
+			document.getElementById("error-label").innerHTML = errorMessage;
+			return false;
+			}else if (employeeId === "") {
 				errorMessage = "Please select an Employee ID."
 				document.getElementById("error-label").innerHTML = errorMessage;
 				return false;
@@ -38,6 +42,7 @@
 			document.getElementById("error-label").innerHTML = errorMessage;
 			return true;
 		}
+		
 	}
 }
 
