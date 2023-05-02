@@ -77,20 +77,24 @@ public class PurchaseServlet extends HttpServlet {
 			String action = request.getParameter("action");
 
 			if ("add-purchase".equals(action)) {
+				String id = request.getParameter("purchase-id");
 				String employeeId = request.getParameter("employee-id");
 				String customerId = request.getParameter("customer-id");
+				int purchaseId = 0;
 				int empId = 0;
 				int custId = 0;
 
-				if (customerId != null && employeeId != null) {
+				if (customerId != null && employeeId != null && id != null) {
 					empId = Integer.parseInt(employeeId);
 					custId = Integer.parseInt(customerId);
+					purchaseId = Integer.parseInt(id);
 
 					Purchase purchase = new Purchase();
 
 					Employee employee = facade.findEmployeeById(empId);
 					Customer customer = facade.findCustomerById(custId);
-
+					
+					purchase.setPurchaseId(purchaseId);
 					purchase.setEmployee(employee);
 					purchase.setCustomer(customer);
 

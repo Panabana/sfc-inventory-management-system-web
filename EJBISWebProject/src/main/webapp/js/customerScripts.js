@@ -7,7 +7,11 @@ function validateForm() {
 	var customerPhoneNumber = document.getElementById("customer-phone").value;
 	var errorMessage = "";
 
-	if (customerName === "" || !/^[a-zA-ZåäöÅÄÖ]+$/.test(customerName)) {
+	if (customerId === "" || !/^\d*$/.test(customerId)) {
+		errorMessage = "Please enter a valid ID (numbers only).";
+		document.getElementById("error-label").innerHTML = errorMessage;
+		return false;
+	}else if (customerName === "" || !/^[a-zA-ZåäöÅÄÖ]+$/.test(customerName)) {
 		errorMessage = "Please enter a valid Name (Letters only)."
 		document.getElementById("error-label").innerHTML = errorMessage;
 		return false;
@@ -22,7 +26,7 @@ function validateForm() {
 		document.getElementById("error-label").innerHTML = errorMessage;
 		return false;
 	} else if (document.activeElement.value === "update-customer" && customerId === "") {
-		errorMessage = "Please select a Customer ID you want to Update.";
+		errorMessage = "Please enter a Customer ID you want to Update.";
 		document.getElementById("error-label").innerHTML = errorMessage;
 		return false;
 	} else {

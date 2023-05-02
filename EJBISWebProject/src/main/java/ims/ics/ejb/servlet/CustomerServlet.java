@@ -73,6 +73,7 @@ public class CustomerServlet extends HttpServlet {
 
 			// ADD CUSTOMER
 			if ("add-customer".equals(action)) {
+				String id = request.getParameter("customer-id");
 				String name = request.getParameter("customer-name");
 				String address = request.getParameter("customer-address");
 				String phoneNumber = request.getParameter("customer-phone");
@@ -82,8 +83,12 @@ public class CustomerServlet extends HttpServlet {
 				if (phoneNumber != null) {
 					customerPhoneNbr = Integer.parseInt(phoneNumber);
 				}
+				if(id != null) {
+					customerId = Integer.parseInt(id);
+				}
 
 				Customer customer = new Customer();
+				customer.setCustomerId(customerId);
 				customer.setName(name);
 				customer.setAddress(address);
 				customer.setPhoneNbr(customerPhoneNbr);

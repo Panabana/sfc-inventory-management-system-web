@@ -58,15 +58,9 @@
 						<legend>Customer Information:</legend>
 						<form>
 							<div class="form-row">
-								<label for="customer-id">Customer ID:</label> <select
-									name="customer-id" id="customer-id">
-									<option disabled selected value="">Select a Customer
-										that you wish to update</option>
-									<c:forEach var="customer" items="${customers}">
-										<option value="${customer.customerId}">${customer.customerId}
-											- ${customer.name}</option>
-									</c:forEach>
-								</select> <label for="customer-name"> Name:</label> <input type="text"
+								<label for="customer-id">Customer ID:</label> <input type="text" 
+								id="customer-id" name ="customer-id">
+								<label for="customer-name"> Name:</label> <input type="text"
 									id="customer-name" name="customer-name">
 							</div>
 							<div class="form-row">
