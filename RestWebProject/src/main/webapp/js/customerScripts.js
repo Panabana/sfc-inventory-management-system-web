@@ -221,6 +221,8 @@
 				throw new Error("Please enter an Address (Only letters and numbers allowed).");
 			} else if (strPhone === "" || !/^\d{1,10}$/.test(strPhone)) {
 				throw new Error("Please enter a valid Phone Number (numbers only).");
+			}else if (strId === "" || !/^\d{1,10}$/.test(strId)) {
+				throw new Error("Please enter a valid ID (numbers only).");
 			}
 			
 			// Create Customer object
