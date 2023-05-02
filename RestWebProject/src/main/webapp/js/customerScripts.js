@@ -208,7 +208,8 @@
 	function addCustomer(event) {
 		try {
 			event.preventDefault();
-
+			
+			var strId = $("#customerIdAdd").val(); 
 			var strName = $("#customerName").val();
 			var strAddress = $("#customerAddress").val();
 			var strPhone = $("#customerPhone").val();
@@ -223,7 +224,7 @@
 			}
 
 			// Create Customer object
-			var obj = { CustomerName: strName, CustomerAddress: strAddress, Phone: strPhone };
+			var obj = {CustomerId: strId, CustomerName: strName, CustomerAddress: strAddress, Phone: strPhone };
 			var jsonString = JSON.stringify(obj);
 
 			// Send AJAX request
@@ -254,6 +255,7 @@
 			// Show success message
 			document.getElementById("error-label-customer").innerHTML = "Customer was successfully added!";
 			// Clear input fields
+			$("#customerIdAdd").val("");
 			$("#customerName").val("");
 			$("#customerAddress").val("");
 			$("#customerPhone").val("");
