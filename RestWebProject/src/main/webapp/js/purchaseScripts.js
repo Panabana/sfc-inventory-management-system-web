@@ -25,7 +25,7 @@
 		$("#addPurBtn").click(addPurchase);
 
 		// "Aaand this is where i'd put an update. IF I HAD ONE" -Fairly Odd Parents
-		$("#").click(updatePurchase);
+		//$("#").click(updatePurchase);
 	}
 
 	// Display purchase table
