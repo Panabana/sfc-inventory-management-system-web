@@ -99,7 +99,7 @@ public class PurchaseServlet extends HttpServlet {
 					purchase.setCustomer(customer);
 
 					facade.createPurchase(purchase);
-					response.sendRedirect("PurchaseServlet");
+					response.sendRedirect("/EJBISWebProject/ControllerServlet?action=purchase");
 				}
 			}
 
