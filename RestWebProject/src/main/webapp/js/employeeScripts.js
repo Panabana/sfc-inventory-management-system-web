@@ -122,6 +122,8 @@
 			});
 		} else {
 			console.log("strValue is blank/null");
+			$("#error-label-employee").empty();
+			$("#error-label-employee").append("Please choose a valid ID in the top field to delete");
 		}
 	}
 
@@ -164,7 +166,7 @@
 				clearFields();
 				displayEmployees(result);
 				populateEmployeeSelectBox();
-				 $("#EmployeeName").attr("placeholder", "Employee added");
+				$("#EmployeeName").attr("placeholder", "Employee added");
 				$("#error-label-employee").empty();
 				$("#error-label-employee").append("Employee added.");
 			}
@@ -175,14 +177,14 @@
 				$("#error-label-employee").append("Employee with ID already exists!");
 			}
 
-			// Show success message
+			/*// Show success message
 			document.getElementById("error-label-employee").innerHTML = "Employee was successfully added!";
 			// Clear input fields
 			$("#empIdAdd").val("");
 			$("#empName").val("");
 			$("#empAddress").val("");
 			$("#empPhone").val("");
-			return true;
+			return true;*/
 
 		} catch (error) {
 			// Handle error and show error message
