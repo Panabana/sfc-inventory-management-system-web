@@ -174,11 +174,13 @@
 				url: "http://localhost:8080/EJBISWebProject/RestServletCustomer/" + strValue,
 				success: function(result) {
 					clearTable();
-					displayCustomers(result);
+					//displayCustomers(result);
+					findAllCustomers();
 					clearFields();
 
 					$("#error-label-customer").empty();
 					$("#error-label-customer").append("Chosen customer deleted.");
+				
 				},
 				error: function(xhr, status, error) {
 					console.error("Error in deleting customers:", error);
@@ -188,7 +190,7 @@
 
 			function ajaxDelReturnSuccess(result, status, xhr) {
 				clearFields();
-				displayCustomers(Customers);
+				displayCustomers();
 				populateCustomerSelectBox();
 				$("#CustomerName").attr("placeholder", "Customer deleted");
 				$("#error-label-customer").empty();
@@ -201,6 +203,9 @@
 				$("#error-label-customer").empty();
 				$("#error-label-customer").append("Error deleting customer");
 			}
+		}else{
+			$("#error-label-customer").empty();
+				$("#error-label-customer").append("Please enter a valid ID in the top Field to delete.");
 		}
 	}
 

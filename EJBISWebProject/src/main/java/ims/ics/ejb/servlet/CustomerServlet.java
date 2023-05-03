@@ -93,7 +93,7 @@ public class CustomerServlet extends HttpServlet {
 				customer.setAddress(address);
 				customer.setPhoneNbr(customerPhoneNbr);
 				facade.createCustomer(customer);
-				response.sendRedirect("CustomerServlet");
+				response.sendRedirect("/EJBISWebProject/ControllerServlet?action=customer");
 			}
 
 			// UPDATE CUSTOMER
@@ -114,7 +114,7 @@ public class CustomerServlet extends HttpServlet {
 					}
 
 					facade.updateCustomer(customer);
-					response.sendRedirect("CustomerServlet");
+					response.sendRedirect("/EJBISWebProject/ControllerServlet?action=customer");
 
 				} else {
 					doGet(request, response);

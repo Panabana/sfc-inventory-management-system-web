@@ -90,7 +90,7 @@ public class EmployeeServlet extends HttpServlet {
 				employee.setAddress(address);
 				employee.setPhoneNumber(employeePhoneNbr);
 				facade.createEmployee(employee);
-				response.sendRedirect("EmployeeServlet");
+				response.sendRedirect("/EJBISWebProject/ControllerServlet?action=employee");
 
 				// UPDATE EMPLOYEE
 			} else if ("update-employee".equals(action)) {
@@ -110,7 +110,7 @@ public class EmployeeServlet extends HttpServlet {
 					}
 
 					facade.updateEmployee(employee);
-					response.sendRedirect("EmployeeServlet");
+					response.sendRedirect("/EJBISWebProject/ControllerServlet?action=employee");
 				} else {
 
 					doGet(request, response);

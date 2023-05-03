@@ -121,7 +121,8 @@
 				success: ajaxDelReturnSuccess
 			});
 		} else {
-			console.log("strValue is blank/null");
+			$("#error-label-employee").empty();
+			$("#error-label-employee").append("Please enter a valid ID in the top field to delete.")
 		}
 	}
 
